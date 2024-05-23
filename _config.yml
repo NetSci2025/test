@@ -1,10 +1,13 @@
-title: Nagymaros
+title: NetSci2025 Test
 description: Jekyll theme for a conference website
-baseurl: ""
-url: https://piazzai.github.io/jekyll-nagymaros
+baseurl: "/test"
+url: https://NetSci2025.github.io/test
 
 #theme: jekyll-nagymaros
-remote_theme: piazzai/jekyll-nagymaros
+#remote_theme: piazzai/jekyll-nagymaros
+
+
+
 
 copyright: Place Holder
 indexing: true
