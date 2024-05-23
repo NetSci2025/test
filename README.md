@@ -4,10 +4,10 @@
 * The `navorder` in the `.md` files controls the order in which pages appear in the navigation bar.
 
 ### Layout Content
-* To modify the text contained within the layout, edit the HTML files located in the `layouts/` folder.
+* To modify the text contained within the layout, the HTML files located in the `layouts/` folder could be edited.
 
 ### External Links for Buttons
-* The URLs for buttons that link to external webpages can be modified in the YAML files located in the `_data/` folder.
+* The URLs for buttons that link to external webpages could be modified in the YAML files located in the `_data/` folder.
 
 ### Header and Footer
-* The header and footer can be modified by editing the HTML files in the `_includes/` folder.
+* The header and footer could be modified by editing the HTML files in the `_includes/` folder.
