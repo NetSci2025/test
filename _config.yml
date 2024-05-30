@@ -1,11 +1,8 @@
 title: NetSci2025 Test
 description: Jekyll theme for a conference website
-baseurl: "/test"
-url: https://NetSci2025.github.io/test
+baseurl: "/Webpage_project"
 
-#theme: jekyll-nagymaros
-remote_theme: piazzai/jekyll-nagymaros
-
+url: https://Yiijie.github.io/Webpage_project
 
 
 
