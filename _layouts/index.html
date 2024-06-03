@@ -5,27 +5,13 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
-<style>
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #f8f9fa;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    padding-left: 50px;  
-    padding-right: 40px; 
-}
 
-</style>
 
 <main class="my-4">
     <div class="container-fluid hero-image" style="background-image: url('{{ site.baseurl }}/assets/images/maastricht.jpg'); height: 800px; background-size: cover;">
         <div class="hero-text">
-            <h1 class="display-3 font-weight-bold">{{ page.title }}</h1>
-            <p class="lead">{{ description }}</p>
+            <h1 class="display-3 extra-bold">{{ page.title }}</h1>
+            <p class="lead bold">{{ description }}</p>
             <div>
                 {% assign buttons = site.data.index.buttons %}
                 {% for button in buttons %}

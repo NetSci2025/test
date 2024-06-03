@@ -51,6 +51,25 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
     background-color: rgba(238, 238, 238, 0.9);
 }
 
+.bold {
+    font-weight: 600; 
+
+}
+
+
+.extra-bold {
+    font-weight: 900; /* Maximum boldness */
+    text-shadow: 
+        1px 0 white, 
+        0 1px white, 
+        -1px 0 white, 
+        0 -1px white, 
+        1px 1px white, 
+        -1px -1px white, 
+        1px -1px white, 
+        -1px 1px white; 
+}
+
 
 .navbar {
     position: fixed;
