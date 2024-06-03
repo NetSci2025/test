@@ -1,9 +1,12 @@
-title: NetSci2025 Test
-description: Jekyll theme for a conference website
-baseurl: "/NetSci2025/test/"
+title: NetSci 2025
+description: International School and Conference on Network Science
+#baseurl: "/test"
+baseurl: ""
+#url: https://NetSci2025.github.io/test
+url: https://NetSci2025.github.io
 
-url: https://NetSci2025.github.io/test/ 
-
+theme: jekyll-nagymaros
+#remote_theme: piazzai/jekyll-nagymaros
 
 
 copyright: Place Holder
@@ -14,3 +17,4 @@ permalink: pretty
 exclude:
   - LICENSE
   - README.md
+  - run.sh

@@ -19,35 +19,13 @@ layout: default
     padding-right: 40px; 
 }
 
-main {
-    padding-top: 70px;
-}
-
-.video-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80vh; /* Adjust height as needed */
-}
-
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    max-width: 1200px; /* Max width for larger screens */
-    max-height: 80vh; /* Ensure it doesn't exceed 80% of viewport height */
-}
 </style>
 
 <main class="my-4">
     <div class="container-fluid hero-image" style="background-image: url('{{ site.baseurl }}/assets/images/maastricht.jpg'); height: 800px; background-size: cover;">
         <div class="hero-text">
-            {% if page.title == "Home" %}
-            <h1 class="display-3 text-uppercase font-weight-bold">NetSci2025 Conference on Network Science</h1>
-            {% else %}
-            <h1 class="display-3 text-uppercase font-weight-bold">{{ page.title }}</h1>
-            {% endif %}
-            <p class="lead">TBA, TBD</p>
+            <h1 class="display-3 font-weight-bold">{{ page.title }}</h1>
+            <p class="lead">{{ description }}</p>
             <div>
                 {% assign buttons = site.data.index.buttons %}
                 {% for button in buttons %}
@@ -66,7 +44,7 @@ main {
     </div>
 </main>
 
-{% include footer.html %}
+<!-- {% include footer.html %} -->
 
 
 
