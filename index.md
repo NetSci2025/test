@@ -19,3 +19,10 @@ NetSci is the flagship conference on Complex Networks promoted by the Network Sc
 - Early bird registration deadline: TBA
 - Conference: June 2nd to 6th 2025
 
+
+## Discover Maastricht
+
+<div class="video-wrapper mt-10">
+    <iframe src="https://player.vimeo.com/video/610799265?h=ca516dece4&app_id=122963"  width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+
