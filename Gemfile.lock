@@ -75,7 +75,7 @@ GEM
     webrick (1.8.1)
 
 PLATFORMS
-  arm64-darwin-23
+  arm64-darwin
 
 DEPENDENCIES
   jekyll-nagymaros (~> 2.0, >= 2.0.1)
