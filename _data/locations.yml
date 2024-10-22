@@ -5,9 +5,11 @@ markers:
   - title: Congress center (MECC)
     text: Forum 100, 6229 GV Maastricht
     latlng: 50.8387222, 5.7121196
+    url: "https://www.mecc.nl/en/"
   - title: School of business and economics maastricht (SBE)
     text: Tongersestraat 53, 6211 LM Maastricht
     latlng: 50.8449465, 5.6848629
+    url: "https://www.maastrichtuniversity.nl/about-um/faculties/school-business-and-economics"
 
 areas:
   - text:
