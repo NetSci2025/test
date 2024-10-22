@@ -23,4 +23,24 @@ main {
     </div>
 </main>
 
+
+
+<script>
+var map = L.map('map').setView([{{ site.data.locations.center }}], {{ site.data.locations.zoom }});
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+}).addTo(map);
+
+{% for marker in site.data.locations.markers %}
+var marker = L.marker([{{ marker.latlng }}]).addTo(map)
+    .bindPopup('<b>{{ marker.title }}</b><br>{{ marker.text }}')
+    .on('click', function() {
+        window.location.href = "{{ marker.url }}";
+    });
+{% endfor %}
+</script>
+
+
+
 <!-- {% include footer.html %} -->
