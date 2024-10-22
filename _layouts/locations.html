@@ -54,17 +54,20 @@ document.addEventListener("DOMContentLoaded", function() {
   }).addTo(map);
 
   var meccMarker = L.marker([50.8387222, 5.7121196]).addTo(map)
-    .on('click', function() {
+    .bindPopup('Congress center (MECC)<br>Forum 100, 6229 GV Maastricht')
+    .on('click', function(e) {
       console.log("MECC Marker clicked");
       window.open("https://www.mecc.nl/en/", "_blank");
     });
 
   var sbeMarker = L.marker([50.8449465, 5.6848629]).addTo(map)
-    .on('click', function() {
+    .bindPopup('School of business and economics maastricht (SBE)<br>Tongersestraat 53, 6211 LM Maastricht')
+    .on('click', function(e) {
       console.log("SBE Marker clicked");
       window.open("https://www.maastrichtuniversity.nl/about-um/faculties/school-business-and-economics", "_blank");
     });
 });
+
 </script>
 
 
