@@ -27,21 +27,11 @@ main {
 
 <script>
 
-  var map = L.map('map').setView([50.8484, 5.6888], 13);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-  }).addTo(map);
-
-  var meccMarker = L.marker([50.8387222, 5.7121196]).addTo(map)
-    .on('click', function() {
-      window.location.href = "https://www.mecc.nl/en/"; 
-    });
-
-  var sbeMarker = L.marker([50.8449465, 5.6848629]).addTo(map)
-    .on('click', function() {
-      window.location.href = "https://www.maastrichtuniversity.nl/about-um/faculties/school-business-and-economics"; 
-    });
+var meccMarker = L.marker([50.8387222, 5.7121196]).addTo(map)
+  .on('click', function() {
+    console.log("MECC Marker clicked"); 
+    window.location.href = "https://www.mecc.nl/en/";
+  });
 </script>
 
 
