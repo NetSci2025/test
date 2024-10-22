@@ -25,15 +25,18 @@ main {
 
 
 
-{% for marker in site.data.locations.markers %}
-  var marker = L.marker([{{ marker.latlng }}]).addTo(map)
-      .bindPopup('<b>{{ marker.title }}</b><br>{{ marker.text }}')
+<script>
+
+{% if site.data.locations %}
+  {% for marker in site.data.locations.markers %}
+    L.marker([{{ marker.latlng | join: ', ' }}]) // 
       .on('click', function() {
-          window.location.href = "{{ marker.url }}";
-      });
-{% endfor %}
-
-
+        window.location.href = "{{ marker.url }}"; // 
+      })
+      .addTo(map); // 
+  {% endfor %}
+{% endif %}
+</script>
 
 
 
