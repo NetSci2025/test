@@ -6,25 +6,13 @@ layout: default
 {% include header.html %}
 
 <style>
-
 main {
     padding-top: 70px;
 }
 #map {
-    height: 400px; 
+    height: 400px;
 }
 </style>
-
-<!-- <main class="my-4">
-    <div class="container">
-        <h1 class="display-5">{{ title }}</h1>
-        {{ content }}
-        {% if site.data.locations %}
-        <hr class="my-4">
-        <div id="map"></div>
-        {% endif %}
-    </div>
-</main> -->
 
 <main class="my-4">
     <div class="container">
@@ -34,14 +22,6 @@ main {
         <hr class="my-4">
         <div id="map"></div>
         {% endif %}
-        
-        
-        <a href="https://www.mecc.nl/en/" target="_blank">
-            <img src="https://via.placeholder.com/50" alt="MECC">
-        </a>
-        <a href="https://www.maastrichtuniversity.nl/about-um/faculties/school-business-and-economics" target="_blank">
-            <img src="https://via.placeholder.com/50" alt="SBE">
-        </a>
     </div>
 </main>
 
@@ -49,26 +29,26 @@ main {
 document.addEventListener("DOMContentLoaded", function() {
   var map = L.map('map').setView([50.8484, 5.6888], 13);
 
+
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
   }).addTo(map);
 
-
-  var meccMarker = L.marker([50.8387222, 5.7121196], { interactive: true }).addTo(map)
+  // Congress center (MECC) 标记
+  var meccMarker = L.marker([50.8387222, 5.7121196]).addTo(map)
+    .bindPopup('Congress center (MECC)<br>Forum 100, 6229 GV Maastricht')  
     .on('click', function() {
-      console.log("MECC Marker clicked");
-      window.open("https://www.mecc.nl/en/", "_blank");
+      window.open("https://www.mecc.nl/en/", "_blank");  
     });
 
-  var sbeMarker = L.marker([50.8449465, 5.6848629], { interactive: true }).addTo(map)
+  // School of business and economics maastricht (SBE) 标记
+  var sbeMarker = L.marker([50.8449465, 5.6848629]).addTo(map)
+    .bindPopup('School of business and economics maastricht (SBE)<br>Tongersestraat 53, 6211 LM Maastricht') 
     .on('click', function() {
-      console.log("SBE Marker clicked");
-      window.open("https://www.maastrichtuniversity.nl/about-um/faculties/school-business-and-economics", "_blank");
+      window.open("https://www.maastrichtuniversity.nl/about-um/faculties/school-business-and-economics", "_blank");  
     });
 });
-
 </script>
 
-
-
 <!-- {% include footer.html %} -->
+
