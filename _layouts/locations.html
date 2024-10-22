@@ -34,14 +34,14 @@ document.addEventListener("DOMContentLoaded", function() {
     maxZoom: 18,
   }).addTo(map);
 
-  // Congress center (MECC) 标记
+  // Congress center (MECC) 
   var meccMarker = L.marker([50.8387222, 5.7121196]).addTo(map)
     .bindPopup('Congress center (MECC)<br>Forum 100, 6229 GV Maastricht')  
     .on('click', function() {
       window.open("https://www.mecc.nl/en/", "_blank");  
     });
 
-  // School of business and economics maastricht (SBE) 标记
+  // School of business and economics maastricht (SBE) 
   var sbeMarker = L.marker([50.8449465, 5.6848629]).addTo(map)
     .bindPopup('School of business and economics maastricht (SBE)<br>Tongersestraat 53, 6211 LM Maastricht') 
     .on('click', function() {
