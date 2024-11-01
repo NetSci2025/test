@@ -1,21 +1,113 @@
 ---
 layout: calls
 title: Calls
-description: Schedule of talks and activities
+description: Calls for contributions
 navorder: 1
 ---
 
-## Call for abstracts
-To be announced
+  
+---  
 
-## Call for satellites
-To be announced
+## Call for abstracts
+NetSci, the International School and Conference on Network Science, is the flagship conference of the Network Science
+Society. It brings under one umbrella a wide variety of leading researchers, practitioners, and stakeholders with a direct
+interest in **Network Science**, from Physics to Computer Science, Biology, Social Sciences, Economics, and Technological
+and Communication Networks, among others. 
+
+
+We are looking forward to seeing the best of your new insights into network science at the International School and Conference on Network Science 2025, in Maastricht, the Netherlands, to be held from June 2 to 6, 2025. The conference focuses on interdisciplinary research on all aspects of network science and modeling, ranging from foundational works to applications in various disciplines.  
+  
+
+## Topics
+- Higher-Order Networks
+- Temporal Networks
+- Multilayer Networks
+- Spatial Networks
+- Adaptive Networks
+- Signed Networks
+- Models Of Networks
+- Dynamics On Networks
+- Critical Phenomena In Networks
+- Network Geometry
+- Statistical Analysis Of Networks And Inference
+- Graph Machine Learning
+- Network Measures And Metrics
+- Network Resilience
+- Network Control
+- Ethics And Fairness In Network Analysis
+- Network Data Collection
+- Network Visualization
+- Network Epidemiology
+- Brain Networks
+- Ecological Networks
+- Financial Networks
+- Mobility Networks
+- Biological Networks
+- Social Network
+- Technological Networks
+- Cultural And Historical Network Analysis
+- Linguistic Networks
+- Synchronization and control
+- Network Science and Education
+- Network medicine
+ 
+
+
+## How to Apply
+
+**Submit your abstract via the Microsoft CMT submission system [HERE](https://cmt3.research.microsoft.com/NETSCI2025)**.
+
+We invite you to submit a one-page abstract including one (mandatory) descriptive figure and references by **December 9, 2024**.
+We welcome submissions for the following presentation formats: 
+**contributed talks** (regular presentations in parallel sessions), 
+**lightning talks** (shorter presentations in plenary sessions), 
+and **posters**.
+
+During the submission process, please indicate your preferred presentation format.
+We look forward to receiving your submissions! 
+
+
+**Abstract Requirements**:
+
+One-page abstracts should include text, one figure with caption and [selected] references. Each submission should be submitted in Adobe's Portable Document Format (PDF) and formatted using the provided abstract template. You can download the LaTeX template <a href="https://github.com/NetSci2025/netsci2025.github.io/raw/main/assets/templates/NetSci2025_abstract_template.zip" download>here</a> or see the a PDF example <a href="https://github.com/user-attachments/files/16743747/NetSci2025_sample_abstract.pdf" download>here</a>.
+
+Accepted abstracts require in-person presentation by one author, who can present a maximum of one accepted abstract in the main conference, and must register by the early-bird registration deadline.
+
+
+
+## Call for satellites  
+
+**NetSci 2025 will host several Satellite Symposia on June 2 and 3, before the main conference.**  
+
+These satellite events are full-day or half-day meetings with a focus on a specific topic of Network Science and its Applications.  
+
+All network science related subjects are welcome.  
+
+### How to submit a proposal  
+
+We invite the community to submit a proposal for a satellite symposium. The proposal must contain:
+* **Title**: descriptive title of the satellite
+* **Abstract**: brief summary of the topic and aims of the satellite
+* **Contact information**: names, affiliations, and emails of all organizers. Indicate one spokesperson (contact person)
+* **Format**: number of speakers, expected number of participants, length/duration (0.5 or 1 day), preliminary program, and number of participants at previous editions if applicable
+* **Preliminary list of speakers**: listing confirmed or pre-contacted speakers will be an advantage during the review
+
+Submit a single PDF file (maximum 2 pages) by email to: [netsci2025satellites@gmail.com](mailto:netsci2025satellites@gmail.com)  
+Incomplete or longer proposals will be automatically discarded  
+
+**Submission Deadline: 02 December 2024**
+
+Expected notification of acceptance: 16 December 2024
+
 
 
 ## Important dates 
-- Abstract Submission: TBA
-- Early bird registration deadline: TBA
-- Conference: June 2nd to 6th 2025
+- **Satellite proposal deadline**: 2 December, 2024
+- **Abstract submission deadline**: 9 December, 2024
+- **Abstract notification**: 24 January, 2025
+- **Conference dates**: June 2 to 6, 2025
+
+
 
 
 
@@ -124,15 +216,5 @@ The Secretariat will process your request and send you an official confirmation
 30. Network Science and Education;
 31. Network medicine. -->
 
-<!-- ## How to Apply
 
-We invite you to submit a **one-page abstract** including one (mandatory) descriptive figure and caption by the **TBA**, via our submission system.
-
-We accept contributed talks (regular talks in parallel sessions and lightning, shorter talks in plenary sessions) and posters.
-
-Please indicate your preference for one of the following categories to present your research:
-
-- Poster submission
-- Regular talk
-- Lightning talk -->
 
