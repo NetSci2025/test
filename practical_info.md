@@ -2,7 +2,7 @@
 layout: page
 title: Practical Information
 description: Register for NetSci 2025
-navorder: 7
+
 ---
 
 ## Registration information
