@@ -55,26 +55,38 @@
 
         
         // JavaScript for handling dropdown timeout
-        const dropdowns = document.querySelectorAll('.nav-item.dropdown');
-        
-        dropdowns.forEach((dropdown) => {
-            let hideTimeout;
-        
-            dropdown.addEventListener('mouseenter', () => {
-                clearTimeout(hideTimeout);
-                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                dropdownMenu.style.visibility = 'visible';
-                dropdownMenu.style.opacity = '1';
-            });
-        
-            dropdown.addEventListener('mouseleave', () => {
-                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                hideTimeout = setTimeout(() => {
-                    dropdownMenu.style.visibility = 'hidden';
-                    dropdownMenu.style.opacity = '0';
-                }, 2000); // 2-second delay before hiding
+            document.addEventListener('DOMContentLoaded', function () {
+            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                const link = dropdown.querySelector('.nav-link');
+
+                // Mouseenter to show dropdown
+                dropdown.addEventListener('mouseenter', () => {
+                    menu.classList.add('show');
+                    link.setAttribute('aria-expanded', 'true');
+                });
+
+                // Mouseleave to hide dropdown
+                dropdown.addEventListener('mouseleave', () => {
+                    menu.classList.remove('show');
+                    link.setAttribute('aria-expanded', 'false');
+                });
+
+                // Click to navigate to parent link
+                link.addEventListener('click', function (e) {
+                    // If menu is open, close it instead of navigating
+                    if (menu.classList.contains('show')) {
+                        e.stopPropagation(); // Prevent immediate navigation
+                        menu.classList.remove('show');
+                        link.setAttribute('aria-expanded', 'false');
+                    }
+                });
             });
         });
+
+        
     </script>
 </header>
 
