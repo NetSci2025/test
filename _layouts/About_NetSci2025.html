@@ -10,13 +10,15 @@ layout: default
     }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ site.baseurl }}">NetSci2025</a>
+        <a class="navbar-brand" href="{{ site.url }}">
+            <img src="{{ site.url }}/assets/images/logo.svg" alt="NetSci 2025" height="40">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 {% assign links = site.pages | sort: 'navorder' %}
                 {% for link in links %}
@@ -34,11 +36,13 @@ layout: default
                                     {% endfor %}
                                 </ul>
                             </li>
-                        {% elsif link.parent == null %}
-                            <!-- single page -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
-                            </li>
+                        {% else %}
+                            {% unless link.parent %}
+                                <!-- single page -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
+                                </li>
+                            {% endunless %}
                         {% endif %}
                     {% endif %}
                 {% endfor %}
@@ -46,6 +50,7 @@ layout: default
         </div>
     </div>
 </nav>
+
 
 
 <main class="my-4">
