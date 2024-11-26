@@ -1,4 +1,4 @@
-<header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}"> 
+<header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}">
     <div class="container">
         <nav class="navbar navbar-expand-sm">
             <a class="navbar-brand" href="{{ site.url }}">
@@ -13,7 +13,7 @@
                     {% for link in links %}
                         {% if link.navorder %}
                             {% if link.has_children %}
-                                <!-- Parent page -->
+                                <!-- parent page -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ link.title }}
@@ -21,16 +21,14 @@
                                     <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
                                         {% assign children = site.pages | where: "parent", link.title | sort: "navorder" %}
                                         {% for child in children %}
-                                            <li>
-                                                <a class="dropdown-item" href="{{ child.url | absolute_url }}">{{ child.title }}</a>
-                                            </li>
+                                            <li><a class="dropdown-item" href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </li>
-                            {% else %}
-                                <!-- Single page -->
+                            {% elsif link.parent == null %}
+                                <!-- single page -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ link.url | absolute_url }}">{{ link.title }}</a>
+                                    <a class="nav-link" href="{{ link.url | relative_url }}">{{ link.title }}</a>
                                 </li>
                             {% endif %}
                         {% endif %}
@@ -39,28 +37,35 @@
             </div>
         </nav>
     </div>
-    <!-- JavaScript for handling dropdown behavior -->
+ 
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
-            dropdowns.forEach((dropdown) => {
-                let hideTimeout;
-                dropdown.addEventListener('mouseenter', () => {
-                    clearTimeout(hideTimeout);
-                    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                    dropdownMenu.style.visibility = 'visible';
-                    dropdownMenu.style.opacity = '1';
-                });
-                dropdown.addEventListener('mouseleave', () => {
-                    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                    hideTimeout = setTimeout(() => {
-                        dropdownMenu.style.visibility = 'hidden';
-                        dropdownMenu.style.opacity = '0';
-                    }, 2000); // 2-second delay before hiding
-                });
+        // JavaScript for handling dropdown timeout
+        const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+        
+        dropdowns.forEach((dropdown) => {
+            let hideTimeout;
+        
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                dropdownMenu.style.visibility = 'visible';
+                dropdownMenu.style.opacity = '1';
+            });
+        
+            dropdown.addEventListener('mouseleave', () => {
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                hideTimeout = setTimeout(() => {
+                    dropdownMenu.style.visibility = 'hidden';
+                    dropdownMenu.style.opacity = '0';
+                }, 2000); // 2-second delay before hiding
             });
         });
     </script>
+</header>
+
+
+
 </header>
 
 
