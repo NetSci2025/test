@@ -4,7 +4,7 @@ title: Committees
 description: List of committees
 parent: About NetSci2025
 navorder: 2
-permalink: /committees/
+permalink: /test/committees/
 ---
 
 
