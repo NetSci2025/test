@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Organizers
-description: List of organizers
+title: Committees
+description: List of committees
 parent: About NetSci2025
 navorder: 2
 ---
