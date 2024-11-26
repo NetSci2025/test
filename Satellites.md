@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Program at a glance
+title: Satellites
 description: Program overview
 parent: Program
 navorder: 2
