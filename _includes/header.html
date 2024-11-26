@@ -1,4 +1,4 @@
-<!-- <header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}">
+<header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}">
     <div class="container">
         <nav class="navbar navbar-expand-sm">
             <a class="navbar-brand" href="{{ site.url }}">
@@ -38,54 +38,7 @@
             </div>
         </nav>
     </div>
- -->
-
-
-<header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}">
-    <div class="container">
-        <nav class="navbar navbar-expand-sm">
-            <!-- Logo -->
-            <a class="navbar-brand" href="{{ '/' | relative_url }}">
-                <img src="{{ '/' | relative_url }}assets/images/logo.svg" alt="NetSci 2025" height="40">
-            </a>
-
-            <!-- Toggler button for mobile view -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navigation links -->
-            <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                <ul class="navbar-nav">
-                    {% assign links = site.pages | sort: 'navorder' %}
-                    {% for link in links %}
-                        {% if link.navorder %}
-                            {% if link.has_children %}
-                                <!-- Parent page with dropdown -->
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ link.title }}
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
-                                        {% assign children = site.pages | where: "parent", link.title | sort: "navorder" %}
-                                        {% for child in children %}
-                                            <li><a class="dropdown-item" href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </li>
-                            {% else %}
-                                <!-- Single page -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ link.url | relative_url }}">{{ link.title }}</a>
-                                </li>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
-        </nav>
-    </div>
-
+ 
 
     <script>
         // JavaScript for handling dropdown timeout
