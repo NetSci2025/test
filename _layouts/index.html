@@ -20,7 +20,7 @@ layout: default
                 {% for link in links %}
                     {% if link.navorder %}
                         {% if link.has_children %}
-                            <!-- Parent page -->
+                            <!-- parent page -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ link.title }}
@@ -33,7 +33,7 @@ layout: default
                                 </ul>
                             </li>
                         {% elsif link.parent == null %}
-                            <!-- Single page） -->
+                            <!-- single page -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
                             </li>
