@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Program at a glance
+title: Social program
 description: Program overview
 parent: Program
 navorder: 3
