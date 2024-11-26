@@ -3,7 +3,7 @@ layout: calls
 title: Calls
 description: Calls for contributions
 navorder: 2
-permalink: /Calls/
+permalink: /test/Calls/
 ---
 
   
