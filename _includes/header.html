@@ -54,7 +54,7 @@
                 <ul class="navbar-nav">
                     {% assign links = site.pages | sort: 'navorder' %}
                     {% for link in links %}
-                        {% if link.navorder %}
+                        {% if link.navorder and link.title != null %}
                             {% if link.has_children %}
                                 <!-- Parent page with dropdown -->
                                 <li class="nav-item dropdown">
@@ -66,6 +66,17 @@
                                         {% for child in children %}
                                             <li><a class="dropdown-item" href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
                                         {% endfor %}
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <!-- Independent page -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ link.url | relative_url }}">{{ link.title }}</a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
                                     </ul>
                                 </li>
                             {% elsif link.parent == null %}
@@ -84,23 +95,26 @@
     <script>
         // JavaScript for handling dropdown timeout
         const dropdowns = document.querySelectorAll('.nav-item.dropdown');
-
+        
         dropdowns.forEach((dropdown) => {
             let hideTimeout;
-
+        
             dropdown.addEventListener('mouseenter', () => {
                 clearTimeout(hideTimeout);
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                dropdownMenu.style.display = 'block';
+                dropdownMenu.style.visibility = 'visible';
+                dropdownMenu.style.opacity = '1';
             });
-
+        
             dropdown.addEventListener('mouseleave', () => {
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
                 hideTimeout = setTimeout(() => {
-                    dropdownMenu.style.display = 'none';
-                }, 2200);
+                    dropdownMenu.style.visibility = 'hidden';
+                    dropdownMenu.style.opacity = '0';
+                }, 2000); // 2-second delay before hiding
             });
         });
+
     </script>
 </header>
 
