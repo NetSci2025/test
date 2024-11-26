@@ -4,7 +4,7 @@ title: Locations
 description: Map of conference locations
 parent: Venue and travel
 navorder: 1
-permalink: /test/Locations/
+permalink: /Locations/
 ---
 
 
