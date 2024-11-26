@@ -64,7 +64,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
                                         {% assign children = site.pages | where: "parent", link.title | sort: "navorder" %}
                                         {% for child in children %}
-                                            <li><a class="dropdown-item" href="{{ child.url }}">{{ child.title }}</a></li>
+                                            <li><a class="dropdown-item" href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </li>
