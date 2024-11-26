@@ -4,5 +4,6 @@ title: Speakers
 description: Speakers overview
 parent: About NetSci2025
 navorder: 3
+permalink: /test/Speakers/
 ---
 
