@@ -4,7 +4,7 @@ description: International School and Conference on Network Science
 url: https://NetSci2025.github.io/test
 
 # Locally
-baseurl: ""
+baseurl: "/test"
 #remote_theme: piazzai/jekyll-nagymaros
 
 # Online
