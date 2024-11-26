@@ -95,7 +95,7 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
 }
 
 .nav-item.dropdown:hover .dropdown-menu {
-    display: block; 
+    display: block;
 }
 
 .nav-item.dropdown .dropdown-menu a {
