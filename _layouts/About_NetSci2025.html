@@ -11,6 +11,44 @@ layout: default
 </style>
 
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ site.baseurl }}">NetSci2025</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% assign links = site.pages | sort: 'navorder' %}
+                {% for link in links %}
+                    {% if link.navorder %}
+                        {% if link.has_children %}
+                            <!-- Parent page -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ link.title }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
+                                    {% assign children = site.pages | where: "parent", link.title | sort: "navorder" %}
+                                    {% for child in children %}
+                                        <li><a class="dropdown-item" href="{{ child.url }}">{{ child.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                            <!-- Singe page -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <main class="my-4">
     <div class="container">
         <h1 class="display-5">{{ title }}</h1>
