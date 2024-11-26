@@ -1,5 +1,5 @@
 ---
-layout: About_NetSci2025
+layout: page
 title: About NetSci2025
 description: Overview of NetSci2025
 navorder: 1
