@@ -2,8 +2,10 @@
 layout: locations
 title: Locations
 description: Map of conference locations
-navorder: 5
+parent: Venue and travel
+navorder: 1
 ---
+
 
 
 Congress center (MECC): Forum 100, 6229 GV Maastricht. [Get directions](https://www.google.com/maps/dir//Forum+100,+6231+SB+Maastricht/@50.8378029,5.7106924,17z)
