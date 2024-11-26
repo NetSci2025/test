@@ -1,5 +1,5 @@
 ---
-layout: speakers
+layout: page
 title: Keynotes
 description: Keynotes overview
 parent: About NetSci2025
