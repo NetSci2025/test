@@ -13,47 +13,6 @@ main {
 </style>
 
 
-<nav class="navbar navbar-expand-sm">
-    <div class="container">
-        <a class="navbar-brand" href="{{ site.url }}">
-            <img src="{{ site.url }}/assets/images/logo.svg" alt="NetSci 2025" height="40">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                {% assign links = site.pages | sort: 'navorder' %}
-                {% for link in links %}
-                    {% if link.navorder %}
-                        {% if link.has_children %}
-                            <!-- parent page -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ link.title }}
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
-                                    {% assign children = site.pages | where: "parent", link.title | sort: "navorder" %}
-                                    {% for child in children %}
-                                        <li><a class="dropdown-item" href="{{ child.url }}">{{ child.title }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                        {% else %}
-                            {% unless link.parent %}
-                                <!-- single page -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
-                                </li>
-                            {% endunless %}
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-</nav>
-
 
 <main class="my-4">
     <div class="container">
