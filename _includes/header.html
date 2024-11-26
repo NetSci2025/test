@@ -1,8 +1,8 @@
 <header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}"> 
     <div class="container">
         <nav class="navbar navbar-expand-sm">
-            <a class="navbar-brand" href="{{ site.baseurl | prepend: site.url }}">
-                <img src="{{ site.baseurl | prepend: site.url }}/assets/images/logo.svg" alt="NetSci 2025" height="40">
+            <a class="navbar-brand" href="{{ site.url }}">
+                <img src="{{ site.url }}/assets/images/logo.svg" alt="NetSci 2025" height="40">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
                                         {% assign children = site.pages | where: "parent", link.title | sort: "navorder" %}
                                         {% for child in children %}
                                             <li>
-                                                <a class="dropdown-item" href="{{ child.url | absolute_url }}">{{ child.title }}</a>
+                                                <a class="dropdown-item" href="{{ child.url | relative_url }}">{{ child.title }}</a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -30,7 +30,7 @@
                             {% elsif link.parent == null %}
                                 <!-- Single page -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ link.url | absolute_url }}">{{ link.title }}</a>
+                                    <a class="nav-link" href="{{ link.url | relative_url }}">{{ link.title }}</a>
                                 </li>
                             {% endif %}
                         {% endif %}
