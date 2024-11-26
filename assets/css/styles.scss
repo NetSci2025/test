@@ -71,53 +71,6 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
 }
 
 
-// .navbar {
-//     position: fixed;
-//     top: 0;
-//     width: 100%;
-//     z-index: 1000;
-//     background-color: #f8f9fa;
-//     left: 0;
-//     right: 0;
-//     margin: 0 auto;
-//     padding-left: 50px;  
-//     padding-right: 40px; 
-// }
-
-// .navbar-nav .dropdown-menu {
-//     display: none;
-//     position: absolute;
-//     background-color: white;
-//     border-radius: 4px;
-//     margin-top: 10px;
-//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//     min-width: 200px;
-// }
-
-// .nav-item.dropdown:hover .dropdown-menu {
-//     display: block;
-// }
-
-// .nav-item.dropdown .dropdown-menu a {
-//     color: black;
-//     padding: 10px 15px;
-//     text-decoration: none;
-//     display: block; 
-// }
-
-// .nav-item.dropdown .dropdown-menu a:hover {
-//     background-color: #f1f1f1; 
-// }
-
-
-// .nav-item.dropdown:hover .dropdown-menu,
-// .nav-item.dropdown:focus-within .dropdown-menu {
-//     display: block; 
-// }
-
-
-
-
 .navbar {
     position: fixed;
     top: 0;
@@ -127,13 +80,8 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
     left: 0;
     right: 0;
     margin: 0 auto;
-    padding: 0 20px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand img {
-    height: 40px; 
-    margin-right: 10px; 
+    padding-left: 50px;  
+    padding-right: 40px; 
 }
 
 .navbar-nav .dropdown-menu {
@@ -144,40 +92,28 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
     margin-top: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-width: 200px;
-    z-index: 1000;
 }
 
 .nav-item.dropdown:hover .dropdown-menu {
-    display: block; 
+    display: block;
 }
 
 .nav-item.dropdown .dropdown-menu a {
     color: black;
     padding: 10px 15px;
     text-decoration: none;
-    display: block;
+    display: block; 
 }
 
 .nav-item.dropdown .dropdown-menu a:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1; 
 }
 
 
-
-main {
-    padding-top: 80px; 
+.nav-item.dropdown:hover .dropdown-menu,
+.nav-item.dropdown:focus-within .dropdown-menu {
+    display: block; 
 }
 
 
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
 
