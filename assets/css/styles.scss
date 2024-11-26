@@ -115,17 +115,12 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
 
 .nav-item.dropdown .dropdown-menu a:hover {
     background-color: #f1f1f1; 
-    visibility: hidden;
-    opacity: 0; 
-    transition: visibility 0s, opacity 0.2s ease-in-out;
 }
 
 
 .nav-item.dropdown:hover .dropdown-menu,
 .nav-item.dropdown:focus-within .dropdown-menu {
     display: block; 
-    visibility: visible;
-    opacity: 1; 
 }
 
 
