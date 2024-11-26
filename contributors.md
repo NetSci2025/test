@@ -1,13 +1,15 @@
 ---
-layout: contributors
+layout: page
 title: Organizers
 description: List of organizers
-navorder: 6
+parent: About NetSci2025
+navorder: 1
 ---
+
 
 <!-- If you have any questions, please do not hesitate to contact us: [netsci2025@gmail.com](mailto:netsci2025@gmail.com) -->
 
-<!-- ### Scientific committee
+### Scientific committee
 <div class="row">
   <div class="col-md-4">
     Leto Peel (Maastricht University)<br>
@@ -33,9 +35,6 @@ navorder: 6
   </div>
 </div>
 
-
-
- -->
 
 
 
