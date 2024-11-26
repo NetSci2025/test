@@ -3,7 +3,7 @@ layout: page
 title: Organizers
 description: List of organizers
 parent: About NetSci2025
-navorder: 1
+navorder: 2
 ---
 
 
