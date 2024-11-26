@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Sponsors
+title: Partnerships
 description: Our sponsors
 navorder: 7
 ---
