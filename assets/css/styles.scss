@@ -85,32 +85,5 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
 }
 
 
-.navbar-nav .dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: white;
-    border-radius: 4px;
-    margin-top: 10px;
-}
 
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.nav-item.dropdown .dropdown-menu a {
-    color: black;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-
-.nav-item.dropdown .dropdown-menu a:hover {
-    background-color: #f1f1f1;
-}
-
-.nav-link.dropdown-toggle::after {
-    content: " ▼"; 
-    font-size: 0.8em;
-    margin-left: 5px;
-    color: inherit; 
-}
 
