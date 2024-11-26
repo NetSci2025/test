@@ -3,7 +3,7 @@ layout: page
 title: Partnerships
 description: Our sponsors
 navorder: 7
-permalink: /Partnerships/
+permalink: /test/Partnerships/
 ---
 
 ## Gold sponsors
