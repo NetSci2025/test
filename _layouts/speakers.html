@@ -97,7 +97,7 @@ layout: default
 </style>
 
 <main>
-<!--     <!-- Plenary Speakers Section -->
+    <!-- Plenary Speakers Section -->
     <section class="speakers-section">
         <h2>{{ page.plenary_title }}</h2>
         <div class="card-container">
@@ -112,28 +112,8 @@ layout: default
             </div>
             {% endfor %}
         </div>
-    </section> -->
-    
-    <!-- Plenary Speakers Section -->
-    <section class="speakers-section">
-        <h2>{{ page.plenary_title }}</h2>
-        <div class="card-container">
-            {% for speaker in site.data.speakers.plenary %}
-            <div class="speaker-card">
-                <div class="speaker-image">
-                    {% if speaker.image %}
-                    <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                    {% endif %}
-                </div>
-                <div class="speaker-content">
-                    <h3 class="speaker-title">{{ speaker.name }}</h3>
-                    <p class="speaker-role">{{ speaker.title }}</p>
-                    <p class="speaker-description">{{ speaker.description }}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
     </section>
+    
 
     <!-- Focus Session Speakers Section -->
     <section class="speakers-section">
