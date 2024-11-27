@@ -5,6 +5,7 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
+
 <style>
     .navbar {
         position: fixed;
@@ -89,6 +90,69 @@ layout: default
     </div>
 
 </main>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>{{ page.title }}</h1>
+    </header>
+    <main>
+        <!-- Plenary Speakers Section -->
+        <section class="speakers-section">
+            <h2>{{ page.plenary_title }}</h2>
+            <div class="card-container">
+                {% for speaker in site.data.speakers.plenary %}
+                <div class="speaker-card">
+                    <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                    <h3>{{ speaker.name }}</h3>
+                    <p>{{ speaker.title }}</p>
+                    <p>{{ speaker.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Focus Session Speakers Section -->
+        <section class="speakers-section">
+            <h2>{{ page.focus_session_title }}</h2>
+            <div class="card-container">
+                {% for speaker in site.data.speakers.focus-session %}
+                <div class="speaker-card">
+                    <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                    <h3>{{ speaker.name }}</h3>
+                    <p>{{ speaker.title }}</p>
+                    <p>{{ speaker.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- School Speakers Section -->
+        <section class="speakers-section">
+            <h2>{{ page.school_title }}</h2>
+            <div class="card-container">
+                {% for speaker in site.data.speakers.school %}
+                <div class="speaker-card">
+                    <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                    <h3>{{ speaker.name }}</h3>
+                    <p>{{ speaker.title }}</p>
+                    <p>{{ speaker.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
 
 <!-- {% include footer.html %} -->
 
