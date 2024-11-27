@@ -86,9 +86,9 @@ layout: default
             {% for speaker in site.data.speakers.plenary %}
             <div class="speaker-card">
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <p class="author-name">{{ speaker.name }}</p>
                 <p class="article-title">{{ speaker.title }}</p>
                 <p class="article-description">{{ speaker.description }}</p>
-                <p class="author-name">{{ speaker.name }}</p>
                 <p class="author-info">{{ speaker.bio }}</p>
             </div>
             {% endfor %}
@@ -102,9 +102,9 @@ layout: default
             {% for speaker in site.data.speakers.focus-session %}
             <div class="speaker-card">
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <p class="author-name">{{ speaker.name }}</p>
                 <p class="article-title">{{ speaker.title }}</p>
                 <p class="article-description">{{ speaker.description }}</p>
-                <p class="author-name">{{ speaker.name }}</p>
                 <p class="author-info">{{ speaker.bio }}</p>
             </div>
             {% endfor %}
@@ -118,9 +118,9 @@ layout: default
             {% for speaker in site.data.speakers.school %}
             <div class="speaker-card">
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <p class="author-name">{{ speaker.name }}</p>
                 <p class="article-title">{{ speaker.title }}</p>
                 <p class="article-description">{{ speaker.description }}</p>
-                <p class="author-name">{{ speaker.name }}</p>
                 <p class="author-info">{{ speaker.bio }}</p>
             </div>
             {% endfor %}
