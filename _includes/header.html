@@ -5,12 +5,12 @@
             <a class="navbar-brand" href="{{ site.url }}">
                 <img src="{{ site.url }}/assets/images/logo.svg" alt="NetSci 2025" height="40">
             </a>
-            
+
             <!-- Navbar Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="navbar-nav ms-auto">
@@ -18,7 +18,7 @@
                     {% for link in links %}
                         {% if link.navorder %}
                             {% if link.has_children %}
-                                <!-- Dropdown Parent -->
+                                <!-- Parent with Dropdown -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="{{ link.url | relative_url }}" id="{{ link.title | downcase }}Dropdown" role="button" aria-expanded="false">
                                         {{ link.title }}
@@ -43,39 +43,44 @@
         </nav>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
 
-            dropdowns.forEach(dropdown => {
-                const link = dropdown.querySelector('.nav-link');
-                const menu = dropdown.querySelector('.dropdown-menu');
-                let hideTimeout;
+    document.addEventListener('DOMContentLoaded', function () {
+    const dropdowns = document.querySelectorAll('.nav-item.dropdown');
 
-                dropdown.addEventListener('mouseenter', () => {
-                    clearTimeout(hideTimeout);
-                    menu.classList.add('show');
-                    link.setAttribute('aria-expanded', 'true');
-                });
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.nav-link');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        let hideTimeout;
 
-                dropdown.addEventListener('mouseleave', () => {
-                    hideTimeout = setTimeout(() => {
-                        menu.classList.remove('show');
-                        link.setAttribute('aria-expanded', 'false');
-                    }, 2000);
-                });
-
-                link.addEventListener('click', (e) => {
-                    if (menu.classList.contains('show')) {
-                        e.stopPropagation();
-                        menu.classList.remove('show');
-                        link.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
+        
+        dropdown.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            menu.classList.add('show');
+            link.setAttribute('aria-expanded', 'true');
         });
-    </script>
+
+        
+        dropdown.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                menu.classList.remove('show');
+                link.setAttribute('aria-expanded', 'false');
+            }, 200); 
+        });
+
+        
+        link.addEventListener('click', (e) => {
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                link.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+});
+
+    
+
 </header>
+
 
 
 
