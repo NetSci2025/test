@@ -1,0 +1,21 @@
+plenary:
+  - name: Linda Douw
+    title: Associate Professor, Amsterdam UMC
+    description: Her research focuses on cognition and cognitive decline in brain diseases like tumors, applying network theories to analyze brain networks.
+    image: /assets/images/speakers/linda_douw.png
+  - name: Speaker 2
+    title: Speaker 2 Title
+    description: Description for Speaker 2.
+    image: /assets/images/speakers/speaker2.png
+
+focus-session:
+  - name: Speaker A
+    title: Speaker A Title
+    description: Description for Speaker A.
+    image: /assets/images/speakers/speakerA.png
+
+school:
+  - name: Speaker X
+    title: Speaker X Title
+    description: Description for Speaker X.
+    image: /assets/images/speakers/speakerX.png
