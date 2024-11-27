@@ -8,6 +8,15 @@ layout: default
     main {
         padding-top: 70px;
     }
+
+    <style>
+    main h1, main h2, main h3, main h4, main h5, main h6 {
+        margin-top: 2em; 
+        margin-bottom: 1em; 
+    }
+</style>
+
+
 </style>
 
 
@@ -53,12 +62,22 @@ layout: default
 </nav>
 
 
-<main class="my-4">
+<!-- <main class="my-4">
     <div class="container">
         <h1 class="display-5">{{ title }}</h1>
         <hr class="my-4">
         {{ content }}
     </div>
 </main>
+ -->
+
+<main class="my-4 {{ page.class }}">
+    <div class="container">
+        <h1 class="display-5">{{ title }}</h1>
+        <hr class="my-4">
+        {{ content }}
+    </div>
+</main>
+
 
 <!-- {% include footer.html %} -->
