@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: contributors
 title: Committees
 description: List of committees
 parent: About NetSci2025
