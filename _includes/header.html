@@ -43,42 +43,41 @@
         </nav>
     </div>
 
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
 
-    document.addEventListener('DOMContentLoaded', function () {
-    const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.nav-link');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                let hideTimeout;
 
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('.nav-link');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        let hideTimeout;
+                // Mouse enter to show dropdown
+                dropdown.addEventListener('mouseenter', () => {
+                    clearTimeout(hideTimeout);
+                    menu.classList.add('show');
+                    link.setAttribute('aria-expanded', 'true');
+                });
 
-        
-        dropdown.addEventListener('mouseenter', () => {
-            clearTimeout(hideTimeout);
-            menu.classList.add('show');
-            link.setAttribute('aria-expanded', 'true');
+                // Mouse leave to hide dropdown
+                dropdown.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        menu.classList.remove('show');
+                        link.setAttribute('aria-expanded', 'false');
+                    }, 200);
+                });
+
+                // Click parent link to navigate and close dropdown
+                link.addEventListener('click', (e) => {
+                    if (menu.classList.contains('show')) {
+                        menu.classList.remove('show');
+                        link.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
         });
-
-        
-        dropdown.addEventListener('mouseleave', () => {
-            hideTimeout = setTimeout(() => {
-                menu.classList.remove('show');
-                link.setAttribute('aria-expanded', 'false');
-            }, 200); 
-        });
-
-        
-        link.addEventListener('click', (e) => {
-            if (menu.classList.contains('show')) {
-                menu.classList.remove('show');
-                link.setAttribute('aria-expanded', 'false');
-            }
-        });
-    });
-});
-
-    
-
+    </script>
 </header>
 
 
