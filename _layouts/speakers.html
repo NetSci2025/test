@@ -71,7 +71,9 @@ layout: default
         <div class="card-container">
             {% for speaker in site.data.speakers.plenary %}
             <div class="speaker-card">
+                {% if speaker.image %}
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                {% endif %}
                 <h3>{{ speaker.name }}</h3>
                 <p><strong>{{ speaker.title }}</strong></p>
                 <p>{{ speaker.description }}</p>
@@ -86,7 +88,9 @@ layout: default
         <div class="card-container">
             {% for speaker in site.data.speakers.focus-session %}
             <div class="speaker-card">
+                {% if speaker.image %}
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                {% endif %}
                 <h3>{{ speaker.name }}</h3>
                 <p><strong>{{ speaker.title }}</strong></p>
                 <p>{{ speaker.description }}</p>
@@ -101,7 +105,9 @@ layout: default
         <div class="card-container">
             {% for speaker in site.data.speakers.school %}
             <div class="speaker-card">
+                {% if speaker.image %}
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                {% endif %}
                 <h3>{{ speaker.name }}</h3>
                 <p><strong>{{ speaker.title }}</strong></p>
                 <p>{{ speaker.description }}</p>
@@ -110,6 +116,7 @@ layout: default
         </div>
     </section>
 </main>
+
 
 {% include footer.html %}
 
