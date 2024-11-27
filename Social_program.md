@@ -13,8 +13,14 @@ permalink: /Social_program/
 ## Welcome Reception
 More information will be provided soon.
 
+---
+
+
 ## Social Dinner
 More information will be provided soon.
+
+---
+
 
 ## Official NetSci2025 Maastricht Running Tour
 
