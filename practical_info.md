@@ -2,7 +2,9 @@
 layout: page
 title: Practical Information
 description: Register for NetSci 2025
-
+parent: Venue and travel
+navorder: 2
+permalink: /Practical_information/
 ---
 
 ## Registration information
