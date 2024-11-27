@@ -5,7 +5,6 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
-
 <style>
     .navbar {
         position: fixed;
@@ -31,22 +30,21 @@ layout: default
         padding: 50px 0;
     }
 
-    .speakers-content {
-        background-color: #1c1c3c;
-        color: white;
-        padding: 20px;
-        border-radius: 5px;
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
     }
 
     .speaker-card {
-        display: inline-block;
-        margin: 15px;
-        background-color: #1c1c3c;
+        background-color: #333;
         color: white;
-        border-radius: 5px;
-        overflow: hidden;
+        border-radius: 8px;
         width: 250px;
-        text-align: left;
+        text-align: center;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .speaker-card img {
@@ -55,105 +53,65 @@ layout: default
     }
 
     .speaker-card h3 {
-        margin: 15px 0 5px 0;
+        margin: 10px 0 5px;
+        font-size: 1.2rem;
     }
 
     .speaker-card p {
-        margin: 0 0 10px 0;
+        margin: 0 10px 10px;
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
-
-
 </style>
 
+<main>
+    <!-- Plenary Speakers Section -->
+    <section class="speakers-section">
+        <h2>{{ page.plenary_title }}</h2>
+        <div class="card-container">
+            {% for speaker in site.data.speakers.plenary %}
+            <div class="speaker-card">
+                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <h3>{{ speaker.name }}</h3>
+                <p><strong>{{ speaker.title }}</strong></p>
+                <p>{{ speaker.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 
-<main class="my-4">
-    <div class="speakers-section">
-        <div class="container mt-5 speakers-content">
-            {{ content }}
+    <!-- Focus Session Speakers Section -->
+    <section class="speakers-section">
+        <h2>{{ page.focus_session_title }}</h2>
+        <div class="card-container">
+            {% for speaker in site.data.speakers.focus-session %}
+            <div class="speaker-card">
+                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <h3>{{ speaker.name }}</h3>
+                <p><strong>{{ speaker.title }}</strong></p>
+                <p>{{ speaker.description }}</p>
+            </div>
+            {% endfor %}
         </div>
+    </section>
 
-        <div class="speaker-card">
-            <img src="{{ site.baseurl }}/assets/images/tony_selby.png" alt="Tony Selby">
-            <h3>Name of talk</h3>
-            <p class="collapsible">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    <!-- School Speakers Section -->
+    <section class="speakers-section">
+        <h2>{{ page.school_title }}</h2>
+        <div class="card-container">
+            {% for speaker in site.data.speakers.school %}
+            <div class="speaker-card">
+                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <h3>{{ speaker.name }}</h3>
+                <p><strong>{{ speaker.title }}</strong></p>
+                <p>{{ speaker.description }}</p>
+            </div>
+            {% endfor %}
         </div>
-        <div class="speaker-card">
-            <img src="{{ site.baseurl }}/assets/images/rachel_froust.png" alt="Rachel Froust">
-            <h3>TBA</h3>
-            <p class="collapsible">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-        </div>
-        <div class="speaker-card">
-            <img src="{{ site.baseurl }}/assets/images/maria_sassoon.png" alt="Maria Sassoon">
-            <h3>TBA</h3>
-            <p class="collapsible">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-        </div>
-    </div>
-
+    </section>
 </main>
 
+{% include footer.html %}
 
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-</head>
-<body>
-    <header>
-        <h1>{{ page.title }}</h1>
-    </header>
-    <main>
-        <!-- Plenary Speakers Section -->
-        <section class="speakers-section">
-            <h2>{{ page.plenary_title }}</h2>
-            <div class="card-container">
-                {% for speaker in site.data.speakers.plenary %}
-                <div class="speaker-card">
-                    <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                    <h3>{{ speaker.name }}</h3>
-                    <p>{{ speaker.title }}</p>
-                    <p>{{ speaker.description }}</p>
-                </div>
-                {% endfor %}
-            </div>
-        </section>
-
-        <!-- Focus Session Speakers Section -->
-        <section class="speakers-section">
-            <h2>{{ page.focus_session_title }}</h2>
-            <div class="card-container">
-                {% for speaker in site.data.speakers.focus-session %}
-                <div class="speaker-card">
-                    <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                    <h3>{{ speaker.name }}</h3>
-                    <p>{{ speaker.title }}</p>
-                    <p>{{ speaker.description }}</p>
-                </div>
-                {% endfor %}
-            </div>
-        </section>
-
-        <!-- School Speakers Section -->
-        <section class="speakers-section">
-            <h2>{{ page.school_title }}</h2>
-            <div class="card-container">
-                {% for speaker in site.data.speakers.school %}
-                <div class="speaker-card">
-                    <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                    <h3>{{ speaker.name }}</h3>
-                    <p>{{ speaker.title }}</p>
-                    <p>{{ speaker.description }}</p>
-                </div>
-                {% endfor %}
-            </div>
-        </section>
-    </main>
-</body>
-</html>
-
-
-<!-- {% include footer.html %} -->
 
 
