@@ -1,10 +1,14 @@
 plenary:
   - name: Linda Douw
-    title: Multiscale network neuroscience:
-    subtitle: connecting cells to circuits to networks in brain tumor patients
-    affiliation: Associate Professor, Amsterdam UMC & Head of the Multiscale Network Neuroscience lab
-    description: Her research is focused on cognition and cognitive decline in brain diseases like tumors, applying network theories to analyze brain networks at different scales, to improve treatments and patient outcomes.
+    title: "Multiscale network neuroscience:"
+    subtitle: "connecting cells to circuits to networks in brain tumor patients"
+    affiliation: "Associate Professor, Amsterdam UMC & Head of the Multiscale Network Neuroscience lab"
+    description: >
+      Her research is focused on cognition and cognitive decline in brain diseases like tumors,
+      applying network theories to analyze brain networks at different scales,
+      to improve treatments and patient outcomes.
     image: /assets/images/speakers/linda_douw.png
+
     
   - name: Speaker 2
     title: Speaker 2 Title
