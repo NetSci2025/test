@@ -5,7 +5,6 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
-
 <style>
     .navbar {
         position: fixed;
@@ -36,45 +35,59 @@ layout: default
     .speaker-card {
         background-color: white;
         border-radius: 8px;
-        width: 250px;
-        text-align: center;
+        width: 350px;
+        text-align: left;
         overflow: hidden;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 15px;
+        padding: 20px;
     }
 
     .speaker-card img {
-        width: 100%;
-        height: auto;
-        border-radius: 50%; /* Optional for circular images */
+        width: 100px;
+        height: 100px;
+        border-radius: 50%; /* Circular image */
+        float: right;
+        margin-left: 15px;
+    }
+
+    .speaker-card .author-name {
+        font-size: 1.2rem;
+        color: red;
+        font-weight: bold;
         margin-bottom: 10px;
     }
 
     .speaker-card .article-title {
-        font-size: 1rem;
+        font-size: 1.5rem;
         font-weight: bold;
-        margin: 5px 0;
         color: black;
+        margin-bottom: 10px;
     }
 
-    .speaker-card .article-description {
-        font-size: 0.9rem;
-        color: #555;
-        margin: 5px 0;
+    .speaker-card .subtitle {
+        font-size: 1.2rem;
+        font-weight: normal;
+        color: #333;
+        margin-bottom: 10px;
     }
 
-    .speaker-card .author-name {
-        font-size: 1rem;
-        color: red;
-        font-weight: bold;
-        margin: 5px 0;
+    .speaker-card .red-line {
+        width: 50px;
+        height: 3px;
+        background-color: red;
+        margin: 15px 0;
     }
 
     .speaker-card .author-info {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .speaker-card .description {
+        font-size: 0.9rem;
         color: #333;
-        line-height: 1.4;
-        margin: 5px 0;
+        margin-top: 15px;
     }
 </style>
 
@@ -86,10 +99,12 @@ layout: default
             {% for speaker in site.data.speakers.plenary %}
             <div class="speaker-card">
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                <p class="author-name">{{ speaker.name }}</p>
                 <p class="article-title">{{ speaker.title }}</p>
-                <p class="article-description">{{ speaker.description }}</p>
-                <p class="author-info">{{ speaker.bio }}</p>
+                <p class="subtitle">{{ speaker.subtitle }}</p>
+                <div class="red-line"></div>
+                <p class="author-name">{{ speaker.name }}</p>
+                <p class="author-info">{{ speaker.affiliation }}</p>
+                <p class="description">{{ speaker.description }}</p>
             </div>
             {% endfor %}
         </div>
@@ -102,10 +117,12 @@ layout: default
             {% for speaker in site.data.speakers.focus-session %}
             <div class="speaker-card">
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                <p class="author-name">{{ speaker.name }}</p>
                 <p class="article-title">{{ speaker.title }}</p>
-                <p class="article-description">{{ speaker.description }}</p>
-                <p class="author-info">{{ speaker.bio }}</p>
+                <p class="subtitle">{{ speaker.subtitle }}</p>
+                <div class="red-line"></div>
+                <p class="author-name">{{ speaker.name }}</p>
+                <p class="author-info">{{ speaker.affiliation }}</p>
+                <p class="description">{{ speaker.description }}</p>
             </div>
             {% endfor %}
         </div>
@@ -118,18 +135,20 @@ layout: default
             {% for speaker in site.data.speakers.school %}
             <div class="speaker-card">
                 <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                <p class="author-name">{{ speaker.name }}</p>
                 <p class="article-title">{{ speaker.title }}</p>
-                <p class="article-description">{{ speaker.description }}</p>
-                <p class="author-info">{{ speaker.bio }}</p>
+                <p class="subtitle">{{ speaker.subtitle }}</p>
+                <div class="red-line"></div>
+                <p class="author-name">{{ speaker.name }}</p>
+                <p class="author-info">{{ speaker.affiliation }}</p>
+                <p class="description">{{ speaker.description }}</p>
             </div>
             {% endfor %}
         </div>
     </section>
 </main>
 
-
 {% include footer.html %}
+
 
 
 
