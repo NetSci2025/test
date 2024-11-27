@@ -20,7 +20,7 @@
                             {% if link.has_children %}
                                 <!-- Dropdown Parent -->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="{{ link.url | relative_url }}" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="{{ link.url | relative_url }}" id="{{ link.title | downcase }}Dropdown" role="button" aria-expanded="false">
                                         {{ link.title }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
@@ -43,60 +43,39 @@
         </nav>
     </div>
 
- 
-
     <script>
-            document.addEventListener('DOMContentLoaded', function () {
-            const baseUrl = "{{ site.url }}"; 
-            const links = document.querySelectorAll('.navbar-nav a');
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
 
-            links.forEach(link => {
-        
-                const relativePath = link.getAttribute('href');
-                if (relativePath && !relativePath.startsWith('http') && !relativePath.startsWith(baseUrl)) {
-                    link.href = baseUrl + relativePath;
-                }
-            });
-        });
-
-        
-        // JavaScript for handling dropdown timeout
-        const dropdowns = document.querySelectorAll('.nav-item.dropdown');
-        
-        dropdowns.forEach((dropdown) => {
-            let hideTimeout;
-        
-            dropdown.addEventListener('mouseenter', () => {
-                clearTimeout(hideTimeout);
-                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                dropdownMenu.style.visibility = 'visible';
-                dropdownMenu.style.opacity = '1';
-            });
-        
-            dropdown.addEventListener('mouseleave', () => {
-                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-                hideTimeout = setTimeout(() => {
-                    dropdownMenu.style.visibility = 'hidden';
-                    dropdownMenu.style.opacity = '0';
-                }, 2000); // 2-second delay before hiding
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.nav-link');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                let hideTimeout;
 
                 dropdown.addEventListener('mouseenter', () => {
-            menu.classList.add('show');
-            link.setAttribute('aria-expanded', 'true');
-        });
+                    clearTimeout(hideTimeout);
+                    menu.classList.add('show');
+                    link.setAttribute('aria-expanded', 'true');
+                });
 
-        
-        link.addEventListener('click', (e) => {
-            if (menu.classList.contains('show')) {
-                e.stopPropagation(); 
-                menu.classList.remove('show');
-                link.setAttribute('aria-expanded', 'false');
-            }
+                dropdown.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        menu.classList.remove('show');
+                        link.setAttribute('aria-expanded', 'false');
+                    }, 2000);
+                });
+
+                link.addEventListener('click', (e) => {
+                    if (menu.classList.contains('show')) {
+                        e.stopPropagation();
+                        menu.classList.remove('show');
+                        link.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
         });
-    });
-    });
-});
     </script>
 </header>
+
 
 
