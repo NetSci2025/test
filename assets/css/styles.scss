@@ -71,83 +71,22 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
 }
 
 
-// .navbar {
-//     position: fixed;
-//     top: 0;
-//     width: 100%;
-//     z-index: 1000;
-//     background-color: #f8f9fa;
-//     left: 0;
-//     right: 0;
-//     margin: 0 auto;
-//     padding-left: 50px;  
-//     padding-right: 40px; 
-// }
-
-// .navbar-nav .nav-item {
-//     margin: 0; 
-//     padding: 0; 
-// }
-
-// .navbar-nav .dropdown-menu {
-//     display: none;
-//     position: absolute;
-//     background-color: white;
-//     border-radius: 4px;
-//     margin-top: 10px;
-//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//     min-width: 200px;
-//     list-style: none; 
-//     margin: 0;
-//     padding: 0;
-// }
-
-// .nav-item.dropdown:hover .dropdown-menu {
-//     display: block;
-// }
-
-// .nav-item.dropdown .dropdown-menu a {
-//     color: black;
-//     padding: 10px 15px;
-//     text-decoration: none;
-//     display: block; 
-// }
-
-// .nav-item.dropdown .dropdown-menu a:hover {
-//     background-color: #f1f1f1; 
-// }
-
-
 .navbar {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
     z-index: 1000;
     background-color: #f8f9fa;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.container {
-    max-width: 1200px;
+    left: 0;
+    right: 0;
     margin: 0 auto;
-    padding: 0 15px;
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    margin-left: 15px;
-}
-
-.navbar-brand img {
-    max-height: 40px;
+    padding-left: 50px;  
+    padding-right: 40px; 
 }
 
 .navbar-nav .nav-item {
-    margin: 0 10px;
-    padding: 0;
+    margin: 0; 
+    padding: 0; 
 }
 
 .navbar-nav .dropdown-menu {
@@ -155,10 +94,10 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
     position: absolute;
     background-color: white;
     border-radius: 4px;
-    margin-top: 5px;
+    margin-top: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-width: 200px;
-    list-style: none;
+    list-style: none; 
     margin: 0;
     padding: 0;
 }
@@ -171,16 +110,10 @@ $text-muted_hover: var(--oc-{{ site.data.skin.text-muted.hover | default: 'gray-
     color: black;
     padding: 10px 15px;
     text-decoration: none;
-    display: block;
+    display: block; 
 }
 
 .nav-item.dropdown .dropdown-menu a:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1; 
 }
-
-main {
-    padding-top: 70px;
-}
-
-
 
