@@ -26,10 +26,16 @@ layout: default
         background-color: #f9f9f9;
     }
 
+    .speakers-section h2 {
+        margin-bottom: 30px; /* Added extra space below the title */
+        font-family: "Open Sauce", sans-serif;
+        color: #030305;
+    }
+
     .card-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px; /* Reduced the gap by 2/3 */
+        gap: 25px 40px; /* Adjusted gap: 25px vertically and 40px horizontally */
         padding: 0 40px;
         justify-items: center;
     }
@@ -38,8 +44,7 @@ layout: default
     .speaker-card {
         background-color: white;
         border-radius: 8px;
-        width: 400px; /* Slightly wider */
-        height: auto; /* Reduced height for shorter cards */
+        width: 400px;
         text-align: left;
         overflow: hidden;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -51,7 +56,7 @@ layout: default
     .speaker-card .content {
         display: flex;
         flex-direction: row;
-        align-items: flex-start; /* Align text with the image */
+        align-items: flex-start;
     }
 
     .speaker-card .text {
@@ -62,13 +67,13 @@ layout: default
     .speaker-card .image {
         flex: 1;
         text-align: center;
-        margin-left: 15px; /* Add spacing between image and text */
+        margin-left: 15px;
     }
 
     .speaker-card img {
-        max-width: 120px; /* Larger image size */
+        max-width: 120px;
         height: 120px;
-        border-radius: 50%; /* Circular image */
+        border-radius: 50%;
     }
 
     .speaker-card .title {
@@ -121,7 +126,7 @@ layout: default
 <main>
     <!-- Plenary Speakers Section -->
     <section class="speakers-section">
-        <h2 style="color: #030305;">Plenary Speakers</h2>
+        <h2>Plenary Speakers</h2>
         <div class="card-container">
             {% for speaker in site.data.speakers.plenary %}
             <div class="speaker-card">
@@ -146,7 +151,7 @@ layout: default
 
     <!-- Focus Session Speakers Section -->
     <section class="speakers-section">
-        <h2 style="color: #030305;">Focus Session Speakers</h2>
+        <h2>Focus Session Speakers</h2>
         <div class="card-container">
             {% for speaker in site.data.speakers.focus-session %}
             <div class="speaker-card">
@@ -171,7 +176,7 @@ layout: default
 
     <!-- School Speakers Section -->
     <section class="speakers-section">
-        <h2 style="color: #030305;">School Speakers</h2>
+        <h2>School Speakers</h2>
         <div class="card-container">
             {% for speaker in site.data.speakers.school %}
             <div class="speaker-card">
