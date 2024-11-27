@@ -1,4 +1,4 @@
-<header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}"> 
+<header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}">
     <div class="container">
         <nav class="navbar navbar-expand-sm">
             <a class="navbar-brand" href="{{ site.url }}">
@@ -13,10 +13,9 @@
                     {% for link in links %}
                         {% if link.navorder %}
                             {% if link.has_children %}
-                                <!-- Parent page with dropdown -->
+                                <!-- parent page -->
                                 <li class="nav-item dropdown">
-                                    <!-- Use href="{{ link.url }}" to enable parent page navigation -->
-                                    <a class="nav-link dropdown-toggle" href="{{ link.url | relative_url }}" id="{{ link.title | downcase }}Dropdown" role="button" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ link.title }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
@@ -26,8 +25,8 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
-                            {% else %}
-                                <!-- Single page -->
+                            {% elsif link.parent == null %}
+                                <!-- single page -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ link.url | relative_url }}">{{ link.title }}</a>
                                 </li>
@@ -38,39 +37,46 @@
             </div>
         </nav>
     </div>
+ 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+            document.addEventListener('DOMContentLoaded', function () {
+            const baseUrl = "{{ site.url }}"; 
+            const links = document.querySelectorAll('.navbar-nav a'); 
 
-            dropdowns.forEach(dropdown => {
-                const menu = dropdown.querySelector('.dropdown-menu');
-                const link = dropdown.querySelector('.nav-link');
+            links.forEach(link => {
+        
+                const relativePath = link.getAttribute('href');
+                if (relativePath && !relativePath.startsWith('http') && !relativePath.startsWith(baseUrl)) {
+                    link.href = baseUrl + relativePath;
+                }
+            });
+        });
 
-                // Mouseenter to show dropdown
-                dropdown.addEventListener('mouseenter', () => {
-                    menu.classList.add('show');
-                    link.setAttribute('aria-expanded', 'true');
-                });
-
-                // Mouseleave to hide dropdown
-                dropdown.addEventListener('mouseleave', () => {
-                    menu.classList.remove('show');
-                    link.setAttribute('aria-expanded', 'false');
-                });
-
-                // Click on parent link to still allow navigation
-                link.addEventListener('click', (e) => {
-                    // If the menu is open and user clicks the link, allow navigation
-                    if (menu.classList.contains('show')) {
-                        menu.classList.remove('show'); // Close the dropdown
-                        link.setAttribute('aria-expanded', 'false');
-                        return; // Allow navigation to parent page
-                    }
-                });
+        
+        // JavaScript for handling dropdown timeout
+        const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+        
+        dropdowns.forEach((dropdown) => {
+            let hideTimeout;
+        
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                dropdownMenu.style.visibility = 'visible';
+                dropdownMenu.style.opacity = '1';
+            });
+        
+            dropdown.addEventListener('mouseleave', () => {
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                hideTimeout = setTimeout(() => {
+                    dropdownMenu.style.visibility = 'hidden';
+                    dropdownMenu.style.opacity = '0';
+                }, 2000); // 2-second delay before hiding
             });
         });
     </script>
 </header>
+
 
 
