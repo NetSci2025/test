@@ -20,7 +20,7 @@
                             {% if link.has_children %}
                                 <!-- Parent page with dropdown -->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link" href="{{ link.url | relative_url }}" id="{{ link.title | downcase }}Dropdown" role="button">
                                         {{ link.title }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
@@ -32,7 +32,7 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
-                            {% elsif link.parent == null %}
+                            {% else %}
                                 <!-- Single page -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ link.url | relative_url }}">{{ link.title }}</a>
@@ -45,22 +45,8 @@
         </nav>
     </div>
 
-    <!-- JavaScript for navigation functionality -->
+    <!-- JavaScript for dropdown functionality -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const baseUrl = "{{ site.url }}"; // Base URL of the site
-            const links = document.querySelectorAll('.navbar-nav a');
-
-            // Fix relative URLs to ensure they include the base URL
-            links.forEach(link => {
-                const relativePath = link.getAttribute('href');
-                if (relativePath && !relativePath.startsWith('http') && !relativePath.startsWith(baseUrl)) {
-                    link.href = baseUrl + relativePath;
-                }
-            });
-        });
-
-        // JavaScript for handling dropdown behavior
         document.addEventListener('DOMContentLoaded', function () {
             const dropdowns = document.querySelectorAll('.nav-item.dropdown');
 
@@ -80,10 +66,10 @@
                     link.setAttribute('aria-expanded', 'false');
                 });
 
-                // Allow clicking parent link to navigate
+                // Allow parent link to navigate even with dropdown
                 link.addEventListener('click', function (e) {
+                    // Close the dropdown if it's open, and allow navigation
                     if (menu.classList.contains('show')) {
-                        e.stopPropagation(); // Prevent dropdown blocking navigation
                         menu.classList.remove('show');
                         link.setAttribute('aria-expanded', 'false');
                     }
@@ -92,6 +78,7 @@
         });
     </script>
 </header>
+
 
 </header>
 
