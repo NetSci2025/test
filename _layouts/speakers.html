@@ -5,7 +5,7 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
-<style>
+<!-- <style>
  .navbar {
         position: fixed;
         top: 0;
@@ -25,7 +25,7 @@ layout: default
 
     .speakers-section {
         text-align: center;
-        color: white;
+        color: #f9f9f9;
         padding: 50px 0;
     }
 
@@ -37,7 +37,7 @@ layout: default
     }
 
     .speaker-card {
-        background-color: #333;
+        background-color: white;
         color: white;
         border-radius: 8px;
         width: 250px;
@@ -104,6 +104,141 @@ layout: default
                 <h3>{{ speaker.name }}</h3>
                 <p><strong>{{ speaker.title }}</strong></p>
                 <p>{{ speaker.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main> -->
+
+
+
+<style>
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #f8f9fa;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        padding-left: 50px;  
+        padding-right: 40px; 
+    }
+
+    main {
+        padding-top: 70px;
+    }
+
+    .speakers-section {
+        text-align: center;
+        padding: 50px 0;
+        background-color: #f9f9f9;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .speaker-card {
+        background-color: white;
+        color: black;
+        border-radius: 8px;
+        width: 250px;
+        text-align: center;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+    }
+
+    .speaker-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%; /* Optional: For a circular image */
+        margin-bottom: 15px;
+    }
+
+    .speaker-card h3 {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        color: black;
+        font-weight: bold;
+    }
+
+    .speaker-card .article-title {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+
+    .speaker-card .article-description {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 10px 0;
+    }
+
+    .speaker-card .author-name {
+        font-size: 1rem;
+        color: red;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .speaker-card .author-info {
+        font-size: 0.85rem;
+        color: #333;
+        line-height: 1.4;
+        margin: 10px 0 0;
+    }
+</style>
+
+<main>
+    <!-- Plenary Speakers Section -->
+    <section class="speakers-section">
+        <h2>{{ page.plenary_title }}</h2>
+        <div class="card-container">
+            {% for speaker in site.data.speakers.plenary %}
+            <div class="speaker-card">
+                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <p class="article-title">{{ speaker.title }}</p>
+                <p class="article-description">{{ speaker.description }}</p>
+                <p class="author-name">{{ speaker.name }}</p>
+                <p class="author-info">{{ speaker.bio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Focus Session Speakers Section -->
+    <section class="speakers-section">
+        <h2>{{ page.focus_session_title }}</h2>
+        <div class="card-container">
+            {% for speaker in site.data.speakers.focus-session %}
+            <div class="speaker-card">
+                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <p class="article-title">{{ speaker.title }}</p>
+                <p class="article-description">{{ speaker.description }}</p>
+                <p class="author-name">{{ speaker.name }}</p>
+                <p class="author-info">{{ speaker.bio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- School Speakers Section -->
+    <section class="speakers-section">
+        <h2>{{ page.school_title }}</h2>
+        <div class="card-container">
+            {% for speaker in site.data.speakers.school %}
+            <div class="speaker-card">
+                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <p class="article-title">{{ speaker.title }}</p>
+                <p class="article-description">{{ speaker.description }}</p>
+                <p class="author-name">{{ speaker.name }}</p>
+                <p class="author-info">{{ speaker.bio }}</p>
             </div>
             {% endfor %}
         </div>
