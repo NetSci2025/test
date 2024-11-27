@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: speakers
 title: Speakers
 description: Speakers overview
 parent: About NetSci2025
