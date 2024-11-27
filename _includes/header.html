@@ -1,4 +1,4 @@
-<header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}">
+<header class="bg-{{ site.data.skin.header.bg | default: 'gray-4' }}"> 
     <div class="container">
         <nav class="navbar navbar-expand-sm">
             <a class="navbar-brand" href="{{ site.url }}">
@@ -13,9 +13,10 @@
                     {% for link in links %}
                         {% if link.navorder %}
                             {% if link.has_children %}
-                                <!-- parent page -->
+                                <!-- Parent page with dropdown -->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <!-- Use href="{{ link.url }}" to enable parent page navigation -->
+                                    <a class="nav-link dropdown-toggle" href="{{ link.url | relative_url }}" id="{{ link.title | downcase }}Dropdown" role="button" aria-expanded="false">
                                         {{ link.title }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="{{ link.title | downcase }}Dropdown">
@@ -25,8 +26,8 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
-                            {% elsif link.parent == null %}
-                                <!-- single page -->
+                            {% else %}
+                                <!-- Single page -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ link.url | relative_url }}">{{ link.title }}</a>
                                 </li>
@@ -37,25 +38,9 @@
             </div>
         </nav>
     </div>
- 
 
     <script>
-            document.addEventListener('DOMContentLoaded', function () {
-            const baseUrl = "{{ site.url }}"; 
-            const links = document.querySelectorAll('.navbar-nav a'); 
-
-            links.forEach(link => {
-        
-                const relativePath = link.getAttribute('href');
-                if (relativePath && !relativePath.startsWith('http') && !relativePath.startsWith(baseUrl)) {
-                    link.href = baseUrl + relativePath;
-                }
-            });
-        });
-
-        
-        // JavaScript for handling dropdown timeout
-            document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
             const dropdowns = document.querySelectorAll('.nav-item.dropdown');
 
             dropdowns.forEach(dropdown => {
@@ -74,21 +59,18 @@
                     link.setAttribute('aria-expanded', 'false');
                 });
 
-                // Click to navigate to parent link
-                link.addEventListener('click', function (e) {
-                    // If menu is open, close it instead of navigating
+                // Click on parent link to still allow navigation
+                link.addEventListener('click', (e) => {
+                    // If the menu is open and user clicks the link, allow navigation
                     if (menu.classList.contains('show')) {
-                        e.stopPropagation(); // Prevent immediate navigation
-                        menu.classList.remove('show');
+                        menu.classList.remove('show'); // Close the dropdown
                         link.setAttribute('aria-expanded', 'false');
+                        return; // Allow navigation to parent page
                     }
                 });
             });
         });
-
-        
     </script>
 </header>
-
 
 
