@@ -9,21 +9,76 @@ plenary:
       to improve treatments and patient outcomes.
     image: /assets/images/speakers/linda_douw.png
 
-    
+
   - name: Speaker 2
     title: Speaker 2 Title
-    description: Description for Speaker 2.
+    subtitle: "Description for Speaker 2."
+    affiliation: "Affiliation for speaker 2"
+    description: >
+      DESCRIPTION.
     image: /assets/images/speakers/speaker2.png
-    
 
-focus-session:
-  - name: Speaker A
-    title: Speaker A Title
-    description: Description for Speaker A.
-    image: /assets/images/speakers/speakerA.png
+
+    
+  - name: Speaker 3
+    title: Speaker 3 Title
+    subtitle: "Description for Speaker 3."
+    affiliation: "Affiliation for speaker 3"
+    description: >
+      DESCRIPTION.
+    image: /assets/images/speakers/speaker3.png
+
+
+    
+  - name: Speaker 4
+    title: Speaker 4 Title
+    subtitle: "Description for Speaker 4."
+    affiliation: "Affiliation for speaker 4"
+    description: >
+      DESCRIPTION.
+    image: /assets/images/speakers/speaker4.png
+
+
+
+    
+  - name: Speaker 5
+    title: Speaker 5 Title
+    subtitle: "Description for Speaker 5."
+    affiliation: "Affiliation for speaker 5"
+    description: >
+      DESCRIPTION.
+    image: /assets/images/speakers/speaker5.png
+
+    
+  - name: Speaker 6
+    title: Speaker 6 Title
+    subtitle: "Description for Speaker 6."
+    affiliation: "Affiliation for speaker 6"
+    description: >
+      DESCRIPTION.
+    image: /assets/images/speakers/speaker6.png
+
+
+# focus-session:
+#   - name: Speaker A
+#     title: Speaker A Title
+#     description: Description for Speaker A.
+#     image: /assets/images/speakers/speakerA.png
 
 school:
   - name: Speaker X
     title: Speaker X Title
-    description: Description for Speaker X.
+    subtitle: "Description for Speaker X."
+    affiliation: "Affiliation for speaker X"
+    description: >
+      DESCRIPTION.
+    image: /assets/images/speakers/speakerX.png
+
+
+  - name: Speaker X
+    title: Speaker X Title
+    subtitle: "Description for Speaker X."
+    affiliation: "Affiliation for speaker X"
+    description: >
+      DESCRIPTION.
     image: /assets/images/speakers/speakerX.png
