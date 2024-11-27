@@ -15,109 +15,134 @@ permalink: /Practical_information/
 
 We are excited to announce that our upcoming conference will be held at **MECC Maastricht**, a premier venue renowned for its state-of-the-art facilities and exceptional service. Located in the vibrant city of Maastricht, MECC Maastricht offers a versatile environment suitable for a wide range of events. The venue is easily accessible by various modes of transportation, including car, train, and plane, ensuring a convenient journey for all attendees.
 
-The main entrance of MECC Maastricht is located at:
-**Forum 100, 6229 GV Maastricht, The Netherlands**  
-For more information, you can contact them at **+31 (0)43 38 38 383** or visit their [official website](https://mecc.nl).
+The main entrance of MECC Maastricht is located at **Forum 100, 6229 GV Maastricht, The Netherlands**. For more information, you can contact them at **+31 (0)43 38 38 383** or visit their [official website](https://mecc.nl).
 
 ---
 
-## How to Get to Maastricht
+## How to get to Maastricht
 
-Maastricht is located in the southeast of the Netherlands, close to the borders of both Belgium and Germany. As one of the oldest cities in the Netherlands, it features historical architecture and a thriving community.
+Maastricht is located in the southeast of the Netherlands, close to the borders of both Belgium and Germany. As a city, it is one of the oldest in the Netherlands with historical architecture and a thriving community.
 
-### Why Maastricht?
+### MAASTRICHT IS THE MOST EUROPEAN CITY OF THE NETHERLANDS
 
-- The ambiance in Maastricht is similar to French romantic cities.
-- Home to numerous European and international institutes.
-- Birthplace of the **European Union** (Maastricht Treaty 1991/1992).
-- Proud host of important European meetings and **TEFAF (The European Fine Art Fair)**.
-- A vibrant student city with over **60,000 foreign students**.
+- The ambiance you feel in the streets of Maastricht is similar to the ambiance in French romantic cities.
+- Numerous European and international institutes are based in Maastricht.
+- The European Union as we know it nowadays was born in Maastricht (Maastricht Treaty 1991/1992).
+- Maastricht is the proud host of many important European meetings and is host of the TEFAF (The European Fine Art Fair).
+- Maastricht as a student city counts 60,000 foreign students.
 
-[Watch a short video about Maastricht here](https://youtu.be/LSauVD3F2Dk).
+[Embed movie MCB](https://youtu.be/LSauVD3F2Dk)
 
 ---
 
 ## Preferred Airports
 
-Maastricht-Aachen Airport serves the city, and it is also near major international airports for convenience:
+For optimal connectivity and convenience, we recommend the following airports as the primary gateways for all attendees:
 
-### Recommended Airports:
 - **Brussels Zaventem Airport**
 - **Düsseldorf Airport**
 
-### Other Airports:
+### Other Airports
+
+Several other airports also provide efficient connections to Maastricht:
+
 - Eindhoven Airport
 - Amsterdam Schiphol Airport
 - Brussels Charleroi Airport
 - Cologne-Bonn Airport
 - Paris Charles de Gaulle Airport
 
+With this wide range of airport options, reaching Maastricht is straightforward, ensuring a smooth and seamless travel experience for all participants.
+
 ---
 
-## Book Your Flights
+## Book your flights
 
-### Special Lufthansa Group Airlines Fares
+### Special Lufthansa Group airlines fares
 
-The Lufthansa Group airlines provide quick and direct flights to the event through their global route network, including Austrian Airlines, Lufthansa, SWISS, Brussels Airlines, and Eurowings. Reduced fares will be displayed automatically when using the event code (to be provided soon).
+(Embed LOGO AIRLINES - Lufthansa Group)
 
-For more information and to book your flights, please click below:  
+The Lufthansa Group airlines bring people together - every day, all around the world. The global route network of Austrian Airlines, Lufthansa, SWISS, Brussels Airlines and Eurowings offers optimal connection and combination options, so you will benefit from quick and direct flights to the event.
+
+You will reach the booking platform via the button below and with the event code (WILL BE PROVIDED SOON). The reduced fares are automatically displayed.
+
+**NB:** Please enable pop-ups permanently in your browser while booking, otherwise the window in the booking platform will not open.
+
+For more information and making a reservation, please click the button below.
+
 [**Book your flight here**](#)
 
 ---
 
-## Shuttle Service
+## Shuttle service
 
-To enhance accessibility, shuttle services will be available from **Brussels Zaventem Airport** and **Düsseldorf International Airport**. Depending on arrival times, taxis, mini-vans, and coaches will be provided.
+To complete the accessibility from the airport terminal to the doorstep of your hotel, we will provide shuttle services from and to **Brussels Zaventem Airport** and **Düsseldorf International Airport**.
 
-For more details and reservations, click below:  
-[**Book your shuttle here**](#)
+Depending on the average arrivals of the delegates, taxis, mini-vans and coaches are available to use as a shuttle.
+
+For more information and making a reservation, please click the button below.
+
+[**Book your shuttle here**](#)  
+(WILL BE PROVIDED SOON)
 
 ---
 
 ## By Train
 
-- **Maastricht-Central** and **Maastricht-Randwyck** stations are part of the national and international railway network.  
-- For routes and schedules, visit [NS International](https://www.nsinternational.nl).
+**"Maastricht-Central"** and **"Maastricht-Randwyck"** station is part of the national and international railway network. There are frequent trains to Maastricht Central Station, which is also linked to the national and international railway network. To find an overview or book these trains, please go to the website of [NS International](https://www.nsinternational.nl).
 
-### Travel Tips:
-- From **Brussels Airport**: 1.5 to 3 hours, with 1-2 transfers.
-- From **Düsseldorf Hbf**: ~2 hours 30 minutes, with 1 transfer.
-- From **Amsterdam Schiphol Airport**: ~2.5 hours, direct trains available.
+### Travel Information:
+
+- From **Brussels Airport (Zaventem)**: The trip will take 1.5 hours – 3 hours depending on the journey and the transfers. The airport railway station is located below the terminal (basement level 1) near the arrival and departure halls. Always check for updates concerning your travel route.
+- From **Düsseldorf Hbf**: The train usually takes 2 hours 30 minutes on average, with the quickest services taking as little as 2 hours 12 minutes. There are 36 trains per day on this route, requiring 1 change.
+- From **Schiphol Airport (Amsterdam)**: Direct trains to Maastricht take approximately 2.5 hours. The train station at Schiphol is conveniently located directly below the airport.
 
 ---
 
-## How to Get to MECC Maastricht
+## How to Get to the Venue/MECC Maastricht
 
-### By Train
+### By Public Transport
 
-- The **Maastricht-Randwyck** train station is just 250 meters from MECC Maastricht.
-- From **Maastricht Central Station**, it’s a 20-minute walk or a short bus ride.
+#### By Train
 
-### By Bus
+The **Maastricht-Randwyck train station** is 250 meters from MECC Maastricht, connected to an international rail network. It's a 5-minute walk from the station to the venue. Regular connections are available from Maastricht Central Station, which is a 20-minute walk to the venue.
 
-Buses run every five minutes from Maastricht city center and Central Station to MECC Maastricht (Forum MECC stop). Free public transport is available during the conference when showing your NetSci 2025 badge.
+For more information, visit [NS](https://www.ns.nl/).
 
-Plan your trip here:  
-[**Public transport planner**](https://9292.nl)
+#### By Bus
+
+A bus leaves every five minutes from Maastricht city center or Maastricht Central Station to MECC Maastricht (Forum MECC bus stop).
+
+When you show your NetSci 2025 conference badge when boarding the bus, you can use public transport for free. This applies only during the NetSci 2025 Conference (June 4-6).
+
+[**Plan your public transport here**](https://9292.nl)
+
+---
 
 ### By Car
 
-- Follow motorway signs for 'MECC'.
-- Parking rates: €4/hour or €19/day. Free if parked for less than 30 minutes.
+As you approach Maastricht, you will see ‘MECC’ indicated on motorway signs, guiding you to MECC Maastricht car parks.  
+- From **Amsterdam/Eindhoven**: Take exit 55 (Randwyck-MECC).  
+- From **Paris-Liège**: Take exit 56 (Gronsveld-MECC).
 
-For venue details, visit the [MECC website](https://mecc.nl).
+**Parking Rates**:  
+€4.00 per hour or €19.00 per calendar day. Parking is free if you leave the car park within 30 minutes.
+
+For more information on accessibility, visit the [MECC website](https://mecc.nl).
 
 ---
 
 ## Accommodation
 
-**MECC Hotel Services** is the official housing partner for NetSci 2025, offering competitive rates without extra reservation costs. Book your accommodation easily online:
+**MECC Hotel Services** is the official housing partner for NetSci 2025. They are happy to assist you in finding and booking your preferred hotel accommodation. In close consultation with the organization, MECC Hotel Services has reserved options in various hotels in Maastricht and the surrounding area at very competitive rates: **No extra costs, no reservation costs!**
 
-For more details or assistance, contact MECC Hotel Services:  
-- **Email**: mhs@mecc.nl  
-- **Phone**: +31 433 83 83 61  
+The most comfortable way to book your room in Maastricht is by using the online reservation system. You can book as an individual or group and manage your bookings easily. Additional information on facilities, rates, and pictures is also provided.
 
-[**Book your accommodation here**](https://mecc.b-com.hosting/CommunityPortal/ProgressivePortal/NETSCI2025/App/Views/InformationPage/View.aspx?InformationPageID=715)
+If you have questions or prefer assistance with bookings, contact MECC Hotel Services:  
+**Email**: mhs@mecc.nl  
+**Phone**: +31 433 83 83 61  
+
+[**Book here**](https://mecc.b-com.hosting/CommunityPortal/ProgressivePortal/NETSCI2025/App/Views/InformationPage/View.aspx?InformationPageID=715)
 
 
 
