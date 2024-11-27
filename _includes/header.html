@@ -13,12 +13,12 @@
 
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navigation">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ms-auto">
                     {% assign links = site.pages | sort: 'navorder' %}
                     {% for link in links %}
                         {% if link.navorder %}
                             {% if link.has_children %}
-                                <!-- Parent page with dropdown -->
+                                <!-- Dropdown for parent pages -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="{{ link.url | relative_url }}" id="{{ link.title | downcase }}Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ link.title }}
