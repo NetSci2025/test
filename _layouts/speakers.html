@@ -29,7 +29,7 @@ layout: default
     .card-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        gap: 10px; /* Reduced the gap by 2/3 */
         padding: 0 40px;
         justify-items: center;
     }
@@ -38,13 +38,37 @@ layout: default
     .speaker-card {
         background-color: white;
         border-radius: 8px;
-        width: 350px;
+        width: 400px; /* Slightly wider */
+        height: auto; /* Reduced height for shorter cards */
         text-align: left;
         overflow: hidden;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         padding: 20px;
         display: flex;
         flex-direction: column;
+    }
+
+    .speaker-card .content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start; /* Align text with the image */
+    }
+
+    .speaker-card .text {
+        flex: 2;
+        text-align: left;
+    }
+
+    .speaker-card .image {
+        flex: 1;
+        text-align: center;
+        margin-left: 15px; /* Add spacing between image and text */
+    }
+
+    .speaker-card img {
+        max-width: 120px; /* Larger image size */
+        height: 120px;
+        border-radius: 50%; /* Circular image */
     }
 
     .speaker-card .title {
@@ -92,15 +116,6 @@ layout: default
         line-height: 1.5;
         margin-bottom: 10px;
     }
-
-    .speaker-card img {
-        max-width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
-    }
 </style>
 
 <main>
@@ -113,11 +128,17 @@ layout: default
                 <p class="title">{{ speaker.title }}</p>
                 <p class="subtitle">{{ speaker.subtitle }}</p>
                 <div class="red-line"></div>
-                <p class="speaker-label">Speaker</p>
-                <p class="speaker-name">{{ speaker.name }}</p>
-                <p class="affiliation">{{ speaker.affiliation }}</p>
-                <p class="description">{{ speaker.description }}</p>
-                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <div class="content">
+                    <div class="text">
+                        <p class="speaker-label">Speaker</p>
+                        <p class="speaker-name">{{ speaker.name }}</p>
+                        <p class="affiliation">{{ speaker.affiliation }}</p>
+                        <p class="description">{{ speaker.description }}</p>
+                    </div>
+                    <div class="image">
+                        <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -132,11 +153,17 @@ layout: default
                 <p class="title">{{ speaker.title }}</p>
                 <p class="subtitle">{{ speaker.subtitle }}</p>
                 <div class="red-line"></div>
-                <p class="speaker-label">Speaker</p>
-                <p class="speaker-name">{{ speaker.name }}</p>
-                <p class="affiliation">{{ speaker.affiliation }}</p>
-                <p class="description">{{ speaker.description }}</p>
-                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <div class="content">
+                    <div class="text">
+                        <p class="speaker-label">Speaker</p>
+                        <p class="speaker-name">{{ speaker.name }}</p>
+                        <p class="affiliation">{{ speaker.affiliation }}</p>
+                        <p class="description">{{ speaker.description }}</p>
+                    </div>
+                    <div class="image">
+                        <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -151,11 +178,17 @@ layout: default
                 <p class="title">{{ speaker.title }}</p>
                 <p class="subtitle">{{ speaker.subtitle }}</p>
                 <div class="red-line"></div>
-                <p class="speaker-label">Speaker</p>
-                <p class="speaker-name">{{ speaker.name }}</p>
-                <p class="affiliation">{{ speaker.affiliation }}</p>
-                <p class="description">{{ speaker.description }}</p>
-                <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                <div class="content">
+                    <div class="text">
+                        <p class="speaker-label">Speaker</p>
+                        <p class="speaker-name">{{ speaker.name }}</p>
+                        <p class="affiliation">{{ speaker.affiliation }}</p>
+                        <p class="description">{{ speaker.description }}</p>
+                    </div>
+                    <div class="image">
+                        <img src="{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
