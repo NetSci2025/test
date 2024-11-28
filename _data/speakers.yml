@@ -10,33 +10,43 @@ plenary:
     image: /assets/images/speakers/linda_douw.png
 
 
-  - name: Speaker 2
-    title: Speaker 2 Title
-    subtitle: "Description for Speaker 2."
-    affiliation: "Affiliation for speaker 2"
+  - name: Lenka Zdeborová
+    title: "Statistical Physics of Computation"
+    subtitle: ""
+    affiliation: "Associate Professor of Physics and Computer Science, EPFL & Head of the Statistical Physics of Computation Laboratory"
     description: >
-      DESCRIPTION.
-    image: /assets/images/speakers/speaker2.png
+      Her expertise is in the application of concepts from statistical physics,
+      such as advanced mean field methods, the replica method, and related message-passing algorithms,
+      to problems in machine learning, signal processing, inference, and optimization.
+    image: /assets/images/speakers/lenka_zdeborova.png
+
+
+
+  - name: Manlio de Domenico
+    title: "Network science in a complex world:"
+    subtitle: "broken, lost and future links"
+    affiliation: "Associate Professor, UniPD & Head of CoMuNe Lab & President of CSS/Italy & Co-founder and Co-Director of MSCX"
+    description: >
+      His research is focused on integrated real-world Complex Systems 
+      (biological, socio-technical and engineering networks) and their 
+      complex dynamics, to understand how multiplexity and interdependencies 
+      lead to emergent collective phenomena and resilience to perturbations.
+    image: /assets/images/speakers/manlio_de_domenico.png
+
 
 
     
-  - name: Speaker 3
-    title: Speaker 3 Title
-    subtitle: "Description for Speaker 3."
-    affiliation: "Affiliation for speaker 3"
+  - name: Huijuan Wang
+    title: "Temporal Higher-order Networks"
+    subtitle: ""
+    affiliation: "Associate Professor, TU Delft & Co-founder NetSci NL & Chair NPCS & Board Member NetSci"
     description: >
-      DESCRIPTION.
-    image: /assets/images/speakers/speaker3.png
+      Her research focuses on network data science, using data-driven models to analyze, predict, 
+      and control dynamic processes on interdependent, time-evolving, and multi-layer networks. 
+      Applications span social networks, critical infrastructures, urban and economic systems, 
+      and brain networks.
+    image: /assets/images/speakers/huijuan_wang.png
 
-
-    
-  - name: Speaker 4
-    title: Speaker 4 Title
-    subtitle: "Description for Speaker 4."
-    affiliation: "Affiliation for speaker 4"
-    description: >
-      DESCRIPTION.
-    image: /assets/images/speakers/speaker4.png
 
 
 
