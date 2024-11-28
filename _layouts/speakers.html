@@ -26,8 +26,8 @@ main {
 /* Card Layout */
 .card-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 35px 10px;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 35px 15px;
     padding: 0 40px;
     justify-items: center;
 }
@@ -35,7 +35,7 @@ main {
 .speaker-card {
     background-color: white;
     border-radius: 8px;
-    width: 350px;
+    width: 400px; 
     text-align: center;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -47,19 +47,19 @@ main {
 
 /* Image Styling */
 .speaker-card img {
-    max-width: 150px;
-    height: 150px;
+    max-width: 180px; 
+    height: 180px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 /* Speaker Name */
 .speaker-card .speaker-name {
     font-family: "Open Sauce", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.8rem; 
     font-weight: bold;
     color: #fc1b06;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 /* Red Line */
@@ -98,19 +98,19 @@ main {
     text-align: left;
     margin-top: 10px;
 }
+
 </style>
 
 
 <main>
-
     <!-- Plenary Speakers Section -->
     <section class="speakers-section">
         <h2>{{ page.plenary_title }}</h2>
         <div class="card-container">
             {% for speaker in site.data.speakers.plenary %}
             <div class="speaker-card">
-                <img src="{{ site.url }}{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
                 <p class="speaker-name">{{ speaker.name }}</p>
+                <img src="{{ site.url }}{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
                 <div class="red-line"></div>
                 <p class="title">{{ speaker.title }}</p>
                 {% if speaker.subtitle %}
@@ -128,8 +128,8 @@ main {
         <div class="card-container">
             {% for speaker in site.data.speakers.school %}
             <div class="speaker-card">
-                <img src="{{ site.url }}{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
                 <p class="speaker-name">{{ speaker.name }}</p>
+                <img src="{{ site.url }}{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
                 <div class="red-line"></div>
                 <p class="title">{{ speaker.title }}</p>
                 {% if speaker.subtitle %}
