@@ -50,7 +50,7 @@ main {
     max-width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 /* Speaker Name */
@@ -70,25 +70,36 @@ main {
     margin: 10px auto;
 }
 
-/* Title and Description */
+/* Title */
 .speaker-card .title {
     font-family: "Open Sauce", sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
     color: #030305;
-    margin-bottom: 10px;
-    text-align: left;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
+/* Subtitle */
+.speaker-card .subtitle {
+    font-family: "Open Sauce", sans-serif;
+    font-size: 1rem;
+    color: #353535;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Description */
 .speaker-card .description {
     font-family: "Open Sauce", sans-serif;
     font-size: 0.9rem;
     color: #353535;
     line-height: 1.5;
     text-align: left;
+    margin-top: 10px;
 }
-
 </style>
+
 
 <main>
 
@@ -102,13 +113,14 @@ main {
                 <p class="speaker-name">{{ speaker.name }}</p>
                 <div class="red-line"></div>
                 <p class="title">{{ speaker.title }}</p>
+                {% if speaker.subtitle %}
+                <p class="subtitle">{{ speaker.subtitle }}</p>
+                {% endif %}
                 <p class="description">{{ speaker.description }}</p>
             </div>
             {% endfor %}
         </div>
     </section>
-
-
 
     <!-- School Speakers Section -->
     <section class="speakers-section">
@@ -120,6 +132,9 @@ main {
                 <p class="speaker-name">{{ speaker.name }}</p>
                 <div class="red-line"></div>
                 <p class="title">{{ speaker.title }}</p>
+                {% if speaker.subtitle %}
+                <p class="subtitle">{{ speaker.subtitle }}</p>
+                {% endif %}
                 <p class="description">{{ speaker.description }}</p>
             </div>
             {% endfor %}
