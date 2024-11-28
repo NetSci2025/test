@@ -111,11 +111,11 @@ main {
             <div class="speaker-card">
                 <p class="speaker-name">{{ speaker.name }}</p>
                 <img src="{{ site.url }}{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                <div class="red-line"></div>
                 <p class="title">{{ speaker.title }}</p>
                 {% if speaker.subtitle %}
                 <p class="subtitle">{{ speaker.subtitle }}</p>
                 {% endif %}
+                <div class="red-line"></div>
                 <p class="description">{{ speaker.description }}</p>
             </div>
             {% endfor %}
@@ -130,17 +130,18 @@ main {
             <div class="speaker-card">
                 <p class="speaker-name">{{ speaker.name }}</p>
                 <img src="{{ site.url }}{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
-                <div class="red-line"></div>
                 <p class="title">{{ speaker.title }}</p>
                 {% if speaker.subtitle %}
                 <p class="subtitle">{{ speaker.subtitle }}</p>
                 {% endif %}
+                <div class="red-line"></div>
                 <p class="description">{{ speaker.description }}</p>
             </div>
             {% endfor %}
         </div>
     </section>
 </main>
+
 
 
 {% include footer.html %}
