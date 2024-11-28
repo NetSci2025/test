@@ -12,21 +12,17 @@ plenary:
   image: /assets/images/speakers/sonia_kefi.png
 
 
-
 - name: Michael Macy
-  title: The Shallowness of Deep Division
+  title: "The Shallowness of Deep Division"
   subtitle: ""
   affiliation: ""
   description: >
-    Michael Macy is Distinguished Professor of Arts and Sciences at Cornell and Director of the Social Dynamics Lab. 
-    With support from the U.S. National Science Foundation, Google, Yahoo! Research, DARPA, IARPA, and the Korean National Research Foundation, 
-    his research team has used computational models, online laboratory experiments, and digital traces of device-mediated interaction 
-    to explore enigmatic social patterns, including network “wormholes,” diurnal rhythms, racial discrimination on Airbnb, lifestyle politics, 
-    the polarization of science, network mobility, and partisan unpredictability. 
-    His research has been published in Science, PNAS, Science Advances, Nature Human Behaviour, American Journal of Sociology, 
-    American Sociological Review, and Annual Review of Sociology.
+    "Michael Macy is Distinguished Professor of Arts and Sciences at Cornell and Director of the Social Dynamics Lab.
+    With support from the U.S. National Science Foundation, Google, Yahoo! Research, DARPA, IARPA, and the Korean National Research Foundation,
+    his research team has used computational models, online laboratory experiments, and digital traces of device-mediated interaction
+    to explore enigmatic social patterns, including network “wormholes,” diurnal rhythms, racial discrimination on Airbnb, lifestyle politics,
+    the polarization of science, network mobility, and partisan unpredictability."
   image: /assets/images/speakers/michael_macy.png
-
 
   
 
