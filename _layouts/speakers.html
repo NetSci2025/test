@@ -5,6 +5,7 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
+<style>
 /* Speaker Card Styles */
 .speaker-card {
     background-color: white;
@@ -59,7 +60,7 @@ layout: default
     text-align: left;  
     margin-top: 10px;
 }
-
+</style>
 
 <main>
     <!-- Plenary Speakers Section -->
@@ -78,8 +79,6 @@ layout: default
         </div>
     </section>
 
-
-
     <!-- School Speakers Section -->
     <section class="speakers-section">
         <h2>School Speakers</h2>
@@ -95,7 +94,6 @@ layout: default
             {% endfor %}
         </div>
     </section>
-
 </main>
 
 {% include footer.html %}
