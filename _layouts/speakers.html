@@ -133,7 +133,7 @@ layout: default
                         <p class="description">{{ speaker.description }}</p>
                     </div>
                     <div class="image">
-                        <img src="{{ speaker.image | prepend: site.baseurl }}" alt="Picture of {{ speaker.name }}">
+                        <img src="{{ site.url }}{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
                     </div>
                 </div>
             </div>
@@ -159,7 +159,7 @@ layout: default
                         <p class="description">{{ speaker.description }}</p>
                     </div>
                     <div class="image">
-                        <img src="{{ speaker.image | prepend: site.baseurl }}" alt="Picture of {{ speaker.name }}">
+                        <img src="{{ site.url }}{{ speaker.image }}" alt="Picture of {{ speaker.name }}">
                     </div>
                 </div>
             </div>
