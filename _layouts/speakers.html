@@ -6,50 +6,78 @@ layout: default
 {% include header.html %}
 
 <style>
-/* Speaker Card Styles */
+/* General Layout */
+main {
+    padding-top: 70px;
+}
+
+.speakers-section {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.speakers-section h2 {
+    margin-bottom: 30px;
+    font-family: "Open Sauce", sans-serif;
+    color: #030305;
+}
+
+/* Card Layout */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px 10px;
+    padding: 0 40px;
+    justify-items: center;
+}
+
 .speaker-card {
     background-color: white;
     border-radius: 8px;
-    width: 400px;
-    text-align: left;
+    width: 350px;
+    text-align: center;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;  
+    align-items: center;
 }
 
+/* Image Styling */
 .speaker-card img {
-    max-width: 150px;  
+    max-width: 150px;
     height: 150px;
-    border-radius: 50%;  
-    margin-bottom: 15px;  
+    border-radius: 50%;
+    margin-bottom: 15px;
 }
 
+/* Speaker Name */
 .speaker-card .speaker-name {
     font-family: "Open Sauce", sans-serif;
-    font-size: 1.5rem;  
+    font-size: 1.5rem;
     font-weight: bold;
     color: #fc1b06;
-    text-align: center;  
     margin-bottom: 10px;
 }
 
+/* Red Line */
 .speaker-card .red-line {
     width: 50px;
     height: 3px;
     background-color: #fc1b06;
-    margin: 15px auto;  
+    margin: 10px auto;
 }
 
+/* Title and Description */
 .speaker-card .title {
     font-family: "Open Sauce", sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
     color: #030305;
     margin-bottom: 10px;
-    text-align: left;  
+    text-align: left;
 }
 
 .speaker-card .description {
@@ -57,15 +85,16 @@ layout: default
     font-size: 0.9rem;
     color: #353535;
     line-height: 1.5;
-    text-align: left;  
-    margin-top: 10px;
+    text-align: left;
 }
+
 </style>
 
 <main>
+
     <!-- Plenary Speakers Section -->
     <section class="speakers-section">
-        <h2>Plenary Speakers</h2>
+        <h2>{{ page.plenary_title }}</h2>
         <div class="card-container">
             {% for speaker in site.data.speakers.plenary %}
             <div class="speaker-card">
@@ -79,9 +108,11 @@ layout: default
         </div>
     </section>
 
+
+
     <!-- School Speakers Section -->
     <section class="speakers-section">
-        <h2>School Speakers</h2>
+        <h2>{{ page.school_title }}</h2>
         <div class="card-container">
             {% for speaker in site.data.speakers.school %}
             <div class="speaker-card">
@@ -95,6 +126,7 @@ layout: default
         </div>
     </section>
 </main>
+
 
 {% include footer.html %}
 
