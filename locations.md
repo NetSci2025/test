@@ -8,6 +8,8 @@ permalink: /Locations/
 ---
 
 
+For information on how to get to the venue, visit [this site](/Maastricht)
+
 
 Congress center (MECC): Forum 100, 6229 GV Maastricht. [Get directions](https://www.google.com/maps/dir//Forum+100,+6231+SB+Maastricht/@50.8378029,5.7106924,17z)
 
