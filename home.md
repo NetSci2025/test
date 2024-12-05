@@ -1,10 +1,10 @@
 ---
-layout: contributors
-title: Committees
-description: List of committees
+layout: page
+title: Landing page
+description: Landing page
 parent: About NetSci2025
-navorder: 3
-permalink: /committees/
+navorder: 1
+permalink: /
 ---
 
 

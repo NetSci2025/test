@@ -3,7 +3,7 @@ layout: speakers
 title: Speakers
 description: Speakers overview
 parent: About NetSci2025
-navorder: 1
+navorder: 2
 permalink: /Speakers/
 plenary_title: Plenary Speakers
 focus_session_title: Focus Session Speakers

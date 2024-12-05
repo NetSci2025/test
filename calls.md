@@ -76,7 +76,7 @@ Accepted abstracts require in-person presentation by one author, who can present
 
 
 
-## Call for satellites  
+## Call for satellites 
 
 **NetSci 2025 will host several Satellite Symposia on June 2 and 3, before the main conference.**  
 
@@ -96,14 +96,14 @@ We invite the community to submit a proposal for a satellite symposium. The prop
 Submit a single PDF file (maximum 2 pages) by email to: [netsci2025satellites@gmail.com](mailto:netsci2025satellites@gmail.com)  
 Incomplete or longer proposals will be automatically discarded  
 
-**Submission Deadline: 02 December 2024**
+~~**Submission Deadline: 02 December 2024**~~
 
 Expected notification of acceptance: 16 December 2024
 
 
 
 ## Important dates 
-- **Satellite proposal deadline**: 2 December, 2024
+- ~~**Satellite proposal deadline**: 2 December, 2024~~
 - **Abstract submission deadline**: 9 December, 2024
 - **Abstract notification**: 24 January, 2025
 - **Conference dates**: June 2 to 6, 2025
