@@ -4,10 +4,10 @@ title: Maastricht, venue, and hotels
 description: Maastricht, venue, and hotels
 parent: Venue and travel
 navorder: 2
-permalink: /Maastricht/
+permalink: /maastricht/
 ---
 
-For information on how to get to Maastricht visit [this page](../Practical_information)
+For information on how to get to Maastricht visit [this page](../practical_information)
 
 
 # Maastricht
