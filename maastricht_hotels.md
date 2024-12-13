@@ -77,7 +77,12 @@ As you approach Maastricht, you will see 'MECC' on the highway signs directing y
 
 Congress center (MECC): Forum 100, 6229 GV Maastricht. [Get directions](https://www.google.com/maps/dir//Forum+100,+6231+SB+Maastricht/@50.8378029,5.7106924,17z)
 
-School of business and economics maastricht (SBE): Tongersestraat 53, 6211 LM Maastricht. [Get directions](https://www.google.com/maps/dir//School+of+Business+and+Economics,+Tongersestraat+53,+6211+LM+Maastricht/@50.8449563,5.602418,12z)
+Faculty of Arts and Social Sciences (FASOS): Grote Gracht 90, 6211 SZ Maastricht. [Get directions](https://www.google.com/maps/dir//Grote+Gracht+90,+6211+SZ+Maastricht/@50.846862,5.690682,17z)
+
+Faculty of Engineering and Science (FES): Paul-Henri Spaaklaan 1, 6229 EN Maastricht. [Get directions](https://www.google.com/maps/dir//Paul-Henri+Spaaklaan+1,+6229+EN+Maastricht/@50.850237,5.688502,17z)
+
+Faculty of Psychology and Neuroscience (FPN): Universiteitssingel 40, 6229 ER Maastricht. [Get directions](https://www.google.com/maps/dir//Universiteitssingel+40,+6229+ER+Maastricht/@50.847927,5.686637,17z)
+
 
 
 
