@@ -6,13 +6,13 @@ markers:
     text: Forum 100, 6229 GV Maastricht
     latlng: 50.8387222, 5.7121196
   - title: Faculty of Arts and Social Sciences (FASOS)
-    text: https://maps.app.goo.gl/KGuBRrNgrsenYAnB9
+    text: Grote Gracht 90, 6211 SZ Maastricht
     latlng: 50.846862, 5.690682
   - title: Faculty of Engineering and Science (FES)
-    text: https://maps.app.goo.gl/Giqstkren9bknFjJ7
+    text: Paul-Henri Spaaklaan 1, 6229 EN Maastricht
     latlng: 50.850237, 5.688502
   - title: Faculty of Psychology and Neuroscience (FPN)
-    text: https://maps.app.goo.gl/tiT5cyxz7AoxfuKd9
+    text: Universiteitssingel 40, 6229 ER Maastricht
     latlng: 50.847927, 5.686637
 
 areas:
