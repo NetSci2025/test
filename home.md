@@ -3,7 +3,7 @@ layout: page
 title: Landing page
 description: Landing page
 parent: About NetSci2025
-navorder: 1
+navorder: 
 permalink: /
 ---
 
