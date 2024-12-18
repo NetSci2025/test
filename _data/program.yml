@@ -1,12 +1,3 @@
-# legend:
-#   title: Legend
-#   categories:
-#     - name: A category
-#       color: blue-6
-#     - name: Another category
-#       color: red-6
-#     - name: Yet another category
-#       color: teal-6
 
 days:
   - name: Wed 4 June 2025
