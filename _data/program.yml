@@ -1,9 +1,9 @@
 legend: 
   categories:
     - name: Invited Speaker
-      color: blue-6
-    - name: Lightning
       color: red-6
+    - name: Lightning
+      color: blue-6
     - name: Coffee break + posters
       color: yellow-6
 
