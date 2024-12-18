@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: program
 title: Program at a glance
 description: Program overview
 parent: Program
