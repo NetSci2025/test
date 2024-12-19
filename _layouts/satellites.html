@@ -45,10 +45,10 @@ layout: default
 
 <main class="my-4 {{ page.class }}">
     <div class="container">
-        <h1 class="display-5">{{ title }}</h1>
+        <h1 class="display-5">{{ site.data.satellites.title }}</h1>
         <hr class="my-4">
 
-        <h2 class="center-title">Full Day</h2>
+        <h2 class="center-title">{{ site.data.satellites.full_day.title }}</h2>
         <div class="two-columns">
             <div class="column">
                 <ul>
@@ -66,7 +66,7 @@ layout: default
             </div>
         </div>
 
-        <h2 class="center-title">Half Day</h2>
+        <h2 class="center-title">{{ site.data.satellites.half_day.title }}</h2>
         <div class="two-columns">
             <div class="column">
                 <ul>
@@ -85,7 +85,6 @@ layout: default
         </div>
     </div>
 </main>
-
 <!-- {% include footer.html %} -->
 
 
