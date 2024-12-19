@@ -1,7 +1,6 @@
 registration:
-  title: Registration Fees
-  description: >
-    Below are the registration fees for the event. Early bird rates apply until 1st May 2023.
+  title: Registration
+  description: Register for NetSci 2025
   headers:
     - Registration type
     - Early Bird (until 1st May 2023)
