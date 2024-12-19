@@ -5,7 +5,6 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
-
 <style>
     main {
         padding-top: 70px;
@@ -18,30 +17,44 @@ layout: default
 
     .registration-table {
         width: 100%;
-        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 0;
         margin: 20px 0;
         font-size: 1rem;
         text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
     }
 
     .registration-table th, .registration-table td {
-        border: 1px solid #dddddd;
-        padding: 10px;
+        padding: 15px 10px;
+        border-bottom: 1px solid #dddddd;
     }
 
     .registration-table th {
-        background-color: #f4f4f4;
+        background-color: #007bff;
+        color: #fff;
         font-weight: bold;
-        color: #007bff; 
+        text-transform: uppercase;
     }
 
-    .registration-table td {
-        color: #333; 
+    .registration-table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    .registration-table tbody tr:nth-child(even) {
+        background-color: #fff;
+    }
+
+    .registration-table tbody tr:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
     }
 
     .registration-container {
         margin: 20px auto;
-        max-width: 800px;
+        max-width: 900px;
         text-align: center;
     }
 
@@ -50,38 +63,50 @@ layout: default
         font-size: 1.1rem;
         color: #555;
     }
+
+    .registration-title {
+        font-size: 2rem;
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .table-wrapper {
+        border-radius: 8px;
+        overflow: hidden;
+    }
 </style>
 
 <main class="my-4">
     <div class="container">
-   
         {% assign registration = site.data.registration.registration %}
-        <h1 class="display-5">{{ registration.title }}</h1>
+        <h1 class="display-5 registration-title">{{ registration.title }}</h1>
         <hr class="my-4">
         <p class="registration-description">{{ registration.description }}</p>
-        <table class="registration-table">
-            <thead>
-                <tr>
-                    {% for header in registration.headers %}
-                    <th>{{ header }}</th>
+        
+        <div class="table-wrapper">
+            <table class="registration-table">
+                <thead>
+                    <tr>
+                        {% for header in registration.headers %}
+                        <th>{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in registration.rows %}
+                    <tr>
+                        <td>{{ row.type }}</td>
+                        <td>{{ row.early_bird }}</td>
+                        <td>{{ row.standard }}</td>
+                    </tr>
                     {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in registration.rows %}
-                <tr>
-                    <td>{{ row.type }}</td>
-                    <td>{{ row.early_bird }}</td>
-                    <td>{{ row.standard }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </main>
 
-
-
-
 {% include footer.html %}
+
 
