@@ -1,0 +1,96 @@
+---
+layout: default
+---
+
+{% include metadata.liquid %}
+{% include header.html %}
+
+<style>
+    main {
+        padding-top: 70px;
+    }
+
+    main h2, main h3, main h4 {
+        margin-top: 1.25em;
+        margin-bottom: 1em;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .full-day-container, .half-day-container {
+        margin: 40px auto;
+        max-width: 900px;
+    }
+
+    .full-day, .half-day {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .column {
+        flex: 1;
+    }
+
+    .column ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .column ul li {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    .column ul li::before {
+        content: "•";
+        margin-right: 8px;
+        color: #ff7f50; /* 自定义颜色 */
+    }
+</style>
+
+<main>
+    <div class="container">
+        {% assign satellites = site.data.satellites %}
+        <h1 class="display-5">{{ satellites.title }}</h1>
+
+        <div class="full-day-container">
+            <h2 class="section-title">FULL DAY</h2>
+            <div class="full-day">
+                <div class="column">
+                    <ul>
+                        {% for item in satellites.full_day | slice: 0, satellites.full_day.size | divided_by: 2 %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul>
+                        {% for item in satellites.full_day | slice: satellites.full_day.size | divided_by: 2 %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="half-day-container">
+            <h2 class="section-title">HALF DAY</h2>
+            <div class="half-day">
+                <ul>
+                    {% for item in satellites.half_day %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+
