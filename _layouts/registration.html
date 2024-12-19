@@ -51,10 +51,10 @@ layout: default
     }
 </style>
 
-<main class="my-4 {{ page.class }}">
+<main class="my-4">
     <div class="container">
-    
-        {% assign registration = site.data.registration %}
+   
+        {% assign registration = site.data.registration.registration %}
         <h1 class="display-5">{{ registration.title }}</h1>
         <hr class="my-4">
         <p class="registration-description">{{ registration.description }}</p>
@@ -80,6 +80,7 @@ layout: default
 </main>
 
 {% include footer.html %}
+
 
 
 
