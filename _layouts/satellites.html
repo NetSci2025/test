@@ -10,71 +10,67 @@ layout: default
         padding-top: 70px;
     }
 
-    main h1, main h2 {
-        margin-top: 1.5em;
-        margin-bottom: 1em;
-        text-align: center;
-    }
-
-    .section-title {
-        font-size: 2rem;
-        font-weight: bold;
+    main h1 {
         margin-bottom: 20px;
         text-align: center;
+        font-weight: bold;
     }
 
-    .full-day-container, .half-day-container {
-        margin: 40px auto;
-        max-width: 900px;
+    .satellites-section {
+        margin-top: 40px;
+        text-align: center;
     }
 
-    .full-day, .half-day {
+    .satellites-title {
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .satellites-columns {
         display: flex;
-        justify-content: space-between;
-        gap: 20px;
+        justify-content: space-around;
+        margin-top: 20px;
     }
 
-    .column {
-        flex: 1;
+    .satellites-column {
+        width: 45%;
+        text-align: left;
     }
 
-    .column ul {
+    .satellites-list {
         list-style-type: none;
         padding: 0;
+        line-height: 1.8;
     }
 
-    .column ul li {
+    .satellites-list li {
+        font-size: 1rem;
         margin-bottom: 10px;
-        font-size: 1.1rem;
-    }
-
-    .column ul li::before {
-        content: "•";
-        margin-right: 8px;
-        color: #ff7f50; 
     }
 </style>
 
-<main>
+<main class="my-4 {{ page.class }}">
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
-        <p class="text-muted">{{ page.description }}</p>
         <hr class="my-4">
 
-        <!-- FULL DAY -->
-        <div class="full-day-container">
-            <h2 class="section-title">FULL DAY</h2>
-            <div class="full-day">
-                <div class="column">
-                    <ul>
-                        {% for item in site.data.satellites.full_day | slice: 0, site.data.satellites.full_day.size | divided_by: 2 %}
+        {% assign satellites = site.data.satellites %}
+
+        <!-- Full Day Section -->
+        <div class="satellites-section">
+            <div class="satellites-title">FULL DAY</div>
+            <div class="satellites-columns">
+                <div class="satellites-column">
+                    <ul class="satellites-list">
+                        {% for item in satellites.full_day[0] %}
                         <li>{{ item }}</li>
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="column">
-                    <ul>
-                        {% for item in site.data.satellites.full_day | slice: site.data.satellites.full_day.size | divided_by: 2 %}
+                <div class="satellites-column">
+                    <ul class="satellites-list">
+                        {% for item in satellites.full_day[1] %}
                         <li>{{ item }}</li>
                         {% endfor %}
                     </ul>
@@ -82,17 +78,18 @@ layout: default
             </div>
         </div>
 
-        <!-- HALF DAY -->
-        <div class="half-day-container">
-            <h2 class="section-title">HALF DAY</h2>
-            <div class="half-day">
-                <ul>
-                    {% for item in site.data.satellites.half_day %}
-                    <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
+        <!-- Half Day Section -->
+        <div class="satellites-section">
+            <div class="satellites-title">HALF DAY</div>
+            <ul class="satellites-list">
+                {% for item in satellites.half_day %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </main>
+
+{% include footer.html %}
+
 
