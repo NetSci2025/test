@@ -10,76 +10,74 @@ layout: default
         padding-top: 70px;
     }
 
-    main h1 {
-        font-size: 2.5rem;
-        text-align: left;
-        margin-bottom: 0.5rem;
+    main h2, main h3, main h4, main h5, main h6 {
+        margin-top: 1.25em; 
+        margin-bottom: 1em; 
     }
 
-    .section-title {
-        font-size: 1.5rem;
+    .center-title {
         text-align: center;
         margin-top: 2rem;
-        margin-bottom: 1rem;
+        font-size: 2rem;
+        font-weight: normal;
     }
 
-    .satellite-container {
+    .two-columns {
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 2rem;
+        justify-content: space-between;
+        margin-top: 2rem;
     }
 
-    .satellite-column {
-        width: 45%;
+    .column {
+        flex: 1;
+        padding: 0 1rem;
     }
 
-    .satellite-list {
-        list-style: none;
+    .column ul {
+        list-style-type: none;
         padding: 0;
     }
 
-    .satellite-list li {
+    .column ul li {
         margin-bottom: 0.5rem;
     }
 </style>
 
 <main class="my-4 {{ page.class }}">
     <div class="container">
-        <h1>{{ page.title }}</h1>
+        <h1 class="display-5">{{ title }}</h1>
         <hr class="my-4">
-        <div class="satellite-container">
-            <div class="satellite-column">
-                <h2 class="section-title">FULL DAY</h2>
-                <ul class="satellite-list">
-                    {% assign full_day_items = site.data.satellites.full_day %}
-                    {% for item in full_day_items limit:5 %}
+
+        <h2 class="center-title">Full Day</h2>
+        <div class="two-columns">
+            <div class="column">
+                <ul>
+                    {% for item in site.data.satellites.full_day.first_column %}
                     <li>{{ item }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="satellite-column">
-                <ul class="satellite-list">
-                    {% for item in full_day_items offset:5 %}
+            <div class="column">
+                <ul>
+                    {% for item in site.data.satellites.full_day.second_column %}
                     <li>{{ item }}</li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
 
-        <div class="satellite-container">
-            <div class="satellite-column">
-                <h2 class="section-title">HALF DAY</h2>
-                <ul class="satellite-list">
-                    {% assign half_day_items = site.data.satellites.half_day %}
-                    {% for item in half_day_items limit:5 %}
+        <h2 class="center-title">Half Day</h2>
+        <div class="two-columns">
+            <div class="column">
+                <ul>
+                    {% for item in site.data.satellites.half_day.first_column %}
                     <li>{{ item }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="satellite-column">
-                <ul class="satellite-list">
-                    {% for item in half_day_items offset:5 %}
+            <div class="column">
+                <ul>
+                    {% for item in site.data.satellites.half_day.second_column %}
                     <li>{{ item }}</li>
                     {% endfor %}
                 </ul>
