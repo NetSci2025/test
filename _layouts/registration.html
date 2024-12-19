@@ -4,7 +4,6 @@ layout: default
 
 {% include metadata.liquid %}
 {% include header.html %}
-{% assign registration = site.data.registration %}
 
 <style>
     main {
@@ -54,12 +53,11 @@ layout: default
 
 <main class="my-4 {{ page.class }}">
     <div class="container">
-      
+    
         {% assign registration = site.data.registration %}
         <h1 class="display-5">{{ registration.title }}</h1>
         <hr class="my-4">
         <p class="registration-description">{{ registration.description }}</p>
-      
         <table class="registration-table">
             <thead>
                 <tr>
@@ -81,6 +79,7 @@ layout: default
     </div>
 </main>
 
+{% include footer.html %}
 
 
 
