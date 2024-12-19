@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+{% include metadata.liquid %}
+{% include header.html %}
+
+
+<style>
+  .registration-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+  }
+  .registration-table th,
+  .registration-table td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+  }
+  .registration-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  .registration-table .highlight {
+    background-color: #f9e4d8;
+    font-weight: bold;
+  }
+  .registration-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+  }
+  .registration-description {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #555;
+  }
+</style>
+
+<div class="registration-container">
+  <h1>{{ registration.title }}</h1>
+  <p class="registration-description">{{ registration.description }}</p>
+  <table class="registration-table">
+    <thead>
+      <tr>
+        <th>{{ registration.headers[0] }}</th>
+        <th>{{ registration.headers[1] }}</th>
+        <th>{{ registration.headers[2] }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in registration.rows %}
+      <tr>
+        <td class="highlight">{{ row.type }}</td>
+        <td>{{ row.early_bird }}</td>
+        <td>{{ row.standard }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- {% include footer.html %} -->
+
+
