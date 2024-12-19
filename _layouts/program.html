@@ -11,19 +11,6 @@ main {
     padding-top: 70px;
 }
 
-.border-red-6 {
-    border-color: #ff0000 !important; 
-}
-.border-yellow-6 {
-    border-color: #ffff00 !important; 
-}
-.border-green-6 {
-    border-color: #00ff00 !important; 
-}
-.border-gray-4 {
-    border-color: #cccccc !important; 
-}
-
 </style>
 
 
@@ -95,7 +82,7 @@ main {
                                 <div class="row col-lg-2 me-lg-4 text-lg-end mb-2">
                                     <small class="fw-light text-muted">{{ start }} {{ end }}</small>
                                 </div>
-                                <div class="row col-lg-10 border-start border-3 border-{{ color }}">
+                                <div class="row col-lg-10 border-start border-3 border-{{ classes }}">
                                     {% if event.category %}
                                     <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
                                     <p class="fw-light m-0">{{ event.subtitle }}</p>
