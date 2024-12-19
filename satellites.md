@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: satellites
 title: Satellites
 description: Program overview
 parent: Program
