@@ -67,8 +67,8 @@ main {
                         <ul class="list-unstyled lh-sm">
                             {% for event in day.events %}
                             {% if event.category %}
-                            <div class="row col-lg-10 border-start border-3 border-{{ color }}">
-
+                            {% assign category = categories | find: 'name', event.category %}
+                            {% assign color = category.color %}
                             {% else %}
                             {% assign color = 'gray-4' %}
                             {% endif %}
