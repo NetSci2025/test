@@ -11,85 +11,83 @@ layout: default
     }
 
     main h1 {
-        margin-bottom: 20px;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .satellites-section {
-        margin-top: 40px;
-        text-align: center;
-    }
-
-    .satellites-title {
-        font-weight: bold;
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-
-    .satellites-columns {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 20px;
-    }
-
-    .satellites-column {
-        width: 45%;
+        font-size: 2.5rem;
         text-align: left;
+        margin-bottom: 0.5rem;
     }
 
-    .satellites-list {
-        list-style-type: none;
+    .section-title {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .satellite-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .satellite-column {
+        width: 45%;
+    }
+
+    .satellite-list {
+        list-style: none;
         padding: 0;
-        line-height: 1.8;
     }
 
-    .satellites-list li {
-        font-size: 1rem;
-        margin-bottom: 10px;
+    .satellite-list li {
+        margin-bottom: 0.5rem;
     }
 </style>
 
 <main class="my-4 {{ page.class }}">
     <div class="container">
-        <h1 class="display-5">{{ page.title }}</h1>
+        <h1>{{ page.title }}</h1>
         <hr class="my-4">
-
-        {% assign satellites = site.data.satellites %}
-
-        <!-- Full Day Section -->
-        <div class="satellites-section">
-            <div class="satellites-title">FULL DAY</div>
-            <div class="satellites-columns">
-                <div class="satellites-column">
-                    <ul class="satellites-list">
-                        {% for item in satellites.full_day[0] %}
-                        <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="satellites-column">
-                    <ul class="satellites-list">
-                        {% for item in satellites.full_day[1] %}
-                        <li>{{ item }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+        <div class="satellite-container">
+            <div class="satellite-column">
+                <h2 class="section-title">FULL DAY</h2>
+                <ul class="satellite-list">
+                    {% assign full_day_items = site.data.satellites.full_day %}
+                    {% for item in full_day_items limit:5 %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="satellite-column">
+                <ul class="satellite-list">
+                    {% for item in full_day_items offset:5 %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
 
-        <!-- Half Day Section -->
-        <div class="satellites-section">
-            <div class="satellites-title">HALF DAY</div>
-            <ul class="satellites-list">
-                {% for item in satellites.half_day %}
-                <li>{{ item }}</li>
-                {% endfor %}
-            </ul>
+        <div class="satellite-container">
+            <div class="satellite-column">
+                <h2 class="section-title">HALF DAY</h2>
+                <ul class="satellite-list">
+                    {% assign half_day_items = site.data.satellites.half_day %}
+                    {% for item in half_day_items limit:5 %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="satellite-column">
+                <ul class="satellite-list">
+                    {% for item in half_day_items offset:5 %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </main>
 
-{% include footer.html %}
+<!-- {% include footer.html %} -->
 
 
