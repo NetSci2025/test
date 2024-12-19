@@ -31,11 +31,11 @@ layout: default
     .registration-table th {
         background-color: #f4f4f4;
         font-weight: bold;
-        color: #007bff; /* 蓝色标题 */
+        color: #007bff; 
     }
 
     .registration-table td {
-        color: #007bff; /* 蓝色文本 */
+        color: #333; 
     }
 
     .registration-container {
@@ -53,15 +53,18 @@ layout: default
 
 <main class="my-4 {{ page.class }}">
     <div class="container">
+      
+        {% assign registration = site.data.registration %}
         <h1 class="display-5">{{ registration.title }}</h1>
         <hr class="my-4">
         <p class="registration-description">{{ registration.description }}</p>
+      
         <table class="registration-table">
             <thead>
                 <tr>
-                    <th>{{ registration.headers[0] }}</th>
-                    <th>{{ registration.headers[1] }}</th>
-                    <th>{{ registration.headers[2] }}</th>
+                    {% for header in registration.headers %}
+                    <th>{{ header }}</th>
+                    {% endfor %}
                 </tr>
             </thead>
             <tbody>
