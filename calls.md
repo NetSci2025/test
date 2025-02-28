@@ -3,21 +3,14 @@ layout: calls
 title: Calls
 description: Calls for contributions
 navorder: 2
-permalink: /Calls/
 ---
 
   
 ---  
-## Call for travel
-The NetSci organising committee is pleased to announce a limited number of travel grants to attend the conference. The goal is to support individuals for whom attendance would cause a financial burden, e.g., from low and middle-income countries, that require financial support for travel and conference costs in order to attend. Conference grants will typically be in the form of a reimbursement, up to a given amount, for economy-class flights, accommodation, visa costs, and/or health insurance.
-Grants will only be awarded to people with an accepted abstract submission to NetSci. 
-How to apply
-Applicants must fill out the form here(https://forms.gle/sChqKjAf6LoWQwxa8).
 
 
+## Call for abstracts--CLOSED
 
-
-## Call for abstracts
 NetSci, the International School and Conference on Network Science, is the flagship conference of the Network Science
 Society. It brings under one umbrella a wide variety of leading researchers, practitioners, and stakeholders with a direct
 interest in **Network Science**, from Physics to Computer Science, Biology, Social Sciences, Economics, and Technological
@@ -66,7 +59,7 @@ We are looking forward to seeing the best of your new insights into network scie
 
 **Submit your abstract via the Microsoft CMT submission system [HERE](https://cmt3.research.microsoft.com/NETSCI2025)**.
 
-We invite you to submit a one-page abstract including one (mandatory) descriptive figure and references by **December 9, 2024**.
+We invite you to submit a one-page abstract including one (mandatory) descriptive figure and references by the end of **December 9, 2024 (anywhere on earth)**.
 We welcome submissions for the following presentation formats: 
 **contributed talks** (regular presentations in parallel sessions), 
 **lightning talks** (shorter presentations in plenary sessions), 
@@ -82,9 +75,10 @@ One-page abstracts should include text, one figure with caption and [selected] r
 
 Accepted abstracts require in-person presentation by one author, who can present a maximum of one accepted abstract in the main conference, and must register by the early-bird registration deadline.
 
+Any questions about abstract submissions can be sent to: [netsci2025abstracts@gmail.com](netsci2025abstracts@gmail.com)
 
 
-## Call for satellites 
+## Call for satellites--CLOSED
 
 **NetSci 2025 will host several Satellite Symposia on June 2 and 3, before the main conference.**  
 
@@ -104,7 +98,7 @@ We invite the community to submit a proposal for a satellite symposium. The prop
 Submit a single PDF file (maximum 2 pages) by email to: [netsci2025satellites@gmail.com](mailto:netsci2025satellites@gmail.com)  
 Incomplete or longer proposals will be automatically discarded  
 
-~~**Submission Deadline: 02 December 2024**~~
+**Submission Deadline: 02 December 2024**
 
 Expected notification of acceptance: 16 December 2024
 
@@ -112,9 +106,10 @@ Expected notification of acceptance: 16 December 2024
 
 ## Important dates 
 - ~~**Satellite proposal deadline**: 2 December, 2024~~
-- **Abstract submission deadline**: 9 December, 2024
-- **Abstract notification**: 24 January, 2025
-- **Conference dates**: June 2 to 6, 2025
+- ~~**Abstract submission deadline**: 9 December, 2024~~
+- ~~**Abstract notification**: 24 January, 2025~~
+- **Early bird [registration](/registration) deadline**: 25 February, 2025
+- **Conference Dates**: June 2 to 6 2025
 
 
 
@@ -224,6 +219,7 @@ The Secretariat will process your request and send you an official confirmation
 29. Synchronization and control;
 30. Network Science and Education;
 31. Network medicine. -->
+
 
 
 
