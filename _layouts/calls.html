@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <!-- Call for satellites--CLOSED -->
         <div class="row">
             <div class="col-md-12">
-                <h2>Call for satellites</h2>
+                <h2>Call for satellites--CLOSED</h2>
                 {% assign call_for_satellites_content = content | split: 'Call for satellites' | last | split: 'Important dates' | first %}
                 {{ call_for_satellites_content | remove: '</h2>' | markdownify }} <!-- Ensure no erroneous </h2> -->
             </div>
