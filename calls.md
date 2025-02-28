@@ -78,7 +78,7 @@ Accepted abstracts require in-person presentation by one author, who can present
 Any questions about abstract submissions can be sent to: [netsci2025abstracts@gmail.com](netsci2025abstracts@gmail.com)
 
 
-## Call for satellites--CLOSED
+## Call for satellites
 
 **NetSci 2025 will host several Satellite Symposia on June 2 and 3, before the main conference.**  
 
