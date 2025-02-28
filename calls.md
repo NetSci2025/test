@@ -117,7 +117,7 @@ The NetSci organising committee is pleased to announce a limited number of trave
 Grants will only be awarded to people with an accepted abstract submission to NetSci. 
 
 ### How to apply
-Applicants must fill out the form here.
+Applicants must fill out the form [here](https://forms.gle/sChqKjAf6LoWQwxa8).
 
 
 
