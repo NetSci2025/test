@@ -126,14 +126,25 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         </div>
 
+
         <!-- Call for travel Section -->
         <div class="row">
             <div class="col-md-12">
                 <h2>Call for travel</h2>
-                {% assign call_for_travel_content = content | split: 'Call for travel' | last | split: 'Call for satellites' | first %}
+                {% assign call_for_travel_content = content | split: 'Call for travel' | last | split: 'How to apply' | first %}
                 {{ call_for_travel_content | remove: '</h2>' | markdownify }}
             </div>
         </div>
+        
+        <!-- How to Apply Section under Call for Travel -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3>How to apply</h3>
+                {% assign how_to_apply_under_travel = content | split: 'How to apply' | last | split: 'Call for satellites' | first %}
+                {{ how_to_apply_under_travel | remove: '</h2>' | markdownify }}
+            </div>
+        </div>
+
 
     </div>
 </main>
