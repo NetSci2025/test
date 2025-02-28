@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <h1 class="display-5">{{ page.title }}</h1>
         <hr class="my-4">
 
-        <!-- ========== Call for travel) ========== -->
+        <!-- ========== Call for travel ========== -->
         <div class="row">
             <div class="col-md-12">
                 <h2>Call for travel</h2>
@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
                    | last 
                    | split: '## Call for abstracts' 
                    | first 
+                   | strip 
                    | remove: '## Call for travel' %}
                 {{ call_for_travel_content | markdownify }}
             </div>
@@ -97,9 +98,9 @@ document.addEventListener("DOMContentLoaded", function() {
         <hr class="my-4">
 
         <!-- ========== Call for abstracts + How to Apply，Topics ========== -->
-        <div class="content-container">
-            <!-- Call for abstracts + How to Apply -->
-            <div class="main-content">
+        <div class="row">
+            <!-- 左列：Call for abstracts + How to Apply -->
+            <div class="col-md-8">
                 <!-- Call for abstracts -->
                 <h2>Call for abstracts</h2>
                 {% assign call_for_abstracts_content = content 
@@ -107,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
                    | last 
                    | split: '## How to Apply' 
                    | first 
+                   | strip 
                    | remove: '## Call for abstracts' %}
                 {{ call_for_abstracts_content | markdownify }}
 
@@ -119,12 +121,13 @@ document.addEventListener("DOMContentLoaded", function() {
                    | last 
                    | split: '## Topics' 
                    | first 
+                   | strip 
                    | remove: '## How to Apply' %}
                 {{ how_to_apply_content | markdownify }}
             </div>
 
             <!-- Topics -->
-            <div class="sidebar">
+            <div class="col-md-4">
                 <h2 class="h5">Topics</h2>
                 <ul class="bullet-list">
                 {% assign topics_content = content 
@@ -132,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
                    | last 
                    | split: '## Call for satellites' 
                    | first 
+                   | strip 
                    | remove: '## Topics' %}
                 {{ topics_content | markdownify }}
                 </ul>
@@ -149,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
                    | last 
                    | split: '## Important dates' 
                    | first 
+                   | strip 
                    | remove: '## Call for satellites' %}
                 {{ call_for_satellites_content | markdownify }}
             </div>
@@ -156,20 +161,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         <hr class="my-4">
         
-        <!-- ========== Important Dates Section ========== -->
+        <!-- ========== Important Dates Section  ========== -->
         <div class="row">
             <div class="col-md-12">
                 <h2>Important dates</h2>
                 {% assign important_dates_content = content 
                    | split: '## Important dates' 
                    | last 
+                   | strip 
                    | remove: '## Important dates' %}
                 {{ important_dates_content | markdownify }}
             </div>
         </div>
     </div>
 </main>
-
 
 
 {% include footer.html %}
