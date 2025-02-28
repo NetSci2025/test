@@ -82,6 +82,16 @@ document.addEventListener("DOMContentLoaded", function() {
         <!-- Keep only this horizontal line -->
         <hr class="my-4">
 
+        <!-- Call for Travel Section -->
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Call for travel</h2>
+            {% assign call_for_travel_content = content | split: '## Call for travel' | last | split: '## Call for abstracts' | first %}
+            {{ call_for_travel_content | remove: '</h2>' | markdownify }}
+          </div>
+        </div>
+        <hr class="my-4">
+
         <!-- Main content and sidebar columns -->
         <div class="content-container">
             <!-- Main content column for Call for abstracts and How to Apply -->
