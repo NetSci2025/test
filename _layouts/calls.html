@@ -5,7 +5,6 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
-
 <style>
     main {
         padding-top: 70px;
@@ -75,107 +74,59 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
-
 <main class="my-4">
     <div class="container">
         <h1 class="display-5">{{ page.title }}</h1>
+        <!-- Keep only this horizontal line -->
         <hr class="my-4">
 
-        <!-- ========== Call for travel ========== -->
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Call for travel</h2>
-                {% assign call_for_travel_content = content 
-                   | split: '## Call for travel' 
-                   | last 
-                   | split: '## Call for abstracts' 
-                   | first 
-                   | strip 
-                   | remove: '## Call for travel' %}
-                {{ call_for_travel_content | markdownify }}
-            </div>
-        </div>
-        <hr class="my-4">
+        <!-- Main content and sidebar columns -->
+        <div class="content-container">
+            <!-- Main content column for Call for abstracts and How to Apply -->
+            <div class="main-content">
+                {% assign main_content_without_topics = content | split: 'Topics' | first %}
+                {{ main_content_without_topics | markdownify }}
 
-        <!-- ========== Call for abstracts + How to Apply，Topics ========== -->
-        <div class="row">
-            <!-- 左列：Call for abstracts + How to Apply -->
-            <div class="col-md-8">
-                <!-- Call for abstracts -->
-                <h2>Call for abstracts</h2>
-                {% assign call_for_abstracts_content = content 
-                   | split: '## Call for abstracts' 
-                   | last 
-                   | split: '## How to Apply' 
-                   | first 
-                   | strip 
-                   | remove: '## Call for abstracts' %}
-                {{ call_for_abstracts_content | markdownify }}
-
+                <!-- Add How to Apply section -->
                 <hr class="my-4">
-                
-                <!-- How to Apply -->
                 <h2>How to Apply</h2>
-                {% assign how_to_apply_content = content 
-                   | split: '## How to Apply' 
-                   | last 
-                   | split: '## Topics' 
-                   | first 
-                   | strip 
-                   | remove: '## How to Apply' %}
-                {{ how_to_apply_content | markdownify }}
+                {% assign how_to_apply_content = content | split: 'How to Apply' | last | split: 'Call for satellites' | first %}
+                {{ how_to_apply_content | remove: '</h2>' | markdownify }} <!-- Remove extra </h2> -->
             </div>
 
-            <!-- Topics -->
-            <div class="col-md-4">
+            <!-- Sidebar column for Topics -->
+            <div class="sidebar">
                 <h2 class="h5">Topics</h2>
-                <ul class="bullet-list">
-                {% assign topics_content = content 
-                   | split: '## Topics' 
-                   | last 
-                   | split: '## Call for satellites' 
-                   | first 
-                   | strip 
-                   | remove: '## Topics' %}
-                {{ topics_content | markdownify }}
+                <ul class="bullet-list"> <!-- Use unordered list style -->
+                {% assign topics_content = content | split: 'Topics' | last | split: 'Call for satellites' | first %}
+                {{ topics_content | remove: '</h2>' | markdownify }} <!-- Ensure no erroneous </h2> -->
                 </ul>
             </div>
         </div>
 
         <hr class="my-4">
         
-        <!-- ========== Call for Satellites Section ========== -->
+        <!-- Call for Satellites Section -->
         <div class="row">
             <div class="col-md-12">
                 <h2>Call for satellites</h2>
-                {% assign call_for_satellites_content = content 
-                   | split: '## Call for satellites' 
-                   | last 
-                   | split: '## Important dates' 
-                   | first 
-                   | strip 
-                   | remove: '## Call for satellites' %}
-                {{ call_for_satellites_content | markdownify }}
+                {% assign call_for_satellites_content = content | split: 'Call for satellites' | last | split: 'Important dates' | first %}
+                {{ call_for_satellites_content | remove: '</h2>' | markdownify }} <!-- Ensure no erroneous </h2> -->
             </div>
         </div>
 
         <hr class="my-4">
         
-        <!-- ========== Important Dates Section  ========== -->
+        <!-- Important Dates Section -->
         <div class="row">
             <div class="col-md-12">
                 <h2>Important dates</h2>
-                {% assign important_dates_content = content 
-                   | split: '## Important dates' 
-                   | last 
-                   | strip 
-                   | remove: '## Important dates' %}
-                {{ important_dates_content | markdownify }}
+                {% assign important_dates_content = content | split: 'Important dates' | last %}
+                {{ important_dates_content | remove: '</h2>' | markdownify }} <!-- Ensure no erroneous </h2> -->
             </div>
         </div>
     </div>
 </main>
-
 
 {% include footer.html %}
 
