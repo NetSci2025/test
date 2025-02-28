@@ -81,15 +81,18 @@ document.addEventListener("DOMContentLoaded", function() {
         <h1 class="display-5">{{ page.title }}</h1>
         <!-- Keep only this horizontal line -->
         <hr class="my-4">
-
-        <!-- Call for Travel Section -->
+        
+        <!-- 1) Call for Travel-->
         <div class="row">
           <div class="col-md-12">
             <h2>Call for travel</h2>
-            {% assign call_for_travel_content = content 
-               | split: '## Call for travel' | last 
-               | split: '## Call for abstracts' | first %}
-            {{ call_for_travel_content | markdownify }}
+            {% assign call_for_travel = content
+               | split: '## Call for travel'
+               | last
+               | split: '## Call for abstracts'
+               | first
+               | remove: '## Call for travel' %}
+            {{ call_for_travel | markdownify }}
           </div>
         </div>
         <hr class="my-4">
