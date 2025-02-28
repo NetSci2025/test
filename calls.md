@@ -8,6 +8,14 @@ permalink: /Calls/
 
   
 ---  
+## Call for travel
+The NetSci organising committee is pleased to announce a limited number of travel grants to attend the conference. The goal is to support individuals for whom attendance would cause a financial burden, e.g., from low and middle-income countries, that require financial support for travel and conference costs in order to attend. Conference grants will typically be in the form of a reimbursement, up to a given amount, for economy-class flights, accommodation, visa costs, and/or health insurance.
+Grants will only be awarded to people with an accepted abstract submission to NetSci. 
+How to apply
+Applicants must fill out the form here.
+
+
+
 
 ## Call for abstracts
 NetSci, the International School and Conference on Network Science, is the flagship conference of the Network Science
