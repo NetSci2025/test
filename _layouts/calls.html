@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="col-md-12">
                 <h2>Call for travel</h2>
                 {% assign important_dates_content = content | split: 'Call for travel' | last %}
-                {{ Call_for_travel_content | remove: '</h2>' | markdownify }} <!-- Ensure no erroneous </h2> -->
+                {{ call_for_travel_content | remove: '</h2>' | markdownify }} <!-- Ensure no erroneous </h2> -->
             </div>
         </div>
     </div>
