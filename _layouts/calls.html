@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         <hr class="my-4">
         
+        
         <!-- Important Dates Section -->
         <div class="row">
             <div class="col-md-12">
@@ -127,13 +128,12 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
         
         <hr class="my-4">
-        
-        <!-- Call for travel Section -->
+                
         <div class="row">
             <div class="col-md-12">
-                <h2>Call for travel</h2>
-                {% assign call_for_travel_content = content | split: 'Call for travel' | last | split: 'Call for satellites' | first %}
-                {{ call_for_travel_content | remove: '</h2>' | markdownify }} 
+                <h2>Call for travel support grants</h2>
+                {% assign call_for_travel_content = content | split: 'Call for travel support grants' | last | split: 'Call for satellites' | first %}
+                {{ call_for_travel_content | remove: '</h2>' | remove: '<h2>' | remove: '</h3>' | remove: '<h3>' | markdownify }}
             </div>
         </div>
 
@@ -141,7 +141,10 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 </main>
 
+    
+
 {% include footer.html %}
+
 
 
 
