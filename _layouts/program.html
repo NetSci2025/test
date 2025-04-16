@@ -9,18 +9,16 @@ layout: default
 main {
   padding-top: 70px;
 }
-table.schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.8rem;
-  table-layout: fixed;
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2px;
 }
-table.schedule-table td {
-  border: 1px solid #ccc;
+.schedule-cell {
   padding: 4px;
+  font-size: 0.8rem;
   text-align: center;
-  vertical-align: top;
-  word-wrap: break-word;
+  border: 1px solid #ccc;
 }
 .bg-yellow {
   background-color: #ffe699;
@@ -33,106 +31,64 @@ table.schedule-table td {
 <main class="my-4">
   <div class="container">
     <h1 class="display-5">{{ title }}</h1>
-
     {% if site.data.program %}
     <hr class="my-4">
-    <div class="row">
-      <div class="accordion">
-        {% assign categories = site.data.program.legend.categories %}
-
-        {% for day in site.data.program.days %}
-        {% assign slug = day.name | slugify %}
-        <div class="accordion-item" id="{{ slug }}">
-          <h5 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ slug }}" aria-expanded="false" aria-controls="collapse-{{ slug }}">
-              <span class="h5 m-0">{{ day.name }}</span>
-            </button>
-          </h5>
-
-          <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
-            <div class="accordion-body mt-2">
-
-              {% if day.name == "Mon 2 June 2025" %}
-              <div class="mb-4">
-                <div class="schedule-label">Visual Overview</div>
-                <div class="table-responsive">
-                  {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  {% assign columns = [] %}
-
-                  {% for event in day.events %}
-                    {% unless columns contains event.title %}
-                      {% assign columns = columns | push: event.title %}
-                    {% endunless %}
-                  {% endfor %}
-
-                  <table class="schedule-table">
-                    <tbody>
-                      {% for time in time_slots %}
-                      <tr>
-                        {% for col in columns %}
-                          {% assign event = day.events | where: "title", col | first %}
-                          {% assign e_start = event.time | split: ' - ' | first %}
-                          {% assign e_end = event.time | split: ' - ' | last %}
-                          {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-                          {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-                          {% assign current_m = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
-
-                          {% if current_m == e_start_m %}
-                            {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-                            <td rowspan="{{ span }}" class="{{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">{{ event.title }}</td>
-                          {% elsif current_m > e_start_m and current_m < e_end_m %}
-                            {% continue %}
-                          {% else %}
-                            <td></td>
-                          {% endif %}
-                        {% endfor %}
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              {% endif %}
-
-              <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
+    <div class="accordion">
+      {% for day in site.data.program.days %}
+      {% assign slug = day.name | slugify %}
+      <div class="accordion-item" id="{{ slug }}">
+        <h5 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ slug }}">
+            <span class="h5 m-0">{{ day.name }}</span>
+          </button>
+        </h5>
+        <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
+          <div class="accordion-body mt-2">
+            {% if day.name == "Mon 2 June 2025" %}
+            <div class="mb-4">
+              <div class="schedule-grid">
+                {% assign colors = "bg-yellow,bg-orange" | split: "," %}
+                {% assign index = 0 %}
                 {% for event in day.events %}
-                {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
-                <li class="d-flex flex-column flex-lg-row mb-4">
-                  <div class="row col-lg-2 pb-2 border-start border-3 border-{{ color }} border-lg-0">
-                    <small class="fw-light text-muted">{{ event.time }}</small>
+                  {% assign span_minutes = event.time | split: " - " %}
+                  {% assign start = span_minutes[0] %}
+                  {% assign end = span_minutes[1] %}
+                  {% assign bg = colors[index | modulo: 2] %}
+                  <div class="schedule-cell {{ bg }}">
+                    <strong>{{ event.time }}</strong><br/>
+                    {{ event.title }}
                   </div>
-                  <div class="row col-lg-10 border-start border-3 border-{{ color }}">
-                    <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
-                    {% if event.subtitle %}<p class="fw-light m-0">{{ event.subtitle }}</p>{% endif %}
-                    {% if event.location %}<p class="fw-light m-0"><strong>Location:</strong> {{ event.location }}</p>{% endif %}
-                    {% if event.link %}<p class="fw-light m-0"><a href="{{ event.link }}" target="_blank">Check the detailed program here</a></p>{% endif %}
-                  </div>
-                </li>
-                {% endfor %}
-              </ul>
-
-              {% assign legend = day.events | map: 'category' | compact | uniq %}
-              {% if legend.size > 0 %}
-              <div class="mt-4 mb-2">
-                {% for item in legend %}
-                {% assign border = categories | where: 'name', item | map: 'color' | first %}
-                {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
-                {% assign classes = border | prepend: ' border-' | prepend: bg %}
-                {% if border %}
-                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
-                {% endif %}
+                  {% assign index = index | plus: 1 %}
                 {% endfor %}
               </div>
-              {% endif %}
             </div>
+            {% endif %}
+
+            <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
+              {% for event in day.events %}
+              <li class="d-flex flex-column flex-lg-row mb-4">
+                <div class="row col-lg-2 pb-2 border-start border-3 border-danger border-lg-0">
+                  <small class="fw-light text-muted">{{ event.time }}</small>
+                </div>
+                <div class="row col-lg-10 border-start border-3 border-danger">
+                  <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
+                  {% if event.subtitle %}<p class="fw-light m-0">{{ event.subtitle }}</p>{% endif %}
+                  {% if event.location %}<p class="fw-light m-0"><strong>Location:</strong> {{ event.location }}</p>{% endif %}
+                  {% if event.link %}<p class="fw-light m-0"><a href="{{ event.link }}" target="_blank">Check the detailed program here</a></p>{% endif %}
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+
           </div>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
     </div>
     {% endif %}
   </div>
 </main>
+
 
 <!-- {% include footer.html %} -->
 
