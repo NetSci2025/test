@@ -9,41 +9,23 @@ layout: default
 main {
   padding-top: 70px;
 }
-
-.schedule-grid {
-  display: grid;
-  grid-template-columns: 80px repeat(6, 1fr); /* Time column + 6 dynamic columns */
-  grid-template-rows: repeat(20, 1fr); /* 30-min slots from 9:00 to 18:00 */
-  gap: 2px;
-  border: 1px solid #ddd;
-  background: #f8f9fa;
+table.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  table-layout: fixed;
 }
-
-.time-slot {
-  grid-column: 1 / 2;
-  border-right: 1px solid #ccc;
-  text-align: right;
-  padding: 5px 8px;
-  font-size: 0.75rem;
-  color: #666;
-}
-
-.event-block {
+table.schedule-table th,
+table.schedule-table td {
+  border: 1px solid #ccc;
   padding: 4px;
-  font-size: 0.75rem;
-  border-radius: 4px;
-  background-color: #ffe5b4;
-  border-left: 4px solid #ffc107;
-  overflow: hidden;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word;
 }
-
-.grid-column-2 { grid-column: 2 / 3; }
-.grid-column-3 { grid-column: 3 / 4; }
-.grid-column-4 { grid-column: 4 / 5; }
-.grid-column-5 { grid-column: 5 / 6; }
-.grid-column-6 { grid-column: 6 / 7; }
-.grid-column-7 { grid-column: 7 / 8; }
-
+table.schedule-table th {
+  background-color: #f2f2f2;
+}
 .schedule-label {
   font-weight: bold;
   font-size: 0.9rem;
@@ -74,73 +56,38 @@ main {
           <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
             <div class="accordion-body mt-2">
 
-
+              {% if day.name == "Mon 2 June 2025" %}
               <div class="mb-4">
                 <div class="schedule-label">Visual Overview</div>
-                <div class="schedule-grid">
-                  {% for i in (9..18) %}
-                    <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
-                  {% endfor %}
-
-                  {% assign column_max = 6 %}
-                  {% assign columns = "" %}
-                  {% for i in (0..5) %}
-                    {% assign empty = "" | split: "," %}
-                    {% assign columns = columns | push: empty %}
-                  {% endfor %}
-
-                  {% for event in day.events %}
-                    {% assign start = event.time | split: ' - ' | first %}
-                    {% assign end = event.time | split: ' - ' | last %}
-                    {% assign sh = start | split: ':' | first | plus: 0 %}
-                    {% assign sm = start | split: ':' | last | plus: 0 %}
-                    {% assign eh = end | split: ':' | first | plus: 0 %}
-                    {% assign em = end | split: ':' | last | plus: 0 %}
-                    {% assign start_units = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 %}
-                    {% assign end_units = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 %}
-                    {% assign row_start = start_units | plus: 1 %}
-                    {% assign span_units = end_units | minus: start_units %}
-
-                    {% assign assigned_col = nil %}
-                    {% for i in (0..5) %}
-                      {% assign conflict = false %}
-                      {% assign col_events = columns[i] %}
-                      {% for e in col_events %}
-                        {% assign e_parts = e | split: "-" %}
-                        {% assign e_start = e_parts[0] | plus: 0 %}
-                        {% assign e_end = e_parts[1] | plus: 0 %}
-                        {% if start_units < e_end and end_units > e_start %}
-                          {% assign conflict = true %}
-                        {% endif %}
+                <div class="table-responsive">
+                  <table class="schedule-table">
+                    <thead>
+                      <tr>
+                        <th>Time</th>
+                        {% for i in (0..11) %}
+                        <th>{{ i }}</th>
+                        {% endfor %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
+                      {% for time in time_slots %}
+                      <tr>
+                        <td>{{ time }}</td>
+                        {% for i in (0..11) %}
+                        <td>
+                          {% capture key %}slot_{{ time }}_{{ i }}{% endcapture %}
+                          {{ site.data.static_table[key] }}
+                        </td>
+                        {% endfor %}
+                      </tr>
                       {% endfor %}
-                      {% unless conflict %}
-                        {% assign assigned_col = i %}
-                        {% break %}
-                      {% endunless %}
-                    {% endfor %}
-
-                    {% assign current_col = assigned_col | plus: 2 %}
-                    <div class="event-block grid-column-{{ current_col }} event-{{ event.category | downcase | replace: ' ', '-' }}"
-                         style="grid-row: {{ row_start }} / span {{ span_units }};">
-                      {{ event.title }}
-                    </div>
-
-                    {% assign new_event = start_units | append: "-" | append: end_units %}
-                    {% assign updated_col = columns[assigned_col] | push: new_event %}
-                    
-                    {% assign before = columns | slice: 0, assigned_col %}
-                    {% assign after_raw = columns | slice: assigned_col | slice: 1 %}
-                    {% assign after = after_raw | default: "" | split: "||" %} {% comment %} forces array even if empty {% endcomment %}
-                    
-                    {% assign columns = before | push: updated_col | concat: after %}
-
-
-                  {% endfor %}
+                    </tbody>
+                  </table>
                 </div>
               </div>
+              {% endif %}
 
-
-  
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
                 {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
@@ -166,7 +113,6 @@ main {
                 {% endfor %}
               </ul>
 
-
               {% assign legend = day.events | map: 'category' | compact | uniq %}
               {% if legend.size > 0 %}
               <div class="mt-4 mb-2">
@@ -191,4 +137,5 @@ main {
 </main>
 
 <!-- {% include footer.html %} -->
+
 
