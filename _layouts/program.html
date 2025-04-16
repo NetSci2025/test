@@ -100,46 +100,64 @@ padding: 6px 0;
             <div class="accordion-body mt-2">
 
             
-            <div class="mb-4">
-              <div class="schedule-label">Visual Overview</div>
+            <div class="schedule-grid">
+              {% for i in (9..18) %}
+                <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
+              {% endfor %}
             
-              <div class="schedule-grid">
+              {% assign column_max = 6 %}
+              {% assign columns = "" %}
+              {% for i in (0..5) %}
+                {% assign key = "col" | append: i %}
+                {% assign empty = "" | split: "," %}
+                {% assign columns = columns | push: empty %}
+              {% endfor %}
             
-                <!-- Time column -->
-                {% for i in (9..18) %}
-                  <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
-                {% endfor %}
+              {% for event in day.events %}
+                {% assign start = event.time | split: ' - ' | first %}
+                {% assign end = event.time | split: ' - ' | last %}
+                {% assign sh = start | split: ':' | first | plus: 0 %}
+                {% assign sm = start | split: ':' | last | plus: 0 %}
+                {% assign eh = end | split: ':' | first | plus: 0 %}
+                {% assign em = end | split: ':' | last | plus: 0 %}
+                {% assign start_units = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 %}
+                {% assign end_units = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 %}
+                {% assign row_start = start_units | plus: 1 %}
+                {% assign span_units = end_units | minus: start_units %}
             
-                <!-- Each day renders only its own event blocks -->
-                {% assign event_counter = 0 %}
-                {% assign column_count = 3 %}
+                {% assign col_index = 0 %}
+                {% assign found_column = false %}
+                {% while found_column == false and col_index < column_max %}
+                  {% assign conflict = false %}
+                  {% assign col_events = columns[col_index] %}
+                  {% for e in col_events %}
+                    {% assign e_parts = e | split: "-" %}
+                    {% assign e_start = e_parts[0] | plus: 0 %}
+                    {% assign e_end = e_parts[1] | plus: 0 %}
+                    {% if start_units < e_end and end_units > e_start %}
+                      {% assign conflict = true %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if conflict == false %}
+                    {% assign found_column = true %}
+                  {% else %}
+                    {% assign col_index = col_index | plus: 1 %}
+                  {% endif %}
+                {% endwhile %}
             
-                {% for event in day.events %}
-                  {% assign start = event.time | split: ' - ' | first %}
-                  {% assign end = event.time | split: ' - ' | last %}
+                {% assign current_col = "grid-column-" | append: col_index | plus: 2 %}
+                <div class="event-block {{ current_col }} event-{{ event.category | downcase | replace: ' ', '-' }}"
+                     style="grid-row: {{ row_start }} / span {{ span_units }};">
+                  {{ event.title }}
+                </div>
             
-                  {% assign sh = start | split: ':' | first | plus: 0 %}
-                  {% assign sm = start | split: ':' | last | plus: 0 %}
-                  {% assign eh = end | split: ':' | first | plus: 0 %}
-                  {% assign em = end | split: ':' | last | plus: 0 %}
-            
-                  {% assign start_unit = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 %}
-                  {% assign end_unit = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 %}
-                  {% assign span_unit = end_unit | minus: start_unit %}
-                  {% assign row_start = start_unit | plus: 1 %}
-            
-                  {% assign col = event_counter | modulo: column_count | plus: 2 %}
-                  {% assign column_class = 'grid-column-' | append: col %}
-                  {% assign event_counter = event_counter | plus: 1 %}
-            
-                  <div class="event-block {{ column_class }} event-{{ event.category | downcase | replace: ' ', '-' }}"
-                       style="grid-row: {{ row_start }} / span {{ span_unit }};">
-                    {{ event.title }}
-                  </div>
-                {% endfor %}
-              </div>
+                {% assign new_event = start_units | append: "-" | append: end_units %}
+                {% assign updated_col = columns[col_index] | push: new_event %}
+                {% assign columns = columns | slice: 0, col_index | push: updated_col | concat: columns | slice: col_index | slice: 1 %}
+              {% endfor %}
             </div>
-
+            
+            
 
 
 
