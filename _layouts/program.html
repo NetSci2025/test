@@ -127,9 +127,13 @@ main {
 
                     {% assign new_event = start_units | append: "-" | append: end_units %}
                     {% assign updated_col = columns[assigned_col] | push: new_event %}
+                    
                     {% assign before = columns | slice: 0, assigned_col %}
-                    {% assign after = columns | slice: assigned_col | slice: 1 %}
+                    {% assign after_raw = columns | slice: assigned_col | slice: 1 %}
+                    {% assign after = after_raw | default: "" | split: "||" %}  {# forces array even if empty #}
+                    
                     {% assign columns = before | push: updated_col | concat: after %}
+
                   {% endfor %}
                 </div>
               </div>
