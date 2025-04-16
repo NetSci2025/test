@@ -1,4 +1,4 @@
----
+""---
 layout: default
 ---
 
@@ -66,87 +66,6 @@ table.schedule-table th {
               <div class="mb-4">
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
-                  {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-
-                  <table class="schedule-table">
-                    <thead>
-                      <tr>
-                        <th>Time</th>
-                        {% assign titles = day.events | map: "title" %}
-                        {% assign unique_titles = titles | uniq %}
-                        {% for title in unique_titles %}<th>{{ title }}</th>{% endfor %}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for time in time_slots %}
-                      <tr>
-                        <td>{{ time }}</td>
-                        {% for title in unique_titles %}
-                          {% assign found = false %}
-                          {% for event in day.events %}
-                            {% if event.title == title %}
-                              {% assign e_start = event.time | split: ' - ' | first %}
-                              {% assign e_end = event.time | split: ' - ' | last %}
-                              {% if time >= e_start and time < e_end %}
-                                {% assign found = true %}
-                              {% endif %}
-                            {% endif %}
-                          {% endfor %}
-                          {% if found %}
-                            <td class="bg-yellow"></td>
-                          {% else %}
-                            <td></td>
-                          {% endif %}
-                        {% endfor %}
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              {% endif %}
-
-              <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
-                {% for event in day.events %}
-                {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
-                <li class="d-flex flex-column flex-lg-row mb-4">
-                  <div class="row col-lg-2 pb-2 border-start border-3 border-{{ color }} border-lg-0">
-                    <small class="fw-light text-muted">{{ event.time }}</small>
-                  </div>
-                  <div class="row col-lg-10 border-start border-3 border-{{ color }}">
-                    <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
-                    {% if event.subtitle %}<p class="fw-light m-0">{{ event.subtitle }}</p>{% endif %}
-                    {% if event.location %}<p class="fw-light m-0"><strong>Location:</strong> {{ event.location }}</p>{% endif %}
-                    {% if event.link %}<p class="fw-light m-0"><a href="{{ event.link }}" target="_blank">Check the detailed program here</a></p>{% endif %}
-                  </div>
-                </li>
-                {% endfor %}
-              </ul>
-
-              {% assign legend = day.events | map: 'category' | compact | uniq %}
-              {% if legend.size > 0 %}
-              <div class="mt-4 mb-2">
-                {% for item in legend %}
-                {% assign border = categories | where: 'name', item | map: 'color' | first %}
-                {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
-                {% assign classes = border | prepend: ' border-' | prepend: bg %}
-                {% if border %}
-                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
-                {% endif %}
-                {% endfor %}
-              </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    {% endif %}
-  </div>
-</main>
-
-<!-- {% include footer.html %} -->
-
+                  {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: 
 
 
