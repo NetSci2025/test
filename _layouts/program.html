@@ -83,7 +83,9 @@ table.schedule-table td.filled {
 
                           {% if current_m == e_start_m %}
                             {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-                            <td rowspan="{{ span }}" class="filled {{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">{{ event.time }}<br><strong>{{ event.title }}</strong></td>
+                            <td rowspan="{{ span }}" class="filled {{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">
+                              <small>{{ event.time }}</small><br><strong>{{ event.title }}</strong>
+                            </td>
                           {% elsif current_m > e_start_m and current_m < e_end_m %}
                             {% continue %}
                           {% else %}
