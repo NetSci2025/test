@@ -9,18 +9,18 @@ layout: default
 main {
   padding-top: 70px;
 }
-table.schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.8rem;
-  table-layout: fixed;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2px;
+  margin-top: 1rem;
 }
-table.schedule-table td {
-  border: 1px solid #ccc;
-  padding: 4px;
+.grid-item {
+  padding: 6px;
+  font-size: 0.75rem;
   text-align: center;
-  vertical-align: top;
-  word-wrap: break-word;
+  border: 1px solid #ccc;
+  word-break: break-word;
 }
 .bg-yellow {
   background-color: #ffe699;
@@ -51,45 +51,20 @@ table.schedule-table td {
 
           <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
             <div class="accordion-body mt-2">
-
               {% if day.name == "Mon 2 June 2025" %}
               <div class="mb-4">
                 <div class="schedule-label">Visual Overview</div>
-                <div class="table-responsive">
-                  {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  {% assign columns = [] %}
-
+                <div class="grid-container">
+                  {% assign color_classes = "bg-yellow,bg-orange" | split: "," %}
+                  {% assign color_index = 0 %}
                   {% for event in day.events %}
-                    {% unless columns contains event.title %}
-                      {% assign columns = columns | push: event.title %}
-                    {% endunless %}
+                    {% assign color_class = color_classes[color_index | modulo: 2] %}
+                    <div class="grid-item {{ color_class }}">
+                      <strong>{{ event.time }}</strong><br>
+                      {{ event.title }}
+                    </div>
+                    {% assign color_index = color_index | plus: 1 %}
                   {% endfor %}
-
-                  <table class="schedule-table">
-                    <tbody>
-                      {% for time in time_slots %}
-                      <tr>
-                        {% for col in columns %}
-                          {% assign event = day.events | where: "title", col | first %}
-                          {% assign e_start = event.time | split: ' - ' | first %}
-                          {% assign e_end = event.time | split: ' - ' | last %}
-                          {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-                          {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-                          {% assign current_m = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
-
-                          {% if current_m == e_start_m %}
-                            {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-                            <td rowspan="{{ span }}" class="{{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">{{ event.title }}</td>
-                          {% elsif current_m > e_start_m and current_m < e_end_m %}
-                            {% continue %}
-                          {% else %}
-                            <td></td>
-                          {% endif %}
-                        {% endfor %}
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
                 </div>
               </div>
               {% endif %}
@@ -134,7 +109,6 @@ table.schedule-table td {
   </div>
 </main>
 
-<!-- {% include footer.html %} -->
 
 
 
