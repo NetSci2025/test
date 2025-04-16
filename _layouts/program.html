@@ -5,153 +5,140 @@ layout: default
 {% include metadata.liquid %}
 {% include header.html %}
 
-
-
 <style>
 main {
-    padding-top: 70px;
+  padding-top: 70px;
 }
 
 .schedule-grid {
-display: grid;
-grid-template-columns: 80px repeat(3, 1fr); 
-grid-template-rows: repeat(20, 1fr); 
-gap: 2px;
-border: 1px solid #ddd;
-background: #f8f9fa;
+  display: grid;
+  grid-template-columns: 80px repeat(6, 1fr); /* Time column + 6 dynamic columns */
+  grid-template-rows: repeat(20, 1fr); /* 30-min slots from 9:00 to 18:00 */
+  gap: 2px;
+  border: 1px solid #ddd;
+  background: #f8f9fa;
 }
 
 .time-slot {
-grid-column: 1 / 2;
-border-right: 1px solid #ccc;
-text-align: right;
-padding: 5px 8px;
-font-size: 0.75rem;
-color: #666;
+  grid-column: 1 / 2;
+  border-right: 1px solid #ccc;
+  text-align: right;
+  padding: 5px 8px;
+  font-size: 0.75rem;
+  color: #666;
 }
 
 .event-block {
-padding: 4px;
-font-size: 0.75rem;
-border-radius: 4px;
-background-color: #ffe5b4; 
-border-left: 4px solid #ffc107;
-overflow: hidden;
+  padding: 4px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  background-color: #ffe5b4;
+  border-left: 4px solid #ffc107;
+  overflow: hidden;
 }
 
-.room-a { grid-column: 2 / 3; }
-.room-b { grid-column: 3 / 4; }
-.room-c { grid-column: 4 / 5; }
-
-.event-wins {
-background-color: #d1ecf1;
-border-left-color: #17a2b8;
-}
-
-.event-cluster {
-background-color: #f8d7da;
-border-left-color: #dc3545;
-}
-
-.event-netbio {
-background-color: #d4edda;
-border-left-color: #28a745;
-}
-
-.event-netrg {
-background-color: #fff3cd;
-border-left-color: #ffc107;
-}
+.grid-column-2 { grid-column: 2 / 3; }
+.grid-column-3 { grid-column: 3 / 4; }
+.grid-column-4 { grid-column: 4 / 5; }
+.grid-column-5 { grid-column: 5 / 6; }
+.grid-column-6 { grid-column: 6 / 7; }
+.grid-column-7 { grid-column: 7 / 8; }
 
 .schedule-label {
-font-weight: bold;
-font-size: 0.9rem;
-padding: 6px 0;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 6px 0;
 }
-
 </style>
 
+<main class="my-4">
+  <div class="container">
+    <h1 class="display-5">{{ title }}</h1>
+
+    {% if site.data.program %}
+    <hr class="my-4">
+    <div class="row">
+      <div class="accordion">
+
+        {% assign categories = site.data.program.legend.categories %}
+
+        {% for day in site.data.program.days %}
+        {% assign slug = day.name | slugify %}
+        <div class="accordion-item" id="{{ slug }}">
+          <h5 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ slug }}" aria-expanded="false" aria-controls="collapse-{{ slug }}">
+              <span class="h5 m-0">{{ day.name }}</span>
+            </button>
+          </h5>
+
+          <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
+            <div class="accordion-body mt-2">
 
 
-<div class="mb-4">
-  <div class="schedule-label">Visual Overview</div>
-  <div class="schedule-grid">
+              <div class="mb-4">
+                <div class="schedule-label">Visual Overview</div>
+                <div class="schedule-grid">
+                  {% for i in (9..18) %}
+                    <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
+                  {% endfor %}
+
+                  {% assign column_max = 6 %}
+                  {% assign columns = "" %}
+                  {% for i in (0..5) %}
+                    {% assign empty = "" | split: "," %}
+                    {% assign columns = columns | push: empty %}
+                  {% endfor %}
+
+                  {% for event in day.events %}
+                    {% assign start = event.time | split: ' - ' | first %}
+                    {% assign end = event.time | split: ' - ' | last %}
+                    {% assign sh = start | split: ':' | first | plus: 0 %}
+                    {% assign sm = start | split: ':' | last | plus: 0 %}
+                    {% assign eh = end | split: ':' | first | plus: 0 %}
+                    {% assign em = end | split: ':' | last | plus: 0 %}
+                    {% assign start_units = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 %}
+                    {% assign end_units = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 %}
+                    {% assign row_start = start_units | plus: 1 %}
+                    {% assign span_units = end_units | minus: start_units %}
+
+                    {% assign assigned_col = nil %}
+                    {% for i in (0..5) %}
+                      {% assign conflict = false %}
+                      {% assign col_events = columns[i] %}
+                      {% for e in col_events %}
+                        {% assign e_parts = e | split: "-" %}
+                        {% assign e_start = e_parts[0] | plus: 0 %}
+                        {% assign e_end = e_parts[1] | plus: 0 %}
+                        {% if start_units < e_end and end_units > e_start %}
+                          {% assign conflict = true %}
+                        {% endif %}
+                      {% endfor %}
+                      {% unless conflict %}
+                        {% assign assigned_col = i %}
+                        {% break %}
+                      {% endunless %}
+                    {% endfor %}
+
+                    {% assign current_col = assigned_col | plus: 2 %}
+                    <div class="event-block grid-column-{{ current_col }} event-{{ event.category | downcase | replace: ' ', '-' }}"
+                         style="grid-row: {{ row_start }} / span {{ span_units }};">
+                      {{ event.title }}
+                    </div>
+
+                    {% assign new_event = start_units | append: "-" | append: end_units %}
+                    {% assign updated_col = columns[assigned_col] | push: new_event %}
+                    {% assign before = columns | slice: 0, assigned_col %}
+                    {% assign after = columns | slice: assigned_col | slice: 1 %}
+                    {% assign columns = before | push: updated_col | concat: after %}
+                  {% endfor %}
+                </div>
+              </div>
 
 
-    {% for i in (9..18) %}
-      <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
-    {% endfor %}
-
-
-    {% assign column_max = 6 %}
-    {% assign columns = "" %}
-    {% for i in (0..5) %}
-      {% assign empty = "" | split: "," %}
-      {% assign columns = columns | push: empty %}
-    {% endfor %}
-
-
-    {% for event in day.events %}
-      {% assign start = event.time | split: ' - ' | first %}
-      {% assign end = event.time | split: ' - ' | last %}
-
-      {% assign sh = start | split: ':' | first | plus: 0 %}
-      {% assign sm = start | split: ':' | last | plus: 0 %}
-      {% assign eh = end | split: ':' | first | plus: 0 %}
-      {% assign em = end | split: ':' | last | plus: 0 %}
-
-      {% assign start_units = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 %}
-      {% assign end_units = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 %}
-      {% assign row_start = start_units | plus: 1 %}
-      {% assign span_units = end_units | minus: start_units %}
-
-      {% assign assigned_col = nil %}
-
-
-      {% for i in (0..5) %}
-        {% assign conflict = false %}
-        {% assign col_events = columns[i] %}
-        {% for e in col_events %}
-          {% assign e_parts = e | split: "-" %}
-          {% assign e_start = e_parts[0] | plus: 0 %}
-          {% assign e_end = e_parts[1] | plus: 0 %}
-          {% if start_units < e_end and end_units > e_start %}
-            {% assign conflict = true %}
-          {% endif %}
-        {% endfor %}
-        {% unless conflict %}
-          {% assign assigned_col = i %}
-          {% break %}
-        {% endunless %}
-      {% endfor %}
-
-      {% assign current_col = assigned_col | plus: 2 %}
-      <div class="event-block grid-column-{{ current_col }} event-{{ event.category | downcase | replace: ' ', '-' }}"
-           style="grid-row: {{ row_start }} / span {{ span_units }};">
-        {{ event.title }}
-      </div>
-
-      {% assign new_event = start_units | append: "-" | append: end_units %}
-      {% assign updated_col = columns[assigned_col] | push: new_event %}
-      {% assign before = columns | slice: 0, assigned_col %}
-      {% assign after = columns | slice: assigned_col | slice: 1 %}
-      {% assign columns = before | push: updated_col | concat: after %}
-    {% endfor %}
-  </div>
-</div>
-
-            
-            
-
-
-
-
-
+  
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
                 {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
-                {% assign start = event.time | split: ' to ' | slice: 0 %}
-                {% assign end = event.time | split: ' to ' | slice: 1 %}
                 <li class="d-flex flex-column flex-lg-row mb-4">
                   <div class="row col-lg-2 pb-2 border-start border-3 border-{{ color }} border-lg-0">
                     <small class="fw-light text-muted">{{ event.time }}</small>
@@ -174,7 +161,7 @@ padding: 6px 0;
                 {% endfor %}
               </ul>
 
-         
+
               {% assign legend = day.events | map: 'category' | compact | uniq %}
               {% if legend.size > 0 %}
               <div class="mt-4 mb-2">
@@ -192,13 +179,11 @@ padding: 6px 0;
           </div>
         </div>
         {% endfor %}
-
       </div>
     </div>
     {% endif %}
-
   </div>
 </main>
 
-
 <!-- {% include footer.html %} -->
+
