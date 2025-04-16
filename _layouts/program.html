@@ -73,89 +73,73 @@ padding: 6px 0;
 
 
 
-<main class="my-4">
-  <div class="container">
-
-    <h1 class="display-5">{{ title }}</h1>
-
+<div class="mb-4">
+  <div class="schedule-label">Visual Overview</div>
+  <div class="schedule-grid">
 
 
-    {% if site.data.program %}
-    <hr class="my-4">
-    <div class="row">
-      <div class="accordion">
+    {% for i in (9..18) %}
+      <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
+    {% endfor %}
 
-        {% assign categories = site.data.program.legend.categories %}
 
-        {% for day in site.data.program.days %}
-        {% assign slug = day.name | slugify %}
-        <div class="accordion-item" id="{{ slug }}">
-          <h5 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ slug }}" aria-expanded="false" aria-controls="collapse-{{ slug }}">
-              <span class="h5 m-0">{{ day.name }}</span>
-            </button>
-          </h5>
+    {% assign column_max = 6 %}
+    {% assign columns = "" %}
+    {% for i in (0..5) %}
+      {% assign empty = "" | split: "," %}
+      {% assign columns = columns | push: empty %}
+    {% endfor %}
 
-          <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
-            <div class="accordion-body mt-2">
 
-            
-            <div class="schedule-grid">
-              {% for i in (9..18) %}
-                <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
-              {% endfor %}
-            
-              {% assign column_max = 6 %}
-              {% assign columns = "" %}
-              {% for i in (0..5) %}
-                {% assign key = "col" | append: i %}
-                {% assign empty = "" | split: "," %}
-                {% assign columns = columns | push: empty %}
-              {% endfor %}
-            
-              {% for event in day.events %}
-                {% assign start = event.time | split: ' - ' | first %}
-                {% assign end = event.time | split: ' - ' | last %}
-                {% assign sh = start | split: ':' | first | plus: 0 %}
-                {% assign sm = start | split: ':' | last | plus: 0 %}
-                {% assign eh = end | split: ':' | first | plus: 0 %}
-                {% assign em = end | split: ':' | last | plus: 0 %}
-                {% assign start_units = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 %}
-                {% assign end_units = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 %}
-                {% assign row_start = start_units | plus: 1 %}
-                {% assign span_units = end_units | minus: start_units %}
-            
-                {% assign col_index = 0 %}
-                {% assign found_column = false %}
-                {% while found_column == false and col_index < column_max %}
-                  {% assign conflict = false %}
-                  {% assign col_events = columns[col_index] %}
-                  {% for e in col_events %}
-                    {% assign e_parts = e | split: "-" %}
-                    {% assign e_start = e_parts[0] | plus: 0 %}
-                    {% assign e_end = e_parts[1] | plus: 0 %}
-                    {% if start_units < e_end and end_units > e_start %}
-                      {% assign conflict = true %}
-                    {% endif %}
-                  {% endfor %}
-                  {% if conflict == false %}
-                    {% assign found_column = true %}
-                  {% else %}
-                    {% assign col_index = col_index | plus: 1 %}
-                  {% endif %}
-                {% endwhile %}
-            
-                {% assign current_col = "grid-column-" | append: col_index | plus: 2 %}
-                <div class="event-block {{ current_col }} event-{{ event.category | downcase | replace: ' ', '-' }}"
-                     style="grid-row: {{ row_start }} / span {{ span_units }};">
-                  {{ event.title }}
-                </div>
-            
-                {% assign new_event = start_units | append: "-" | append: end_units %}
-                {% assign updated_col = columns[col_index] | push: new_event %}
-                {% assign columns = columns | slice: 0, col_index | push: updated_col | concat: columns | slice: col_index | slice: 1 %}
-              {% endfor %}
-            </div>
+    {% for event in day.events %}
+      {% assign start = event.time | split: ' - ' | first %}
+      {% assign end = event.time | split: ' - ' | last %}
+
+      {% assign sh = start | split: ':' | first | plus: 0 %}
+      {% assign sm = start | split: ':' | last | plus: 0 %}
+      {% assign eh = end | split: ':' | first | plus: 0 %}
+      {% assign em = end | split: ':' | last | plus: 0 %}
+
+      {% assign start_units = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 %}
+      {% assign end_units = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 %}
+      {% assign row_start = start_units | plus: 1 %}
+      {% assign span_units = end_units | minus: start_units %}
+
+      {% assign assigned_col = nil %}
+
+
+      {% for i in (0..5) %}
+        {% assign conflict = false %}
+        {% assign col_events = columns[i] %}
+        {% for e in col_events %}
+          {% assign e_parts = e | split: "-" %}
+          {% assign e_start = e_parts[0] | plus: 0 %}
+          {% assign e_end = e_parts[1] | plus: 0 %}
+          {% if start_units < e_end and end_units > e_start %}
+            {% assign conflict = true %}
+          {% endif %}
+        {% endfor %}
+        {% unless conflict %}
+          {% assign assigned_col = i %}
+          {% break %}
+        {% endunless %}
+      {% endfor %}
+
+      {% assign current_col = assigned_col | plus: 2 %}
+      <div class="event-block grid-column-{{ current_col }} event-{{ event.category | downcase | replace: ' ', '-' }}"
+           style="grid-row: {{ row_start }} / span {{ span_units }};">
+        {{ event.title }}
+      </div>
+
+      {% assign new_event = start_units | append: "-" | append: end_units %}
+      {% assign updated_col = columns[assigned_col] | push: new_event %}
+      {% assign before = columns | slice: 0, assigned_col %}
+      {% assign after = columns | slice: assigned_col | slice: 1 %}
+      {% assign columns = before | push: updated_col | concat: after %}
+    {% endfor %}
+  </div>
+</div>
+
             
             
 
