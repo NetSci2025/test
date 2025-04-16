@@ -105,33 +105,32 @@ padding: 6px 0;
             
               <div class="schedule-grid">
             
-                <!-- Time column (9:00 to 18:00 in 30-min steps) -->
+                <!-- Time column -->
                 {% for i in (9..18) %}
                   <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
                 {% endfor %}
             
-                <!-- Event blocks -->
-                {% assign columns = "" %}
-                {% assign column_count = 3 %} {# Set how many columns max to use #}
-                {% assign timeline = "" %}
+                <!-- Each day renders only its own event blocks -->
+                {% assign event_counter = 0 %}
+                {% assign column_count = 3 %}
             
                 {% for event in day.events %}
-                  {%- assign start = event.time | split: ' - ' | first -%}
-                  {%- assign end = event.time | split: ' - ' | last -%}
+                  {% assign start = event.time | split: ' - ' | first %}
+                  {% assign end = event.time | split: ' - ' | last %}
             
-                  {%- assign sh = start | split: ':' | first | plus: 0 -%}
-                  {%- assign sm = start | split: ':' | last | plus: 0 -%}
-                  {%- assign eh = end | split: ':' | first | plus: 0 -%}
-                  {%- assign em = end | split: ':' | last | plus: 0 -%}
+                  {% assign sh = start | split: ':' | first | plus: 0 %}
+                  {% assign sm = start | split: ':' | last | plus: 0 %}
+                  {% assign eh = end | split: ':' | first | plus: 0 %}
+                  {% assign em = end | split: ':' | last | plus: 0 %}
             
-                  {%- assign start_unit = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 -%}
-                  {%- assign end_unit = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 -%}
-                  {%- assign span_unit = end_unit | minus: start_unit -%}
-                  {%- assign row_start = start_unit | plus: 1 -%}
+                  {% assign start_unit = sh | minus: 9 | times: 2 | plus: sm | divided_by: 30 %}
+                  {% assign end_unit = eh | minus: 9 | times: 2 | plus: em | divided_by: 30 %}
+                  {% assign span_unit = end_unit | minus: start_unit %}
+                  {% assign row_start = start_unit | plus: 1 %}
             
-                  {# 🔁 Pick column (rotate or assign by overlap if needed) #}
-                  {%- assign col = forloop.index0 | modulo: column_count | plus: 2 -%}
-                  {%- assign column_class = "grid-column-" | append: col -%}
+                  {% assign col = event_counter | modulo: column_count | plus: 2 %}
+                  {% assign column_class = 'grid-column-' | append: col %}
+                  {% assign event_counter = event_counter | plus: 1 %}
             
                   <div class="event-block {{ column_class }} event-{{ event.category | downcase | replace: ' ', '-' }}"
                        style="grid-row: {{ row_start }} / span {{ span_unit }};">
@@ -140,6 +139,7 @@ padding: 6px 0;
                 {% endfor %}
               </div>
             </div>
+
 
 
 
