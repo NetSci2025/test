@@ -15,7 +15,6 @@ table.schedule-table {
   font-size: 0.8rem;
   table-layout: fixed;
 }
-table.schedule-table th,
 table.schedule-table td {
   border: 1px solid #ccc;
   padding: 4px;
@@ -23,19 +22,16 @@ table.schedule-table td {
   vertical-align: middle;
   word-wrap: break-word;
 }
-table.schedule-table th {
-  background-color: #f2f2f2;
-}
-.schedule-label {
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding: 6px 0;
-}
 .bg-yellow {
   background-color: #ffe699;
 }
 .bg-orange {
   background-color: #f4b084;
+}
+.event-text {
+  font-weight: bold;
+  font-size: 0.75rem;
+  line-height: 1.1rem;
 }
 </style>
 
@@ -62,43 +58,63 @@ table.schedule-table th {
           <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
             <div class="accordion-body mt-2">
 
-              {% if day.name == "Mon 2 June 2025" %}
               <div class="mb-4">
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
                   {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
+                  {% assign columns = [] %}
+
+                  {% for event in day.events %}
+                    {% assign e_start = event.time | split: ' - ' | first %}
+                    {% assign e_end = event.time | split: ' - ' | last %}
+                    {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
+                    {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+                    {% assign placed = false %}
+                    {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
+                    {% assign row_start = e_start_m | minus: 540 | divided_by: 30 %}
+
+                    {% for col in (0..columns.size) %}
+                      {% assign col_events = columns[col] | default: '' | split: '||' %}
+                      {% assign conflict = false %}
+                      {% for e in col_events %}
+                        {% assign r = e | split: ':' %}
+                        {% assign rs = r[0] | plus: 0 %}
+                        {% assign re = rs | plus: r[1] | plus: 0 %}
+                        {% if row_start < re and row_start | plus: span > rs %}
+                          {% assign conflict = true %}
+                        {% endif %}
+                      {% endfor %}
+                      {% unless conflict %}
+                        {% assign event_info = row_start | append: ':' | append: span | append: ':' | append: event.title %}
+                        {% assign columns = columns | slice: 0, col | push: columns[col] | append: '||' | append: event_info | split: '||' | concat: columns | slice: col+1, columns.size %}
+                        {% break %}
+                      {% endunless %}
+                    {% endfor %}
+                  {% endfor %}
 
                   <table class="schedule-table">
-                    <thead>
-                      <tr>
-                        <th>Time</th>
-                        {% for event in day.events %}
-                          <th>{{ event.title }}</th>
-                        {% endfor %}
-                      </tr>
-                    </thead>
                     <tbody>
-                      {% for time in time_slots %}
+                      {% for i in (0..17) %}
                       <tr>
-                        <td>{{ time }}</td>
-                        {% for event in day.events %}
-                          {% assign start = event.time | split: ' - ' | first %}
-                          {% assign end = event.time | split: ' - ' | last %}
-                          {% assign sh = start | split: ':' | first | plus: 0 %}
-                          {% assign sm = start | split: ':' | last | plus: 0 %}
-                          {% assign eh = end | split: ':' | first | plus: 0 %}
-                          {% assign em = end | split: ':' | last | plus: 0 %}
-                          {% assign t_h = time | split: ':' | first | plus: 0 %}
-                          {% assign t_m = time | split: ':' | last | plus: 0 %}
-                          {% assign t_minutes = t_h | times: 60 | plus: t_m %}
-                          {% assign start_minutes = sh | times: 60 | plus: sm %}
-                          {% assign end_minutes = eh | times: 60 | plus: em %}
-
-                          {% if t_minutes >= start_minutes and t_minutes < end_minutes %}
-                            <td class="bg-yellow"></td>
-                          {% else %}
-                            <td></td>
-                          {% endif %}
+                        {% for col in (0..columns.size | minus: 1) %}
+                          {% assign cell_content = '' %}
+                          {% assign printed = false %}
+                          {% assign col_events = columns[col] | split: '||' %}
+                          {% for e in col_events %}
+                            {% assign parts = e | split: ':' %}
+                            {% assign rs = parts[0] | plus: 0 %}
+                            {% assign sp = parts[1] | plus: 0 %}
+                            {% if rs == i %}
+                              {% assign bg_class = col | modulo: 2 | plus: 1 | prepend: 'bg-' | replace: '1', 'yellow' | replace: '2', 'orange' %}
+                              <td rowspan="{{ sp }}" class="{{ bg_class }}">
+                                <div class="event-text">{{ parts[2] }}</div>
+                              </td>
+                              {% assign printed = true %}
+                            {% elsif i > rs and i < rs | plus: sp %}
+                              {% assign printed = true %}
+                            {% endif %}
+                          {% endfor %}
+                          {% unless printed %}<td></td>{% endunless %}
                         {% endfor %}
                       </tr>
                       {% endfor %}
@@ -106,7 +122,6 @@ table.schedule-table th {
                   </table>
                 </div>
               </div>
-              {% endif %}
 
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
@@ -149,4 +164,5 @@ table.schedule-table th {
 </main>
 
 <!-- {% include footer.html %} -->
+
 
