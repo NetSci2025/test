@@ -64,18 +64,12 @@ table.schedule-table th {
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% for i in (0..11) %}
-                        <th>{{ i }}</th>
-                        {% endfor %}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                      {% for time in time_slots %}
-                      <tr>
-                        <td>{{ time }}</td>
-                        {% for i in (0..11) %}
-                        <td>
+                        {% assign max_columns = 0 %}
+                        {% assign time_blocks = "" | split: "," %}
+                        {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
+
+                        {% for time in time_slots %}
+                          {% assign slot_events = "" | split: "," %}
                           {% assign start_minutes = time | split: ":" | first | plus: 0 | times: 60 | plus: time | split: ":" | last | plus: 0 %}
                           {% for event in day.events %}
                             {% assign e_start = event.time | split: ' - ' | first %}
@@ -83,15 +77,27 @@ table.schedule-table th {
                             {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
                             {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
                             {% if start_minutes >= e_start_m and start_minutes < e_end_m %}
-                              {% assign hash = event.title | size | modulo: 12 %}
-                              {% if hash == i %}
-                                {{ event.title }}
-                              {% endif %}
+                              {% assign slot_events = slot_events | push: event.title %}
                             {% endif %}
                           {% endfor %}
-                        </td>
+                          {% if slot_events.size > max_columns %}
+                            {% assign max_columns = slot_events.size %}
+                          {% endif %}
+                          {% assign time_blocks = time_blocks | push: slot_events %}
                         {% endfor %}
+
+                        {% for i in (1..max_columns) %}<th>{{ i }}</th>{% endfor %}
                       </tr>
+                    </thead>
+                    <tbody>
+                      {% for block in time_blocks %}
+                        {% assign slot_time = time_slots[forloop.index0] %}
+                        <tr>
+                          <td>{{ slot_time }}</td>
+                          {% for i in (0..max_columns-1) %}
+                          <td>{{ block[i] }}</td>
+                          {% endfor %}
+                        </tr>
                       {% endfor %}
                     </tbody>
                   </table>
@@ -140,6 +146,7 @@ table.schedule-table th {
 </main>
 
 <!-- {% include footer.html %} -->
+
 
 
 
