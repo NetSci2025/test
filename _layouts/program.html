@@ -6,26 +6,37 @@ layout: default
 {% include header.html %}
 
 <style>
-.schedule-label {
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding: 6px 0;
+main {
+  padding-top: 70px;
 }
-.table-schedule {
+table.schedule-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.8rem;
   table-layout: fixed;
 }
-.table-schedule th, .table-schedule td {
+table.schedule-table th,
+table.schedule-table td {
   border: 1px solid #ccc;
   padding: 4px;
   text-align: center;
   vertical-align: middle;
   word-wrap: break-word;
 }
-.bg-yellow { background-color: #fff2cc; }
-.bg-orange { background-color: #fce4d6; }
+table.schedule-table th {
+  background-color: #f2f2f2;
+}
+.schedule-label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 6px 0;
+}
+.bg-yellow {
+  background-color: #ffe699;
+}
+.bg-orange {
+  background-color: #f4b084;
+}
 </style>
 
 <main class="my-4">
@@ -36,7 +47,9 @@ layout: default
     <hr class="my-4">
     <div class="row">
       <div class="accordion">
+
         {% assign categories = site.data.program.legend.categories %}
+
         {% for day in site.data.program.days %}
         {% assign slug = day.name | slugify %}
         <div class="accordion-item" id="{{ slug }}">
@@ -53,68 +66,61 @@ layout: default
               <div class="mb-4">
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
-                  <table class="table-schedule">
+                  {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
+                  {% assign events = day.events %}
+                  {% assign grid = {} %}
+                  {% assign max_col = 0 %}
+
+                  {% for event in events %}
+                    {% assign e_start = event.time | split: ' - ' | first %}
+                    {% assign e_end = event.time | split: ' - ' | last %}
+                    {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
+                    {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+                    {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
+
+                    {% assign placed = false %}
+                    {% for col in (0..11) %}
+                      {% assign overlap = false %}
+                      {% for offset in (0..span | minus: 1) %}
+                        {% assign row_time = e_start_m | plus: offset | times: 30 | divided_by: 30 %}
+                        {% assign key = row_time | append: '-' | append: col %}
+                        {% if grid[key] %}{% assign overlap = true %}{% endif %}
+                      {% endfor %}
+                      {% unless overlap %}
+                        {% assign key = e_start_m | append: '-' | append: col %}
+                        {% assign grid = grid | merge: key | append: ':' | append: event.title | append: ':' | append: span %}
+                        {% if col > max_col %}{% assign max_col = col %}{% endif %}
+                        {% assign placed = true %}
+                        {% break %}
+                      {% endunless %}
+                    {% endfor %}
+                  {% endfor %}
+
+                  <table class="schedule-table">
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% assign used_columns = 0 %}
-                        {% assign event_columns = "" | split: "," %}
-                        {% for event in day.events %}
-                          {% assign exists = false %}
-                          {% for title in event_columns %}
-                            {% if title == event.title %}
-                              {% assign exists = true %}
-                            {% endif %}
-                          {% endfor %}
-                          {% unless exists %}
-                            {% assign event_columns = event_columns | push: event.title %}
-                            {% assign used_columns = used_columns | plus: 1 %}
-                          {% endunless %}
-                        {% endfor %}
-                        {% for i in (0..used_columns | minus: 1) %}
-                          <th class="{% cycle 'bg-yellow', 'bg-orange' %}">Track {{ i | plus: 1 }}</th>
-                        {% endfor %}
+                        {% for i in (0..max_col) %}<th></th>{% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                      {% assign active_cells = "" | split: "," %}
-                      {% for time in time_slots %}
+                      {% assign row_colors = "bg-yellow,bg-orange" | split: "," %}
+                      {% assign base_time = 9 | times: 60 %}
+                      {% for t in (0..17) %}
+                        {% assign t_mins = base_time | plus: t | times: 30 %}
+                        {% assign h = t_mins | divided_by: 60 %}
+                        {% assign m = t_mins | modulo: 60 %}
+                        {% assign time = h | prepend: '0' | slice: -2, 2 | append: ':' | append: m | prepend: '0' | slice: -2, 2 %}
                         <tr>
                           <td>{{ time }}</td>
-                          {% for col in event_columns %}
-                            {% assign rendered = false %}
-                            {% for event in day.events %}
-                              {% if event.title == col %}
-                                {% assign start = event.time | split: ' - ' | first %}
-                                {% assign end = event.time | split: ' - ' | last %}
-                                {% assign sh = start | split: ":" | first | plus: 0 %}
-                                {% assign sm = start | split: ":" | last | plus: 0 %}
-                                {% assign eh = end | split: ":" | first | plus: 0 %}
-                                {% assign em = end | split: ":" | last | plus: 0 %}
-                                {% assign start_minutes = sh | times: 60 | plus: sm %}
-                                {% assign end_minutes = eh | times: 60 | plus: em %}
-                                {% assign row_minutes = time | split: ":" | first | times: 60 | plus: time | split: ":" | last %}
-                                {% assign duration = end_minutes | minus: start_minutes %}
-                                {% assign rowspan = duration | divided_by: 30 %}
-
-                                {% assign cell_key = time | append: "-" | append: col %}
-                                {% unless active_cells contains cell_key %}
-                                  {% if row_minutes == start_minutes %}
-                                    {% assign active_cells = active_cells | push: cell_key %}
-                                    <td rowspan="{{ rowspan }}" class="{% cycle 'bg-yellow', 'bg-orange' %}">
-                                      {{ event.title }}
-                                    </td>
-                                    {% assign rendered = true %}
-                                  {% endif %}
-                                {% else %}
-                                  {% assign rendered = true %}
-                                {% endunless %}
-                              {% endif %}
-                            {% endfor %}
-                            {% unless rendered %}
+                          {% for c in (0..max_col) %}
+                            {% assign key = t_mins | append: '-' | append: c %}
+                            {% assign cell = grid[key] | split: ':' %}
+                            {% if cell[0] and cell[0] != '' %}
+                              <td rowspan="{{ cell[2] }}" class="{{ row_colors[c | modulo: 2] }}">{{ cell[1] }}</td>
+                            {% elsif grid[key] == nil %}
                               <td></td>
-                            {% endunless %}
+                            {% endif %}
                           {% endfor %}
                         </tr>
                       {% endfor %}
@@ -165,7 +171,6 @@ layout: default
 </main>
 
 <!-- {% include footer.html %} -->
-
 
 
 
