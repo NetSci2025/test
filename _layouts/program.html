@@ -76,8 +76,19 @@ table.schedule-table th {
                         <td>{{ time }}</td>
                         {% for i in (0..11) %}
                         <td>
-                          {% capture key %}slot_{{ time }}_{{ i }}{% endcapture %}
-                          {{ site.data.static_table[key] }}
+                          {% assign start_minutes = time | split: ":" | first | plus: 0 | times: 60 | plus: time | split: ":" | last | plus: 0 %}
+                          {% for event in day.events %}
+                            {% assign e_start = event.time | split: ' - ' | first %}
+                            {% assign e_end = event.time | split: ' - ' | last %}
+                            {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
+                            {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+                            {% if start_minutes >= e_start_m and start_minutes < e_end_m %}
+                              {% assign hash = event.title | size | modulo: 12 %}
+                              {% if hash == i %}
+                                {{ event.title }}
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
                         </td>
                         {% endfor %}
                       </tr>
@@ -97,17 +108,9 @@ table.schedule-table th {
                   </div>
                   <div class="row col-lg-10 border-start border-3 border-{{ color }}">
                     <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
-                    {% if event.subtitle %}
-                    <p class="fw-light m-0">{{ event.subtitle }}</p>
-                    {% endif %}
-                    {% if event.location %}
-                    <p class="fw-light m-0"><strong>Location:</strong> {{ event.location }}</p>
-                    {% endif %}
-                    {% if event.link %}
-                    <p class="fw-light m-0">
-                      <a href="{{ event.link }}" target="_blank">Check the detailed program here</a>
-                    </p>
-                    {% endif %}
+                    {% if event.subtitle %}<p class="fw-light m-0">{{ event.subtitle }}</p>{% endif %}
+                    {% if event.location %}<p class="fw-light m-0"><strong>Location:</strong> {{ event.location }}</p>{% endif %}
+                    {% if event.link %}<p class="fw-light m-0"><a href="{{ event.link }}" target="_blank">Check the detailed program here</a></p>{% endif %}
                   </div>
                 </li>
                 {% endfor %}
