@@ -104,41 +104,83 @@ padding: 6px 0;
               <div class="schedule-label">Visual Overview</div>
               <div class="schedule-grid">
             
-                <!-- ⏱ Time labels on the left (from 09:00 to 18:00) -->
+                <!-- Time labels -->
                 {% for i in (9..18) %}
-                  <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">
-                    {{ i }}:00
-                  </div>
+                  <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">{{ i }}:00</div>
                 {% endfor %}
             
-            
-
+                <!-- Event blocks -->
                 <div class="event-block room-a event-wins" style="grid-row: 2 / span 6;">
                   School: Manlio De Domenico
                 </div>
             
-
-                <div class="event-block room-b event-netbio" style="grid-row: 2 / span 6;">
+                <div class="event-block room-a event-wins" style="grid-row: 12 / span 6;">
+                  School: Huijuan Wang
+                </div>
+            
+                <div class="event-block room-b event-netbio" style="grid-row: 2 / span 16;">
+                  Satellite: Networks in Science of Science
+                </div>
+            
+                <div class="event-block room-c event-netrg" style="grid-row: 2 / span 16;">
+                  Satellite: HONAI
+                </div>
+            
+                <div class="event-block room-a event-netbio" style="grid-row: 2 / span 16;">
                   Satellite: NetBioMed
                 </div>
             
-
-                <div class="event-block room-c event-netrg" style="grid-row: 2 / span 6;">
-                  Satellite: NetRG
+                <div class="event-block room-b event-netrg" style="grid-row: 2 / span 16;">
+                  Satellite: Network Neuroscience
                 </div>
             
-
-                <div class="event-block room-a event-wins" style="grid-row: 12 / span 3;">
-                  Satellite: WiNS
+                <div class="event-block room-c event-netbio" style="grid-row: 2 / span 16;">
+                  Satellite: Software & Data for Network Science
                 </div>
             
-
+                <div class="event-block room-a event-netrg" style="grid-row: 2 / span 16;">
+                  Satellite: TENET
+                </div>
+            
+                <div class="event-block room-b event-netbio" style="grid-row: 2 / span 6;">
+                  DAGshop
+                </div>
+            
+                <div class="event-block room-c event-wins" style="grid-row: 12 / span 6;">
+                  WiNS @ NetSci
+                </div>
+            
+                <div class="event-block room-a event-netbio" style="grid-row: 2 / span 6;">
+                  CPIN
+                </div>
+            
+                <div class="event-block room-b event-netrg" style="grid-row: 12 / span 6;">
+                  Network Science & SDGs
+                </div>
+            
+                <div class="event-block room-c event-netbio" style="grid-row: 2 / span 6;">
+                  NetRG
+                </div>
+            
+                <div class="event-block room-a event-netrg" style="grid-row: 12 / span 6;">
+                  Physical Networks III
+                </div>
+            
+                <div class="event-block room-b event-netbio" style="grid-row: 2 / span 6;">
+                  Urban Mobility & Health
+                </div>
+            
+                <div class="event-block room-c event-netrg" style="grid-row: 12 / span 6;">
+                  Network Medicine
+                </div>
+            
                 <div class="event-block room-b event-cluster" style="grid-row: 12 / span 3;">
                   Networking & Clustering
                 </div>
             
               </div>
             </div>
+
 
 
 
