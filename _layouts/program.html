@@ -9,16 +9,18 @@ layout: default
 main {
   padding-top: 70px;
 }
-.schedule-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2px;
+.visual-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
-.schedule-cell {
-  padding: 4px;
+.visual-card {
+  flex: 1 1 260px;
+  padding: 10px;
+  color: #000;
   font-size: 0.8rem;
-  text-align: center;
   border: 1px solid #ccc;
+  border-radius: 4px;
 }
 .bg-yellow {
   background-color: #ffe699;
@@ -31,6 +33,7 @@ main {
 <main class="my-4">
   <div class="container">
     <h1 class="display-5">{{ title }}</h1>
+
     {% if site.data.program %}
     <hr class="my-4">
     <div class="accordion">
@@ -44,27 +47,22 @@ main {
         </h5>
         <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
           <div class="accordion-body mt-2">
-            {% if day.name == "Mon 2 June 2025" %}
-            <div class="mb-4">
-              <div class="schedule-grid">
-                {% assign colors = "bg-yellow,bg-orange" | split: "," %}
-                {% assign index = 0 %}
-                {% for event in day.events %}
-                  {% assign span_minutes = event.time | split: " - " %}
-                  {% assign start = span_minutes[0] %}
-                  {% assign end = span_minutes[1] %}
-                  {% assign bg = colors[index | modulo: 2] %}
-                  <div class="schedule-cell {{ bg }}">
-                    <strong>{{ event.time }}</strong><br/>
-                    {{ event.title }}
-                  </div>
-                  {% assign index = index | plus: 1 %}
-                {% endfor %}
-              </div>
-            </div>
-            {% endif %}
 
-            <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
+            <div class="schedule-label mb-2">Visual Overview</div>
+            <div class="visual-grid">
+              {% assign colors = "bg-yellow,bg-orange" | split: "," %}
+              {% assign index = 0 %}
+              {% for event in day.events %}
+                {% assign color = colors[index | modulo: 2] %}
+                <div class="visual-card {{ color }}">
+                  <strong>{{ event.time }}</strong><br/>
+                  {{ event.title }}
+                </div>
+                {% assign index = index | plus: 1 %}
+              {% endfor %}
+            </div>
+
+            <ul class="list-unstyled ms-3 ms-lg-0 lh-sm mt-4">
               {% for event in day.events %}
               <li class="d-flex flex-column flex-lg-row mb-4">
                 <div class="row col-lg-2 pb-2 border-start border-3 border-danger border-lg-0">
