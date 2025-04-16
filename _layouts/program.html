@@ -130,9 +130,10 @@ main {
                     
                     {% assign before = columns | slice: 0, assigned_col %}
                     {% assign after_raw = columns | slice: assigned_col | slice: 1 %}
-                    {% assign after = after_raw | default: "" | split: "||" %}  {# forces array even if empty #}
+                    {% assign after = after_raw | default: "" | split: "||" %} {% comment %} forces array even if empty {% endcomment %}
                     
                     {% assign columns = before | push: updated_col | concat: after %}
+
 
                   {% endfor %}
                 </div>
