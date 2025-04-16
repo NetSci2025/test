@@ -72,21 +72,27 @@ table.schedule-table td.filled {
                     <tbody>
                       {% for time in time_slots %}
                       <tr>
-                        <td>{{ time }}</td>
+                        <td><strong>{{ time }}</strong></td>
                         {% for col in columns %}
                           {% assign event = day.events | where: "title", col | first %}
                           {% assign e_start = event.time | split: ' - ' | first %}
                           {% assign e_end = event.time | split: ' - ' | last %}
-                          {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-                          {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-                          {% assign current_m = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
+                          {% assign e_start_h = e_start | split: ':' | first | plus: 0 %}
+                          {% assign e_start_m = e_start | split: ':' | last | plus: 0 %}
+                          {% assign e_end_h = e_end | split: ':' | first | plus: 0 %}
+                          {% assign e_end_m = e_end | split: ':' | last | plus: 0 %}
+                          {% assign current_h = time | split: ':' | first | plus: 0 %}
+                          {% assign current_m = time | split: ':' | last | plus: 0 %}
+                          {% assign e_start_total = e_start_h | times: 60 | plus: e_start_m %}
+                          {% assign e_end_total = e_end_h | times: 60 | plus: e_end_m %}
+                          {% assign current_total = current_h | times: 60 | plus: current_m %}
 
-                          {% if current_m == e_start_m %}
-                            {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-                            <td rowspan="{{ span }}" class="filled {{ forloop.parentloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">
-                              <strong>{{ event.title }}</strong><br>{{ event.time }}
+                          {% if current_total == e_start_total %}
+                            {% assign span = e_end_total | minus: e_start_total | divided_by: 30 %}
+                            <td rowspan="{{ span }}" class="filled {{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">
+                              <strong>{{ event.title }}</strong><br><small>{{ event.time }}</small>
                             </td>
-                          {% elsif current_m > e_start_m and current_m < e_end_m %}
+                          {% elsif current_total > e_start_total and current_total < e_end_total %}
                             {% continue %}
                           {% else %}
                             <td></td>
@@ -141,7 +147,6 @@ table.schedule-table td.filled {
 </main>
 
 <!-- {% include footer.html %} -->
-
 
 
 
