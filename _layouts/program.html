@@ -67,90 +67,78 @@ table.schedule-table th {
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
                   {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  
-                  {% assign active_columns = "" | split: "," %}
-                  {% assign cell_map = "" | split: "," %}
-                  
+                  {% assign column_events = [] %}
+
                   {% for event in day.events %}
+                    {% assign placed = false %}
                     {% assign e_start = event.time | split: ' - ' | first %}
                     {% assign e_end = event.time | split: ' - ' | last %}
-                    {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
-                    {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
-                    {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-                    {% assign col = active_columns.size %}
-                    {% assign added = false %}
-
-                    {% for i in (0..active_columns.size) %}
-                      {% assign overlap = false %}
-                      {% for t in (0..time_slots.size) %}
-                        {% assign slot_key = time_slots[t] | append: "-col" | append: i %}
-                        {% if cell_map contains slot_key %}
-                          {% assign overlap = true %}
+                    {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
+                    {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
+                    {% assign e_span = e_end_m | minus: e_start_m | divided_by: 30 %}
+                    {% for col in (0..20) %}
+                      {% assign conflict = false %}
+                      {% assign col_key = column_events[col] | default: "" %}
+                      {% for i in (0..e_span | minus: 1) %}
+                        {% assign t = e_start_m | plus: i | times: 1 %}
+                        {% assign conflict_check = col_key | split: "," | where_exp: "x", "x == t" %}
+                        {% if conflict_check.size > 0 %}
+                          {% assign conflict = true %}
                         {% endif %}
                       {% endfor %}
-                      {% unless overlap %}
-                        {% assign col = i %}
-                        {% assign added = true %}
+                      {% unless conflict %}
+                        {% assign events = column_events %}
+                        {% assign event_dict = events | push: col_key %}
+                        {% assign new_times = col_key %}
+                        {% for i in (0..e_span | minus: 1) %}
+                          {% assign t = e_start_m | plus: i | times: 1 %}
+                          {% assign new_times = new_times | append: "," | append: t %}
+                        {% endfor %}
+                        {% assign __ = column_events[col] = new_times %}
+                        {% assign event.col = col %}
+                        {% assign event.rowspan = e_span %}
+                        {% assign event.start_m = e_start_m %}
+                        {% assign event.placed = true %}
                         {% break %}
                       {% endunless %}
                     {% endfor %}
-
-                    {% if col >= active_columns.size %}
-                      {% assign active_columns = active_columns | push: col %}
-                    {% endif %}
-
-                    {% assign start_index = time_slots index_of: e_start %}
-                    {% assign cell_key = e_start | append: "-col" | append: col %}
-                    {% assign cell_val = event.title | append: "||" | append: span %}
-                    {% assign cell_map = cell_map | push: cell_key | append: "::" | append: cell_val %}
                   {% endfor %}
 
                   <table class="schedule-table">
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% for i in (0..active_columns.size | minus: 1) %}
-                        <th></th>
+                        {% assign max_cols = column_events.size %}
+                        {% for i in (0..max_cols | minus: 1) %}
+                          <th></th>
                         {% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      {% for time in time_slots %}
-                      <tr>
-                        <td>{{ time }}</td>
-                        {% for col in (0..active_columns.size | minus: 1) %}
-                          {% assign cell_key = time | append: "-col" | append: col %}
-                          {% assign found = false %}
-                          {% for item in cell_map %}
-                            {% assign kv = item | split: "::" %}
-                            {% if kv[0] == cell_key %}
-                              {% assign parts = kv[1] | split: "||" %}
-                              {% assign text = parts[0] %}
-                              {% assign span = parts[1] %}
-                              <td rowspan="{{ span }}" class="{% if col | modulo: 2 == 0 %}bg-yellow{% else %}bg-orange{% endif %}">{{ text }}</td>
-                              {% assign found = true %}
-                              {% break %}
-                            {% endif %}
-                          {% endfor %}
-                          {% unless found %}
-                            {% assign skip = false %}
-                            {% for s in (1..5) %}
-                              {% assign prev_index = forloop.index0 | minus: s %}
-                              {% assign prev_key = time_slots[prev_index] | append: "-col" | append: col %}
-                              {% for item in cell_map %}
-                                {% if item contains prev_key %}
-                                  {% assign parts = item | split: "::" | last | split: "||" %}
-                                  {% assign span = parts[1] | plus: 0 %}
-                                  {% if s < span %}
-                                    {% assign skip = true %}
-                                  {% endif %}
+                      {% for t in time_slots %}
+                        {% assign t_m = t | split: ':' | first | plus: 0 | times: 60 | plus: t | split: ':' | last | plus: 0 %}
+                        <tr>
+                          <td>{{ t }}</td>
+                          {% for c in (0..max_cols | minus: 1) %}
+                            {% assign printed = false %}
+                            {% for e in day.events %}
+                              {% if e.placed and e.col == c and e.start_m == t_m %}
+                                <td rowspan="{{ e.rowspan }}" class="{{ c | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">{{ e.title }}</td>
+                                {% assign printed = true %}
+                                {% break %}
+                              {% endif %}
+                            {% endfor %}
+                            {% unless printed %}
+                              {% assign skip = false %}
+                              {% for e in day.events %}
+                                {% if e.placed and e.col == c and t_m > e.start_m and t_m < e.start_m | plus: e.rowspan | times: 30 %}
+                                  {% assign skip = true %}
                                 {% endif %}
                               {% endfor %}
-                            {% endfor %}
-                            {% unless skip %}<td></td>{% endunless %}
-                          {% endunless %}
-                        {% endfor %}
-                      </tr>
+                              {% unless skip %}<td></td>{% endunless %}
+                            {% endunless %}
+                          {% endfor %}
+                        </tr>
                       {% endfor %}
                     </tbody>
                   </table>
