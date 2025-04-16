@@ -20,16 +20,6 @@ main {
     <h1 class="display-5">{{ title }}</h1>
 
 
-    <nav class="mb-4">
-      <ul class="nav nav-pills flex-wrap">
-        {% for day in site.data.program.days %}
-          {% assign slug = day.name | slugify %}
-          <li class="nav-item me-2 mb-2">
-            <a class="nav-link btn btn-outline-primary" href="#{{ slug }}">{{ day.name }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
 
     {% if site.data.program %}
     <hr class="my-4">
