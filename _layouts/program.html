@@ -12,7 +12,66 @@ main {
     padding-top: 70px;
 }
 
+.schedule-grid {
+display: grid;
+grid-template-columns: 80px repeat(3, 1fr); 
+grid-template-rows: repeat(20, 1fr); 
+gap: 2px;
+border: 1px solid #ddd;
+background: #f8f9fa;
+}
+
+.time-slot {
+grid-column: 1 / 2;
+border-right: 1px solid #ccc;
+text-align: right;
+padding: 5px 8px;
+font-size: 0.75rem;
+color: #666;
+}
+
+.event-block {
+padding: 4px;
+font-size: 0.75rem;
+border-radius: 4px;
+background-color: #ffe5b4; 
+border-left: 4px solid #ffc107;
+overflow: hidden;
+}
+
+.room-a { grid-column: 2 / 3; }
+.room-b { grid-column: 3 / 4; }
+.room-c { grid-column: 4 / 5; }
+
+.event-wins {
+background-color: #d1ecf1;
+border-left-color: #17a2b8;
+}
+
+.event-cluster {
+background-color: #f8d7da;
+border-left-color: #dc3545;
+}
+
+.event-netbio {
+background-color: #d4edda;
+border-left-color: #28a745;
+}
+
+.event-netrg {
+background-color: #fff3cd;
+border-left-color: #ffc107;
+}
+
+.schedule-label {
+font-weight: bold;
+font-size: 0.9rem;
+padding: 6px 0;
+}
+
 </style>
+
+
 
 <main class="my-4">
   <div class="container">
@@ -41,32 +100,46 @@ main {
             <div class="accordion-body mt-2">
 
             
-              <div class="table-responsive mb-4">
-                <table class="table table-bordered text-center align-middle">
-                  <thead>
-                    <tr>
-                      <th style="width: 15%;">Time</th>
-                      <th style="width: 28%;">Room A</th>
-                      <th style="width: 28%;">Room B</th>
-                      <th style="width: 29%;">Room C</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>09:30 – 12:30</td>
-                      <td>School: Manlio De Domenico</td>
-                      <td>Satellite: NetBioMed</td>
-                      <td>Satellite: NetRG</td>
-                    </tr>
-                    <tr>
-                      <td>14:30 – 16:00</td>
-                      <td>Satellite: WiNS</td>
-                      <td>Networking & Clustering</td>
-                      <td>–</td>
-                    </tr>
-                  </tbody>
-                </table>
+            <div class="mb-4">
+              <div class="schedule-label">Visual Overview</div>
+              <div class="schedule-grid">
+            
+                <!-- ⏱ Time labels on the left (from 09:00 to 18:00) -->
+                {% for i in (9..18) %}
+                  <div class="time-slot" style="grid-row: {{ (i-9)*2 + 1 }} / span 2;">
+                    {{ i }}:00
+                  </div>
+                {% endfor %}
+            
+            
+
+                <div class="event-block room-a event-wins" style="grid-row: 2 / span 6;">
+                  School: Manlio De Domenico
+                </div>
+            
+
+                <div class="event-block room-b event-netbio" style="grid-row: 2 / span 6;">
+                  Satellite: NetBioMed
+                </div>
+            
+
+                <div class="event-block room-c event-netrg" style="grid-row: 2 / span 6;">
+                  Satellite: NetRG
+                </div>
+            
+
+                <div class="event-block room-a event-wins" style="grid-row: 12 / span 3;">
+                  Satellite: WiNS
+                </div>
+            
+
+                <div class="event-block room-b event-cluster" style="grid-row: 12 / span 3;">
+                  Networking & Clustering
+                </div>
+            
               </div>
+            </div>
+
 
 
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
@@ -122,6 +195,5 @@ main {
   </div>
 </main>
 
-</main>
 
 <!-- {% include footer.html %} -->
