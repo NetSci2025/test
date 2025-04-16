@@ -11,12 +11,111 @@ legend:
       color: grey-6
     - name: Other Activities
       color: green-6
+    - name: Satellites
+      color: pink-6
 
 days:
+  - name: Mon 2 June 2025
+    events:
+      - time: 09:30 - 12:30
+        title: "School Speaker: Manlio De Domenico"   
+        category: Invited Speaker
+      - time: 14:30 - 17:30
+        title: "School Speaker: Huijuan Wang"   
+        category: Invited Speaker
+      - time: 09:30 - 17:30
+        title: (Satellite) Networks in Science of Science
+        category: Satellites
+      - time: 09:30 - 17:30
+        title: (Satellite) Higher-Order Network Science meets AI (HONAI)
+        category: Satellites
+      - time: 09:30 - 17:30
+        title: (Satellite) Networks in Biology and Medicine (NetBioMed)
+        category: Satellites
+      - time: 09:30 - 17:30
+        title: (Satellite) Network Neuroscience
+        category: Satellites
+      - time: 09:30 - 17:30
+        title: (Satellite) Software and Data for Supporting Network Science
+        category: Satellites
+      - time: 09:30 - 17:30
+        title: (Satellite) TEmporal NETworks (TENET)
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
+        category: Satellites
+      - time: 14:30 - 17:30
+        title: (Satellite) The future of Network Science--WiNS @ NetSci
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) Critical Phenomena In Networks (CPIN)
+        category: Satellites
+      - time: 14:30 - 17:30
+        title: (Satellite) Network Science for the Sustainable Development Goals
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) Network Renormalization (NetRG)
+        category: Satellites
+      - time: 14:30 - 17:30
+        title: (Satellite) Physical Networks, III Edition
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) The Science of Connections--Urban Mobility and Health Network"
+        category: Satellites
+      - time: 14:30 - 17:30
+        title: (Satellite) Network Medicine
+        category: Satellites
+      - time: 14:30 - 16:00
+        title: (Satellite) Networking and Clustering Network Scientists
+        category: Satellites
+
+  - name: Tue 3 June 2025
+    events:
+      - time: 09:30 - 17:30
+        title: (Satellite) Network Geometry--Theory and Applications
+        category: Satellites
+      - time: 09:30 - 17:30
+        title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
+        category: Satellites
+      - time: 09:30 - 17:30
+        title: (Satellite) Statistical Inference for Network Models (SINM)
+        category: Satellites
+      - time: 09:30 - 17:30
+        title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) Networked Criminal Complexity
+        category: Satellites
+      - time: 14:30 - 17:30
+        title: (Satellite) Historical Networks (HISTONET)
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
+        category: Satellites
+      - time: 14:30 - 17:30
+        title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) Algorithmic Fairness in Network Science
+        category: Satellites
+      - time: 14:30 - 17:30
+        title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) Understudied Networks in Computational Social Science
+        category: Satellites
+      - time: 09:30 - 12:30
+        title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
+        category: Satellites
+      - time: 14:30 - 17:30
+        title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
+        category: Satellites
+
+        
   - name: Wed 4 June 2025
     events:
       - time: 09:00 - 09:45
-        title: Invited Speaker 1
+        title: "Plenary Speaker: Sonia Kefi"
         category: Invited Speaker
       - time: 09:45 - 10:30
         title: Lightning 1
@@ -40,7 +139,7 @@ days:
         title: Parallel 3
         category: Parallel
       - time: 17:45 - 18:30
-        title: Invited Speaker 2   
+        title: "Plenary Speaker: Jari Saramaki"   
         category: Invited Speaker
       - time: 18:30 - 19:30 
         title: Welcome reception
@@ -49,7 +148,7 @@ days:
   - name: Thu 5 June 2025
     events:
       - time: 09:00 - 09:45
-        title: Invited Speaker 3 
+        title: "Plenary Speaker: Iza Romanowska"
         category: Invited Speaker
       - time: 09:45 - 10:30
         title: Lightning 2
@@ -73,7 +172,7 @@ days:
         title: Parallel 6
         category: Parallel
       - time: 17:45 - 18:30
-        title: Invited Speaker 4
+        title: "Plenary Speaker: Linda Douw (Chair: Chris Bick)"
         category: Invited Speaker
       - time: 19:00 - 23:00
         title: Conference dinner
@@ -82,27 +181,21 @@ days:
         
   - name: Fri 6 June 2025
     events:
-      - time: 09:00 - 11:00
-        title: NSS Awards
-        category: Other Activities
-      - time: 11:00 - 11:30
+      - time: 09:00 - 10:00
+        title: "Plenary Speaker: Michael Macy"
+        category: Invited Speaker
+      - time: 10:00 - 10:30
         title: Coffee break + posters
         category: Break
-      - time: 11:30 - 12:15
-        title: Invited speaker 5
-        category: Invited Speaker
-      - time: 12:15 - 13:45
+      - time: 10:30 - 12:30
+        title: NSS Awards
+        category: Other Activities
+      - time: 12:30 - 14:00
         title: Lunch + posters
         category: Break
-      - time: 13:45 - 15:45
+      - time: 14:00 - 16:00
         title: Focus sessions
-        category: Invited Speaker
-      - time: 15:45 - 16:15
-        title: Coffee break 
-        category: Break
-      - time: 16:15 - 17:00
-        title: Invited Speaker 6
-        category: Invited Speaker
-      - time: 17:00 - 18:00
+        category: Invited Speaker 
+      - time: 16:00 - 16:20
         title: Closing
         category: Other Activities
