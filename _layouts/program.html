@@ -67,62 +67,54 @@ table.schedule-table th {
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
                   {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  {% assign events_matrix = {} %}
-
-                  {% for slot in time_slots %}
-                    {% assign events_matrix = events_matrix | merge: slot | append: ":" | append: "" %}
-                  {% endfor %}
-
-                  {% assign max_col = 0 %}
+                  {% assign event_grid = {} %}
 
                   {% for event in day.events %}
                     {% assign e_start = event.time | split: ' - ' | first %}
                     {% assign e_end = event.time | split: ' - ' | last %}
                     {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
                     {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+                    {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
+                    {% assign inserted = false %}
 
-                    {% assign first = true %}
-                    {% for slot in time_slots %}
-                      {% assign slot_m = slot | split: ":" | first | plus: 0 | times: 60 | plus: slot | split: ":" | last | plus: 0 %}
-                      {% if slot_m >= e_start_m and slot_m < e_end_m %}
-                        {% if first %}
-                          {% assign first = false %}
-                          {% assign key = slot %}
-                          {% assign val = events_matrix[key] | default: "" %}
-                          {% assign events_matrix = events_matrix | merge: key | append: ":" | append: val | append: "|||" | append: event.title %}
+                    {% for i in (0..11) %}
+                      {% assign occupied = false %}
+                      {% for slot_offset in (0..span | minus: 1) %}
+                        {% assign key = time_slots[slot_offset] | default: time_slots[0] | append: "-" | append: i %}
+                        {% if event_grid[key] %}
+                          {% assign occupied = true %}
                         {% endif %}
-                      {% endif %}
+                      {% endfor %}
+                      {% unless occupied %}
+                        {% assign key = e_start | append: "-" | append: i %}
+                        {% assign event_grid = event_grid | merge: key | append: ":" | append: event.title | append: "," | append: span %}
+                        {% assign inserted = true %}
+                        {% break %}
+                      {% endunless %}
                     {% endfor %}
-                  {% endfor %}
-
-                  {% for kv in events_matrix %}
-                    {% assign event_count = kv[1] | split: "|||" | size %}
-                    {% if event_count > max_col %}
-                      {% assign max_col = event_count %}
-                    {% endif %}
                   {% endfor %}
 
                   <table class="schedule-table">
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% for i in (1..max_col) %}<th></th>{% endfor %}
+                        {% for i in (0..11) %}<th></th>{% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      {% for slot in time_slots %}
+                      {% assign row_colors = "bg-yellow,bg-orange" | split: "," %}
+                      {% for time in time_slots %}
                       <tr>
-                        <td>{{ slot }}</td>
-                        {% assign slot_events = events_matrix[slot] | split: "|||" %}
-                        {% assign toggle = 0 %}
-                        {% for title in slot_events %}
-                          {% if title != "" %}
-                            <td class="{% if toggle | modulo: 2 == 0 %}bg-yellow{% else %}bg-orange{% endif %}">{{ title }}</td>
-                            {% assign toggle = toggle | plus: 1 %}
+                        <td>{{ time }}</td>
+                        {% for i in (0..11) %}
+                          {% assign key = time | append: "-" | append: i %}
+                          {% assign cell = event_grid[key] | split: ":" %}
+                          {% if cell[0] and cell[0] != "" %}
+                            <td rowspan="{{ cell[1] }}" class="{{ row_colors[i | modulo: 2] }}">{{ cell[0] }}</td>
+                          {% elsif event_grid[key] == nil %}
+                            <td></td>
                           {% endif %}
                         {% endfor %}
-                        {% assign empty_count = max_col | minus: slot_events.size %}
-                        {% for i in (1..empty_count) %}<td></td>{% endfor %}
                       </tr>
                       {% endfor %}
                     </tbody>
@@ -172,7 +164,6 @@ table.schedule-table th {
 </main>
 
 <!-- {% include footer.html %} -->
-
 
 
 
