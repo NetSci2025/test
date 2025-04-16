@@ -67,38 +67,39 @@ table.schedule-table th {
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
                   {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  {% assign column_events = [] %}
+                  {% assign events_matrix = {} %}
+                  {% assign max_columns = 0 %}
 
                   {% for event in day.events %}
-                    {% assign placed = false %}
                     {% assign e_start = event.time | split: ' - ' | first %}
                     {% assign e_end = event.time | split: ' - ' | last %}
-                    {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-                    {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-                    {% assign e_span = e_end_m | minus: e_start_m | divided_by: 30 %}
+                    {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
+                    {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+                    {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
+                    {% assign start_index = time_slots index_of: e_start %}
+                    {% assign inserted = false %}
+
                     {% for col in (0..20) %}
                       {% assign conflict = false %}
-                      {% assign col_key = column_events[col] | default: "" %}
-                      {% for i in (0..e_span | minus: 1) %}
-                        {% assign t = e_start_m | plus: i | times: 1 %}
-                        {% assign conflict_check = col_key | split: "," | where_exp: "x", "x == t" %}
-                        {% if conflict_check.size > 0 %}
+                      {% for offset in (0..span | minus: 1) %}
+                        {% assign row = start_index | plus: offset %}
+                        {% assign key = col | append: '-' | append: row %}
+                        {% if events_matrix[key] %}
                           {% assign conflict = true %}
                         {% endif %}
                       {% endfor %}
                       {% unless conflict %}
-                        {% assign events = column_events %}
-                        {% assign event_dict = events | push: col_key %}
-                        {% assign new_times = col_key %}
-                        {% for i in (0..e_span | minus: 1) %}
-                          {% assign t = e_start_m | plus: i | times: 1 %}
-                          {% assign new_times = new_times | append: "," | append: t %}
+                        {% for offset in (0..span | minus: 1) %}
+                          {% assign row = start_index | plus: offset %}
+                          {% assign key = col | append: '-' | append: row %}
+                          {% if offset == 0 %}
+                            {% assign events_matrix = events_matrix | merge: key | append: ':' | append: event.title | append: ',' | append: span %}
+                          {% else %}
+                            {% assign events_matrix = events_matrix | merge: key | append: ":skip" %}
+                          {% endif %}
                         {% endfor %}
-                        {% assign __ = column_events[col] = new_times %}
-                        {% assign event.col = col %}
-                        {% assign event.rowspan = e_span %}
-                        {% assign event.start_m = e_start_m %}
-                        {% assign event.placed = true %}
+                        {% assign max_columns = max_columns | at_least: col | plus: 1 %}
+                        {% assign inserted = true %}
                         {% break %}
                       {% endunless %}
                     {% endfor %}
@@ -108,37 +109,25 @@ table.schedule-table th {
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% assign max_cols = column_events.size %}
-                        {% for i in (0..max_cols | minus: 1) %}
-                          <th></th>
-                        {% endfor %}
+                        {% for i in (0..max_columns) %}<th></th>{% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      {% for t in time_slots %}
-                        {% assign t_m = t | split: ':' | first | plus: 0 | times: 60 | plus: t | split: ':' | last | plus: 0 %}
-                        <tr>
-                          <td>{{ t }}</td>
-                          {% for c in (0..max_cols | minus: 1) %}
-                            {% assign printed = false %}
-                            {% for e in day.events %}
-                              {% if e.placed and e.col == c and e.start_m == t_m %}
-                                <td rowspan="{{ e.rowspan }}" class="{{ c | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">{{ e.title }}</td>
-                                {% assign printed = true %}
-                                {% break %}
-                              {% endif %}
-                            {% endfor %}
-                            {% unless printed %}
-                              {% assign skip = false %}
-                              {% for e in day.events %}
-                                {% if e.placed and e.col == c and t_m > e.start_m and t_m < e.start_m | plus: e.rowspan | times: 30 %}
-                                  {% assign skip = true %}
-                                {% endif %}
-                              {% endfor %}
-                              {% unless skip %}<td></td>{% endunless %}
-                            {% endunless %}
-                          {% endfor %}
-                        </tr>
+                      {% assign row_colors = "bg-yellow,bg-orange" | split: "," %}
+                      {% for time_index in (0..time_slots.size | minus: 1) %}
+                      <tr>
+                        <td>{{ time_slots[time_index] }}</td>
+                        {% for col in (0..max_columns) %}
+                          {% assign key = col | append: '-' | append: time_index %}
+                          {% assign cell = events_matrix[key] | split: ':' %}
+                          {% if cell[0] == "skip" %}
+                          {% elsif cell[0] and cell[0] != "" %}
+                            <td rowspan="{{ cell[1] }}" class="{{ row_colors[col | modulo: 2] }}">{{ cell[0] }}</td>
+                          {% else %}
+                            <td></td>
+                          {% endif %}
+                        {% endfor %}
+                      </tr>
                       {% endfor %}
                     </tbody>
                   </table>
@@ -187,6 +176,7 @@ table.schedule-table th {
 </main>
 
 <!-- {% include footer.html %} -->
+
 
 
 
