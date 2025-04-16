@@ -15,8 +15,8 @@ table.schedule-table {
   font-size: 0.8rem;
   table-layout: fixed;
 }
-table.schedule-table td,
-table.schedule-table th {
+table.schedule-table th,
+table.schedule-table td {
   border: 1px solid #ccc;
   padding: 4px;
   text-align: center;
@@ -39,6 +39,7 @@ table.schedule-table th {
     <hr class="my-4">
     <div class="row">
       <div class="accordion">
+        {% assign categories = site.data.program.legend.categories %}
 
         {% for day in site.data.program.days %}
         {% assign slug = day.name | slugify %}
@@ -51,33 +52,41 @@ table.schedule-table th {
 
           <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
             <div class="accordion-body mt-2">
+
               {% if day.name == "Mon 2 June 2025" %}
               <div class="mb-4">
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
                   {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
                   {% assign events = day.events %}
+
                   <table class="schedule-table">
                     <thead>
                       <tr>
+                        <th>Time</th>
                         {% for event in events %}
-                          <th>{{ event.title }}</th>
+                        <th>{{ event.title }}</th>
                         {% endfor %}
                       </tr>
                     </thead>
                     <tbody>
                       {% for time in time_slots %}
+                      {% assign time_minutes = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
                       <tr>
+                        <td>{{ time }}</td>
                         {% for event in events %}
                           {% assign e_start = event.time | split: ' - ' | first %}
                           {% assign e_end = event.time | split: ' - ' | last %}
-
                           {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
                           {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-                          {% assign current_m = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
 
-                          {% if current_m >= e_start_m and current_m < e_end_m %}
-                            <td class="{{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">{{ time }}</td>
+                          {% if time_minutes == e_start_m %}
+                            {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
+                            <td rowspan="{{ span }}" class="{{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">
+                              {{ event.time }}<br>{{ event.title }}
+                            </td>
+                          {% elsif time_minutes > e_start_m and time_minutes < e_end_m %}
+                            {% continue %}
                           {% else %}
                             <td></td>
                           {% endif %}
@@ -92,11 +101,12 @@ table.schedule-table th {
 
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
+                {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
                 <li class="d-flex flex-column flex-lg-row mb-4">
-                  <div class="row col-lg-2 pb-2 border-start border-3 border-danger border-lg-0">
+                  <div class="row col-lg-2 pb-2 border-start border-3 border-{{ color }} border-lg-0">
                     <small class="fw-light text-muted">{{ event.time }}</small>
                   </div>
-                  <div class="row col-lg-10 border-start border-3 border-danger">
+                  <div class="row col-lg-10 border-start border-3 border-{{ color }}">
                     <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
                     {% if event.subtitle %}<p class="fw-light m-0">{{ event.subtitle }}</p>{% endif %}
                     {% if event.location %}<p class="fw-light m-0"><strong>Location:</strong> {{ event.location }}</p>{% endif %}
@@ -105,6 +115,20 @@ table.schedule-table th {
                 </li>
                 {% endfor %}
               </ul>
+
+              {% assign legend = day.events | map: 'category' | compact | uniq %}
+              {% if legend.size > 0 %}
+              <div class="mt-4 mb-2">
+                {% for item in legend %}
+                {% assign border = categories | where: 'name', item | map: 'color' | first %}
+                {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
+                {% assign classes = border | prepend: ' border-' | prepend: bg %}
+                {% if border %}
+                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
+                {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
             </div>
           </div>
         </div>
