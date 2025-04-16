@@ -64,40 +64,51 @@ table.schedule-table th {
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% assign max_columns = 0 %}
-                        {% assign time_blocks = "" | split: "," %}
+                        {% assign max_cols = 0 %}
+                        {% assign bucketed = "" | split: "" %}
                         {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-
                         {% for time in time_slots %}
-                          {% assign slot_events = "" | split: "," %}
-                          {% assign start_minutes = time | split: ":" | first | plus: 0 | times: 60 | plus: time | split: ":" | last | plus: 0 %}
-                          {% for event in day.events %}
+                          {% assign active_events = day.events | where_exp: "e", "e.time contains '-'" %}
+                          {% assign count = 0 %}
+                          {% for event in active_events %}
                             {% assign e_start = event.time | split: ' - ' | first %}
                             {% assign e_end = event.time | split: ' - ' | last %}
                             {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
                             {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
-                            {% if start_minutes >= e_start_m and start_minutes < e_end_m %}
-                              {% assign slot_events = slot_events | push: event.title %}
+                            {% assign slot_m = time | split: ":" | first | plus: 0 | times: 60 | plus: time | split: ":" | last | plus: 0 %}
+                            {% if slot_m >= e_start_m and slot_m < e_end_m %}
+                              {% assign count = count | plus: 1 %}
                             {% endif %}
                           {% endfor %}
-                          {% if slot_events.size > max_columns %}
-                            {% assign max_columns = slot_events.size %}
+                          {% if count > max_cols %}
+                            {% assign max_cols = count %}
                           {% endif %}
-                          {% assign time_blocks = time_blocks | push: slot_events %}
                         {% endfor %}
-
-                        {% for i in (1..max_columns) %}<th>{{ i }}</th>{% endfor %}
+                        {% for i in (1..max_cols) %}<th>{{ i }}</th>{% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      {% for block in time_blocks %}
-                        {% assign slot_time = time_slots[forloop.index0] %}
-                        <tr>
-                          <td>{{ slot_time }}</td>
-                          {% for i in (0..max_columns-1) %}
-                          <td>{{ block[i] }}</td>
-                          {% endfor %}
-                        </tr>
+                      {% assign event_col_map = {} %}
+                      {% assign active_cells = {} %}
+                      {% for time in time_slots %}
+                      <tr>
+                        <td>{{ time }}</td>
+                        {% assign slot_m = time | split: ":" | first | plus: 0 | times: 60 | plus: time | split: ":" | last | plus: 0 %}
+                        {% assign printed_cols = 0 %}
+                        {% for event in day.events %}
+                          {% assign e_start = event.time | split: ' - ' | first %}
+                          {% assign e_end = event.time | split: ' - ' | last %}
+                          {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
+                          {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+                          {% if slot_m == e_start_m %}
+                            {% assign rowspan = e_end_m | minus: e_start_m | divided_by: 30 %}
+                            <td rowspan="{{ rowspan }}">{{ event.title }}</td>
+                            {% assign printed_cols = printed_cols | plus: 1 %}
+                          {% endif %}
+                        {% endfor %}
+                        {% assign remaining = max_cols | minus: printed_cols %}
+                        {% for x in (1..remaining) %}<td></td>{% endfor %}
+                      </tr>
                       {% endfor %}
                     </tbody>
                   </table>
