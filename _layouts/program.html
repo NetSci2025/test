@@ -67,26 +67,35 @@ table.schedule-table th {
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
                   {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  {% assign events_by_slot = {} %}
+                  {% assign events_matrix = {} %}
+
+                  {% for slot in time_slots %}
+                    {% assign events_matrix = events_matrix | merge: slot | append: ":" | append: "" %}
+                  {% endfor %}
 
                   {% assign max_col = 0 %}
+
                   {% for event in day.events %}
                     {% assign e_start = event.time | split: ' - ' | first %}
                     {% assign e_end = event.time | split: ' - ' | last %}
                     {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
                     {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+
+                    {% assign first = true %}
                     {% for slot in time_slots %}
                       {% assign slot_m = slot | split: ":" | first | plus: 0 | times: 60 | plus: slot | split: ":" | last | plus: 0 %}
                       {% if slot_m >= e_start_m and slot_m < e_end_m %}
-                        {% assign key = slot %}
-                        {% assign previous = events_by_slot[key] | default: "" %}
-                        {% assign updated = previous | append: "|||" | append: event.title %}
-                        {% assign events_by_slot = events_by_slot | merge: key | append: ":" | append: updated %}
+                        {% if first %}
+                          {% assign first = false %}
+                          {% assign key = slot %}
+                          {% assign val = events_matrix[key] | default: "" %}
+                          {% assign events_matrix = events_matrix | merge: key | append: ":" | append: val | append: "|||" | append: event.title %}
+                        {% endif %}
                       {% endif %}
                     {% endfor %}
                   {% endfor %}
 
-                  {% for kv in events_by_slot %}
+                  {% for kv in events_matrix %}
                     {% assign event_count = kv[1] | split: "|||" | size %}
                     {% if event_count > max_col %}
                       {% assign max_col = event_count %}
@@ -104,7 +113,7 @@ table.schedule-table th {
                       {% for slot in time_slots %}
                       <tr>
                         <td>{{ slot }}</td>
-                        {% assign slot_events = events_by_slot[slot] | split: "|||" %}
+                        {% assign slot_events = events_matrix[slot] | split: "|||" %}
                         {% assign toggle = 0 %}
                         {% for title in slot_events %}
                           {% if title != "" %}
