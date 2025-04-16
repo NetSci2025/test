@@ -6,37 +6,26 @@ layout: default
 {% include header.html %}
 
 <style>
-main {
-  padding-top: 70px;
+.schedule-label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 6px 0;
 }
-table.schedule-table {
+.table-schedule {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.8rem;
   table-layout: fixed;
 }
-table.schedule-table th,
-table.schedule-table td {
+.table-schedule th, .table-schedule td {
   border: 1px solid #ccc;
   padding: 4px;
   text-align: center;
   vertical-align: middle;
   word-wrap: break-word;
 }
-table.schedule-table th {
-  background-color: #f2f2f2;
-}
-.schedule-label {
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding: 6px 0;
-}
-.bg-yellow {
-  background-color: #fff2cc;
-}
-.bg-orange {
-  background-color: #fce4d6;
-}
+.bg-yellow { background-color: #fff2cc; }
+.bg-orange { background-color: #fce4d6; }
 </style>
 
 <main class="my-4">
@@ -47,9 +36,7 @@ table.schedule-table th {
     <hr class="my-4">
     <div class="row">
       <div class="accordion">
-
         {% assign categories = site.data.program.legend.categories %}
-
         {% for day in site.data.program.days %}
         {% assign slug = day.name | slugify %}
         <div class="accordion-item" id="{{ slug }}">
@@ -66,74 +53,70 @@ table.schedule-table th {
               <div class="mb-4">
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
-                  {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  {% assign column_max = 12 %}
-                  {% assign columns = "" | split: "" %}
-                  {% for i in (0..column_max) %}
-                    {% assign columns = columns | push: "" | split: "," %}
-                  {% endfor %}
-
-                  {% assign event_grid = {} %}
-
-                  {% for event in day.events %}
-                    {% assign e_start = event.time | split: ' - ' | first %}
-                    {% assign e_end = event.time | split: ' - ' | last %}
-                    {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
-                    {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
-                    {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-                    {% assign row_start = e_start_m | minus: 540 | divided_by: 30 %}
-
-                    {% assign inserted = false %}
-                    {% for i in (0..column_max) %}
-                      {% assign overlap = false %}
-                      {% for offset in (0..span | minus: 1) %}
-                        {% assign slot_key = row_start | plus: offset | append: "-" | append: i %}
-                        {% if event_grid[slot_key] %}
-                          {% assign overlap = true %}
-                        {% endif %}
-                      {% endfor %}
-                      {% unless overlap %}
-                        {% assign slot_key = row_start | append: "-" | append: i %}
-                        {% assign event_grid = event_grid | merge: slot_key | append: ":" | append: event.title | append: "," | append: span %}
-
-                        {% assign new_columns = "" | split: "" %}
-                        {% for j in (0..column_max) %}
-                          {% if j == i %}
-                            {% assign new_columns = new_columns | push: columns[j] | push: row_start | append: ":" | append: span %}
-                          {% else %}
-                            {% assign new_columns = new_columns | push: columns[j] %}
-                          {% endif %}
-                        {% endfor %}
-                        {% assign columns = new_columns %}
-
-                        {% assign inserted = true %}
-                        {% break %}
-                      {% endunless %}
-                    {% endfor %}
-                  {% endfor %}
-
-                  <table class="schedule-table">
+                  <table class="table-schedule">
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% for i in (0..column_max) %}<th></th>{% endfor %}
+                        {% assign used_columns = 0 %}
+                        {% assign event_columns = "" | split: "," %}
+                        {% for event in day.events %}
+                          {% assign exists = false %}
+                          {% for title in event_columns %}
+                            {% if title == event.title %}
+                              {% assign exists = true %}
+                            {% endif %}
+                          {% endfor %}
+                          {% unless exists %}
+                            {% assign event_columns = event_columns | push: event.title %}
+                            {% assign used_columns = used_columns | plus: 1 %}
+                          {% endunless %}
+                        {% endfor %}
+                        {% for i in (0..used_columns | minus: 1) %}
+                          <th class="{% cycle 'bg-yellow', 'bg-orange' %}">Track {{ i | plus: 1 }}</th>
+                        {% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      {% assign row_colors = "bg-yellow,bg-orange" | split: "," %}
-                      {% for r in (0..time_slots.size | minus: 1) %}
-                      <tr>
-                        <td>{{ time_slots[r] }}</td>
-                        {% for c in (0..column_max) %}
-                          {% assign key = r | append: "-" | append: c %}
-                          {% assign cell = event_grid[key] | split: ":" %}
-                          {% if cell[0] and cell[0] != "" %}
-                            <td rowspan="{{ cell[1] }}" class="{{ row_colors[c | modulo: 2] }}">{{ cell[0] }}</td>
-                          {% elsif event_grid[key] == nil %}
-                            <td></td>
-                          {% endif %}
-                        {% endfor %}
-                      </tr>
+                      {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
+                      {% assign active_cells = "" | split: "," %}
+                      {% for time in time_slots %}
+                        <tr>
+                          <td>{{ time }}</td>
+                          {% for col in event_columns %}
+                            {% assign rendered = false %}
+                            {% for event in day.events %}
+                              {% if event.title == col %}
+                                {% assign start = event.time | split: ' - ' | first %}
+                                {% assign end = event.time | split: ' - ' | last %}
+                                {% assign sh = start | split: ":" | first | plus: 0 %}
+                                {% assign sm = start | split: ":" | last | plus: 0 %}
+                                {% assign eh = end | split: ":" | first | plus: 0 %}
+                                {% assign em = end | split: ":" | last | plus: 0 %}
+                                {% assign start_minutes = sh | times: 60 | plus: sm %}
+                                {% assign end_minutes = eh | times: 60 | plus: em %}
+                                {% assign row_minutes = time | split: ":" | first | times: 60 | plus: time | split: ":" | last %}
+                                {% assign duration = end_minutes | minus: start_minutes %}
+                                {% assign rowspan = duration | divided_by: 30 %}
+
+                                {% assign cell_key = time | append: "-" | append: col %}
+                                {% unless active_cells contains cell_key %}
+                                  {% if row_minutes == start_minutes %}
+                                    {% assign active_cells = active_cells | push: cell_key %}
+                                    <td rowspan="{{ rowspan }}" class="{% cycle 'bg-yellow', 'bg-orange' %}">
+                                      {{ event.title }}
+                                    </td>
+                                    {% assign rendered = true %}
+                                  {% endif %}
+                                {% else %}
+                                  {% assign rendered = true %}
+                                {% endunless %}
+                              {% endif %}
+                            {% endfor %}
+                            {% unless rendered %}
+                              <td></td>
+                            {% endunless %}
+                          {% endfor %}
+                        </tr>
                       {% endfor %}
                     </tbody>
                   </table>
@@ -182,6 +165,7 @@ table.schedule-table th {
 </main>
 
 <!-- {% include footer.html %} -->
+
 
 
 
