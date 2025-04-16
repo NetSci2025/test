@@ -67,62 +67,38 @@ table.schedule-table th {
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
                   {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  {% assign events = day.events %}
-                  {% assign grid = {} %}
-                  {% assign max_col = 0 %}
-
-                  {% for event in events %}
-                    {% assign e_start = event.time | split: ' - ' | first %}
-                    {% assign e_end = event.time | split: ' - ' | last %}
-                    {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
-                    {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
-                    {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-
-                    {% assign placed = false %}
-                    {% for col in (0..11) %}
-                      {% assign overlap = false %}
-                      {% for offset in (0..span | minus: 1) %}
-                        {% assign row_time = e_start_m | plus: offset | times: 30 | divided_by: 30 %}
-                        {% assign key = row_time | append: '-' | append: col %}
-                        {% if grid[key] %}{% assign overlap = true %}{% endif %}
-                      {% endfor %}
-                      {% unless overlap %}
-                        {% assign key = e_start_m | append: '-' | append: col %}
-                        {% assign grid = grid | merge: key | append: ':' | append: event.title | append: ':' | append: span %}
-                        {% if col > max_col %}{% assign max_col = col %}{% endif %}
-                        {% assign placed = true %}
-                        {% break %}
-                      {% endunless %}
-                    {% endfor %}
-                  {% endfor %}
 
                   <table class="schedule-table">
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% for i in (0..max_col) %}<th></th>{% endfor %}
+                        {% assign titles = day.events | map: "title" %}
+                        {% assign unique_titles = titles | uniq %}
+                        {% for title in unique_titles %}<th>{{ title }}</th>{% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      {% assign row_colors = "bg-yellow,bg-orange" | split: "," %}
-                      {% assign base_time = 9 | times: 60 %}
-                      {% for t in (0..17) %}
-                        {% assign t_mins = base_time | plus: t | times: 30 %}
-                        {% assign h = t_mins | divided_by: 60 %}
-                        {% assign m = t_mins | modulo: 60 %}
-                        {% assign time = h | prepend: '0' | slice: -2, 2 | append: ':' | append: m | prepend: '0' | slice: -2, 2 %}
-                        <tr>
-                          <td>{{ time }}</td>
-                          {% for c in (0..max_col) %}
-                            {% assign key = t_mins | append: '-' | append: c %}
-                            {% assign cell = grid[key] | split: ':' %}
-                            {% if cell[0] and cell[0] != '' %}
-                              <td rowspan="{{ cell[2] }}" class="{{ row_colors[c | modulo: 2] }}">{{ cell[1] }}</td>
-                            {% elsif grid[key] == nil %}
-                              <td></td>
+                      {% for time in time_slots %}
+                      <tr>
+                        <td>{{ time }}</td>
+                        {% for title in unique_titles %}
+                          {% assign found = false %}
+                          {% for event in day.events %}
+                            {% if event.title == title %}
+                              {% assign e_start = event.time | split: ' - ' | first %}
+                              {% assign e_end = event.time | split: ' - ' | last %}
+                              {% if time >= e_start and time < e_end %}
+                                {% assign found = true %}
+                              {% endif %}
                             {% endif %}
                           {% endfor %}
-                        </tr>
+                          {% if found %}
+                            <td class="bg-yellow"></td>
+                          {% else %}
+                            <td></td>
+                          {% endif %}
+                        {% endfor %}
+                      </tr>
                       {% endfor %}
                     </tbody>
                   </table>
@@ -171,8 +147,6 @@ table.schedule-table th {
 </main>
 
 <!-- {% include footer.html %} -->
-
-
 
 
 
