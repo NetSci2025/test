@@ -19,8 +19,8 @@ table.schedule-table th,
 table.schedule-table td {
   border: 1px solid #ccc;
   padding: 4px;
-  text-align: left;
-  vertical-align: top;
+  text-align: center;
+  vertical-align: middle;
   word-wrap: break-word;
 }
 table.schedule-table th {
@@ -67,26 +67,29 @@ table.schedule-table th {
                 <div class="schedule-label">Visual Overview</div>
                 <div class="table-responsive">
                   {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                  {% assign slot_minutes = time_slots | map: "split" | map: "first" %}
+                  {% assign events_by_slot = {} %}
 
-                  {% assign max_cols = 0 %}
-                  {% assign slot_events = {} %}
-                  {% for time in time_slots %}
-                    {% assign slot_m = time | split: ":" | first | plus: 0 | times: 60 | plus: time | split: ":" | last | plus: 0 %}
-                    {% assign active = day.events | where_exp: "e", "e.time contains '-'" %}
-                    {% assign evts = "" | split: "" %}
-                    {% for event in active %}
-                      {% assign e_start = event.time | split: ' - ' | first %}
-                      {% assign e_end = event.time | split: ' - ' | last %}
-                      {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
-                      {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+                  {% assign max_col = 0 %}
+                  {% for event in day.events %}
+                    {% assign e_start = event.time | split: ' - ' | first %}
+                    {% assign e_end = event.time | split: ' - ' | last %}
+                    {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
+                    {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
+                    {% for slot in time_slots %}
+                      {% assign slot_m = slot | split: ":" | first | plus: 0 | times: 60 | plus: slot | split: ":" | last | plus: 0 %}
                       {% if slot_m >= e_start_m and slot_m < e_end_m %}
-                        {% assign evts = evts | push: event %}
+                        {% assign key = slot %}
+                        {% assign previous = events_by_slot[key] | default: "" %}
+                        {% assign updated = previous | append: "|||" | append: event.title %}
+                        {% assign events_by_slot = events_by_slot | merge: key | append: ":" | append: updated %}
                       {% endif %}
                     {% endfor %}
-                    {% assign slot_events = slot_events | merge: time | append: ":" | append: evts %}
-                    {% if evts.size > max_cols %}
-                      {% assign max_cols = evts.size %}
+                  {% endfor %}
+
+                  {% for kv in events_by_slot %}
+                    {% assign event_count = kv[1] | split: "|||" | size %}
+                    {% if event_count > max_col %}
+                      {% assign max_col = event_count %}
                     {% endif %}
                   {% endfor %}
 
@@ -94,38 +97,23 @@ table.schedule-table th {
                     <thead>
                       <tr>
                         <th>Time</th>
-                        {% for i in (1..max_cols) %}
-                          <th></th>
-                        {% endfor %}
+                        {% for i in (1..max_col) %}<th></th>{% endfor %}
                       </tr>
                     </thead>
                     <tbody>
-                      {% for time in time_slots %}
+                      {% for slot in time_slots %}
                       <tr>
-                        <td>{{ time }}</td>
-                        {% assign slot_m = time | split: ":" | first | plus: 0 | times: 60 | plus: time | split: ":" | last | plus: 0 %}
-                        {% assign row_events = [] %}
-                        {% for event in day.events %}
-                          {% assign e_start = event.time | split: ' - ' | first %}
-                          {% assign e_end = event.time | split: ' - ' | last %}
-                          {% assign e_start_m = e_start | split: ":" | first | plus: 0 | times: 60 | plus: e_start | split: ":" | last | plus: 0 %}
-                          {% assign e_end_m = e_end | split: ":" | first | plus: 0 | times: 60 | plus: e_end | split: ":" | last | plus: 0 %}
-                          {% if slot_m == e_start_m %}
-                            {% assign rowspan = e_end_m | minus: e_start_m | divided_by: 30 %}
-                            {% assign row_events = row_events | push: event.title | append: "|||" | append: rowspan %}
+                        <td>{{ slot }}</td>
+                        {% assign slot_events = events_by_slot[slot] | split: "|||" %}
+                        {% assign toggle = 0 %}
+                        {% for title in slot_events %}
+                          {% if title != "" %}
+                            <td class="{% if toggle | modulo: 2 == 0 %}bg-yellow{% else %}bg-orange{% endif %}">{{ title }}</td>
+                            {% assign toggle = toggle | plus: 1 %}
                           {% endif %}
                         {% endfor %}
-                        {% assign color_toggle = 0 %}
-                        {% for block in row_events %}
-                          {% assign parts = block | split: "|||" %}
-                          {% assign txt = parts[0] %}
-                          {% assign span = parts[1] %}
-                          {% assign color_class = color_toggle | modulo: 2 | plus: 1 %}
-                          <td rowspan="{{ span }}" class="bg-{% if color_class == 1 %}yellow{% else %}orange{% endif %}">{{ txt }}</td>
-                          {% assign color_toggle = color_toggle | plus: 1 %}
-                        {% endfor %}
-                        {% assign remaining = max_cols | minus: row_events.size %}
-                        {% for i in (1..remaining) %}<td></td>{% endfor %}
+                        {% assign empty_count = max_col | minus: slot_events.size %}
+                        {% for i in (1..empty_count) %}<td></td>{% endfor %}
                       </tr>
                       {% endfor %}
                     </tbody>
