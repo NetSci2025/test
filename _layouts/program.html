@@ -88,7 +88,7 @@ layout: default
           {% endunless %}
         {% endfor %}
 
-        <div class="event-block {% if forloop.index0 modulo 2 == 1 %}alt{% endif %}" style="top:{{ top }}px; height:{{ height }}px; left:{{ col | times: 160 }}px">
+        <div class="event-block {% if forloop.index0 mod 2 == 1 %}alt{% endif %}" style="top:{{ top }}px; height:{{ height }}px; left:{{ col | times: 160 }}px">
           <strong>{{ event.time }}</strong><br>
           {{ event.title }}
         </div>
