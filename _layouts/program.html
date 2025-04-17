@@ -61,14 +61,6 @@ table.schedule-table td {
                   {% assign events = day.events %}
 
                   <table class="schedule-table">
-                    <thead>
-                      <tr>
-                        <th>Time</th>
-                        {% for event in events %}
-                        <th>{{ event.title }}</th>
-                        {% endfor %}
-                      </tr>
-                    </thead>
                     <tbody>
                       {% for time in time_slots %}
                       {% assign time_minutes = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
