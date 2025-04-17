@@ -217,7 +217,7 @@ main {
                                           width: calc({{ width }} * 80px - 4px);"
                                    title="{{ event.title }} | {{ event.time }}">
                                 <div class="event-time">{{ event.time }}</div>
-                                {{ event.title | truncate: 30 }}
+                                {{ event.title }}
                               </div>
                             {% endunless %}
                           {% endfor %}
@@ -292,7 +292,7 @@ main {
                                       width: calc({{ width }} * 80px - 4px);"
                                title="{{ morning.title }} | {{ morning.time }}">
                             <div class="event-time">{{ morning.time }}</div>
-                            {{ morning.title | truncate: 30 }}
+                            {{ morning.title }}
                           </div>
                           
                           <!-- Afternoon event if available -->
@@ -314,7 +314,7 @@ main {
                                         width: calc({{ width }} * 80px - 4px);"
                                  title="{{ matching_afternoon.title }} | {{ matching_afternoon.time }}">
                               <div class="event-time">{{ matching_afternoon.time }}</div>
-                              {{ matching_afternoon.title | truncate: 30 }}
+                              {{ matching_afternoon.title }}
                             </div>
                             
                             {% assign afternoon_events = afternoon_events | shift %}
@@ -349,7 +349,7 @@ main {
                                       width: calc({{ width }} * 80px - 4px);"
                                title="{{ afternoon.title }} | {{ afternoon.time }}">
                             <div class="event-time">{{ afternoon.time }}</div>
-                            {{ afternoon.title | truncate: 30 }}
+                            {{ afternoon.title }}
                           </div>
                         </div>
                       </div>
