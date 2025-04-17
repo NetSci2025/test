@@ -73,7 +73,7 @@ layout: default
 
     {% if site.data.program %}
       {% assign day = site.data.program.days | where: "name", "Mon 2 June 2025" | first %}
-      
+
       <div class="schedule-container">
         <!-- Time column -->
         <div class="time-column">
@@ -82,50 +82,62 @@ layout: default
             <div class="time-slot">{{ h }}:30</div>
           {% endfor %}
         </div>
-        
+
         <!-- Event columns -->
         <div class="event-columns">
           {% assign columns = "" | split: "" %}
           {% assign column_ends = "" | split: "" %}
-          
+
           {% for event in day.events %}
             {% assign start_time = event.time | split: " - " | first %}
             {% assign end_time = event.time | split: " - " | last %}
-            
+
             {% assign start_h = start_time | split: ":" | first | plus: 0 %}
             {% assign start_m = start_time | split: ":" | last | plus: 0 %}
             {% assign end_h = end_time | split: ":" | first | plus: 0 %}
             {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-            
+
             {% assign start_min = start_h | times: 60 | plus: start_m %}
             {% assign end_min = end_h | times: 60 | plus: end_m %}
-            
+
             {% assign column_index = 0 %}
             {% assign placed = false %}
-            
+
             {% for col_end in column_ends %}
               {% if start_min >= col_end %}
-                {% assign column_ends = column_ends | push: end_min %}
+                {% assign column_ends = column_ends | slice: 0, forloop.index0 | push: end_min | concat: column_ends | slice: forloop.index %}
                 {% assign column_index = forloop.index0 %}
                 {% assign placed = true %}
                 {% break %}
               {% endif %}
             {% endfor %}
-            
+
             {% unless placed %}
+              {% assign column_index = column_ends.size %}
               {% assign column_ends = column_ends | push: end_min %}
-              {% assign column_index = column_ends.size | minus: 1 %}
             {% endunless %}
-            
-            {% assign top = start_min | minus: 540 | times: 1.0 | divided_by: 30 %}
-            {% assign height = end_min | minus: start_min | times: 1.0 | divided_by: 30 %}
-            
-            <div class="event-column">
-              <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
-                   style="top: {{ top }}rem; height: {{ height }}rem;">
+
+            {% capture block %}
+              <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}"
+                   style="top: {{ start_min | minus: 540 | times: 1.0 | divided_by: 30 | times: 30 }}px;
+                          height: {{ end_min | minus: start_min | times: 1.0 | divided_by: 30 | times: 30 }}px;">
                 <div class="event-time">{{ event.time }}</div>
                 {{ event.title }}
               </div>
+            {% endcapture %}
+
+            {% assign columns = columns | default: "" %}
+            {% if columns[column_index] %}
+              {% assign updated = columns[column_index] | append: block %}
+              {% assign columns = columns | slice: 0, column_index | push: updated | concat: columns | slice: column_index | plus: 1 %}
+            {% else %}
+              {% assign columns = columns | push: block %}
+            {% endif %}
+          {% endfor %}
+
+          {% for col in columns %}
+            <div class="event-column">
+              {{ col }}
             </div>
           {% endfor %}
         </div>
@@ -133,4 +145,3 @@ layout: default
     {% endif %}
   </div>
 </main>
-
