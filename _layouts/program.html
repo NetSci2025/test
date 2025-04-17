@@ -188,7 +188,7 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-           
+                       {% if event.title.size > 0 or duration > 0 %}
                       <div class="room-row">
                         <div class="room-name">Main</div>
                         <div class="time-slots">
@@ -220,6 +220,7 @@ main {
                                 {{ event.title }}
                               </div>
                             {% endunless %}
+                            {% endif %}
                           {% endfor %}
                         </div>
                       </div>
