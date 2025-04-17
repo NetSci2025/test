@@ -32,12 +32,12 @@ layout: default
 .event-columns {
   display: flex;
   flex-grow: 1;
-  overflow-x: hidden; /* 禁止横向滚动 */
+  overflow-x: hidden; 
 }
 
 .event-column {
   flex: 1;
-  min-width: 0; /* 允许压缩 */
+  min-width: 0; 
   border-right: 1px solid #eee;
   position: relative;
 }
@@ -77,9 +77,9 @@ layout: default
       <div class="schedule-container">
         <!-- Time column -->
         <div class="time-column">
-          {% for h in (9..18) %}
-            <div class="time-slot">{{ h }}:00</div>
-            <div class="time-slot">{{ h }}:30</div>
+          {% assign times = "9:00,9:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30,18:00,18:30" | split: "," %}
+          {% for t in times %}
+            <div class="time-slot">{{ t }}</div>
           {% endfor %}
         </div>
         
