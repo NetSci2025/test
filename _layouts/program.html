@@ -27,7 +27,6 @@ layout: default
   font-size: 0.75rem;
   color: #555;
   border-top: 1px solid #eee;
-  position: relative;
 }
 
 .event-columns {
@@ -87,8 +86,13 @@ layout: default
         
         <!-- Event columns -->
         <div class="event-columns">
-          {% assign columns = "" | split: "" %}
+          {% assign max_columns = 12 %}
           {% assign column_ends = "" | split: "" %}
+          
+          {% for i in (1..max_columns) %}
+            <div class="event-track" id="track-{{ i }}"></div>
+            {% assign column_ends = column_ends | push: 0 %}
+          {% endfor %}
           
           {% for event in day.events %}
             {% assign time_parts = event.time | split: " - " %}
@@ -106,8 +110,7 @@ layout: default
             {% assign column_index = 0 %}
             {% assign placed = false %}
             
-            <!-- Check existing columns for availability -->
-            {% for i in (0..column_ends.size) %}
+            {% for i in (0..max_columns) %}
               {% if i >= column_ends.size %}
                 {% break %}
               {% endif %}
@@ -119,25 +122,21 @@ layout: default
               {% endif %}
             {% endfor %}
             
-            <!-- If not placed, create new column -->
             {% unless placed %}
-              {% assign column_ends = column_ends | push: end_min %}
-              {% assign column_index = column_ends.size | minus: 1 %}
+              {% for i in (0..max_columns) %}
+                {% if i >= column_ends.size %}
+                  {% assign column_ends = column_ends | push: end_min %}
+                  {% assign column_index = column_ends.size | minus: 1 %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
             {% endunless %}
             
-            <!-- Calculate position and height -->
-            {% assign top = start_min | minus: 540 %}  <!-- 9:00 = 540 minutes -->
+            {% assign top = start_min | minus: 540 %}
             {% assign height = end_min | minus: start_min %}
-            {% assign top_px = top | times: 0.5 %}    <!-- 0.5px per minute -->
+            {% assign top_px = top | times: 0.5 %}
             {% assign height_px = height | times: 0.5 %}
             
-            <!-- Ensure we have enough columns -->
-            {% while column_index >= columns.size %}
-              {% assign columns = columns | push: "" %}
-              <div class="event-track" id="track-{{ columns.size }}"></div>
-            {% endwhile %}
-            
-            <!-- Create event block -->
             <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
                  style="top: {{ top_px }}px; height: {{ height_px }}px; left: {{ column_index | times: 200 }}px; width: calc(100% - 4px);">
               <div class="event-time">{{ event.time }}</div>
