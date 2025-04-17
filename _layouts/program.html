@@ -10,9 +10,14 @@ main {
     padding-top: 70px;
 }
 
-
+.schedule-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+    
 .schedule-container {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   width: 100%;
   margin-top: 1rem;
@@ -30,15 +35,22 @@ main {
   height: 40px;
   margin-left: 160px; 
   position: -webkit-sticky;
-  position: sticky;
+  position: static;
   top: 0;
+  white-space: nowrap;
   background: white;
   z-index: 10;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   will-change: transform; 
 }
+    
+.time-header-inner {
+  display: inline-block;
+  min-width: 100%;
+}
 
 .time-slot-header {
+  display: inline-block;
   width: 80px;
   flex-shrink: 0;
   text-align: left;
@@ -48,6 +60,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .room-rows-container {
@@ -171,6 +184,18 @@ main {
 </style>
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const scheduleWrapper = document.querySelector('.schedule-wrapper');
+  const timeHeader = document.querySelector('.time-header-inner');
+  
+  scheduleWrapper.addEventListener('scroll', function(e) {
+    timeHeader.style.transform = `translateX(-${e.target.scrollLeft}px)`;
+  });
+});
+</script>
+
+
 <main class="my-4">
   <div class="container">
     <h1 class="display-5">{{ title }}</h1>
@@ -195,14 +220,17 @@ main {
        
               <div class="mb-4">
                 <h5 class="fw-bold">Visual Overview</h5>
-                <div class="schedule-container">
+                  <div class="schedule-wrapper">
+                    <div class="schedule-container">
       
                   <div class="time-header">
+                    <div class="time-header-inner">
                     {% assign start_hour = 8 %}
                     {% assign end_hour = 19 %}
                     {% for h in (start_hour..end_hour) %}
                       <div class="time-slot-header">{{ h }}:00</div>
                     {% endfor %}
+                  </div>
                   </div>
 
                   <div class="room-rows-container">
@@ -242,6 +270,7 @@ main {
                             {% endunless %}
                           {% endfor %}
                         </div>
+                      </div>
                       </div>
                       {% endif %}
         
