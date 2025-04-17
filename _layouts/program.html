@@ -10,21 +10,15 @@ main {
     padding-top: 70px;
 }
 
-.schedule-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-}
-    
+
 .schedule-container {
-  display: inline-block;
+  display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 1rem;
   font-family: Arial, sans-serif;
   position: relative;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; 
   max-height: 80vh;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -34,23 +28,14 @@ main {
   display: flex;
   height: 40px;
   margin-left: 160px; 
-  position: -webkit-sticky;
-  position: static;
+  position: sticky;
   top: 0;
-  white-space: nowrap;
   background: white;
-  z-index: 10;
+  z-index: 3;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  will-change: transform; 
-}
-    
-.time-header-inner {
-  display: inline-block;
-  min-width: 100%;
 }
 
 .time-slot-header {
-  display: inline-block;
   width: 80px;
   flex-shrink: 0;
   text-align: left;
@@ -60,12 +45,10 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .room-rows-container {
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .room-rows {
@@ -87,15 +70,13 @@ main {
   font-weight: bold;
   text-align: right;
   border-right: 1px solid #ccc;
-  position: -webkit-sticky;
   position: sticky;
   left: 0;
   background: white;
-  z-index: 9;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  will-change: transform;
 }
 
 .time-slots {
@@ -150,19 +131,13 @@ main {
 @media (max-width: 768px) {
   .time-slot-header, .time-slot {
     width: 60px;
-    z-index: 15;
   }
   .room-name {
     width: 120px;
     font-size: 0.8rem;
-    z-index: 14; 
-    left: -1px; 
   }
   .time-header {
     margin-left: 120px;
-  }
-   .schedule-container {
-    max-height: 70vh; 
   }
   .event-block {
     padding: 4px;
@@ -170,30 +145,11 @@ main {
   }
 }
 
-  @supports (-webkit-overflow-scrolling: touch) {
-    .time-header,
-    .room-name {
-      position: -webkit-sticky;
-    }
-  }
-}
-    
+
 .list-unstyled li {
   margin-bottom: 1rem;
 }
 </style>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const scheduleWrapper = document.querySelector('.schedule-wrapper');
-  const timeHeader = document.querySelector('.time-header-inner');
-  
-  scheduleWrapper.addEventListener('scroll', function(e) {
-    timeHeader.style.transform = `translateX(-${e.target.scrollLeft}px)`;
-  });
-});
-</script>
 
 
 <main class="my-4">
@@ -220,17 +176,14 @@ document.addEventListener('DOMContentLoaded', function() {
        
               <div class="mb-4">
                 <h5 class="fw-bold">Visual Overview</h5>
-                  <div class="schedule-wrapper">
-                    <div class="schedule-container">
+                <div class="schedule-container">
       
                   <div class="time-header">
-                    <div class="time-header-inner">
                     {% assign start_hour = 8 %}
                     {% assign end_hour = 19 %}
                     {% for h in (start_hour..end_hour) %}
                       <div class="time-slot-header">{{ h }}:00</div>
                     {% endfor %}
-                  </div>
                   </div>
 
                   <div class="room-rows-container">
@@ -270,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             {% endunless %}
                           {% endfor %}
                         </div>
-                      </div>
                       </div>
                       {% endif %}
         
@@ -491,9 +443,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </main>
 
 {% include footer.html %}
-
-
-
 
 
 
