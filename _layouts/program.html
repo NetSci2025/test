@@ -83,9 +83,9 @@ table.schedule-table td {
                       {% assign time_minutes = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
                       <tr>
                         <td>{{ time }}</td>
-                        {% for event_index in (0..active_events.size | minus: 1) %}
-                          {% assign event = active_events[event_index] %}
                 
+                        {% assign event_index = 0 %}
+                        {% for event in active_events %}
                           {%- assign key = time_minutes | append: '-' | append: event_index -%}
                           {% unless skip contains key %}
                             {% assign e_start = event.time | split: ' - ' | first %}
@@ -111,6 +111,7 @@ table.schedule-table td {
                               <td></td>
                             {% endif %}
                           {% endunless %}
+                          {% assign event_index = event_index | plus: 1 %}
                         {% endfor %}
                       </tr>
                     {% endfor %}
