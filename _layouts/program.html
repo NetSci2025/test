@@ -32,12 +32,12 @@ layout: default
 .event-columns {
   display: flex;
   flex-grow: 1;
-  overflow-x: auto;
+  overflow-x: hidden; /* 禁止横向滚动 */
 }
 
 .event-column {
   flex: 1;
-  min-width: 200px;
+  min-width: 0; /* 允许压缩 */
   border-right: 1px solid #eee;
   position: relative;
 }
@@ -77,7 +77,7 @@ layout: default
       <div class="schedule-container">
         <!-- Time column -->
         <div class="time-column">
-          {% for h in (9..17) %}
+          {% for h in (9..18) %}
             <div class="time-slot">{{ h }}:00</div>
             <div class="time-slot">{{ h }}:30</div>
           {% endfor %}
@@ -88,79 +88,49 @@ layout: default
           {% assign columns = "" | split: "" %}
           {% assign column_ends = "" | split: "" %}
           
-          {% comment %} First pass for full-day events {% endcomment %}
           {% for event in day.events %}
-            {% if event.time == "09:30-17:30" or event.time == "08:30-17:30" %}
-              {% assign start_time = event.time | split: " - " | first %}
-              {% assign end_time = event.time | split: " - " | last %}
-              
-              {% assign start_h = start_time | split: ":" | first | plus: 0 %}
-              {% assign start_m = start_time | split: ":" | last | plus: 0 %}
-              {% assign end_h = end_time | split: ":" | first | plus: 0 %}
-              {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-              
-              {% assign start_min = start_h | times: 60 | plus: start_m %}
-              {% assign end_min = end_h | times: 60 | plus: end_m %}
-              {% assign top = start_min | minus: 540 %}
-              {% assign height = end_min | minus: start_min %}
-              
-              <div class="event-column">
-                <div class="event-block satellite" style="top: {{ top }}px; height: {{ height }}px;">
-                  <div class="event-time">{{ event.time }}</div>
-                  {{ event.title }}
-                </div>
-              </div>
-              
-              {% assign columns = columns | push: "used" %}
-              {% assign column_ends = column_ends | push: end_min %}
-            {% endif %}
-          {% endfor %}
-          
-          {% comment %} Second pass for morning/afternoon pairs {% endcomment %}
-          {% for event in day.events %}
-            {% unless event.time == "09:30-17:30" or event.time == "08:30-17:30" %}
-              {% assign start_time = event.time | split: " - " | first %}
-              {% assign end_time = event.time | split: " - " | last %}
-              
-              {% assign start_h = start_time | split: ":" | first | plus: 0 %}
-              {% assign start_m = start_time | split: ":" | last | plus: 0 %}
-              {% assign end_h = end_time | split: ":" | first | plus: 0 %}
-              {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-              
-              {% assign start_min = start_h | times: 60 | plus: start_m %}
-              {% assign end_min = end_h | times: 60 | plus: end_m %}
-              {% assign top = start_min | minus: 540 %}
-              {% assign height = end_min | minus: start_min %}
-              
-              {% assign column_index = 0 %}
-              {% assign placed = false %}
-              
-              {% for col_end in column_ends %}
-                {% if start_min >= col_end %}
-                  {% assign column_ends = column_ends | replace: col_end, end_min %}
-                  {% assign column_index = forloop.index0 %}
-                  {% assign placed = true %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-              
-              {% unless placed %}
-                {% assign columns = columns | push: "used" %}
+            {% assign start_time = event.time | split: " - " | first %}
+            {% assign end_time = event.time | split: " - " | last %}
+            
+            {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+            {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+            {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+            {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+            
+            {% assign start_min = start_h | times: 60 | plus: start_m %}
+            {% assign end_min = end_h | times: 60 | plus: end_m %}
+            
+            {% assign column_index = 0 %}
+            {% assign placed = false %}
+            
+            {% for col_end in column_ends %}
+              {% if start_min >= col_end %}
                 {% assign column_ends = column_ends | push: end_min %}
-                {% assign column_index = columns.size | minus: 1 %}
-              {% endunless %}
-              
-              <div class="event-column">
-                <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
-                     style="top: {{ top }}px; height: {{ height }}px;">
-                  <div class="event-time">{{ event.time }}</div>
-                  {{ event.title }}
-                </div>
-              </div>
+                {% assign column_index = forloop.index0 %}
+                {% assign placed = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            
+            {% unless placed %}
+              {% assign column_ends = column_ends | push: end_min %}
+              {% assign column_index = column_ends.size | minus: 1 %}
             {% endunless %}
+            
+            {% assign top = start_min | minus: 540 %}
+            {% assign height = end_min | minus: start_min %}
+            
+            <div class="event-column">
+              <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
+                   style="top: {{ top }}px; height: {{ height }}px;">
+                <div class="event-time">{{ event.time }}</div>
+                {{ event.title }}
+              </div>
+            </div>
           {% endfor %}
         </div>
       </div>
     {% endif %}
   </div>
 </main>
+
