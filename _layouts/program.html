@@ -37,9 +37,10 @@ layout: default
 
 .event-column {
   flex: 1;
-  min-width: 0; 
+  min-width: 0;  
   border-right: 1px solid #eee;
   position: relative;
+  height: 570px; 
 }
 
 .event-block {
@@ -85,7 +86,6 @@ layout: default
         
         <!-- Event columns -->
         <div class="event-columns">
-          {% assign columns = "" | split: "" %}
           {% assign column_ends = "" | split: "" %}
           
           {% for event in day.events %}
@@ -117,7 +117,7 @@ layout: default
               {% assign column_index = column_ends.size | minus: 1 %}
             {% endunless %}
             
-            {% assign top = start_min | minus: 540 %}
+            {% assign top = start_min | minus: 540 %}  {# 9:00 = 540分钟 #}
             {% assign height = end_min | minus: start_min %}
             
             <div class="event-column">
@@ -133,4 +133,5 @@ layout: default
     {% endif %}
   </div>
 </main>
+
 
