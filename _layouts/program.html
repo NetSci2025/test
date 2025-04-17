@@ -62,7 +62,7 @@ table.schedule-table td {
                 {% assign min_time = 540 %}
                 {% assign max_time = 1050 %}
                 
-                {%- assign filtered_events = "" | split: "" -%}
+                {%- assign real_events = "" | split: "" -%}
                 {%- for event in day.events -%}
                   {% if event.time %}
                     {% assign e_start = event.time | split: ' - ' | first %}
@@ -76,21 +76,15 @@ table.schedule-table td {
                     {% assign e_start_total = e_start_h | times: 60 | plus: e_start_m %}
                     {% assign e_end_total = e_end_h | times: 60 | plus: e_end_m %}
                 
-                    {% assign valid = false %}
-                    {% for t in time_slots %}
-                      {% assign t_min = t | split: ':' | first | plus: 0 | times: 60 | plus: t | split: ':' | last | plus: 0 %}
-                      {% if t_min >= e_start_total and t_min < e_end_total %}
-                        {% assign valid = true %}
-                      {% endif %}
-                    {% endfor %}
+                    {% assign span = e_end_total | minus: e_start_total | divided_by: 30 %}
                 
-                    {% if valid %}
-                      {% assign filtered_events = filtered_events | push: event %}
+                    {% if e_end_total > min_time and e_start_total < max_time and span > 0 %}
+                      {% assign real_events = real_events | push: event %}
                     {% endif %}
                   {% endif %}
                 {%- endfor -%}
                 
-                {% assign events = filtered_events %}
+                {% assign events = real_events %}
                 
                 <table class="schedule-table">
                   <tbody>
@@ -119,7 +113,6 @@ table.schedule-table td {
                     {% endfor %}
                   </tbody>
                 </table>
-
 
                 </div>
               </div>
