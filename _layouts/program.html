@@ -32,12 +32,12 @@ layout: default
 .event-columns {
   display: flex;
   flex-grow: 1;
-  overflow-x: hidden; /* 禁止横向滚动 */
+  overflow-x: hidden;
 }
 
 .event-column {
   flex: 1;
-  min-width: 0; /* 允许压缩 */
+  min-width: 0;
   border-right: 1px solid #eee;
   position: relative;
 }
@@ -65,6 +65,13 @@ layout: default
   margin-bottom: 2px;
   font-size: 0.7rem;
 }
+
+.combined-column {
+  flex: 1;
+  min-width: 0;
+  border-right: 1px solid #eee;
+  position: relative;
+}
 </style>
 
 <main class="my-4">
@@ -85,42 +92,84 @@ layout: default
         
         <!-- Event columns -->
         <div class="event-columns">
-          {% assign columns = "" | split: "" %}
-          {% assign column_ends = "" | split: "" %}
+          {% assign morning_events = day.events | where_exp: "event", "event.time contains '09:30-12:30'" %}
+          {% assign afternoon_events = day.events | where_exp: "event", "event.time contains '14:30-17:30'" %}
+          {% assign full_day_events = day.events | where_exp: "event", "event.time contains '09:30-17:30' or event.time contains '08:30-17:30'" %}
+          {% assign other_events = day.events | where_exp: "event", "event.time != '09:30-12:30' and event.time != '14:30-17:30' and event.time != '09:30-17:30' and event.time != '08:30-17:30'" %}
           
-          {% for event in day.events %}
+          <!-- Combined morning/afternoon columns -->
+          {% for event in morning_events %}
+            {% assign matching_afternoon = afternoon_events | where_exp: "e", "e.title contains event.title | split: ' ' | first" | first %}
+            <div class="combined-column">
+              <!-- Morning event -->
+              {% assign start_time = "09:30" %}
+              {% assign end_time = "12:30" %}
+              {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+              {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+              {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+              {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+              {% assign start_min = start_h | times: 60 | plus: start_m %}
+              {% assign end_min = end_h | times: 60 | plus: end_m %}
+              {% assign top = start_min | minus: 540 %}
+              {% assign height = end_min | minus: start_min %}
+              
+              <div class="event-block satellite" style="top: {{ top }}px; height: {{ height }}px;">
+                <div class="event-time">09:30-12:30</div>
+                {{ event.title }}
+              </div>
+              
+              <!-- Afternoon event if exists -->
+              {% if matching_afternoon %}
+                {% assign start_time = "14:30" %}
+                {% assign end_time = "17:30" %}
+                {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+                {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+                {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+                {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+                {% assign start_min = start_h | times: 60 | plus: start_m %}
+                {% assign end_min = end_h | times: 60 | plus: end_m %}
+                {% assign top = start_min | minus: 540 %}
+                {% assign height = end_min | minus: start_min %}
+                
+                <div class="event-block satellite" style="top: {{ top }}px; height: {{ height }}px;">
+                  <div class="event-time">14:30-17:30</div>
+                  {{ matching_afternoon.title }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          
+          <!-- Full day events -->
+          {% for event in full_day_events %}
+            <div class="event-column">
+              {% assign start_time = event.time | split: " - " | first %}
+              {% assign end_time = event.time | split: " - " | last %}
+              {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+              {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+              {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+              {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+              {% assign start_min = start_h | times: 60 | plus: start_m %}
+              {% assign end_min = end_h | times: 60 | plus: end_m %}
+              {% assign top = start_min | minus: 540 %}
+              {% assign height = end_min | minus: start_min %}
+              
+              <div class="event-block satellite" style="top: {{ top }}px; height: {{ height }}px;">
+                <div class="event-time">{{ event.time }}</div>
+                {{ event.title }}
+              </div>
+            </div>
+          {% endfor %}
+          
+          <!-- Other events -->
+          {% for event in other_events %}
             {% assign start_time = event.time | split: " - " | first %}
             {% assign end_time = event.time | split: " - " | last %}
-            
             {% assign start_h = start_time | split: ":" | first | plus: 0 %}
             {% assign start_m = start_time | split: ":" | last | plus: 0 %}
             {% assign end_h = end_time | split: ":" | first | plus: 0 %}
             {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-            
             {% assign start_min = start_h | times: 60 | plus: start_m %}
             {% assign end_min = end_h | times: 60 | plus: end_m %}
-            
-            {% assign column_index = 0 %}
-            {% assign placed = false %}
-            
-            {% for col_index in (0..column_ends.size) %}
-              {% assign col_start = column_ends[col_index] | split: "-" | first | plus: 0 %}
-              {% assign col_end = column_ends[col_index] | split: "-" | last | plus: 0 %}
-              
-              {% if start_min >= col_end %}
-                {% assign column_ends = column_ends | splice: col_index, 1, start_min | append: "-" | append: end_min %}
-                {% assign column_index = col_index %}
-                {% assign placed = true %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-            
-            {% unless placed %}
-              {% assign column_ends = column_ends | push: start_min | append: "-" | append: end_min %}
-              {% assign column_index = column_ends.size | minus: 1 %}
-            {% endunless %}
-
-            
             {% assign top = start_min | minus: 540 %}
             {% assign height = end_min | minus: start_min %}
             
