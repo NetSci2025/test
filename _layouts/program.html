@@ -6,22 +6,31 @@ layout: default
 {% include header.html %}
 
 <style>
-main {
-  padding-top: 70px;
+.schedule-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px repeat(8, 1fr);
+  gap: 4px;
+  border-top: 1px solid #ccc;
+  font-size: 0.75rem;
+  min-height: 1200px;
 }
-table.schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.8rem;
-  table-layout: fixed;
+.time-slot {
+  border-bottom: 1px solid #ccc;
+  height: 30px;
+  padding: 2px;
+  text-align: right;
+  padding-right: 5px;
+  background: #f9f9f9;
 }
-table.schedule-table th,
-table.schedule-table td {
-  border: 1px solid #ccc;
+.event-block {
+  position: absolute;
+  border-radius: 4px;
   padding: 4px;
-  text-align: center;
-  vertical-align: top;
-  word-wrap: break-word;
+  font-size: 0.7rem;
+  color: #000;
+  border: 1px solid #999;
+  overflow: hidden;
 }
 .bg-yellow {
   background-color: #ffe699;
@@ -36,127 +45,69 @@ table.schedule-table td {
     <h1 class="display-5">{{ title }}</h1>
 
     {% if site.data.program %}
-    <hr class="my-4">
-    <div class="row">
-      <div class="accordion">
-        {% assign categories = site.data.program.legend.categories %}
+    {% assign day = site.data.program.days | where: "name", "Mon 2 June 2025" | first %}
+    {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
 
-        {% for day in site.data.program.days %}
-        {% assign slug = day.name | slugify %}
-        <div class="accordion-item" id="{{ slug }}">
-          <h5 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ slug }}" aria-expanded="false" aria-controls="collapse-{{ slug }}">
-              <span class="h5 m-0">{{ day.name }}</span>
-            </button>
-          </h5>
+    <div class="schedule-grid">
+      {% assign index = 0 %}
+      {% for time in time_slots %}
+        <div class="time-slot" style="grid-row: {{ forloop.index }}">{{ time }}</div>
+      {% endfor %}
 
-          <div id="collapse-{{ slug }}" class="accordion-collapse collapse">
-            <div class="accordion-body mt-2">
+      {% assign minute_to_index = "" | split: "" %}
+      {% assign step = 30 %}
 
-              {% if day.name == "Mon 2 June 2025" %}
-              <div class="mb-4">
-                <div class="schedule-label">Visual Overview</div>
-                <table class="schedule-table">
-                  <tbody>
-                    {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                    {% assign min_time = 540 %}
-                    {% assign max_time = 1050 %}
-                
-                    {% assign grouped_events = day.events | group_by_exp:"e", "e.time | append: '-' | append: e.title" %}
-                    {% assign active_events = "" | split: "" %}
-                    {% for pair in grouped_events %}
-                      {% assign event = pair.items[0] %}
-                      {% assign active_events = active_events | push: event %}
-                    {% endfor %}
+      {% for i in (0..(time_slots.size | minus: 1)) %}
+        {% assign parts = time_slots[i] | split: ":" %}
+        {% assign minutes = parts[0] | plus: 0 | times: 60 | plus: parts[1] | plus: 0 %}
+        {% assign minute_to_index = minute_to_index | push: minutes %}
+      {% endfor %}
 
+      {% assign columns = "" | split: "" %}
+      {% assign tracks = "" | split: "" %}
 
-                    {% assign skip = '' | split: ',' %}
-                    {% for time in time_slots %}
-                      {% assign time_minutes = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
-                      <tr>
-                        <td>{{ time }}</td>
-                        {% assign event_index = 0 %}
-                        {% for event in active_events %}
-                          {% assign e_start = event.time | split: ' - ' | first %}
-                          {% assign e_end = event.time | split: ' - ' | last %}
-                          {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-                          {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-                          {% assign key = time_minutes | append: '-' | append: event_index %}
-                
-                          {% unless skip contains key %}
-                            {% if time_minutes == e_start_m %}
-                              {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-                              <td rowspan="{{ span }}" class="{{ event_index | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">
-                                {{ event.time }}<br>{{ event.title }}
-                              </td>
-                              {% assign s = skip %}
-                              {% for i in (1..(span | minus: 1)) %}
-                                {% assign t = time_minutes | plus: i | times: 30 | divided_by: 30 %}
-                                {% assign k = t | append: '-' | append: event_index %}
-                                {% assign s = s | push: k %}
-                              {% endfor %}
-                              {% assign skip = s %}
-                            {% elsif time_minutes > e_start_m and time_minutes < e_end_m %}
-                              {% continue %}
-                            {% else %}
-                              <td></td>
-                            {% endif %}
-                          {% endunless %}
-                          {% assign event_index = event_index | plus: 1 %}
-                        {% endfor %}
-                      </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
+      {% for event in day.events %}
+        {% assign e_start = event.time | split: ' - ' | first | strip %}
+        {% assign e_end = event.time | split: ' - ' | last | strip %}
+        {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
+        {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
+        {% assign e_duration = e_end_m | minus: e_start_m %}
 
+        {% assign placed = false %}
+        {% assign column = 1 %}
 
-
-
-                </div>
-              </div>
-              {% endif %}
-
-              <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
-                {% for event in day.events %}
-                {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
-                <li class="d-flex flex-column flex-lg-row mb-4">
-                  <div class="row col-lg-2 pb-2 border-start border-3 border-{{ color }} border-lg-0">
-                    <small class="fw-light text-muted">{{ event.time }}</small>
-                  </div>
-                  <div class="row col-lg-10 border-start border-3 border-{{ color }}">
-                    <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
-                    {% if event.subtitle %}<p class="fw-light m-0">{{ event.subtitle }}</p>{% endif %}
-                    {% if event.location %}<p class="fw-light m-0"><strong>Location:</strong> {{ event.location }}</p>{% endif %}
-                    {% if event.link %}<p class="fw-light m-0"><a href="{{ event.link }}" target="_blank">Check the detailed program here</a></p>{% endif %}
-                  </div>
-                </li>
-                {% endfor %}
-              </ul>
-
-              {% assign legend = day.events | map: 'category' | compact | uniq %}
-              {% if legend.size > 0 %}
-              <div class="mt-4 mb-2">
-                {% for item in legend %}
-                {% assign border = categories | where: 'name', item | map: 'color' | first %}
-                {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
-                {% assign classes = border | prepend: ' border-' | prepend: bg %}
-                {% if border %}
-                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
-                {% endif %}
-                {% endfor %}
-              </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
+        {% for t in (1..10) %}
+          {% assign conflict = false %}
+          {% for e in tracks %}
+            {% assign c = e | split: '|' %}
+            {% assign c_start = c[1] | plus: 0 %}
+            {% assign c_end = c[2] | plus: 0 %}
+            {% assign c_col = c[0] | plus: 0 %}
+            {% if c_col == t and e_start_m < c_end and e_end_m > c_start %}
+              {% assign conflict = true %}
+            {% endif %}
+          {% endfor %}
+          {% unless conflict %}
+            {% assign column = t %}
+            {% assign tracks = tracks | push: column | append: "|" | append: e_start_m | append: "|" | append: e_end_m %}
+            {% assign placed = true %}
+            {% break %}
+          {% endunless %}
         {% endfor %}
-      </div>
+
+        {% assign top = e_start_m | minus: 540 | times: 1.5 %} {# 1.5px per minute from 09:00 #}
+        {% assign height = e_duration | times: 1.5 %}
+
+        <div class="event-block {{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}" style="top:{{ top }}px; height:{{ height }}px; left:{{ column | times: 110 }}px; width: 100px">
+          <strong>{{ event.time }}</strong><br>
+          {{ event.title }}
+        </div>
+      {% endfor %}
     </div>
     {% endif %}
   </div>
 </main>
 
-<!-- {% include footer.html %} -->
 
 
 
