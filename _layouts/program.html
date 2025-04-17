@@ -224,7 +224,7 @@ main {
                           {% endfor %}
                         </div>
                       </div>
-                      
+                      {% endif %}
         
 
                     {% assign satellite_events = day.events | where: "category", "Satellites" | sort: "time" %}
