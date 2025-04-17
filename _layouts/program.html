@@ -225,41 +225,78 @@ main {
                       </div>
                       
         
-                        {% assign satellite_events = day.events | where: "category", "Satellites" %}
-                        {% assign satellite_groups = satellite_events | group_by: "title" %}
-                        {% for group in satellite_groups %}
-                          <div class="room-row">
-                            <div class="room-name">Satellite</div>
-                            <div class="time-slots">
-                              {% for h in (start_hour..end_hour) %}
-                                <div class="time-slot" data-hour="{{ h }}"></div>
-                              {% endfor %}
-                        
-                              {% for event in group.items %}
-                                {% assign start_time = event.time | split: " - " | first %}
-                                {% assign end_time = event.time | split: " - " | last %}
-                                {% assign start_h = start_time | split: ":" | first | plus: 0 %}
-                                {% assign start_m = start_time | split: ":" | last | plus: 0 %}
-                                {% assign end_h = end_time | split: ":" | first | plus: 0 %}
-                                {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-                        
-                                {% assign start_min = start_h | times: 60 | plus: start_m %}
-                                {% assign end_min = end_h | times: 60 | plus: end_m %}
-                                {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
-                                {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
-                        
-                                <div class="event-block bg-pink-6" 
-                                     style="left: calc({{ left }} * 80px); 
-                                            width: calc({{ width }} * 80px - 4px);"
-                                     title="{{ event.title }} | {{ event.time }}">
-                                  <div class="event-time">{{ event.time }}</div>
-                                  {{ event.title | truncate: 30 }}
-                                </div>
-                              {% endfor %}
-                            </div>
-                          </div>
-                        {% endfor %}
 
+                    {% assign satellite_events = day.events | where: "category", "Satellites" | sort: "time" %}
+                    {% assign processed_events = "" | split: "," %}
+                    
+                    {% for event in satellite_events %}
+                      {% unless processed_events contains event.title %}
+                        <div class="room-row">
+                          <div class="room-name">Satellite</div>
+                          <div class="time-slots">
+                            {% for h in (start_hour..end_hour) %}
+                              <div class="time-slot" data-hour="{{ h }}"></div>
+                            {% endfor %}
+                            
+                            <!-- Current event -->
+                            {% assign start_time = event.time | split: " - " | first %}
+                            {% assign end_time = event.time | split: " - " | last %}
+                            {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+                            {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+                            {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+                            {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+                            
+                            {% assign start_min = start_h | times: 60 | plus: start_m %}
+                            {% assign end_min = end_h | times: 60 | plus: end_m %}
+                            {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
+                            {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
+                            
+                            <div class="event-block bg-pink-6" 
+                                 style="left: calc({{ left }} * 80px); 
+                                        width: calc({{ width }} * 80px - 4px);"
+                                 title="{{ event.title }} | {{ event.time }}">
+                              <div class="event-time">{{ event.time }}</div>
+                              {{ event.title | truncate: 30 }}
+                            </div>
+                            
+                            <!-- Try to find matching afternoon/morning event -->
+                            {% if event.session == "Morning" %}
+                              {% assign matching_event = satellite_events | where: "session", "Afternoon" | where_exp: "item", "item.title contains event.title" | first %}
+                            {% elsif event.session == "Afternoon" %}
+                              {% assign matching_event = satellite_events | where: "session", "Morning" | where_exp: "item", "item.title contains event.title" | first %}
+                            {% else %}
+                              {% assign matching_event = nil %}
+                            {% endif %}
+                            
+                            {% if matching_event and matching_event != empty %}
+                              {% assign start_time = matching_event.time | split: " - " | first %}
+                              {% assign end_time = matching_event.time | split: " - " | last %}
+                              {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+                              {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+                              {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+                              {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+                              
+                              {% assign start_min = start_h | times: 60 | plus: start_m %}
+                              {% assign end_min = end_h | times: 60 | plus: end_m %}
+                              {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
+                              {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
+                              
+                              <div class="event-block bg-pink-6" 
+                                   style="left: calc({{ left }} * 80px); 
+                                          width: calc({{ width }} * 80px - 4px);"
+                                   title="{{ matching_event.title }} | {{ matching_event.time }}">
+                                <div class="event-time">{{ matching_event.time }}</div>
+                                {{ matching_event.title | truncate: 30 }}
+                              </div>
+                              
+                              {% assign processed_events = processed_events | push: matching_event.title %}
+                            {% endif %}
+                            
+                            {% assign processed_events = processed_events | push: event.title %}
+                          </div>
+                        </div>
+                      {% endunless %}
+                    {% endfor %}
                     </div>
                   </div>
                 </div>
@@ -348,6 +385,7 @@ main {
 </main>
 
 {% include footer.html %}
+
 
 
 
