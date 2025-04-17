@@ -188,43 +188,41 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-                        {% assign main_events = day.events | where_exp:"item","item.category != 'Satellites'" %}
-                        {% if main_events.size > 0 %}
-                          <div class="room-row">
-                            <div class="room-name">Main</div>
-                            <div class="time-slots">
-                              {% for h in (start_hour..end_hour) %}
-                                <div class="time-slot" data-hour="{{ h }}"></div>
-                              {% endfor %}
-                                                  
-                          {% for event in day.events %}
-                            {% unless event.category == 'Satellites' %}
-                              {% assign start_time = event.time | split: " - " | first %}
-                              {% assign end_time = event.time | split: " - " | last %}
-                              {% assign start_h = start_time | split: ":" | first | plus: 0 %}
-                              {% assign start_m = start_time | split: ":" | last | plus: 0 %}
-                              {% assign end_h = end_time | split: ":" | first | plus: 0 %}
-                              {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-                              
-                              {% assign start_min = start_h | times: 60 | plus: start_m %}
-                              {% assign end_min = end_h | times: 60 | plus: end_m %}
-                              {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
-                              {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
-                              
-                              {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
-                              
-                              <div class="event-block bg-{{ cat_color }}" 
-                                   style="left: calc({{ left }} * 80px); 
-                                          width: calc({{ width }} * 80px - 4px);"
-                                   title="{{ event.title }} | {{ event.time }}">
-                                <div class="event-time">{{ event.time }}</div>
-                                {{ event.title }}
-                              </div>
-                            {% endunless %}
+                    {% assign main_events = day.events | where_exp:"item","item.category != 'Satellites' and item.category != 'Satellite Break'" %}
+                    {% if main_events.size > 0 %}
+                      <div class="room-row">
+                        <div class="room-name">Main</div>
+                        <div class="time-slots">
+                          {% for h in (start_hour..end_hour) %}
+                            <div class="time-slot" data-hour="{{ h }}"></div>
+                          {% endfor %}
+                          
+                          {% for event in main_events %}  <!-- 这里改为使用main_events -->
+                            {% assign start_time = event.time | split: " - " | first %}
+                            {% assign end_time = event.time | split: " - " | last %}
+                            {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+                            {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+                            {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+                            {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+                            
+                            {% assign start_min = start_h | times: 60 | plus: start_m %}
+                            {% assign end_min = end_h | times: 60 | plus: end_m %}
+                            {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
+                            {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
+                            
+                            {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
+                            
+                            <div class="event-block bg-{{ cat_color }}" 
+                                 style="left: calc({{ left }} * 80px); 
+                                        width: calc({{ width }} * 80px - 4px);"
+                                 title="{{ event.title }} | {{ event.time }}">
+                              <div class="event-time">{{ event.time }}</div>
+                              {{ event.title }}
+                            </div>
                           {% endfor %}
                         </div>
                       </div>
-                      {% endif %}
+                    {% endif %}
         
 
                     {% assign satellite_events = day.events | where: "category", "Satellites" | sort: "time" %}
