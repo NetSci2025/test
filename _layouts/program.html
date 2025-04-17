@@ -9,7 +9,7 @@ layout: default
 .schedule-container {
   position: relative;
   width: 100%;
-  height: 1440px; /* 9:00 to 18:00 -> 9 hours x 60 minutes = 540 minutes */
+  height: 1440px;
   margin-top: 2rem;
   border-left: 80px solid #eee;
 }
@@ -43,6 +43,7 @@ layout: default
 }
 </style>
 
+
 <main class="my-4">
   <div class="container">
     <h1 class="display-5">{{ title }}</h1>
@@ -60,6 +61,7 @@ layout: default
       </div>
 
       {% assign tracks = "" | split: "" %}
+      {% assign index = 0 %}
       {% for event in events %}
         {% if event.time and event.time contains ':' and event.time contains ' - ' %}
           {% assign e_start = event.time | split: ' - ' | first | strip %}
@@ -70,8 +72,7 @@ layout: default
           {% assign height = end_min | minus: start_min %}
 
           {% assign col = 0 %}
-          {% assign placed = false %}
-          {% for t in (0..10) %}
+          {% for t in (0..20) %}
             {% assign conflict = false %}
             {% for tr in tracks %}
               {% assign parts = tr | split: '|' %}
@@ -89,14 +90,21 @@ layout: default
             {% endunless %}
           {% endfor %}
 
-          {% capture is_odd %}{{ forloop.index0 | modulo: 2 }}{% endcapture %}
+          {% capture is_odd %}{{ index | modulo: 2 }}{% endcapture %}
           <div class="event-block {% if is_odd == '1' %}alt{% endif %}" style="top:{{ top }}px; height:{{ height }}px; left:{{ col | times: 160 }}px">
             <strong>{{ event.time }}</strong><br>
             {{ event.title }}
           </div>
+          {% assign index = index | plus: 1 %}
         {% endif %}
       {% endfor %}
     </div>
+
+    <!-- DEBUG: Print how many events loaded -->
+    <div style="margin-top:1rem; font-size: 0.8rem; color: #888;">
+      Loaded {{ events.size }} events.
+    </div>
+
     {% endif %}
   </div>
 </main>
