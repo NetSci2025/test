@@ -19,6 +19,7 @@ main {
   font-family: Arial, sans-serif;
   position: relative;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
   max-height: 80vh;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -28,11 +29,13 @@ main {
   display: flex;
   height: 40px;
   margin-left: 160px; 
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   background: white;
-  z-index: 3;
+  z-index: 10;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  will-change: transform; 
 }
 
 .time-slot-header {
@@ -49,6 +52,7 @@ main {
 
 .room-rows-container {
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .room-rows {
@@ -70,13 +74,15 @@ main {
   font-weight: bold;
   text-align: right;
   border-right: 1px solid #ccc;
+  position: -webkit-sticky;
   position: sticky;
   left: 0;
   background: white;
-  z-index: 2;
+  z-index: 9;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  will-change: transform;
 }
 
 .time-slots {
@@ -131,13 +137,19 @@ main {
 @media (max-width: 768px) {
   .time-slot-header, .time-slot {
     width: 60px;
+    z-index: 15;
   }
   .room-name {
     width: 120px;
     font-size: 0.8rem;
+    z-index: 14; 
+    left: -1px; 
   }
   .time-header {
     margin-left: 120px;
+  }
+   .schedule-container {
+    max-height: 70vh; 
   }
   .event-block {
     padding: 4px;
@@ -145,7 +157,14 @@ main {
   }
 }
 
-
+  @supports (-webkit-overflow-scrolling: touch) {
+    .time-header,
+    .room-name {
+      position: -webkit-sticky;
+    }
+  }
+}
+    
 .list-unstyled li {
   margin-bottom: 1rem;
 }
