@@ -62,18 +62,13 @@ table.schedule-table td {
                     {% assign min_time = 540 %}
                     {% assign max_time = 1050 %}
                 
+                    {% assign grouped_events = day.events | group_by_exp:"e", "e.time | append: '-' | append: e.title" %}
                     {% assign active_events = "" | split: "" %}
-                    {% assign seen = "" | split: "" %}
-                    
-                    {% for event in day.events %}
-                      {% if event.time and event.title != "" %}
-                        {% assign e_key = event.time | append: '|' | append: event.title %}
-                        {% unless seen contains e_key %}
-                          {% assign seen = seen | push: e_key %}
-                          {% assign active_events = active_events | push: event %}
-                        {% endunless %}
-                      {% endif %}
+                    {% for pair in grouped_events %}
+                      {% assign event = pair.items[0] %}
+                      {% assign active_events = active_events | push: event %}
                     {% endfor %}
+
 
                     {% assign skip = '' | split: ',' %}
                     {% for time in time_slots %}
