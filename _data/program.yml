@@ -85,7 +85,17 @@ days:
         title: (Satellite) Networking and Clustering Network Scientists
         category: Satellites
         session: Afternoon
-
+      - time: 10:30 - 11:00
+        title: Coffee break
+        category: Break
+      - time: 12:30 - 14:30
+        title: Coffee break
+        category: Break
+      - time: 16:00 - 16:30
+        title: Coffee break
+        category: Break
+        
+        
   - name: Tue 3 June 2025
     events:
       - time: 08:30 - 18:30
