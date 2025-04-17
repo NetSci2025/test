@@ -6,36 +6,39 @@ layout: default
 {% include header.html %}
 
 <style>
-.schedule-grid {
+.schedule-container {
   position: relative;
-  display: grid;
-  grid-template-columns: 80px repeat(8, 1fr);
-  gap: 4px;
-  border-top: 1px solid #ccc;
-  font-size: 0.75rem;
-  min-height: 1200px;
+  width: 100%;
+  height: 1440px; /* 9:00 to 18:00 -> 9 hours x 60 minutes = 540 minutes */
+  margin-top: 2rem;
+  border-left: 80px solid #eee;
 }
-.time-slot {
-  border-bottom: 1px solid #ccc;
+.time-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  font-size: 0.75rem;
+  color: #555;
+}
+.time-labels div {
   height: 30px;
-  padding: 2px;
-  text-align: right;
-  padding-right: 5px;
-  background: #f9f9f9;
+  line-height: 30px;
+  border-top: 1px solid #ccc;
+  padding-left: 4px;
 }
 .event-block {
   position: absolute;
+  width: 150px;
+  border: 1px solid #999;
   border-radius: 4px;
   padding: 4px;
+  box-sizing: border-box;
   font-size: 0.7rem;
-  color: #000;
-  border: 1px solid #999;
   overflow: hidden;
-}
-.bg-yellow {
   background-color: #ffe699;
 }
-.bg-orange {
+.event-block.alt {
   background-color: #f4b084;
 }
 </style>
@@ -46,59 +49,46 @@ layout: default
 
     {% if site.data.program %}
     {% assign day = site.data.program.days | where: "name", "Mon 2 June 2025" | first %}
-    {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
+    {% assign events = day.events %}
 
-    <div class="schedule-grid">
-      {% assign index = 0 %}
-      {% for time in time_slots %}
-        <div class="time-slot" style="grid-row: {{ forloop.index }}">{{ time }}</div>
-      {% endfor %}
+    <div class="schedule-container">
+      <div class="time-labels">
+        {% for h in (9..17) %}
+        <div>{{ h }}:00</div>
+        <div>{{ h }}:30</div>
+        {% endfor %}
+      </div>
 
-      {% assign minute_to_index = "" | split: "" %}
-      {% assign step = 30 %}
-
-      {% for i in (0..(time_slots.size | minus: 1)) %}
-        {% assign parts = time_slots[i] | split: ":" %}
-        {% assign minutes = parts[0] | plus: 0 | times: 60 | plus: parts[1] | plus: 0 %}
-        {% assign minute_to_index = minute_to_index | push: minutes %}
-      {% endfor %}
-
-      {% assign columns = "" | split: "" %}
       {% assign tracks = "" | split: "" %}
-
-      {% for event in day.events %}
+      {% for event in events %}
         {% assign e_start = event.time | split: ' - ' | first | strip %}
         {% assign e_end = event.time | split: ' - ' | last | strip %}
-        {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-        {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-        {% assign e_duration = e_end_m | minus: e_start_m %}
+        {% assign start_min = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
+        {% assign end_min = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
+        {% assign top = start_min | minus: 540 %}
+        {% assign height = end_min | minus: start_min %}
 
+        {% assign col = 0 %}
         {% assign placed = false %}
-        {% assign column = 1 %}
-
-        {% for t in (1..10) %}
+        {% for t in (0..10) %}
           {% assign conflict = false %}
-          {% for e in tracks %}
-            {% assign c = e | split: '|' %}
-            {% assign c_start = c[1] | plus: 0 %}
-            {% assign c_end = c[2] | plus: 0 %}
-            {% assign c_col = c[0] | plus: 0 %}
-            {% if c_col == t and e_start_m < c_end and e_end_m > c_start %}
+          {% for tr in tracks %}
+            {% assign parts = tr | split: '|' %}
+            {% assign t_col = parts[0] | plus: 0 %}
+            {% assign t_start = parts[1] | plus: 0 %}
+            {% assign t_end = parts[2] | plus: 0 %}
+            {% if t_col == t and start_min < t_end and end_min > t_start %}
               {% assign conflict = true %}
             {% endif %}
           {% endfor %}
           {% unless conflict %}
-            {% assign column = t %}
-            {% assign tracks = tracks | push: column | append: "|" | append: e_start_m | append: "|" | append: e_end_m %}
-            {% assign placed = true %}
+            {% assign col = t %}
+            {% assign tracks = tracks | push: t | append: '|' | append: start_min | append: '|' | append: end_min %}
             {% break %}
           {% endunless %}
         {% endfor %}
 
-        {% assign top = e_start_m | minus: 540 | times: 1.5 %} {# 1.5px per minute from 09:00 #}
-        {% assign height = e_duration | times: 1.5 %}
-
-        <div class="event-block {{ forloop.index0 | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}" style="top:{{ top }}px; height:{{ height }}px; left:{{ column | times: 110 }}px; width: 100px">
+        <div class="event-block {% if forloop.index0 modulo 2 == 1 %}alt{% endif %}" style="top:{{ top }}px; height:{{ height }}px; left:{{ col | times: 160 }}px">
           <strong>{{ event.time }}</strong><br>
           {{ event.title }}
         </div>
