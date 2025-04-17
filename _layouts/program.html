@@ -118,10 +118,11 @@ layout: default
               {% assign column_ends = column_ends | push: end_min %}
               {% assign column_index = column_ends.size | minus: 1 %}
             {% endunless %}
-            
+                        
             {% assign top = start_min | minus: 540 | times: 7 | divided_by: 6 %}
             {% assign height = end_min | minus: start_min | times: 7 | divided_by: 6 %}
             
+                        
 
             
             <div class="event-column">
