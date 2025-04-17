@@ -13,7 +13,9 @@ legend:
       color: green-6
     - name: Satellites
       color: pink-6
-
+    - name: Satellite Break
+      color: grey-6
+      
 days:
   - name: Mon 2 June 2025
     events:
@@ -70,7 +72,7 @@ days:
         category: Satellites
       - time: 12:30 - 14:00
         title: Lunch break
-        category: Break
+        category: Satellite Break
         
   - name: Tue 3 June 2025
     events:
