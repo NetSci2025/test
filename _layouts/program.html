@@ -91,9 +91,7 @@ table.schedule-table td {
                 
                           {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
                 
-                          {% assign cell_id = 'event_' | append: forloop.parentloop.index | append: '_' | append: forloop.index %}
-                
-                          {% capture already_rendered %}{% if page[cell_id] %}yes{% else %}no{% endif %}{% endcapture %}
+
                 
                           {% if time_minutes == e_start_m %}
                             {% assign color_class = col_index | modulo: 2 | plus: 0 | times: 1 | modulo: 2 | plus: 0 %}
@@ -102,7 +100,7 @@ table.schedule-table td {
                               {{ event.time }}<br>{{ event.title }}
                             </td>
                             {% assign col_index = col_index | plus: 1 %}
-                            {% assign page = page | merge: {{ cell_id | inspect }}:true %}
+              
                           {% elsif time_minutes > e_start_m and time_minutes < e_end_m %}
                             {% continue %}
                           {% else %}
