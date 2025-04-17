@@ -177,7 +177,7 @@ main {
               <div class="mb-4">
                 <h5 class="fw-bold">Visual Overview</h5>
                 <div class="schedule-container">
-      
+
                   <div class="time-header">
                     {% assign start_hour = 8 %}
                     {% assign end_hour = 19 %}
@@ -188,7 +188,7 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-           
+
                       <div class="room-row">
                         <div class="room-name">Main</div>
                         <div class="time-slots">
@@ -224,7 +224,67 @@ main {
                         </div>
                       </div>
                       
-        
+                      <!-- 卫星会议（按时间段分组） -->
+                      {% assign morning_satellites = day.events | where: "category", "Satellites" | where_exp: "item", "item.time contains '08:30 - 12:30'" %}
+                      {% assign afternoon_satellites = day.events | where: "category", "Satellites" | where_exp: "item", "item.time contains '14:30 - 18:30'" %}
+                      {% assign other_satellites = day.events | where: "category", "Satellites" | where_exp: "item", "item.time != '08:30 - 12:30' and item.time != '14:30 - 18:30'" %}
+                      
+                      <!-- 上午卫星会议 -->
+                      {% if morning_satellites.size > 0 %}
+                      <div class="room-row">
+                        <div class="room-name">Satellites AM</div>
+                        <div class="time-slots">
+                          {% for h in (start_hour..end_hour) %}
+                            <div class="time-slot" data-hour="{{ h }}"></div>
+                          {% endfor %}
+                          
+                          <div class="event-block bg-pink-6" 
+                               style="left: calc(2.5 * 80px); /* 08:30 */
+                                      width: calc(4 * 80px - 4px); /* 4小时 */">
+                            {% for event in morning_satellites %}
+                              <div class="satellite-event">
+                                <div class="event-time">{{ event.time }}</div>
+                                {{ event.title | truncate: 30 }}
+                              </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                      {% endif %}
+                      
+                      <!-- 下午卫星会议 -->
+                      {% if afternoon_satellites.size > 0 %}
+                      <div class="room-row">
+                        <div class="room-name">Satellites PM</div>
+                        <div class="time-slots">
+                          {% for h in (start_hour..end_hour) %}
+                            <div class="time-slot" data-hour="{{ h }}"></div>
+                          {% endfor %}
+                          
+                          <div class="event-block bg-pink-6" 
+                               style="left: calc(8.5 * 80px); /* 14:30 */
+                                      width: calc(4 * 80px - 4px); /* 4小时 */">
+                            {% for event in afternoon_satellites %}
+                              <div class="satellite-event">
+                                <div class="event-time">{{ event.time }}</div>
+                                {{ event.title | truncate: 30 }}
+                              </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                      {% endif %}
+                      
+                      <!-- 其他时间段卫星会议 -->
+                      {% for event in other_satellites %}
+                      <div class="room-row">
+                        <div class="room-name">Satellite</div>
+                        <div class="time-slots">
+                          {% for h in (start_hour..end_hour) %}
+                            <div class="time-slot" data-hour="{{ h }}"></div>
+                          {% endfor %}
+
+                            
                       {% assign satellite_events = day.events | where: "category", "Satellites" %}
                       {% for event in satellite_events %}
                         <div class="room-row">
