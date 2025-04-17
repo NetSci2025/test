@@ -173,11 +173,11 @@ main {
           <div id="{{ slug }}" class="accordion-collapse collapse">
             <div class="accordion-body mt-2">
             
-
+       
               <div class="mb-4">
                 <h5 class="fw-bold">Visual Overview</h5>
                 <div class="schedule-container">
-
+      
                   <div class="time-header">
                     {% assign start_hour = 8 %}
                     {% assign end_hour = 19 %}
@@ -188,7 +188,7 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-      
+           
                       <div class="room-row">
                         <div class="room-name">Main</div>
                         <div class="time-slots">
@@ -196,7 +196,6 @@ main {
                             <div class="time-slot" data-hour="{{ h }}"></div>
                           {% endfor %}
                           
-        
                           {% for event in day.events %}
                             {% unless event.category == 'Satellites' %}
                               {% assign start_time = event.time | split: " - " | first %}
@@ -225,47 +224,43 @@ main {
                         </div>
                       </div>
                       
-           
+        
                       {% assign satellite_events = day.events | where: "category", "Satellites" %}
-                      {% if satellite_events.size > 0 %}
+                      {% for event in satellite_events %}
                         <div class="room-row">
-                          <div class="room-name">Satellites</div>
+                          <div class="room-name">Satellite</div>
                           <div class="time-slots">
                             {% for h in (start_hour..end_hour) %}
                               <div class="time-slot" data-hour="{{ h }}"></div>
                             {% endfor %}
                             
-             
-                            {% for event in satellite_events %}
-                              {% assign start_time = event.time | split: " - " | first %}
-                              {% assign end_time = event.time | split: " - " | last %}
-                              {% assign start_h = start_time | split: ":" | first | plus: 0 %}
-                              {% assign start_m = start_time | split: ":" | last | plus: 0 %}
-                              {% assign end_h = end_time | split: ":" | first | plus: 0 %}
-                              {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-                              
-                              {% assign start_min = start_h | times: 60 | plus: start_m %}
-                              {% assign end_min = end_h | times: 60 | plus: end_m %}
-                              {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
-                              {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
-                              
-                              {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
-                              
-                              <div class="event-block bg-{{ cat_color }}" 
-                                   style="left: calc({{ left }} * 80px); 
-                                          width: calc({{ width }} * 80px - 4px);"
-                                   title="{{ event.title }} | {{ event.time }}">
-                                <div class="event-time">{{ event.time }}</div>
-                                {{ event.title | truncate: 30 }}
-                              </div>
-                            {% endfor %}
+                            {% assign start_time = event.time | split: " - " | first %}
+                            {% assign end_time = event.time | split: " - " | last %}
+                            {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+                            {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+                            {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+                            {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+                            
+                            {% assign start_min = start_h | times: 60 | plus: start_m %}
+                            {% assign end_min = end_h | times: 60 | plus: end_m %}
+                            {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
+                            {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
+                            
+                            <div class="event-block bg-pink-6" 
+                                 style="left: calc({{ left }} * 80px); 
+                                        width: calc({{ width }} * 80px - 4px);"
+                                 title="{{ event.title }} | {{ event.time }}">
+                              <div class="event-time">{{ event.time }}</div>
+                              {{ event.title | truncate: 30 }}
+                            </div>
                           </div>
                         </div>
-                      {% endif %}
+                      {% endfor %}
                     </div>
                   </div>
                 </div>
               </div>
+
             
             
               {% assign categories = site.data.program.legend.categories %}
