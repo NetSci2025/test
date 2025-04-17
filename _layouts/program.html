@@ -1,4 +1,4 @@
---- 
+---
 layout: default
 ---
 
@@ -32,12 +32,12 @@ layout: default
 .event-columns {
   display: flex;
   flex-grow: 1;
-  overflow-x: auto;
+  overflow-x: hidden; /* 禁止横向滚动 */
 }
 
 .event-column {
   flex: 1;
-  min-width: 200px;
+  min-width: 0; /* 允许压缩 */
   border-right: 1px solid #eee;
   position: relative;
 }
@@ -117,12 +117,12 @@ layout: default
               {% assign column_index = column_ends.size | minus: 1 %}
             {% endunless %}
             
-            {% assign top = start_min | minus: 540 | times: 1.0 | divided_by: 30 %}
-            {% assign height = end_min | minus: start_min | times: 1.0 | divided_by: 30 %}
+            {% assign top = start_min | minus: 540 %}
+            {% assign height = end_min | minus: start_min %}
             
             <div class="event-column">
               <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
-                   style="top: {{ top }}rem; height: {{ height }}rem;">
+                   style="top: {{ top }}px; height: {{ height }}px;">
                 <div class="event-time">{{ event.time }}</div>
                 {{ event.title }}
               </div>
@@ -133,3 +133,4 @@ layout: default
     {% endif %}
   </div>
 </main>
+
