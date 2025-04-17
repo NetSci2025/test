@@ -26,6 +26,7 @@ layout: default
   padding-right: 8px;
   font-size: 0.75rem;
   color: #555;
+  border-top: 1px solid #eee;
 }
 
 .event-columns {
@@ -45,18 +46,16 @@ layout: default
   margin: 2px;
   padding: 4px;
   border-radius: 4px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   overflow: hidden;
   background-color: #ffe699;
   border: 1px solid #e6c87d;
+  position: absolute;
+  left: 2px;
+  right: 2px;
 }
 
-.event-block-alt {
-  background-color: #f4b084;
-  border: 1px solid #e09a6b;
-}
-
-.event-block-satellite {
+.event-block.satellite {
   background-color: #c5e0b4;
   border: 1px solid #a8c897;
 }
@@ -64,6 +63,7 @@ layout: default
 .event-time {
   font-weight: bold;
   margin-bottom: 2px;
+  font-size: 0.7rem;
 }
 </style>
 
@@ -74,24 +74,6 @@ layout: default
     {% if site.data.program %}
       {% assign day = site.data.program.days | where: "name", "Mon 2 June 2025" | first %}
       
-      <!-- Create separate event arrays manually -->
-      {% assign morning_events = "" | split: "" %}
-      {% assign afternoon_events = "" | split: "" %}
-      {% assign all_day_events = "" | split: "" %}
-      {% assign other_events = "" | split: "" %}
-      
-      {% for event in day.events %}
-        {% if event.time == "09:30 - 12:30" %}
-          {% assign morning_events = morning_events | push: event %}
-        {% elsif event.time == "14:30 - 17:30" %}
-          {% assign afternoon_events = afternoon_events | push: event %}
-        {% elsif event.time == "09:30 - 17:30" %}
-          {% assign all_day_events = all_day_events | push: event %}
-        {% else %}
-          {% assign other_events = other_events | push: event %}
-        {% endif %}
-      {% endfor %}
-
       <div class="schedule-container">
         <!-- Time column -->
         <div class="time-column">
@@ -103,45 +85,49 @@ layout: default
         
         <!-- Event columns -->
         <div class="event-columns">
-          <!-- Column 1: Morning sessions (09:30-12:30) -->
-          <div class="event-column">
-            {% for event in morning_events %}
-              <div class="event-block {% if event.category == 'Satellites' %}event-block-satellite{% else %}{% if forloop.index0 | modulo: 2 == 1 %}event-block-alt{% endif %}{% endif %}">
-                <div class="event-time">{{ event.time }}</div>
-                {{ event.title }}
-              </div>
-            {% endfor %}
-          </div>
+          {% assign columns = "" | split: "" %}
+          {% assign column_ends = "" | split: "" %}
           
-          <!-- Column 2: Afternoon sessions (14:30-17:30) -->
-          <div class="event-column">
-            {% for event in afternoon_events %}
-              <div class="event-block {% if event.category == 'Satellites' %}event-block-satellite{% else %}{% if forloop.index0 | modulo: 2 == 1 %}event-block-alt{% endif %}{% endif %}">
+          {% for event in day.events %}
+            {% assign start_time = event.time | split: " - " | first %}
+            {% assign end_time = event.time | split: " - " | last %}
+            
+            {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+            {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+            {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+            {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+            
+            {% assign start_min = start_h | times: 60 | plus: start_m %}
+            {% assign end_min = end_h | times: 60 | plus: end_m %}
+            
+            {% assign column_index = 0 %}
+            {% assign placed = false %}
+            
+            {% for col_end in column_ends %}
+              {% if start_min >= col_end %}
+                {% assign column_ends = column_ends | push: end_min %}
+                {% assign column_index = forloop.index0 %}
+                {% assign placed = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            
+            {% unless placed %}
+              {% assign column_ends = column_ends | push: end_min %}
+              {% assign column_index = column_ends.size | minus: 1 %}
+            {% endunless %}
+            
+            {% assign top = start_min | minus: 540 | times: 1.0 | divided_by: 30 %}
+            {% assign height = end_min | minus: start_min | times: 1.0 | divided_by: 30 %}
+            
+            <div class="event-column">
+              <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
+                   style="top: {{ top }}rem; height: {{ height }}rem;">
                 <div class="event-time">{{ event.time }}</div>
                 {{ event.title }}
               </div>
-            {% endfor %}
-          </div>
-          
-          <!-- Column 3: All-day events (09:30-17:30) -->
-          <div class="event-column">
-            {% for event in all_day_events %}
-              <div class="event-block {% if event.category == 'Satellites' %}event-block-satellite{% else %}{% if forloop.index0 | modulo: 2 == 1 %}event-block-alt{% endif %}{% endif %}">
-                <div class="event-time">{{ event.time }}</div>
-                {{ event.title }}
-              </div>
-            {% endfor %}
-          </div>
-          
-          <!-- Column 4: Other time slots -->
-          <div class="event-column">
-            {% for event in other_events %}
-              <div class="event-block {% if event.category == 'Satellites' %}event-block-satellite{% else %}{% if forloop.index0 | modulo: 2 == 1 %}event-block-alt{% endif %}{% endif %}">
-                <div class="event-time">{{ event.time }}</div>
-                {{ event.title }}
-              </div>
-            {% endfor %}
-          </div>
+            </div>
+          {% endfor %}
         </div>
       </div>
     {% endif %}
