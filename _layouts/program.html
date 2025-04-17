@@ -103,19 +103,23 @@ layout: default
             {% assign column_index = 0 %}
             {% assign placed = false %}
             
-            {% for col_end in column_ends %}
+            {% for col_index in (0..column_ends.size) %}
+              {% assign col_start = column_ends[col_index] | split: "-" | first | plus: 0 %}
+              {% assign col_end = column_ends[col_index] | split: "-" | last | plus: 0 %}
+              
               {% if start_min >= col_end %}
-                {% assign column_ends = column_ends | push: end_min %}
-                {% assign column_index = forloop.index0 %}
+                {% assign column_ends = column_ends | splice: col_index, 1, start_min | append: "-" | append: end_min %}
+                {% assign column_index = col_index %}
                 {% assign placed = true %}
                 {% break %}
               {% endif %}
             {% endfor %}
             
             {% unless placed %}
-              {% assign column_ends = column_ends | push: end_min %}
+              {% assign column_ends = column_ends | push: start_min | append: "-" | append: end_min %}
               {% assign column_index = column_ends.size | minus: 1 %}
             {% endunless %}
+
             
             {% assign top = start_min | minus: 540 %}
             {% assign height = end_min | minus: start_min %}
