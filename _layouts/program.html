@@ -99,7 +99,8 @@ layout: default
           
           <!-- Combined morning/afternoon columns -->
           {% for event in morning_events %}
-            {% assign matching_afternoon = afternoon_events | where_exp: "e", "e.title contains event.title | split: ' ' | first" | first %}
+            {% assign event_title_start = event.title | split: '(' | first | strip %}
+            {% assign matching_afternoon = afternoon_events | where_exp: "e", "e.title contains event_title_start" | first %}
             <div class="combined-column">
               <!-- Morning event -->
               {% assign start_time = "09:30" %}
