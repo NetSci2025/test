@@ -52,62 +52,67 @@ layout: default
     {% assign day = site.data.program.days | where: "name", "Mon 2 June 2025" | first %}
     {% assign events = day.events %}
 
-    <div class="schedule-container">
-      <div class="time-labels">
-        {% for h in (9..17) %}
-        <div>{{ h }}:00</div>
-        <div>{{ h }}:30</div>
-        {% endfor %}
-      </div>
-
-      {% assign tracks = "" | split: "" %}
-      {% assign index = 0 %}
-      {% for event in events %}
-        {% if event.time and event.time contains ':' and event.time contains ' - ' %}
-          {% assign e_start = event.time | split: ' - ' | first | strip %}
-          {% assign e_end = event.time | split: ' - ' | last | strip %}
-          {% assign start_min = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-          {% assign end_min = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-          {% assign top = start_min | minus: 540 %}
-          {% assign height = end_min | minus: start_min %}
-
-          {% assign col = 0 %}
-          {% for t in (0..20) %}
-            {% assign conflict = false %}
-            {% for tr in tracks %}
-              {% assign parts = tr | split: '|' %}
-              {% assign t_col = parts[0] | plus: 0 %}
-              {% assign t_start = parts[1] | plus: 0 %}
-              {% assign t_end = parts[2] | plus: 0 %}
-              {% if t_col == t and start_min < t_end and end_min > t_start %}
-                {% assign conflict = true %}
-              {% endif %}
-            {% endfor %}
-            {% unless conflict %}
-              {% assign col = t %}
-              {% assign tracks = tracks | push: t | append: '|' | append: start_min | append: '|' | append: end_min %}
-              {% break %}
-            {% endunless %}
+    <div style="overflow-x: auto;">
+      <div class="schedule-grid">
+        <div class="time-labels">
+          {% for h in (9..17) %}
+            <div>{{ h }}:00</div>
+            <div>{{ h }}:30</div>
           {% endfor %}
+        </div>
 
-          {% capture is_odd %}{{ index | modulo: 2 }}{% endcapture %}
-          <div class="event-block {% if is_odd == '1' %}alt{% endif %}" style="top:{{ top }}px; height:{{ height }}px; left:{{ col | times: 160 }}px">
-            <strong>{{ event.time }}</strong><br>
-            {{ event.title }}
-          </div>
-          {% assign index = index | plus: 1 %}
-        {% endif %}
-      {% endfor %}
+        <div class="event-track-container">
+          {% assign tracks = "" | split: "" %}
+          {% assign index = 0 %}
+          {% for event in events %}
+            {% if event.time and event.time contains ':' and event.time contains ' - ' %}
+              {% assign e_start = event.time | split: ' - ' | first | strip %}
+              {% assign e_end = event.time | split: ' - ' | last | strip %}
+              {% assign start_min = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
+              {% assign end_min = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
+              {% assign top = start_min | minus: 540 %}
+              {% assign height = end_min | minus: start_min %}
+
+              {% assign col = 0 %}
+              {% for t in (0..20) %}
+                {% assign conflict = false %}
+                {% for tr in tracks %}
+                  {% assign parts = tr | split: '|' %}
+                  {% assign t_col = parts[0] | plus: 0 %}
+                  {% assign t_start = parts[1] | plus: 0 %}
+                  {% assign t_end = parts[2] | plus: 0 %}
+                  {% if t_col == t and start_min < t_end and end_min > t_start %}
+                    {% assign conflict = true %}
+                  {% endif %}
+                {% endfor %}
+                {% unless conflict %}
+                  {% assign col = t %}
+                  {% assign tracks = tracks | push: t | append: '|' | append: start_min | append: '|' | append: end_min %}
+                  {% break %}
+                {% endunless %}
+              {% endfor %}
+
+              {% assign left = col | times: 160 %}
+              {% assign top_px = top | times: 1.5 %}
+              {% assign height_px = height | times: 1.5 %}
+              {% assign bg_color = index | modulo: 2 %}
+
+              <div class="event-block {% if bg_color == 1 %}alt{% endif %}"
+                style="top:{{ top_px }}px; height:{{ height_px }}px; left:{{ left }}px;">
+                <strong>{{ event.time }}</strong><br>
+                {{ event.title }}
+              </div>
+
+              {% assign index = index | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
     </div>
-
-    <!-- DEBUG: Print how many events loaded -->
-    <div style="margin-top:1rem; font-size: 0.8rem; color: #888;">
-      Loaded {{ events.size }} events.
-    </div>
-
     {% endif %}
   </div>
 </main>
+
 
 
 
