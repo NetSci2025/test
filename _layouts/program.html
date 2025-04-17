@@ -27,7 +27,7 @@ main {
 .time-header {
   display: flex;
   height: 40px;
-  margin-left: 200px; 
+  margin-left: 160px; 
   position: sticky;
   top: 0;
   background: white;
@@ -38,7 +38,7 @@ main {
 .time-slot-header {
   width: 80px;
   flex-shrink: 0;
-  text-align: center;
+  text-align: left;
   font-size: 0.8rem;
   color: #555;
   border-bottom: 1px solid #ccc;
@@ -188,14 +188,15 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-           
-                      <div class="room-row">
-                        <div class="room-name">Main</div>
-                        <div class="time-slots">
-                          {% for h in (start_hour..end_hour) %}
-                            <div class="time-slot" data-hour="{{ h }}"></div>
-                          {% endfor %}
-                          
+                        {% assign main_events = day.events | where_exp:"item","item.category != 'Satellites'" %}
+                        {% if main_events.size > 0 %}
+                          <div class="room-row">
+                            <div class="room-name">Main</div>
+                            <div class="time-slots">
+                              {% for h in (start_hour..end_hour) %}
+                                <div class="time-slot" data-hour="{{ h }}"></div>
+                              {% endfor %}
+                                                  
                           {% for event in day.events %}
                             {% unless event.category == 'Satellites' %}
                               {% assign start_time = event.time | split: " - " | first %}
@@ -217,13 +218,13 @@ main {
                                           width: calc({{ width }} * 80px - 4px);"
                                    title="{{ event.title }} | {{ event.time }}">
                                 <div class="event-time">{{ event.time }}</div>
-                                {{ event.title | truncate: 30 }}
+                                {{ event.title }}
                               </div>
                             {% endunless %}
                           {% endfor %}
                         </div>
                       </div>
-                      
+                      {% endif %}
         
 
                     {% assign satellite_events = day.events | where: "category", "Satellites" | sort: "time" %}
@@ -258,7 +259,7 @@ main {
                                       width: calc({{ width }} * 80px - 4px);"
                                title="{{ event.title }} | {{ event.time }}">
                             <div class="event-time">{{ event.time }}</div>
-                            {{ event.title | truncate: 30 }}
+                            {{ event.title }}
                           </div>
                         </div>
                       </div>
@@ -292,7 +293,7 @@ main {
                                       width: calc({{ width }} * 80px - 4px);"
                                title="{{ morning.title }} | {{ morning.time }}">
                             <div class="event-time">{{ morning.time }}</div>
-                            {{ morning.title | truncate: 30 }}
+                            {{ morning.title }}
                           </div>
                           
                           <!-- Afternoon event if available -->
@@ -314,7 +315,7 @@ main {
                                         width: calc({{ width }} * 80px - 4px);"
                                  title="{{ matching_afternoon.title }} | {{ matching_afternoon.time }}">
                               <div class="event-time">{{ matching_afternoon.time }}</div>
-                              {{ matching_afternoon.title | truncate: 30 }}
+                              {{ matching_afternoon.title }}
                             </div>
                             
                             {% assign afternoon_events = afternoon_events | shift %}
@@ -349,7 +350,7 @@ main {
                                       width: calc({{ width }} * 80px - 4px);"
                                title="{{ afternoon.title }} | {{ afternoon.time }}">
                             <div class="event-time">{{ afternoon.time }}</div>
-                            {{ afternoon.title | truncate: 30 }}
+                            {{ afternoon.title }}
                           </div>
                         </div>
                       </div>
@@ -442,9 +443,6 @@ main {
 </main>
 
 {% include footer.html %}
-
-
-
 
 
 
