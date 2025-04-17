@@ -118,7 +118,8 @@ layout: default
             {% endunless %}
             
             {% assign top = start_min | minus: 480 %}
-            {% assign height = end_min | minus: start_min %}
+            {% assign height = end_min | minus: start_min | plus: 30 %}
+
             
             <div class="event-column">
               <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
