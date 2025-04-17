@@ -27,6 +27,7 @@ layout: default
   font-size: 0.75rem;
   color: #555;
   border-top: 1px solid #eee;
+  position: relative;
 }
 
 .event-columns {
@@ -35,7 +36,7 @@ layout: default
   overflow-x: auto;
 }
 
-.event-column {
+.event-track {
   flex: 1;
   min-width: 200px;
   border-right: 1px solid #eee;
@@ -43,7 +44,7 @@ layout: default
 }
 
 .event-block {
-  margin: 2px;
+  margin: 0 2px;
   padding: 4px;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -53,6 +54,7 @@ layout: default
   position: absolute;
   left: 2px;
   right: 2px;
+  box-sizing: border-box;
 }
 
 .event-block.satellite {
@@ -73,7 +75,7 @@ layout: default
 
     {% if site.data.program %}
       {% assign day = site.data.program.days | where: "name", "Mon 2 June 2025" | first %}
-
+      
       <div class="schedule-container">
         <!-- Time column -->
         <div class="time-column">
@@ -82,62 +84,64 @@ layout: default
             <div class="time-slot">{{ h }}:30</div>
           {% endfor %}
         </div>
-
+        
         <!-- Event columns -->
         <div class="event-columns">
           {% assign columns = "" | split: "" %}
           {% assign column_ends = "" | split: "" %}
-
+          
           {% for event in day.events %}
-            {% assign start_time = event.time | split: " - " | first %}
-            {% assign end_time = event.time | split: " - " | last %}
-
+            {% assign time_parts = event.time | split: " - " %}
+            {% assign start_time = time_parts[0] | strip %}
+            {% assign end_time = time_parts[1] | strip %}
+            
             {% assign start_h = start_time | split: ":" | first | plus: 0 %}
             {% assign start_m = start_time | split: ":" | last | plus: 0 %}
             {% assign end_h = end_time | split: ":" | first | plus: 0 %}
             {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-
+            
             {% assign start_min = start_h | times: 60 | plus: start_m %}
             {% assign end_min = end_h | times: 60 | plus: end_m %}
-
+            
             {% assign column_index = 0 %}
             {% assign placed = false %}
-
-            {% for col_end in column_ends %}
-              {% if start_min >= col_end %}
-                {% assign column_ends = column_ends | slice: 0, forloop.index0 | push: end_min | concat: column_ends | slice: forloop.index %}
-                {% assign column_index = forloop.index0 %}
+            
+            <!-- Check existing columns for availability -->
+            {% for i in (0..column_ends.size) %}
+              {% if i >= column_ends.size %}
+                {% break %}
+              {% endif %}
+              {% if start_min >= column_ends[i] %}
+                {% assign column_ends = column_ends | replace: column_ends[i], end_min %}
+                {% assign column_index = i %}
                 {% assign placed = true %}
                 {% break %}
               {% endif %}
             {% endfor %}
-
+            
+            <!-- If not placed, create new column -->
             {% unless placed %}
-              {% assign column_index = column_ends.size %}
               {% assign column_ends = column_ends | push: end_min %}
+              {% assign column_index = column_ends.size | minus: 1 %}
             {% endunless %}
-
-            {% capture block %}
-              <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}"
-                   style="top: {{ start_min | minus: 540 | times: 1.0 | divided_by: 30 | times: 30 }}px;
-                          height: {{ end_min | minus: start_min | times: 1.0 | divided_by: 30 | times: 30 }}px;">
-                <div class="event-time">{{ event.time }}</div>
-                {{ event.title }}
-              </div>
-            {% endcapture %}
-
-            {% assign columns = columns | default: "" %}
-            {% if columns[column_index] %}
-              {% assign updated = columns[column_index] | append: block %}
-              {% assign columns = columns | slice: 0, column_index | push: updated | concat: columns | slice: column_index | plus: 1 %}
-            {% else %}
-              {% assign columns = columns | push: block %}
-            {% endif %}
-          {% endfor %}
-
-          {% for col in columns %}
-            <div class="event-column">
-              {{ col }}
+            
+            <!-- Calculate position and height -->
+            {% assign top = start_min | minus: 540 %}  <!-- 9:00 = 540 minutes -->
+            {% assign height = end_min | minus: start_min %}
+            {% assign top_px = top | times: 0.5 %}    <!-- 0.5px per minute -->
+            {% assign height_px = height | times: 0.5 %}
+            
+            <!-- Ensure we have enough columns -->
+            {% while column_index >= columns.size %}
+              {% assign columns = columns | push: "" %}
+              <div class="event-track" id="track-{{ columns.size }}"></div>
+            {% endwhile %}
+            
+            <!-- Create event block -->
+            <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
+                 style="top: {{ top_px }}px; height: {{ height_px }}px; left: {{ column_index | times: 200 }}px; width: calc(100% - 4px);">
+              <div class="event-time">{{ event.time }}</div>
+              {{ event.title }}
             </div>
           {% endfor %}
         </div>
