@@ -94,7 +94,7 @@ main {
           </h5>
           <div id="{{ slug }}" class="accordion-collapse collapse">
             <div class="accordion-body mt-2">
-
+            
               <!-- VISUAL OVERVIEW -->
               <div class="mb-4">
                 <h5 class="fw-bold">Visual Overview</h5>
@@ -106,12 +106,13 @@ main {
                     <div class="time-slot">{{ h }}:30</div>
                     {% endfor %}
                   </div>
-
+            
                   <!-- Event columns -->
                   <div class="event-columns">
                     {% assign columns = "" | split: "" %}
                     {% assign column_ends = "" | split: "" %}
-
+                    {% assign categories = site.data.program.legend.categories %}
+            
                     {% for event in day.events %}
                     {% assign start_time = event.time | split: " - " | first %}
                     {% assign end_time = event.time | split: " - " | last %}
@@ -121,29 +122,15 @@ main {
                     {% assign end_m = end_time | split: ":" | last | plus: 0 %}
                     {% assign start_min = start_h | times: 60 | plus: start_m %}
                     {% assign end_min = end_h | times: 60 | plus: end_m %}
-                    {% assign column_index = 0 %}
-                    {% assign placed = false %}
-
-                    {% for col_end in column_ends %}
-                    {% if start_min >= col_end %}
-                    {% assign column_ends = column_ends | push: end_min %}
-                    {% assign column_index = forloop.index0 %}
-                    {% assign placed = true %}
-                    {% break %}
-                    {% endif %}
-                    {% endfor %}
-
-                    {% unless placed %}
-                    {% assign column_ends = column_ends | push: end_min %}
-                    {% assign column_index = column_ends.size | minus: 1 %}
-                    {% endunless %}
-
                     {% assign top = start_min | minus: 480 %}
                     {% assign height = end_min | minus: start_min | plus: 30 %}
-
+            
+                    {% assign cat_color = categories | where: "name", event.category | map: "color" | first | default: "gray-3" %}
+                    {% assign bg_color = cat_color | split: "-" | first %}
+                    
                     <div class="event-column">
-                      <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}"
-                        style="top: {{ top }}px; height: {{ height }}px;">
+                      <div class="event-block bg-{{ bg_color }}-1 border-start border-4 ps-1 border-{{ cat_color }}"
+                           style="top: {{ top }}px; height: {{ height }}px;">
                         <div class="event-time">{{ event.time }}</div>
                         {{ event.title }}
                       </div>
@@ -152,8 +139,8 @@ main {
                   </div>
                 </div>
               </div>
-
-              <!-- TABLE VERSION (TEXT LIST) -->
+            
+              <!-- TABLE VERSION -->
               {% assign categories = site.data.program.legend.categories %}
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
@@ -202,7 +189,7 @@ main {
                 </li>
                 {% endfor %}
               </ul>
-
+            
               <!-- LEGEND -->
               {% assign legend = day.events | map: 'category' | compact | uniq %}
               {% assign size = legend | size %}
@@ -219,14 +206,13 @@ main {
                 {% assign classes = classes | append: ' me-lg-2' %}
                 {% endunless %}
                 {% if border %}
-                <small
-                  class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item |
-                  upcase }}</small>
+                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
                 {% endif %}
                 {% endfor %}
               </div>
               {% endif %}
             </div>
+
           </div>
         </div>
         {% endfor %}
