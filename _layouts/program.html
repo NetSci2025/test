@@ -88,7 +88,8 @@ layout: default
           {% endunless %}
         {% endfor %}
 
-        <div class="event-block {% if forloop.index0 mod 2 == 1 %}alt{% endif %}" style="top:{{ top }}px; height:{{ height }}px; left:{{ col | times: 160 }}px">
+        {% capture is_odd %}{{ forloop.index0 | modulo: 2 }}{% endcapture %}
+        <div class="event-block {% if is_odd == '1' %}alt{% endif %}" style="top:{{ top }}px; height:{{ height }}px; left:{{ col | times: 160 }}px">
           <strong>{{ event.time }}</strong><br>
           {{ event.title }}
         </div>
@@ -97,6 +98,7 @@ layout: default
     {% endif %}
   </div>
 </main>
+
 
 
 
