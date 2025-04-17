@@ -59,8 +59,8 @@ table.schedule-table td {
                 <div class="table-responsive">
                 {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
                 
-                {% assign min_time = 540 %}   {# 09:00 in minutes #}
-                {% assign max_time = 1050 %}  {# 17:30 in minutes #}
+                {% assign min_time = 540 %}
+                {% assign max_time = 1050 %}
                 
                 {%- assign filtered_events = "" | split: "" -%}
                 {%- for event in day.events -%}
@@ -76,7 +76,15 @@ table.schedule-table td {
                     {% assign e_start_total = e_start_h | times: 60 | plus: e_start_m %}
                     {% assign e_end_total = e_end_h | times: 60 | plus: e_end_m %}
                 
-                    {% if e_end_total > min_time and e_start_total < max_time %}
+                    {% assign valid = false %}
+                    {% for t in time_slots %}
+                      {% assign t_min = t | split: ':' | first | plus: 0 | times: 60 | plus: t | split: ':' | last | plus: 0 %}
+                      {% if t_min >= e_start_total and t_min < e_end_total %}
+                        {% assign valid = true %}
+                      {% endif %}
+                    {% endfor %}
+                
+                    {% if valid %}
                       {% assign filtered_events = filtered_events | push: event %}
                     {% endif %}
                   {% endif %}
@@ -111,6 +119,7 @@ table.schedule-table td {
                     {% endfor %}
                   </tbody>
                 </table>
+
 
                 </div>
               </div>
