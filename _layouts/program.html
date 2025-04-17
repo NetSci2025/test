@@ -27,7 +27,7 @@ main {
 .time-header {
   display: flex;
   height: 40px;
-  margin-left: 200px; 
+  margin-left: 160px; 
   position: sticky;
   top: 0;
   background: white;
@@ -38,7 +38,7 @@ main {
 .time-slot-header {
   width: 80px;
   flex-shrink: 0;
-  text-align: center;
+  text-align: left;
   font-size: 0.8rem;
   color: #555;
   border-bottom: 1px solid #ccc;
@@ -188,14 +188,15 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-           
-                      <div class="room-row">
-                        <div class="room-name">Main</div>
-                        <div class="time-slots">
-                          {% for h in (start_hour..end_hour) %}
-                            <div class="time-slot" data-hour="{{ h }}"></div>
-                          {% endfor %}
-                          
+                        {% assign main_events = day.events | where_exp:"item","item.category != 'Satellites'" %}
+                        {% if main_events.size > 0 %}
+                          <div class="room-row">
+                            <div class="room-name">Main</div>
+                            <div class="time-slots">
+                              {% for h in (start_hour..end_hour) %}
+                                <div class="time-slot" data-hour="{{ h }}"></div>
+                              {% endfor %}
+                                                  
                           {% for event in day.events %}
                             {% unless event.category == 'Satellites' %}
                               {% assign start_time = event.time | split: " - " | first %}
@@ -223,7 +224,7 @@ main {
                           {% endfor %}
                         </div>
                       </div>
-                      
+                      {% endif %}
         
 
                     {% assign satellite_events = day.events | where: "category", "Satellites" | sort: "time" %}
@@ -442,7 +443,6 @@ main {
 </main>
 
 {% include footer.html %}
-
 
 
 
