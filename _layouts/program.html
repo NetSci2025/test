@@ -27,34 +27,33 @@ layout: default
   font-size: 0.75rem;
   color: #555;
   border-top: 1px solid #eee;
-  position: relative;
 }
 
-.event-columns {
-  display: flex;
+.event-area {
   flex-grow: 1;
+  position: relative;
+  height: 540px; /* 9小时×60分钟=540px */
   overflow-x: auto;
 }
 
 .event-track {
-  flex: 1;
-  min-width: 200px;
+  position: absolute;
+  top: 0;
+  width: 200px;
   border-right: 1px solid #eee;
-  position: relative;
 }
 
 .event-block {
-  margin: 0 2px;
+  position: absolute;
+  left: 2px;
+  right: 2px;
   padding: 4px;
   border-radius: 4px;
   font-size: 0.8rem;
   overflow: hidden;
-  background-color: #ffe699;
-  border: 1px solid #e6c87d;
-  position: absolute;
-  left: 2px;
-  right: 2px;
   box-sizing: border-box;
+  border: 1px solid #e6c87d;
+  background-color: #ffe699;
 }
 
 .event-block.satellite {
@@ -77,7 +76,7 @@ layout: default
       {% assign day = site.data.program.days | where: "name", "Mon 2 June 2025" | first %}
       
       <div class="schedule-container">
-        <!-- Time column -->
+        <!-- 时间列 -->
         <div class="time-column">
           {% for h in (9..17) %}
             <div class="time-slot">{{ h }}:00</div>
@@ -85,10 +84,16 @@ layout: default
           {% endfor %}
         </div>
         
-        <!-- Event columns -->
-        <div class="event-columns">
-          {% assign columns = "" | split: "" %}
+        <!-- 事件区域 -->
+        <div class="event-area">
+          {% assign max_columns = 12 %}
           {% assign column_ends = "" | split: "" %}
+          
+          <!-- 预创建轨道 -->
+          {% for i in (1..max_columns) %}
+            <div class="event-track" style="left: {{ i | minus: 1 | times: 200 }}px; height: 540px;"></div>
+            {% assign column_ends = column_ends | push: 0 %}
+          {% endfor %}
           
           {% for event in day.events %}
             {% assign time_parts = event.time | split: " - " %}
@@ -106,8 +111,8 @@ layout: default
             {% assign column_index = 0 %}
             {% assign placed = false %}
             
-            <!-- Check existing columns for availability -->
-            {% for i in (0..column_ends.size) %}
+            <!-- 查找可用列 -->
+            {% for i in (0..max_columns) %}
               {% if i >= column_ends.size %}
                 {% break %}
               {% endif %}
@@ -119,27 +124,21 @@ layout: default
               {% endif %}
             {% endfor %}
             
-            <!-- If not placed, create new column -->
             {% unless placed %}
               {% assign column_ends = column_ends | push: end_min %}
               {% assign column_index = column_ends.size | minus: 1 %}
             {% endunless %}
             
-            <!-- Calculate position and height -->
-            {% assign top = start_min | minus: 540 %}  <!-- 9:00 = 540 minutes -->
+            <!-- 计算位置 -->
+            {% assign top = start_min | minus: 540 %}
             {% assign height = end_min | minus: start_min %}
-            {% assign top_px = top | times: 0.5 %}    <!-- 0.5px per minute -->
-            {% assign height_px = height | times: 0.5 %}
+            {% assign left = column_index | times: 200 %}
             
-            <!-- Ensure we have enough columns -->
-            {% while column_index >= columns.size %}
-              {% assign columns = columns | push: "" %}
-              <div class="event-track" id="track-{{ columns.size }}"></div>
-            {% endwhile %}
-            
-            <!-- Create event block -->
             <div class="event-block {% if event.category == 'Satellites' %}satellite{% endif %}" 
-                 style="top: {{ top_px }}px; height: {{ height_px }}px; left: {{ column_index | times: 200 }}px; width: calc(100% - 4px);">
+                 style="top: {{ top }}px; 
+                        height: {{ height }}px;
+                        left: {{ left }}px;
+                        width: 196px;">
               <div class="event-time">{{ event.time }}</div>
               {{ event.title }}
             </div>
