@@ -56,54 +56,51 @@ table.schedule-table td {
               {% if day.name == "Mon 2 June 2025" %}
               <div class="mb-4">
                 <div class="schedule-label">Visual Overview</div>
-                <div class="table-responsive">
-                {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
-                {% assign min_time = 540 %}
-                {% assign max_time = 1050 %}
-                
-                {%- assign active_events = "" | split: "" -%}
-                {%- for event in day.events -%}
-                  {% if event.time and event.title != "" %}
-                    {% assign e_start = event.time | split: ' - ' | first %}
-                    {% assign e_end = event.time | split: ' - ' | last %}
-                    {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-                    {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
-                
-                    {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
-                    {% if e_end_m > min_time and e_start_m < max_time and span > 0 %}
-                      {% assign active_events = active_events | push: event %}
-                    {% endif %}
-                  {% endif %}
-                {%- endfor -%}
-                
                 <table class="schedule-table">
                   <tbody>
+                    {% assign time_slots = "09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00,17:30" | split: "," %}
+                    {% assign min_time = 540 %}
+                    {% assign max_time = 1050 %}
+                
+                    {% assign active_events = "" | split: "" %}
+                    {% for event in day.events %}
+                      {% if event.time and event.title != "" %}
+                        {% assign e_start = event.time | split: ' - ' | first %}
+                        {% assign e_end = event.time | split: ' - ' | last %}
+                        {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
+                        {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
+                        {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
+                        {% if e_end_m > min_time and e_start_m < max_time and span > 0 %}
+                          {% assign active_events = active_events | push: event %}
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                
                     {% assign skip = '' | split: ',' %}
                     {% for time in time_slots %}
                       {% assign time_minutes = time | split: ':' | first | plus: 0 | times: 60 | plus: time | split: ':' | last | plus: 0 %}
                       <tr>
                         <td>{{ time }}</td>
-                
                         {% assign event_index = 0 %}
                         {% for event in active_events %}
-                          {%- assign key = time_minutes | append: '-' | append: event_index -%}
-                          {% unless skip contains key %}
-                            {% assign e_start = event.time | split: ' - ' | first %}
-                            {% assign e_end = event.time | split: ' - ' | last %}
-                            {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
-                            {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
+                          {% assign e_start = event.time | split: ' - ' | first %}
+                          {% assign e_end = event.time | split: ' - ' | last %}
+                          {% assign e_start_m = e_start | split: ':' | first | plus: 0 | times: 60 | plus: e_start | split: ':' | last | plus: 0 %}
+                          {% assign e_end_m = e_end | split: ':' | first | plus: 0 | times: 60 | plus: e_end | split: ':' | last | plus: 0 %}
+                          {% assign key = time_minutes | append: '-' | append: event_index %}
                 
+                          {% unless skip contains key %}
                             {% if time_minutes == e_start_m %}
                               {% assign span = e_end_m | minus: e_start_m | divided_by: 30 %}
                               <td rowspan="{{ span }}" class="{{ event_index | modulo: 2 == 0 | if: 'bg-yellow', 'bg-orange' }}">
                                 {{ event.time }}<br>{{ event.title }}
                               </td>
-                              {%- assign s = skip -%}
-                              {%- for i in (1..(span | minus: 1)) -%}
+                              {% assign s = skip %}
+                              {% for i in (1..(span | minus: 1)) %}
                                 {% assign t = time_minutes | plus: i | times: 30 | divided_by: 30 %}
                                 {% assign k = t | append: '-' | append: event_index %}
                                 {% assign s = s | push: k %}
-                              {%- endfor -%}
+                              {% endfor %}
                               {% assign skip = s %}
                             {% elsif time_minutes > e_start_m and time_minutes < e_end_m %}
                               {% continue %}
@@ -117,6 +114,7 @@ table.schedule-table td {
                     {% endfor %}
                   </tbody>
                 </table>
+
 
 
 
