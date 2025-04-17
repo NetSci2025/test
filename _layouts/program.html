@@ -27,7 +27,7 @@ main {
 .time-header {
   display: flex;
   height: 40px;
-  margin-left: 150px; 
+  margin-left: 200px; 
   position: sticky;
   top: 0;
   background: white;
@@ -36,17 +36,15 @@ main {
 }
 
 .time-slot-header {
-  width: 60px;
+  width: 80px;
   flex-shrink: 0;
-  text-align: left; 
-  font-size: 0.65rem; 
+  text-align: center;
+  font-size: 0.8rem;
   color: #555;
   border-bottom: 1px solid #ccc;
   display: flex;
-  flex-direction: column; 
-  justify-content: flex-start; 
-  padding-left: 4px; 
-  padding-top: 2px; 
+  align-items: center;
+  justify-content: center;
 }
 
 .room-rows-container {
@@ -60,12 +58,12 @@ main {
 
 .room-row {
   display: flex;
-  min-height: 60px;
+  min-height: 80px;
   border-bottom: 1px solid #eee;
 }
 
 .room-name {
-  width: 150px;
+  width: 200px;
   flex-shrink: 0;
   padding: 8px;
   font-size: 0.9rem;
@@ -88,7 +86,7 @@ main {
 }
 
 .time-slot {
-  width: 60px;
+  width: 80px;
   flex-shrink: 0;
   position: relative;
   border-right: 1px solid #f5f5f5;
@@ -96,7 +94,7 @@ main {
 
 .event-block {
   margin: 2px;
-  padding: 6px;
+  padding: 8px;
   border-radius: 4px;
   font-size: 0.8rem;
   overflow: hidden;
@@ -116,7 +114,7 @@ main {
 
 .event-time {
   font-weight: bold;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   font-size: 0.7rem;
   white-space: nowrap;
 }
@@ -132,10 +130,10 @@ main {
 
 @media (max-width: 768px) {
   .time-slot-header, .time-slot {
-    width: 50px;
+    width: 60px;
   }
   .room-name {
-    width: 100px;
+    width: 120px;
     font-size: 0.8rem;
   }
   .time-header {
@@ -181,15 +179,12 @@ main {
                 <div class="schedule-container">
       
                   <div class="time-header">
-                      {% assign start_hour = 8 %}
-                      {% assign end_hour = 19 %}
-                      {% for h in (start_hour..end_hour) %}
-                        <div class="time-slot-header">
-                          <div>{{ h }}:00</div>
-                          <div class="half-hour">{{ h }}:30</div>
-                        </div>
-                      {% endfor %}
-                    </div>
+                    {% assign start_hour = 8 %}
+                    {% assign end_hour = 19 %}
+                    {% for h in (start_hour..end_hour) %}
+                      <div class="time-slot-header">{{ h }}:00</div>
+                    {% endfor %}
+                  </div>
 
                   <div class="room-rows-container">
                     <div class="room-rows">
@@ -199,9 +194,7 @@ main {
                         <div class="time-slots">
                           {% for h in (start_hour..end_hour) %}
                             <div class="time-slot" data-hour="{{ h }}"></div>
-                            <div class="time-slot" data-hour="{{ h }}-half" style="width: 30px;"></div>
                           {% endfor %}
-
                           
                           {% for event in day.events %}
                             {% unless event.category == 'Satellites' %}
@@ -214,14 +207,14 @@ main {
                               
                               {% assign start_min = start_h | times: 60 | plus: start_m %}
                               {% assign end_min = end_h | times: 60 | plus: end_m %}
-                              {% assign left = start_min | minus: 480 | divided_by: 30.0 %}
-                              {% assign width = end_min | minus: start_min | divided_by: 30.0 %}
+                              {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
+                              {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
                               
                               {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
                               
                               <div class="event-block bg-{{ cat_color }}" 
-                                   style="left: calc({{ left }} * 60px); 
-                                          width: calc({{ width }} * 60px - 4px);"
+                                   style="left: calc({{ left }} * 80px); 
+                                          width: calc({{ width }} * 80px - 4px);"
                                    title="{{ event.title }} | {{ event.time }}">
                                 <div class="event-time">{{ event.time }}</div>
                                 {{ event.title }}
@@ -261,8 +254,8 @@ main {
                           {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
                           
                           <div class="event-block bg-pink-6" 
-                               style="left: calc({{ left }} * 60px); 
-                                      width: calc({{ width }} * 60px - 4px);"
+                               style="left: calc({{ left }} * 80px); 
+                                      width: calc({{ width }} * 80px - 4px);"
                                title="{{ event.title }} | {{ event.time }}">
                             <div class="event-time">{{ event.time }}</div>
                             {{ event.title }}
@@ -449,6 +442,7 @@ main {
 </main>
 
 {% include footer.html %}
+
 
 
 
