@@ -4,15 +4,19 @@ legend:
     - name: Invited Speaker
       color: red-6
     - name: Lightning
-      color: yellow-6
+      color: cyan-4
     - name: Parallel
       color: blue-6
     - name: Break
       color: grey-6
     - name: Other Activities
       color: green-6
-    - name: Satellites
+    - name: Full day Satellite
       color: pink-6
+    - name: Morning Satellite
+      color: orange-5     
+    - name: Afternoon Satellite
+      color: yellow-6
     - name: Satellite Break
       color: grey-6
       
@@ -29,76 +33,77 @@ days:
         row: 1
       - time: 08:30 - 18:30
         title: (Satellite) Networks in Science of Science
-        category: Satellites
+        category: Full day Satellite
+        session: Full day
         row: 2
       - time: 08:30 - 18:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
-        category: Satellites
+        category: Full day Satellite
         session: Full day
         row: 3
       - time: 08:30 - 18:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
-        category: Satellites
+        category: Full day Satellite
         session: Full day
         row: 4
       - time: 08:30 - 18:30
         title: (Satellite) Network Neuroscience
-        category: Satellites
+        category: Full day Satellite
         session: Full day
         row: 5
       - time: 08:30 - 18:30
         title: (Satellite) Software and Data for Supporting Network Science
-        category: Satellites
+        category: Full day Satellite
         session: Full day
         row: 6
       - time: 08:30 - 18:30
         title: (Satellite) TEmporal NETworks (TENET)
-        category: Satellites
+        category: Full day Satellite
         session: Full day
         row: 7
       - time: 08:30 - 12:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 8
       - time: 14:30 - 18:30
         title: (Satellite) The future of Network Science--WiNS @ NetSci
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 8
       - time: 08:30 - 12:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 9
       - time: 14:30 - 18:30
         title: (Satellite) Network Science for the Sustainable Development Goals
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 9
       - time: 08:30 - 12:30
         title: (Satellite) Network Renormalization (NetRG)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 10
       - time: 14:30 - 18:30
         title: (Satellite) Physical Networks, III Edition
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 10
       - time: 08:30 - 12:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network"
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 11
       - time: 14:30 - 18:30
         title: (Satellite) Network Medicine
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 11
       - time: 14:30 - 16:00
         title: (Satellite) Networking and Clustering Network Scientists
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 12
       - time: 12:30 - 14:30
@@ -115,67 +120,67 @@ days:
     events:
       - time: 08:30 - 18:30
         title: (Satellite) Network Geometry--Theory and Applications
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 1
       - time: 08:30 - 18:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 2
       - time: 08:30 - 18:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 3
       - time: 08:30 - 18:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 4
       - time: 08:30 - 12:30
         title: (Satellite) Networked Criminal Complexity
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 5
       - time: 14:30 - 18:30
         title: (Satellite) Historical Networks (HISTONET)
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 5
       - time: 08:30 - 12:30
         title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 6
       - time: 14:30 - 18:30
         title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 6
       - time: 08:30 - 12:30
         title: (Satellite) Algorithmic Fairness in Network Science
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 7
       - time: 14:30 - 18:30
         title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 7
       - time: 08:30 - 12:30
         title: (Satellite) Understudied Networks in Computational Social Science
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 8
       - time: 08:30 - 12:30
         title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 9
       - time: 14:30 - 18:30
         title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 8
       - time: 12:30 - 14:30
