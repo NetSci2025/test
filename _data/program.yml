@@ -119,67 +119,67 @@ days:
     events:
       - time: 08:30 - 18:30
         title: (Satellite) Network Geometry--Theory and Applications
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 1
       - time: 08:30 - 18:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 2
       - time: 08:30 - 18:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 3
       - time: 08:30 - 18:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 4
       - time: 08:30 - 12:30
         title: (Satellite) Networked Criminal Complexity
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 5
       - time: 14:30 - 18:30
         title: (Satellite) Historical Networks (HISTONET)
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 5
       - time: 08:30 - 12:30
         title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 6
       - time: 14:30 - 18:30
         title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 6
       - time: 08:30 - 12:30
         title: (Satellite) Algorithmic Fairness in Network Science
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 7
       - time: 14:30 - 18:30
         title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 7
       - time: 08:30 - 12:30
         title: (Satellite) Understudied Networks in Computational Social Science
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 8
       - time: 08:30 - 12:30
         title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 9
       - time: 14:30 - 18:30
         title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 8
       - time: 12:30 - 14:30
