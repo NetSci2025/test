@@ -13,10 +13,6 @@ legend:
       color: green-6
     - name: Satellite
       color: pink-6
-    - name: Morning Satellite
-      color: orange-5     
-    - name: Afternoon Satellite
-      color: yellow-6
     - name: Satellite Break
       color: grey-6
       
