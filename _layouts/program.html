@@ -300,31 +300,28 @@ main {
                 </div>
               </div>
 
-              <!-- List View -->
-              <h5 class="fw-bold mt-4">Detailed Schedule</h5>
+              <!-- List -->
+              {% assign categories = site.data.program.legend.categories %}
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
                 {% if event.category %}
-                {% assign color = site.data.program.legend.categories | where: 'name', event.category | map: 'color' | first %}
+                {% assign color = categories | where: 'name', event.category | map: 'color' | first %}
                 {% else %}
-                {% assign color = 'grey-6' %}
+                {% assign color = 'gray-4' %}
                 {% endif %}
-                {% assign start = event.time | split: ' - ' | first %}
-                {% assign end = event.time | split: ' - ' | last %}
+                {% assign start = event.time | split: ' to ' | slice: 0 %}
+                {% assign end = event.time | split: ' to ' | slice: 1 %}
                 <li class="d-flex flex-column flex-lg-row">
                   {% assign classes = color | prepend: 'border-start border-3 border-' %}
                   <div class="row col-lg-2 pb-2 {{ classes }} border-lg-0">
-                    <small class="fw-light text-muted">{{ start }} - {{ end }}</small>
+                    <small class="fw-light text-muted">{{ start }}{{ end }}</small>
                   </div>
                   {% unless forloop.last %}
                   {% assign classes = classes | append: ' mb-4' %}
                   {% endunless %}
                   <div class="row col-lg-10 {{ classes }}">
                     <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
-                    {% if event.subtitle %}
                     <p class="fw-light m-0">{{ event.subtitle }}</p>
-                    {% endif %}
-                    {% if event.paper or event.poster or event.slides %}
                     <p class="fw-light m-0">
                       {% if event.paper.first %}
                       {% for paper in event.paper %}
@@ -348,27 +345,32 @@ main {
                       <a href="{{ event.slides | relative_url }}">[Slides]</a>
                       {% endif %}
                     </p>
-                    {% endif %}
                   </div>
                 </li>
                 {% endfor %}
               </ul>
             
               <!-- Legend -->
+              {% assign legend = day.events | map: 'category' | compact | uniq %}
+              {% assign size = legend | size %}
+              {% if size > 0 %}
               <div class="mt-4 mb-2">
-                <h5 class="fw-normal">Event Categories</h5>
-                {% for category in site.data.program.legend.categories %}
-                {% assign border = category.color %}
+                {% if site.data.program.legend.title %}
+                <h5 class="fw-normal">{{ site.data.program.legend.title }}</h5>
+                {% endif %}
+                {% for item in legend %}
+                {% assign border = categories | where: 'name', item | map: 'color' | first %}
                 {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
                 {% assign classes = border | prepend: ' border-' | prepend: bg %}
                 {% unless forloop.last %}
                 {% assign classes = classes | append: ' me-lg-2' %}
                 {% endunless %}
                 {% if border %}
-                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ category.name | upcase }}</small>
+                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
                 {% endif %}
                 {% endfor %}
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -378,6 +380,7 @@ main {
     {% endif %}
   </div>
 </main>
+
 
 {% include footer.html %}
 
