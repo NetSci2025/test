@@ -239,7 +239,7 @@ main {
                       {% for row in rows %}
                         {% assign row_events = satellite_events | where: "row", row %}
                         <div class="room-row">
-                          <div class="room-name">Satellite {{ row | minus: 1 }}</div>
+                          <div class="room-name">Room {{ row | minus: 1 }}</div>
                           <div class="time-slots">
                             {% for h in (start_hour..end_hour) %}
                               <div class="time-slot" data-hour="{{ h }}"></div>
