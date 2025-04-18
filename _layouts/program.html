@@ -198,7 +198,7 @@ main {
                       {% assign main_events = day.events | where_exp: "item", "item.row == 1" %}
                       {% if main_events.size > 0 %}
                         <div class="room-row">
-                          <div class="room-name">Main Program</div>
+                          <div class="room-name">School</div>
                           <div class="time-slots">
                             {% for h in (start_hour..end_hour) %}
                               <div class="time-slot" data-hour="{{ h }}"></div>
