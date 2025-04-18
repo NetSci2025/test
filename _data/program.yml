@@ -30,7 +30,22 @@ days:
         title: "School Speaker: Huijuan Wang"   
         category: Invited Speaker
         row: 1
-      - time: 08:30 - 18:30
+      - time: 08:30 - 10:30
+        title: (Satellite) Networks in Science of Science
+        category: Full day Satellites
+        session: Full day
+        row: 2
+      - time: 11:00 - 12:30
+        title: (Satellite) Networks in Science of Science
+        category: Full day Satellites
+        session: Full day
+        row: 2
+      - time: 14:30 - 16:00
+        title: (Satellite) Networks in Science of Science
+        category: Full day Satellites
+        session: Full day
+        row: 2
+      - time: 16:30 - 18:00
         title: (Satellite) Networks in Science of Science
         category: Full day Satellites
         session: Full day
