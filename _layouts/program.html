@@ -188,7 +188,7 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-                        {% assign main_events = day.events | where_exp:"item","item.category != 'Satellites'" %}
+                        {% assign main_events = day.events | where_exp:"item","item.category != 'Satellite Break' and item.category != 'Satellites'" %}
                         {% if main_events.size > 0 %}
                           <div class="room-row">
                             <div class="room-name">Main</div>
@@ -198,7 +198,7 @@ main {
                               {% endfor %}
                                                   
                           {% for event in day.events %}
-                            {% unless event.category == 'Satellites' %}
+                            {% unless event.category == 'Satellite Break' or event.category == 'Satellites' %}
                               {% assign start_time = event.time | split: " - " | first %}
                               {% assign end_time = event.time | split: " - " | last %}
                               {% assign start_h = start_time | split: ":" | first | plus: 0 %}
