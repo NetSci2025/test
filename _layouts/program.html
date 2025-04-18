@@ -246,7 +246,7 @@ main {
                               <div class="time-slot" data-hour="{{ h }}"></div>
                             {% endfor %}
                             
-                            <!-- break event -->
+                            <!-- break events -->
                             {% for break_event in satellite_break_events %}
                               {% assign break_start = break_event.time | split: " - " | first %}
                               {% assign break_end = break_event.time | split: " - " | last %}
@@ -270,7 +270,7 @@ main {
                               </div>
                             {% endfor %}
                             
-                            <!-- row event -->
+                            <!-- row of satellite-->
                             {% for event in row_events %}
                               {% assign start_time = event.time | split: " - " | first %}
                               {% assign end_time = event.time | split: " - " | last %}
@@ -284,18 +284,7 @@ main {
                               {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
                               {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
                               
-                              {% comment %} session color {% endcomment %}
-                              {% if event.session == "Full day" %}
-                                {% assign sat_color = "pink-6" %}
-                              {% elsif event.session == "Morning" %}
-                                {% assign sat_color = "orange-5" %}
-                              {% elsif event.session == "Afternoon" %}
-                                {% assign sat_color = "yellow-6" %}
-                              {% else %}
-                                {% assign sat_color = "pink-6" %}
-                              {% endif %}
-                              
-                              <div class="event-block bg-{{ sat_color }} satellite" 
+                              <div class="event-block bg-pink-6 satellite" 
                                    style="left: calc({{ left }} * 80px); 
                                           width: calc({{ width }} * 80px - 4px);"
                                    title="{{ event.title }} | {{ event.time }}">
@@ -311,7 +300,6 @@ main {
                 </div>
               </div>
 
-             
               <!-- List -->
               {% assign categories = site.data.program.legend.categories %}
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
@@ -394,5 +382,6 @@ main {
 </main>
 
 {% include footer.html %}
+
 
 
