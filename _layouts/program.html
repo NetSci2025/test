@@ -9,7 +9,10 @@ layout: default
 main {
     padding-top: 70px;
 }
-
+    
+.bg-orange-5 { background-color: #fff3e0; border-left: 4px solid #ff9800; }
+.bg-purple-4 { background-color: #f3e5f5; border-left: 4px solid #9c27b0; }
+    
 .event-block.break {
     z-index: 2; 
     opacity: 0.9; 
@@ -233,7 +236,13 @@ main {
                       {% endif %}
 
                       <!-- satellite events -->
-                        {% assign satellite_events = day.events | where_exp: "item", "item.category == 'Satellites' or item.category == 'Full day Satellites'" | sort: "row" %}
+                        {% assign satellite_categories = "Satellites,Full day Satellites,Morning Satellites,Afternoon Satellites" | split: "," %}
+                        {% assign satellite_events = empty %}
+                        {% for category in satellite_categories %}
+                          {% assign category_events = day.events | where: "category", category %}
+                          {% assign satellite_events = satellite_events | concat: category_events %}
+                        {% endfor %}
+                        {% assign satellite_events = satellite_events | sort: "row" %}
                         {% assign satellite_break_events = day.events | where: "category", "Satellite Break" %}
                         {% assign rows = satellite_events | map: "row" | uniq | sort %}
                         
@@ -270,7 +279,7 @@ main {
                                 </div>
                               {% endfor %}
                               
-                              <!-- row event -->
+                              <!-- row events -->
                               {% for event in row_events %}
                                 {% assign start_time = event.time | split: " - " | first %}
                                 {% assign end_time = event.time | split: " - " | last %}
