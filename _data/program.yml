@@ -13,6 +13,8 @@ legend:
       color: green-6
     - name: Satellites
       color: pink-6
+    - name: Full day Satellites
+      color: yellow-6  
     - name: Satellite Break
       color: grey-6
       
@@ -29,7 +31,7 @@ days:
         row: 1
       - time: 08:30 - 18:30
         title: (Satellite) Networks in Science of Science
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 2
       - time: 08:30 - 18:30
