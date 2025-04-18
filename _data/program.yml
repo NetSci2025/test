@@ -11,9 +11,9 @@ legend:
     - name: Other Activities
       color: green-6
     - name: Full day Satellites
-      color: yellow-6
-    - name: Morning Satellites
       color: orange-5
+    - name: Morning Satellites
+      color: yellow-6
     - name: Afternoon Satellites
       color: pink-4
     - name: Satellite Break
