@@ -247,67 +247,172 @@ days:
         
   - name: Tue 3 June 2025
     events:
-      - time: 08:30 - 18:30
+      - time: 08:30 - 10:30
         title: (Satellite) Network Geometry--Theory and Applications
         category: Full day Satellites
         session: Full day
         row: 1
-      - time: 08:30 - 18:30
+      - time: 11:00 - 12:30
+        title: (Satellite) Network Geometry--Theory and Applications
+        category: Full day Satellites
+        session: Full day
+        row: 1
+      - time: 14:30 - 16:00
+        title: (Satellite) Network Geometry--Theory and Applications
+        category: Full day Satellites
+        session: Full day
+        row: 1
+      - time: 16:30 - 18:30
+        title: (Satellite) Network Geometry--Theory and Applications
+        category: Full day Satellites
+        session: Full day
+        row: 1
+      - time: 08:30 - 10:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
         category: Full day Satellites
         session: Full day
         row: 2
-      - time: 08:30 - 18:30
+      - time: 11:00 - 12:30
+        title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
+        category: Full day Satellites
+        session: Full day
+        row: 2
+      - time: 14:30 - 16:00
+        title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
+        category: Full day Satellites
+        session: Full day
+        row: 2
+      - time: 16:30 - 18:30
+        title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
+        category: Full day Satellites
+        session: Full day
+        row: 2
+      - time: 08:30 - 10:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
         category: Full day Satellites
         session: Full day
         row: 3
-      - time: 08:30 - 18:30
+      - time: 11:00 - 12:30
+        title: (Satellite) Statistical Inference for Network Models (SINM)
+        category: Full day Satellites
+        session: Full day
+        row: 3
+      - time: 14:30 - 16:00
+        title: (Satellite) Statistical Inference for Network Models (SINM)
+        category: Full day Satellites
+        session: Full day
+        row: 3
+      - time: 16:30 - 18:30
+        title: (Satellite) Statistical Inference for Network Models (SINM)
+        category: Full day Satellites
+        session: Full day
+        row: 3
+      - time: 08:30 - 10:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
         category: Full day Satellites
         session: Full day
         row: 4
-      - time: 08:30 - 12:30
+      - time: 11:00 - 12:30
+        title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
+        category: Full day Satellites
+        session: Full day
+        row: 4
+      - time: 14:30 - 16:00
+        title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
+        category: Full day Satellites
+        session: Full day
+        row: 4
+      - time: 16:30 - 18:30
+        title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
+        category: Full day Satellites
+        session: Full day
+        row: 4
+      - time: 08:30 - 10:30
         title: (Satellite) Networked Criminal Complexity
         category: Morning Satellites
         session: Morning
         row: 5
-      - time: 14:30 - 18:30
+      - time: 11:00 - 12:30
+        title: (Satellite) Networked Criminal Complexity
+        category: Morning Satellites
+        session: Morning
+        row: 5
+      - time: 14:30 - 16:00
         title: (Satellite) Historical Networks (HISTONET)
         category: Afternoon Satellites
         session: Afternoon
         row: 5
-      - time: 08:30 - 12:30
+      - time: 16:30 - 18:30
+        title: (Satellite) Historical Networks (HISTONET)
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 5
+      - time: 08:30 - 10:30
         title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
         category: Morning Satellites
         session: Morning
         row: 6
-      - time: 14:30 - 18:30
+      - time: 11:00 - 12:30
+        title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
+        category: Morning Satellites
+        session: Morning
+        row: 6
+      - time: 14:30 - 16:00
+        title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 6      
+      - time: 16:30 - 18:30
         title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
         category: Afternoon Satellites
         session: Afternoon
         row: 6
-      - time: 08:30 - 12:30
+      - time: 08:30 - 10:30
+        title: (Satellite) Algorithmic Fairness in Network Science
+        category: Morning Satellites
+        session: Morning
+        row: 7 
+      - time: 11:00 - 12:30
         title: (Satellite) Algorithmic Fairness in Network Science
         category: Morning Satellites
         session: Morning
         row: 7
-      - time: 14:30 - 18:30
+      - time: 14:30 - 16:00
         title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
         category: Afternoon Satellites
         session: Afternoon
         row: 7
-      - time: 08:30 - 12:30
+      - time: 16:30 - 18:30
+        title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 7
+      - time: 08:30 - 10:30
         title: (Satellite) Understudied Networks in Computational Social Science
         category: Morning Satellites
         session: Morning
         row: 8
-      - time: 08:30 - 12:30
+      - time: 11:00 - 12:30
+        title: (Satellite) Understudied Networks in Computational Social Science
+        category: Morning Satellites
+        session: Morning
+        row: 8
+      - time: 08:30 - 10:30
         title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
         category: Morning Satellites
         session: Morning
         row: 9
-      - time: 14:30 - 18:30
+      - time: 11:00 - 12:30
+        title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
+        category: Morning Satellites
+        session: Morning
+        row: 9
+      - time: 14:30 - 16:00
+        title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 8
+      - time: 16:30 - 18:30
         title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
         category: Afternoon Satellites
         session: Afternoon
