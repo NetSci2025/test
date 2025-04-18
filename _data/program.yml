@@ -88,6 +88,12 @@ days:
       - time: 12:30 - 14:30
         title: Lunch break
         category: Satellite Break
+      - time: 10:30 - 11:00
+        title: Coffee break
+        category: Satellite Break
+      - time: 16:00 - 16:30
+        title: Coffee break
+        category: Satellite Break
         
   - name: Tue 3 June 2025
     events:
@@ -145,6 +151,12 @@ days:
         session: Afternoon
       - time: 12:30 - 14:30
         title: Lunch break
+        category: Satellite Break
+      - time: 10:30 - 11:00
+        title: Coffee break
+        category: Satellite Break
+      - time: 16:00 - 16:30
+        title: Coffee break
         category: Satellite Break
         
   - name: Wed 4 June 2025
