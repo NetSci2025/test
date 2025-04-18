@@ -145,7 +145,7 @@ days:
         session: Afternoon
       - time: 12:30 - 14:00
         title: Lunch break
-        category: Break
+        category: Satellite Break
         
   - name: Wed 4 June 2025
     events:
