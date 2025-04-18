@@ -1,5 +1,4 @@
 legend:
-  # title: Legend
   categories:
     - name: Invited Speaker
       color: red-6
@@ -11,10 +10,12 @@ legend:
       color: grey-6
     - name: Other Activities
       color: green-6
-    - name: Satellites
-      color: pink-6
     - name: Full day Satellites
-      color: yellow-6  
+      color: yellow-6
+    - name: Morning Satellites
+      color: orange-5
+    - name: Afternoon Satellites
+      color: purple-4
     - name: Satellite Break
       color: grey-6
       
@@ -36,72 +37,72 @@ days:
         row: 2
       - time: 08:30 - 18:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 3
       - time: 08:30 - 18:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 4
       - time: 08:30 - 18:30
         title: (Satellite) Network Neuroscience
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 5
       - time: 08:30 - 18:30
         title: (Satellite) Software and Data for Supporting Network Science
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 6
       - time: 08:30 - 18:30
         title: (Satellite) TEmporal NETworks (TENET)
-        category: Satellites
+        category: Full day Satellites
         session: Full day
         row: 7
       - time: 08:30 - 12:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 8
       - time: 14:30 - 18:30
         title: (Satellite) The future of Network Science--WiNS @ NetSci
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 8
       - time: 08:30 - 12:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 9
       - time: 14:30 - 18:30
         title: (Satellite) Network Science for the Sustainable Development Goals
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 9
       - time: 08:30 - 12:30
         title: (Satellite) Network Renormalization (NetRG)
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 10
       - time: 14:30 - 18:30
         title: (Satellite) Physical Networks, III Edition
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 10
       - time: 08:30 - 12:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network"
-        category: Satellites
+        category: Morning Satellites
         session: Morning
         row: 11
       - time: 14:30 - 18:30
         title: (Satellite) Network Medicine
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 11
       - time: 14:30 - 16:00
         title: (Satellite) Networking and Clustering Network Scientists
-        category: Satellites
+        category: Afternoon Satellites
         session: Afternoon
         row: 12
       - time: 12:30 - 14:30
