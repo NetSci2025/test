@@ -188,7 +188,7 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-                        {% assign main_events = day.events | where_exp:"item","item.category != 'Satellite Break' and item.category != 'Satellites'" %}
+                        {% assign main_events = day.events | where_exp: "item", "item.category != 'Satellite Break' and item.category != 'Satellites'" %}
                         {% if main_events.size > 0 %}
                           <div class="room-row">
                             <div class="room-name">Main</div>
