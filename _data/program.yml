@@ -3,7 +3,7 @@ legend:
     - name: Invited Speaker
       color: red-6
     - name: Lightning
-      color: cyan-4
+      color: lime-4
     - name: Parallel
       color: blue-6
     - name: Break
