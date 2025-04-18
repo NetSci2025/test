@@ -22,6 +22,7 @@ days:
       - time: 09:30 - 12:30
         title: "School Speaker: Manlio De Domenico"   
         category: Invited Speaker
+  
       - time: 14:30 - 17:30
         title: "School Speaker: Huijuan Wang"   
         category: Invited Speaker
@@ -31,45 +32,59 @@ days:
       - time: 08:30 - 18:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Satellites
+        session: Full day
       - time: 08:30 - 18:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Satellites
+        session: Full day
       - time: 08:30 - 18:30
         title: (Satellite) Network Neuroscience
         category: Satellites
+        session: Full day
       - time: 08:30 - 18:30
         title: (Satellite) Software and Data for Supporting Network Science
         category: Satellites
+        session: Full day
       - time: 08:30 - 18:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Satellites
+        session: Full day
       - time: 08:30 - 12:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
         category: Satellites
+        session: Morning
       - time: 14:30 - 18:30
         title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Satellites
+        session: Afternoon
       - time: 08:30 - 12:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
         category: Satellites
+        session: Morning
       - time: 14:30 - 18:30
         title: (Satellite) Network Science for the Sustainable Development Goals
         category: Satellites
+        session: Afternoon
       - time: 08:30 - 12:30
         title: (Satellite) Network Renormalization (NetRG)
         category: Satellites
+        session: Morning
       - time: 14:30 - 18:30
         title: (Satellite) Physical Networks, III Edition
         category: Satellites
+        session: Afternoon
       - time: 08:30 - 12:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network"
         category: Satellites
+        session: Morning
       - time: 14:30 - 18:30
         title: (Satellite) Network Medicine
         category: Satellites
+        session: Afternoon
       - time: 14:30 - 16:00
         title: (Satellite) Networking and Clustering Network Scientists
         category: Satellites
+        session: Afternoon
       - time: 12:30 - 14:00
         title: Lunch break
         category: Satellite Break
@@ -79,42 +94,55 @@ days:
       - time: 08:30 - 18:30
         title: (Satellite) Network Geometry--Theory and Applications
         category: Satellites
+        session: Full day
       - time: 08:30 - 18:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
         category: Satellites
+        session: Full day
       - time: 08:30 - 18:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
         category: Satellites
+        session: Full day
       - time: 08:30 - 18:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
         category: Satellites
+        session: Full day
       - time: 08:30 - 12:30
         title: (Satellite) Networked Criminal Complexity
         category: Satellites
+        session: Morning
       - time: 14:30 - 18:30
         title: (Satellite) Historical Networks (HISTONET)
         category: Satellites
+        session: Afternoon
       - time: 08:30 - 12:30
         title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
         category: Satellites
+        session: Morning
       - time: 14:30 - 18:30
         title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
         category: Satellites
+        session: Afternoon
       - time: 08:30 - 12:30
         title: (Satellite) Algorithmic Fairness in Network Science
         category: Satellites
+        session: Morning
       - time: 14:30 - 18:30
         title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
         category: Satellites
+        session: Afternoon
       - time: 08:30 - 12:30
         title: (Satellite) Understudied Networks in Computational Social Science
         category: Satellites
+        session: Morning
       - time: 08:30 - 12:30
         title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
         category: Satellites
+        session: Morning
       - time: 14:30 - 18:30
         title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
         category: Satellites
+        session: Afternoon
       - time: 12:30 - 14:00
         title: Lunch break
         category: Break
