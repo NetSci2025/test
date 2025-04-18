@@ -9,10 +9,7 @@ layout: default
 main {
     padding-top: 70px;
 }
-    
-.bg-orange-5 { background-color: #fff3e0; border-left: 4px solid #ff9800; }
-.bg-purple-4 { background-color: #f3e5f5; border-left: 4px solid #9c27b0; }
-    
+
 .event-block.break {
     z-index: 2; 
     opacity: 0.9; 
@@ -131,14 +128,19 @@ main {
   white-space: nowrap;
 }
 
-
+/* Color classes based on your legend */
 .bg-red-6 { background-color: #ffebee; border-left: 4px solid #f44336; }
-.bg-yellow-6 { background-color: #fff8e1; border-left: 4px solid #ffc107; }
+.bg-cyan-4 { background-color: #e0f7fa; border-left: 4px solid #00bcd4; }
 .bg-blue-6 { background-color: #e3f2fd; border-left: 4px solid #2196f3; }
 .bg-grey-6 { background-color: #f5f5f5; border-left: 4px solid #9e9e9e; }
 .bg-green-6 { background-color: #e8f5e9; border-left: 4px solid #4caf50; }
-.bg-pink-6 { background-color: #fce4ec; border-left: 4px solid #e91e63; }
+.bg-yellow-6 { background-color: #fff8e1; border-left: 4px solid #ffc107; }
+.bg-orange-5 { background-color: #fff3e0; border-left: 4px solid #ff9800; }
+.bg-purple-4 { background-color: #f3e5f5; border-left: 4px solid #9c27b0; }
 
+.list-unstyled li {
+  margin-bottom: 1rem;
+}
 
 @media (max-width: 768px) {
   .time-slot-header, .time-slot {
@@ -156,13 +158,7 @@ main {
     font-size: 0.7rem;
   }
 }
-
-
-.list-unstyled li {
-  margin-bottom: 1rem;
-}
 </style>
-
 
 <main class="my-4">
   <div class="container">
@@ -198,11 +194,11 @@ main {
 
                   <div class="room-rows-container">
                     <div class="room-rows">
-                      <!-- main events -->
-                      {% assign main_events = day.events | where_exp: "item", "item.category != 'Satellite Break'" | where_exp: "item", "item.category != 'Satellites'" %}
+                      <!-- Main events (School) -->
+                      {% assign main_events = day.events | where_exp: "item", "item.row == 1" %}
                       {% if main_events.size > 0 %}
                         <div class="room-row">
-                          <div class="room-name">School</div>
+                          <div class="room-name">Main Program</div>
                           <div class="time-slots">
                             {% for h in (start_hour..end_hour) %}
                               <div class="time-slot" data-hour="{{ h }}"></div>
@@ -235,104 +231,100 @@ main {
                         </div>
                       {% endif %}
 
-                      <!-- satellite events -->
-                        {% assign satellite_categories = "Satellites,Full day Satellites,Morning Satellites,Afternoon Satellites" | split: "," %}
-                        {% assign satellite_events = empty %}
-                        {% for category in satellite_categories %}
-                          {% assign category_events = day.events | where: "category", category %}
-                          {% assign satellite_events = satellite_events | concat: category_events %}
-                        {% endfor %}
-                        {% assign satellite_events = satellite_events | sort: "row" %}
-                        {% assign satellite_break_events = day.events | where: "category", "Satellite Break" %}
-                        {% assign rows = satellite_events | map: "row" | uniq | sort %}
-                        
-                        {% for row in rows %}
-                          {% assign row_events = satellite_events | where: "row", row %}
-                          <div class="room-row">
-                            <div class="room-name">Satellite</div>
-                            <div class="time-slots">
-                              {% for h in (start_hour..end_hour) %}
-                                <div class="time-slot" data-hour="{{ h }}"></div>
-                              {% endfor %}
+                      <!-- Satellite events -->
+                      {% assign satellite_events = day.events | where_exp: "item", "item.row > 1" %}
+                      {% assign satellite_break_events = day.events | where: "category", "Satellite Break" %}
+                      {% assign rows = satellite_events | map: "row" | uniq | sort %}
+
+                      {% for row in rows %}
+                        {% assign row_events = satellite_events | where: "row", row %}
+                        <div class="room-row">
+                          <div class="room-name">Satellite {{ row | minus: 1 }}</div>
+                          <div class="time-slots">
+                            {% for h in (start_hour..end_hour) %}
+                              <div class="time-slot" data-hour="{{ h }}"></div>
+                            {% endfor %}
+                            
+                            <!-- Break events (appear on all satellite rows) -->
+                            {% for break_event in satellite_break_events %}
+                              {% assign break_start = break_event.time | split: " - " | first %}
+                              {% assign break_end = break_event.time | split: " - " | last %}
+                              {% assign break_start_h = break_start | split: ":" | first | plus: 0 %}
+                              {% assign break_start_m = break_start | split: ":" | last | plus: 0 %}
+                              {% assign break_end_h = break_end | split: ":" | first | plus: 0 %}
+                              {% assign break_end_m = break_end | split: ":" | last | plus: 0 %}
                               
-                              <!-- break event -->
-                              {% for break_event in satellite_break_events %}
-                                {% assign break_start = break_event.time | split: " - " | first %}
-                                {% assign break_end = break_event.time | split: " - " | last %}
-                                {% assign break_start_h = break_start | split: ":" | first | plus: 0 %}
-                                {% assign break_start_m = break_start | split: ":" | last | plus: 0 %}
-                                {% assign break_end_h = break_end | split: ":" | first | plus: 0 %}
-                                {% assign break_end_m = break_end | split: ":" | last | plus: 0 %}
-                                
-                                {% assign break_start_min = break_start_h | times: 60 | plus: break_start_m %}
-                                {% assign break_end_min = break_end_h | times: 60 | plus: break_end_m %}
-                                {% assign break_left = break_start_min | minus: 480 | divided_by: 60.0 %}
-                                {% assign break_width = break_end_min | minus: break_start_min | divided_by: 60.0 %}
-                                
-                                <div class="event-block bg-grey-6 break" 
-                                     style="left: calc({{ break_left }} * 80px); 
-                                            width: calc({{ break_width }} * 80px - 4px);
-                                            z-index: 2;"
-                                     title="{{ break_event.title }} | {{ break_event.time }}">
-                                  <div class="event-time">{{ break_event.time }}</div>
-                                  {{ break_event.title }}
-                                </div>
-                              {% endfor %}
+                              {% assign break_start_min = break_start_h | times: 60 | plus: break_start_m %}
+                              {% assign break_end_min = break_end_h | times: 60 | plus: break_end_m %}
+                              {% assign break_left = break_start_min | minus: 480 | divided_by: 60.0 %}
+                              {% assign break_width = break_end_min | minus: break_start_min | divided_by: 60.0 %}
                               
-                              <!-- row events -->
-                              {% for event in row_events %}
-                                {% assign start_time = event.time | split: " - " | first %}
-                                {% assign end_time = event.time | split: " - " | last %}
-                                {% assign start_h = start_time | split: ":" | first | plus: 0 %}
-                                {% assign start_m = start_time | split: ":" | last | plus: 0 %}
-                                {% assign end_h = end_time | split: ":" | first | plus: 0 %}
-                                {% assign end_m = end_time | split: ":" | last | plus: 0 %}
-                                
-                                {% assign start_min = start_h | times: 60 | plus: start_m %}
-                                {% assign end_min = end_h | times: 60 | plus: end_m %}
-                                {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
-                                {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
-                                
-                                {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "pink-6" %}
-                                
-                                <div class="event-block bg-{{ cat_color }} satellite" 
-                                     style="left: calc({{ left }} * 80px); 
-                                            width: calc({{ width }} * 80px - 4px);"
-                                     title="{{ event.title }} | {{ event.time }}">
-                                  <div class="event-time">{{ event.time }}</div>
-                                  {{ event.title }}
-                                </div>
-                              {% endfor %}
-                            </div>
+                              <div class="event-block bg-grey-6 break" 
+                                   style="left: calc({{ break_left }} * 80px); 
+                                          width: calc({{ break_width }} * 80px - 4px);"
+                                   title="{{ break_event.title }} | {{ break_event.time }}">
+                                <div class="event-time">{{ break_event.time }}</div>
+                                {{ break_event.title }}
+                              </div>
+                            {% endfor %}
+                            
+                            <!-- Satellite events for this row -->
+                            {% for event in row_events %}
+                              {% assign start_time = event.time | split: " - " | first %}
+                              {% assign end_time = event.time | split: " - " | last %}
+                              {% assign start_h = start_time | split: ":" | first | plus: 0 %}
+                              {% assign start_m = start_time | split: ":" | last | plus: 0 %}
+                              {% assign end_h = end_time | split: ":" | first | plus: 0 %}
+                              {% assign end_m = end_time | split: ":" | last | plus: 0 %}
+                              
+                              {% assign start_min = start_h | times: 60 | plus: start_m %}
+                              {% assign end_min = end_h | times: 60 | plus: end_m %}
+                              {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
+                              {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
+                              
+                              {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
+                              
+                              <div class="event-block bg-{{ cat_color }} satellite" 
+                                   style="left: calc({{ left }} * 80px); 
+                                          width: calc({{ width }} * 80px - 4px);"
+                                   title="{{ event.title }} | {{ event.time }}">
+                                <div class="event-time">{{ event.time }}</div>
+                                {{ event.title }}
+                              </div>
+                            {% endfor %}
                           </div>
-                        {% endfor %}
+                        </div>
+                      {% endfor %}
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- List -->
-              {% assign categories = site.data.program.legend.categories %}
+              <!-- List View -->
+              <h5 class="fw-bold mt-4">Detailed Schedule</h5>
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
                 {% if event.category %}
-                {% assign color = categories | where: 'name', event.category | map: 'color' | first %}
+                {% assign color = site.data.program.legend.categories | where: 'name', event.category | map: 'color' | first %}
                 {% else %}
-                {% assign color = 'gray-4' %}
+                {% assign color = 'grey-6' %}
                 {% endif %}
-                {% assign start = event.time | split: ' to ' | slice: 0 %}
-                {% assign end = event.time | split: ' to ' | slice: 1 %}
+                {% assign start = event.time | split: ' - ' | first %}
+                {% assign end = event.time | split: ' - ' | last %}
                 <li class="d-flex flex-column flex-lg-row">
                   {% assign classes = color | prepend: 'border-start border-3 border-' %}
                   <div class="row col-lg-2 pb-2 {{ classes }} border-lg-0">
-                    <small class="fw-light text-muted">{{ start }}{{ end }}</small>
+                    <small class="fw-light text-muted">{{ start }} - {{ end }}</small>
                   </div>
                   {% unless forloop.last %}
                   {% assign classes = classes | append: ' mb-4' %}
                   {% endunless %}
                   <div class="row col-lg-10 {{ classes }}">
                     <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
+                    {% if event.subtitle %}
                     <p class="fw-light m-0">{{ event.subtitle }}</p>
+                    {% endif %}
+                    {% if event.paper or event.poster or event.slides %}
                     <p class="fw-light m-0">
                       {% if event.paper.first %}
                       {% for paper in event.paper %}
@@ -356,32 +348,27 @@ main {
                       <a href="{{ event.slides | relative_url }}">[Slides]</a>
                       {% endif %}
                     </p>
+                    {% endif %}
                   </div>
                 </li>
                 {% endfor %}
               </ul>
             
               <!-- Legend -->
-              {% assign legend = day.events | map: 'category' | compact | uniq %}
-              {% assign size = legend | size %}
-              {% if size > 0 %}
               <div class="mt-4 mb-2">
-                {% if site.data.program.legend.title %}
-                <h5 class="fw-normal">{{ site.data.program.legend.title }}</h5>
-                {% endif %}
-                {% for item in legend %}
-                {% assign border = categories | where: 'name', item | map: 'color' | first %}
+                <h5 class="fw-normal">Event Categories</h5>
+                {% for category in site.data.program.legend.categories %}
+                {% assign border = category.color %}
                 {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
                 {% assign classes = border | prepend: ' border-' | prepend: bg %}
                 {% unless forloop.last %}
                 {% assign classes = classes | append: ' me-lg-2' %}
                 {% endunless %}
                 {% if border %}
-                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
+                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ category.name | upcase }}</small>
                 {% endif %}
                 {% endfor %}
               </div>
-              {% endif %}
             </div>
           </div>
         </div>
@@ -393,6 +380,5 @@ main {
 </main>
 
 {% include footer.html %}
-
 
 
