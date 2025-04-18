@@ -15,7 +15,7 @@ legend:
     - name: Morning Satellites
       color: orange-5
     - name: Afternoon Satellites
-      color: purple-4
+      color: pink-4
     - name: Satellite Break
       color: grey-6
       
