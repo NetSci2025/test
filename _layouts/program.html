@@ -36,7 +36,7 @@ main {
 .time-header {
   display: flex;
   height: 40px;
-  margin-left: 160px; 
+  margin-left: 220px; 
   position: sticky;
   top: 0;
   background: white;
@@ -45,7 +45,7 @@ main {
 }
 
 .time-slot-header {
-  width: 80px;
+  width: 120px;
   flex-shrink: 0;
   text-align: left;
   font-size: 0.8rem;
@@ -95,7 +95,7 @@ main {
 }
 
 .time-slot {
-  width: 80px;
+  width: 120px;
   flex-shrink: 0;
   position: relative;
   border-right: 1px solid #f5f5f5;
@@ -220,8 +220,8 @@ main {
                               {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
                               
                               <div class="event-block bg-{{ cat_color }}" 
-                                   style="left: calc({{ left }} * 80px); 
-                                          width: calc({{ width }} * 80px - 4px);"
+                                   style="left: calc({{ left }} * 120px); 
+                                          width: calc({{ width }} * 120px - 4px);"
                                    title="{{ event.title }} | {{ event.time }}">
                                 <div class="event-time">{{ event.time }}</div>
                                 {{ event.title }}
@@ -260,8 +260,8 @@ main {
                               {% assign break_width = break_end_min | minus: break_start_min | divided_by: 60.0 %}
                               
                               <div class="event-block bg-grey-6 break" 
-                                   style="left: calc({{ break_left }} * 80px); 
-                                          width: calc({{ break_width }} * 80px - 4px);"
+                                   style="left: calc({{ break_left }} * 120px); 
+                                          width: calc({{ break_width }} * 120px - 4px);"
                                    title="{{ break_event.title }} | {{ break_event.time }}">
                                 <div class="event-time">{{ break_event.time }}</div>
                                 {{ break_event.title }}
@@ -285,8 +285,8 @@ main {
                               {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
                               
                               <div class="event-block bg-{{ cat_color }} satellite" 
-                                   style="left: calc({{ left }} * 80px); 
-                                          width: calc({{ width }} * 80px - 4px);"
+                                   style="left: calc({{ left }} * 120px); 
+                                          width: calc({{ width }} * 120px - 4px);"
                                    title="{{ event.title }} | {{ event.time }}">
                                 <div class="event-time">{{ event.time }}</div>
                                 {{ event.title }}
