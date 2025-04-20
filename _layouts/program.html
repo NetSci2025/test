@@ -46,10 +46,11 @@ main {
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
 }
-
+  
 .scroll-inner {
-  width: calc((var(--end-hour) - var(--start-hour) + 1) * var(--slot-width));
+  width: calc(220px + (var(--end-hour) - var(--start-hour) + 1) * var(--slot-width));
 }
+
 
 .time-header {
   display: flex;
