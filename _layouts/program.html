@@ -158,30 +158,59 @@ main {
 
 
 @media (max-width: 768px) {
+  .schedule-container {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    touch-action: pan-x;
+  }
+
+  .time-header {
+    margin-left: 120px;
+    transform: none;
+    min-width: 100%;
+    width: max-content;
+  }
+
   .time-slot-header, 
   .time-slot {
-    width: 80px;         
+    width: 60px;
   }
   
   .room-name {
-    width: 150px;
-    font-size: 0.8rem;
-  }
-  
-  .time-header {
-    margin-left: 150px;
-    transform: translateX(-40px); 
+    width: 120px;
+    font-size: 0.7rem;
+    position: sticky;
+    left: 0;
+    z-index: 3;
   }
   
   .time-slots {
-    transform: translateX(-40px);
+    transform: none;
+    width: max-content;
   }
   
   .event-block {
-    padding: 4px;
-    font-size: 0.7rem;
+    padding: 2px;
+    font-size: 0.65rem;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .room-row {
+    width: max-content;
+  }
+
+  .room-rows {
+    width: max-content;
+  }
+
+  .event-time {
+    font-size: 0.6rem;
   }
 }
+    
 </style>
 
 <main class="my-4">
