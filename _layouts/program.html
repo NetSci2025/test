@@ -6,6 +6,14 @@ layout: default
 {% include header.html %}
 
 <style>
+.room-name-placeholder {
+  width: 220px;
+  flex-shrink: 0;
+  background: white;
+  border-right: 1px solid #ccc;
+  z-index: 3;
+}
+
 :root {
   --slot-width: 120px;
   --start-hour: 8;
@@ -202,6 +210,7 @@ main {
 
                       <!-- Time Header -->
                       <div class="time-header">
+                        <div class="room-name-placeholder"></div>
                         {% assign start_hour = 8 %}
                         {% assign end_hour = 19 %}
                         {% for h in (start_hour..end_hour) %}
