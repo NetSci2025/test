@@ -238,7 +238,7 @@ main {
                               
                               {% assign start_min = start_h | times: 60 | plus: start_m %}
                               {% assign end_min = end_h | times: 60 | plus: end_m %}
-                              {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
+                              {% assign left = start_min | minus: 510 | divided_by: 60.0 %}
                               {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
                               
                               {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
@@ -280,7 +280,7 @@ main {
                               
                               {% assign break_start_min = break_start_h | times: 60 | plus: break_start_m %}
                               {% assign break_end_min = break_end_h | times: 60 | plus: break_end_m %}
-                              {% assign break_left = break_start_min | minus: 480 | divided_by: 60.0 %}
+                              {% assign break_left = break_start_min | minus: 510 | divided_by: 60.0 %}
                               {% assign break_width = break_end_min | minus: break_start_min | divided_by: 60.0 %}
                               
                               <div class="event-block bg-grey-6 break" 
@@ -303,7 +303,7 @@ main {
                               
                               {% assign start_min = start_h | times: 60 | plus: start_m %}
                               {% assign end_min = end_h | times: 60 | plus: end_m %}
-                              {% assign left = start_min | minus: 480 | divided_by: 60.0 %}
+                              {% assign left = start_min | minus: 510 | divided_by: 60.0 %}
                               {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
                               
                               {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
