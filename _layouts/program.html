@@ -6,10 +6,19 @@ layout: default
 {% include header.html %}
 
 <style>
-main {
-    padding-top: 70px;
+:root {
+  --slot-width: 120px;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --slot-width: 60px;
+  }
+}
+
+main {
+  padding-top: 70px;
+}
 
 .schedule-container {
   display: flex;
@@ -18,29 +27,27 @@ main {
   margin-top: 1rem;
   font-family: Arial, sans-serif;
   position: relative;
-  overflow-x: auto;       
-  overflow-y: hidden;     
+  overflow-x: auto;
+  overflow-y: hidden;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-
 .time-header {
   display: flex;
   height: 40px;
-  margin-left: 220px;     
+  margin-left: 220px;
   position: sticky;
   top: 0;
   background: white;
   z-index: 3;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transform: translateX(-60px); 
-  min-width: calc(100% - 160px); 
+  transform: translateX(-60px);
+  min-width: calc(100% - 160px);
 }
 
-
 .time-slot-header {
-  width: 120px;           
+  width: var(--slot-width);
   flex-shrink: 0;
   text-align: left;
   font-size: 0.8rem;
@@ -51,17 +58,14 @@ main {
   justify-content: center;
 }
 
-
 .room-rows-container {
-  overflow: visible;      
+  overflow: visible;
 }
-
 
 .room-rows {
   display: flex;
   flex-direction: column;
 }
-
 
 .room-row {
   display: flex;
@@ -70,9 +74,8 @@ main {
   position: relative;
 }
 
-
 .room-name {
-  width: 220px;           
+  width: 220px;
   flex-shrink: 0;
   padding: 8px;
   font-size: 0.9rem;
@@ -88,22 +91,19 @@ main {
   justify-content: flex-end;
 }
 
-
 .time-slots {
   display: flex;
   flex-grow: 1;
   position: relative;
-  transform: translateX(-60px); 
+  transform: translateX(-60px);
 }
 
-
 .time-slot {
-  width: 120px;        
+  width: var(--slot-width);
   flex-shrink: 0;
   position: relative;
   border-right: 1px solid #f5f5f5;
 }
-
 
 .event-block {
   margin: 2px;
@@ -126,7 +126,6 @@ main {
   z-index: 4;
 }
 
-
 .event-time {
   font-weight: bold;
   margin-bottom: 4px;
@@ -134,13 +133,11 @@ main {
   white-space: nowrap;
 }
 
-
 .event-block.break {
   z-index: 2;
   opacity: 0.9;
   border-left-width: 6px;
 }
-
 
 .event-block.satellite {
   z-index: 1;
@@ -172,11 +169,6 @@ main {
     width: max-content;
   }
 
-  .time-slot-header, 
-  .time-slot {
-    width: 60px;
-  }
-  
   .room-name {
     width: 120px;
     font-size: 0.7rem;
@@ -184,20 +176,27 @@ main {
     left: 0;
     z-index: 3;
   }
-  
+
+  .time-slot-header,
+  .time-slot {
+    width: var(--slot-width);
+  }
+
   .time-slots {
     transform: none;
     width: max-content;
   }
-  
+
   .event-block {
     padding: 2px;
     font-size: 0.65rem;
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-    position: absolute;
-    left: 30px; 
+  }
+
+  .event-time {
+    font-size: 0.6rem;
   }
 
   .room-row {
@@ -208,13 +207,9 @@ main {
   .room-rows {
     width: max-content;
   }
-
-  .event-time {
-    font-size: 0.6rem;
-  }
 }
-    
 </style>
+
 
 <main class="my-4">
   <div class="container">
