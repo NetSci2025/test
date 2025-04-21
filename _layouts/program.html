@@ -322,8 +322,11 @@ main {
               {% assign categories = site.data.program.legend.categories %}
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
+                {% if event.category %}
                 {% assign color = categories | where: 'name', event.category | map: 'color' | first %}
-                {% assign color = color | default: 'gray-4' %}
+                {% else %}
+                {% assign color = 'gray-4' %}
+                {% endif %}
                 {% assign start = event.time | split: ' to ' | slice: 0 %}
                 {% assign end = event.time | split: ' to ' | slice: 1 %}
                 <li class="d-flex flex-column flex-lg-row">
@@ -331,34 +334,44 @@ main {
                   <div class="row col-lg-2 pb-2 {{ classes }} border-lg-0">
                     <small class="fw-light text-muted">{{ start }}{{ end }}</small>
                   </div>
+                  {% unless forloop.last %}
+                  {% assign classes = classes | append: ' mb-4' %}
+                  {% endunless %}
                   <div class="row col-lg-10 {{ classes }}">
                     <h5 class="fw-normal m-0 mb-2">{{ event.title }}</h5>
                     <p class="fw-light m-0">{{ event.subtitle }}</p>
                     <p class="fw-light m-0">
-                      {% if event.paper %}
-                        {% for p in event.paper %}
-                          <a href="{{ p | relative_url }}">[Paper{{ forloop.length > 1 }}]</a>
-                        {% endfor %}
+                      {% if event.paper.first %}
+                      {% for paper in event.paper %}
+                      <a href="{{ paper | relative_url }}">[Paper {{ forloop.index }}]</a>
+                      {% endfor %}
+                      {% elsif event.paper %}
+                      <a href="{{ event.paper | relative_url }}">[Paper]</a>
                       {% endif %}
-                      {% if event.poster %}
-                        {% for p in event.poster %}
-                          <a href="{{ p | relative_url }}">[Poster{{ forloop.length > 1 }}]</a>
-                        {% endfor %}
+                      {% if event.poster.first %}
+                      {% for poster in event.poster %}
+                      <a href="{{ poster | relative_url }}">[Poster {{ forloop.index }}]</a>
+                      {% endfor %}
+                      {% elsif event.poster %}
+                      <a href="{{ event.poster | relative_url }}">[Poster]</a>
                       {% endif %}
-                      {% if event.slides %}
-                        {% for s in event.slides %}
-                          <a href="{{ s | relative_url }}">[Slides{{ forloop.length > 1 }}]</a>
-                        {% endfor %}
+                      {% if event.slides.first %}
+                      {% for slides in event.slides %}
+                      <a href="{{ slides | relative_url }}">[Slides {{ forloop.index }}]</a>
+                      {% endfor %}
+                      {% elsif event.slides %}
+                      <a href="{{ event.slides | relative_url }}">[Slides]</a>
                       {% endif %}
                     </p>
                   </div>
                 </li>
                 {% endfor %}
               </ul>
-
-              <!-- Legend -->
+            
+              <!-- LEGEND -->
               {% assign legend = day.events | map: 'category' | compact | uniq %}
-              {% if legend.size > 0 %}
+              {% assign size = legend | size %}
+              {% if size > 0 %}
               <div class="mt-4 mb-2">
                 {% if site.data.program.legend.title %}
                 <h5 class="fw-normal">{{ site.data.program.legend.title }}</h5>
@@ -367,7 +380,12 @@ main {
                 {% assign border = categories | where: 'name', item | map: 'color' | first %}
                 {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
                 {% assign classes = border | prepend: ' border-' | prepend: bg %}
+                {% unless forloop.last %}
+                {% assign classes = classes | append: ' me-lg-2' %}
+                {% endunless %}
+                {% if border %}
                 <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
+                {% endif %}
                 {% endfor %}
               </div>
               {% endif %}
