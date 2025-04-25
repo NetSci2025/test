@@ -345,29 +345,15 @@ main {
               {% assign categories = site.data.program.legend.categories %}
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
+                  {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'grey-6' %}
                   {% assign time = event.time %}
-                  {% assign is_school = event.title contains "School Speaker" %}
-                  {% assign is_break = event.category == "Satellite Break" %}
-                  {% if is_school %}
-                    <li class="mb-2">
-                      <strong>{{ time }}</strong><br>
-                      {{ event.title }}
-                    </li>
-                  {% elsif is_break %}
-                    <li class="mb-2">
-                      <strong>{{ time }}</strong><br>
-                      {{ event.title }}
-                    </li>
-                  {% elsif event.category contains "Satellite" %}
-                    {% assign shown_satellites = shown_satellites | default: "" %}
-                    {% assign shown_key = time %}
-                    <li class="mb-2">
-                      <strong>{{ time }}</strong><br>
-                      Satellite
-                    </li>
-                  {% endif %}
+                  <li class="mb-2 px-3 py-2 border-start border-4 bg-{{ color }}">
+                    <div class="fw-bold small text-muted">{{ time }}</div>
+                    <div class="fw-normal">{{ event.title }}</div>
+                  </li>
                 {% endfor %}
               </ul>
+
 
             
               <!-- LEGEND -->
