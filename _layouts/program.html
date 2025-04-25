@@ -285,8 +285,9 @@ main {
                         {% assign rows = satellite_events | map: "row" | uniq | sort %}
                         {% for row in rows %}
                         {% assign row_events = satellite_events | where: "row", row %}
+                        {% assign room_name = row_events | map: "room" | uniq | first %}
                         <div class="room-row">
-                          <div class="room-name">Room {{ row | minus: 1 }}</div>
+                          <div class="room-name">{{ room_name }}</div>
                           <div class="time-slots">
                             {% for h in (start_hour..end_hour) %}
                               <div class="time-slot"></div>
