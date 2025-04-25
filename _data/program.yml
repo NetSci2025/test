@@ -165,7 +165,7 @@ days:
       - time: 08:30 - 10:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
-        session: Full day
+        session: FSE Conference hall EPD150
         row: 7
         room: FPN Groente zaal
       - time: 11:00 - 12:30
@@ -173,121 +173,158 @@ days:
         category: Full day Satellites
         session: Full day
         row: 7
-        room: FPN Groente zaal
+        room: FSE Conference hall EPD150
       - time: 14:30 - 16:00
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
         session: Full day
         row: 7
-        room: FPN Groente zaal
+        room: FSE Conference hall EPD150
       - time: 16:30 - 18:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
         session: Full day
         row: 7
-        room: FPN Groente zaal
+        room: FSE Conference hall EPD150
+      - time: 08:30 - 10:30
+        title: (Satellite) Network Renormalization (NetRG)
+        category: Morning Satellites
+        session: Morning
+        row: 8
+        room: FSE C1.015 at PHS1
+      - time: 11:00 - 12:30
+        title: (Satellite) Network Renormalization (NetRG)
+        category: Morning Satellites
+        session: Morning
+        row: 8
+        room: FSE C1.015 at PHS1
+       - time: 14:30 - 16:00
+        title: (Satellite) Network Science for the Sustainable Development Goals
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 8
+        room: FSE C1.005 at PHS1
+      - time: 16:30 - 18:30
+        title: (Satellite) Network Science for the Sustainable Development Goals
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 8
+        room: FSE C1.005 at PHS1
       - time: 08:30 - 10:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
         category: Morning Satellites
         session: Morning
-        row: 8
+        row: 9
         room: FASoS GG76 0.07 
       - time: 11:00 - 12:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
         category: Morning Satellites
         session: Morning
-        row: 8
+        row: 9
         room: FASoS GG76 0.07
       - time: 14:30 - 16:00
-        title: (Satellite) The future of Network Science--WiNS @ NetSci
+        title: (Satellite) Net4Health
         category: Afternoon Satellites
         session: Afternoon
-        row: 8
+        row: 9
         room: FASoS GG76 0.07
       - time: 16:30 - 18:30
-        title: (Satellite) The future of Network Science--WiNS @ NetSci
+        title: (Satellite) Net4Health
         category: Afternoon Satellites
         session: Afternoon
-        row: 8
+        row: 9
         room: FASoS GG76 0.07
-      - time: 08:30 - 10:30
-        title: (Satellite) Critical Phenomena In Networks (CPIN)
-        category: Morning Satellites
-        session: Morning
-        row: 9
-        room: FSE C1.005 at PHS1
-      - time: 11:00 - 12:30
-        title: (Satellite) Critical Phenomena In Networks (CPIN)
-        category: Morning Satellites
-        session: Morning
-        row: 9
-        room: FSE C1.005 at PHS1
-      - time: 14:30 - 16:00
-        title: (Satellite) Network Science for the Sustainable Development Goals
-        category: Afternoon Satellites
-        session: Afternoon
-        row: 9
-        room: FSE C1.005 at PHS1
-      - time: 16:30 - 18:30
-        title: (Satellite) Network Science for the Sustainable Development Goals
-        category: Afternoon Satellites
-        session: Afternoon
-        row: 9
-        room: FSE C1.005 at PHS1
-      - time: 08:30 - 10:30
-        title: (Satellite) Network Renormalization (NetRG)
-        category: Morning Satellites
-        session: Morning
-        row: 10
-        room: FSE C1.015 at PHS1
-      - time: 11:00 - 12:30
-        title: (Satellite) Network Renormalization (NetRG)
-        category: Morning Satellites
-        session: Morning
-        row: 10
-        room: FSE C1.015 at PHS1
-      - time: 14:30 - 16:00
-        title: (Satellite) Physical Networks, III Edition
-        category: Afternoon Satellites
-        session: Afternoon
-        row: 10
-        room: FSE C1.015 at PHS1
-      - time: 16:30 - 18:30
-        title: (Satellite) Physical Networks, III Edition
-        category: Afternoon Satellites
-        session: Afternoon
-        row: 10
-        room: FSE C1.015 at PHS1
       - time: 08:30 - 10:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network
         category: Morning Satellites
         session: Morning
-        row: 11
+        row: 10
         room: FPN Tongeren zaal 
       - time: 11:00 - 12:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network
         category: Morning Satellites
         session: Morning
-        row: 11
+        row: 10
         room: FPN Tongeren zaal 
+      - time: 14:30 - 16:00
+        title: (Satellite) Women in Network Science
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 10
+        room: FPN Tongeren zaal 
+      - time: 16:30 - 18:30
+        title: (Satellite) Women in Network Science
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 10
+        room: FPN Tongeren zaal 
+      - time: 08:30 - 10:30
+        title: (Satellite) Critical Phenomena In Networks (CPIN)
+        category: Morning Satellites
+        session: Morning
+        row: 11
+        room: FSE C1.005 at PHS1
+      - time: 11:00 - 12:30
+        title: (Satellite) Critical Phenomena In Networks (CPIN)
+        category: Morning Satellites
+        session: Morning
+        row: 11
+        room: FSE C1.005 at PHS1
+       - time: 14:30 - 16:00
+        title: (Satellite) Women in Network Science
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 11
+        room: FSE C1.005 at PHS1
+      - time: 16:30 - 18:30
+        title: (Satellite) Women in Network Science
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 11
+        room: FSE C1.005 at PHS1
+      - time: 14:30 - 16:00
+        title: (Satellite) The future of Network Science--WiNS @ NetSci
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 12
+        room: "?"
+      - time: 16:30 - 18:30
+        title: (Satellite) The future of Network Science--WiNS @ NetSci
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 12
+        room: "?"
       - time: 14:30 - 16:00
         title: (Satellite) Network Medicine
         category: Afternoon Satellites
         session: Afternoon
-        row: 11
-        room: FPN Tongeren zaal 
+        row: 13
+        room: "?"
       - time: 16:30 - 18:30
         title: (Satellite) Network Medicine
         category: Afternoon Satellites
         session: Afternoon
-        row: 11
-        room: FPN Tongeren zaal 
+        row: 13
+        room: "?"
+        room: FSE C1.005 at PHS1
+      - time: 14:30 - 16:00
+        title: (Satellite) Physical Networks, III Edition
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 14
+        room: "?"
+      - time: 16:30 - 18:30
+        title: (Satellite) Physical Networks, III Edition
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 14
+        room: "?"
       - time: 14:30 - 16:00
         title: (Satellite) Networking and Clustering Network Scientists
         category: Afternoon Satellites
         session: Afternoon
-        row: 12
-        room: 
+        row: 15
+        room: "?"
       - time: 12:30 - 14:30
         title: Lunch break
         category: Satellite Break
