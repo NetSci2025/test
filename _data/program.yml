@@ -22,11 +22,19 @@ legend:
 days:
   - name: Mon 2 June 2025
     events:
-      - time: 09:30 - 12:30
+      - time: 09:30 - 10:30
         title: "School Speaker: Manlio De Domenico"   
         category: Invited Speaker
         row: 1  
-      - time: 14:30 - 17:30
+      - time: 11:00 - 12:30
+        title: "School Speaker: Manlio De Domenico"   
+        category: Invited Speaker
+        row: 1  
+      - time: 14:30 - 16:00
+        title: "School Speaker: Huijuan Wang"   
+        category: Invited Speaker
+        row: 1
+      - time: 16:30 - 17:30
         title: "School Speaker: Huijuan Wang"   
         category: Invited Speaker
         row: 1
