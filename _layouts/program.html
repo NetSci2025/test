@@ -343,35 +343,38 @@ main {
 
               <!-- List --> 
               {% assign categories = site.data.program.legend.categories %}
+              {% assign shown_times = "" %}
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
-                  {% comment %} Skip other satellite events if this isn't the first one {% endcomment %}
-                  {% if event.category == 'Satellite' and forloop.index0 > 0 %}
-                    {% continue %}
-                  {% endif %}
-                  
-                  {% if event.category %}
-                    {% assign color = categories | where: 'name', event.category | map: 'color' | first %}
-                  {% else %}
-                    {% assign color = 'gray-4' %}
-                  {% endif %}
-                  
+                  {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
                   {% assign start = event.time | split: ' to ' | slice: 0 %}
                   {% assign end = event.time | split: ' to ' | slice: 1 %}
-                  
+                  {% assign time_key = event.time %}
+                  {% assign is_satellite = event.category contains 'Satellite' and event.category != 'Satellite Break' %}
+              
+                  {% assign display = true %}
+                  {% assign event_title = event.title %}
+              
+                  {% if is_satellite %}
+                    {% if shown_times contains time_key %}
+                      {% assign display = false %}
+                    {% else %}
+                      {% assign shown_times = shown_times | append: time_key | append: "," %}
+                      {% assign event_title = "Satellite" %}
+                    {% endif %}
+                  {% endif %}
+              
+                  {% if display %}
                   <li class="d-flex flex-column flex-lg-row">
                     {% assign classes = color | prepend: 'border-start border-3 border-' %}
                     <div class="row col-lg-2 pb-2 {{ classes }} border-lg-0">
                       <small class="fw-light text-muted">{{ start }}{{ end }}</small>
                     </div>
                     {% unless forloop.last %}
-                      {% assign classes = classes | append: ' mb-4' %}
+                    {% assign classes = classes | append: ' mb-4' %}
                     {% endunless %}
                     <div class="row col-lg-10 {{ classes }}">
-                      {% comment %} Replace full satellite name with just "satellite" {% endcomment %}
-                      <h5 class="fw-normal m-0 mb-2">
-                        {% if event.category == 'Satellite' %}satellite{% else %}{{ event.title }}{% endif %}
-                      </h5>
+                      <h5 class="fw-normal m-0 mb-2">{{ event_title }}</h5>
                       <p class="fw-light m-0">{{ event.subtitle }}</p>
                       <p class="fw-light m-0">
                         {% if event.paper.first %}
@@ -398,6 +401,7 @@ main {
                       </p>
                     </div>
                   </li>
+                  {% endif %}
                 {% endfor %}
               </ul>
 
