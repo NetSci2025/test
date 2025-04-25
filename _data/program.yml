@@ -26,223 +26,268 @@ days:
         title: "School Speaker: Manlio De Domenico"   
         category: Invited Speaker
         row: 1  
+        room: FPN Heerlen Zaal 
       - time: 11:00 - 12:30
         title: "School Speaker: Manlio De Domenico"   
         category: Invited Speaker
         row: 1  
+        room: FPN Heerlen Zaal 
       - time: 14:30 - 16:00
         title: "School Speaker: Huijuan Wang"   
         category: Invited Speaker
         row: 1
+        room: FPN Heerlen Zaal 
       - time: 16:30 - 17:30
         title: "School Speaker: Huijuan Wang"   
         category: Invited Speaker
         row: 1
+        room: FPN Heerlen Zaal 
       - time: 08:30 - 10:30
         title: (Satellite) Networks in Science of Science
         category: Full day Satellites
         session: Full day
         row: 2
+        room: FPN Aken zaal
       - time: 11:00 - 12:30
         title: (Satellite) Networks in Science of Science
         category: Full day Satellites
         session: Full day
         row: 2
+        room: FPN Aken zaal
       - time: 14:30 - 16:00
         title: (Satellite) Networks in Science of Science
         category: Full day Satellites
         session: Full day
         row: 2
+        room: FPN Aken zaal
       - time: 16:30 - 18:30
         title: (Satellite) Networks in Science of Science
         category: Full day Satellites
         session: Full day
         row: 2
+        room: FPN Aken zaal
       - time: 08:30 - 10:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Full day Satellites
         session: Full day
         row: 3
+        room: FASoS GG90-92 A0 Turnzaal 
       - time: 11:00 - 12:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Full day Satellites
         session: Full day
         row: 3
+        room: FASoS GG90-92 A0 Turnzaal
       - time: 14:30 - 16:00
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Full day Satellites
         session: Full day
         row: 3
+        room: FASoS GG90-92 A0 Turnzaal
       - time: 16:30 - 18:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Full day Satellites
         session: Full day
         row: 3
+        room: FASoS GG90-92 A0 Turnzaal
       - time: 08:30 - 10:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Full day Satellites
         session: Full day
         row: 4
+        room: FASoS GG76 
       - time: 11:00 - 12:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Full day Satellites
         session: Full day
         row: 4
+        room: FASoS GG76 
       - time: 14:30 - 16:00
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Full day Satellites
         session: Full day
         row: 4
+        room: FASoS GG76 
       - time: 16:30 - 18:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Full day Satellites
         session: Full day
         row: 4
+        room: FASoS GG76 
       - time: 08:30 - 10:30
         title: (Satellite) Network Neuroscience
         category: Full day Satellites
         session: Full day
         row: 5
+        room: FASoS GG76S 
       - time: 11:00 - 12:30
         title: (Satellite) Network Neuroscience
         category: Full day Satellites
         session: Full day
         row: 5
+        room: FASoS GG76S 
       - time: 14:30 - 16:00
         title: (Satellite) Network Neuroscience
         category: Full day Satellites
         session: Full day
         row: 5
+        room: FASoS GG76S 
       - time: 16:30 - 18:30
         title: (Satellite) Network Neuroscience
         category: Full day Satellites
         session: Full day
         row: 5
+        room: FASoS GG76S 
       - time: 08:30 - 10:30
         title: (Satellite) Software and Data for Supporting Network Science
         category: Full day Satellites
         session: Full day
         row: 6
+        room: FPN Groente zaal
       - time: 11:00 - 12:30
         title: (Satellite) Software and Data for Supporting Network Science
         category: Full day Satellites
         session: Full day
         row: 6
+        room: FPN Groente zaal
       - time: 14:30 - 16:00
         title: (Satellite) Software and Data for Supporting Network Science
         category: Full day Satellites
         session: Full day
         row: 6
+        room: FPN Groente zaal
       - time: 16:30 - 18:30
         title: (Satellite) Software and Data for Supporting Network Science
         category: Full day Satellites
         session: Full day
         row: 6
+        room: FPN Groente zaal
       - time: 08:30 - 10:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
         session: Full day
         row: 7
+        room: FPN Groente zaal
       - time: 11:00 - 12:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
         session: Full day
         row: 7
+        room: FPN Groente zaal
       - time: 14:30 - 16:00
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
         session: Full day
         row: 7
+        room: FPN Groente zaal
       - time: 16:30 - 18:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
         session: Full day
         row: 7
+        room: FPN Groente zaal
       - time: 08:30 - 10:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
         category: Morning Satellites
         session: Morning
         row: 8
+        room: FASoS GG76 0.07 
       - time: 11:00 - 12:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
         category: Morning Satellites
         session: Morning
         row: 8
+        room: FASoS GG76 0.07
       - time: 14:30 - 16:00
         title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Afternoon Satellites
         session: Afternoon
         row: 8
+        room: FASoS GG76 0.07
       - time: 16:30 - 18:30
         title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Afternoon Satellites
         session: Afternoon
         row: 8
+        room: FASoS GG76 0.07
       - time: 08:30 - 10:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
         category: Morning Satellites
         session: Morning
         row: 9
+        room: FSE C1.005 at PHS1
       - time: 11:00 - 12:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
         category: Morning Satellites
         session: Morning
         row: 9
+        room: FSE C1.005 at PHS1
       - time: 14:30 - 16:00
         title: (Satellite) Network Science for the Sustainable Development Goals
         category: Afternoon Satellites
         session: Afternoon
         row: 9
+        room: FSE C1.005 at PHS1
       - time: 16:30 - 18:30
         title: (Satellite) Network Science for the Sustainable Development Goals
         category: Afternoon Satellites
         session: Afternoon
         row: 9
+        room: FSE C1.005 at PHS1
       - time: 08:30 - 10:30
         title: (Satellite) Network Renormalization (NetRG)
         category: Morning Satellites
         session: Morning
         row: 10
+        room: FSE C1.015 at PHS1
       - time: 11:00 - 12:30
         title: (Satellite) Network Renormalization (NetRG)
         category: Morning Satellites
         session: Morning
         row: 10
+        room: FSE C1.015 at PHS1
       - time: 14:30 - 16:00
         title: (Satellite) Physical Networks, III Edition
         category: Afternoon Satellites
         session: Afternoon
         row: 10
+        room: FSE C1.015 at PHS1
       - time: 16:30 - 18:30
         title: (Satellite) Physical Networks, III Edition
         category: Afternoon Satellites
         session: Afternoon
         row: 10
+        room: FSE C1.015 at PHS1
       - time: 08:30 - 10:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network
         category: Morning Satellites
         session: Morning
         row: 11
+        room: FPN Tongeren zaal 
       - time: 11:00 - 12:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network
         category: Morning Satellites
         session: Morning
         row: 11
+        room: FPN Tongeren zaal 
       - time: 14:30 - 16:00
         title: (Satellite) Network Medicine
         category: Afternoon Satellites
         session: Afternoon
         row: 11
+        room: FPN Tongeren zaal 
       - time: 16:30 - 18:30
         title: (Satellite) Network Medicine
         category: Afternoon Satellites
         session: Afternoon
         row: 11
+        room: FPN Tongeren zaal 
       - time: 14:30 - 16:00
         title: (Satellite) Networking and Clustering Network Scientists
         category: Afternoon Satellites
         session: Afternoon
         row: 12
+        room: 
       - time: 12:30 - 14:30
         title: Lunch break
         category: Satellite Break
