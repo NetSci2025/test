@@ -352,7 +352,7 @@ main {
                   {% assign end = start_end[1] %}
                   
                   {% comment %} Check if this is a Satellite event (excluding Satellite Break) {% endcomment %}
-                  {% assign is_satellite = event.category and event.category contains 'Satellite' and event.category != 'Satellite Break' %}
+                  {% assign is_satellite = event.category and event.category contains 'Satellites' and event.category != 'Satellite Break' %}
                   
                   {% comment %} Determine if we should display this event {% endcomment %}
                   {% assign display = true %}
