@@ -198,7 +198,7 @@ days:
         session: Morning
         row: 8
         room: FSE C1.015 at PHS1
-       - time: 14:30 - 16:00
+      - time: 14:30 - 16:00
         title: (Satellite) Network Science for the Sustainable Development Goals
         category: Afternoon Satellites
         session: Afternoon
@@ -270,7 +270,7 @@ days:
         session: Morning
         row: 11
         room: FSE C1.005 at PHS1
-       - time: 14:30 - 16:00
+      - time: 14:30 - 16:00
         title: (Satellite) Women in Network Science
         category: Afternoon Satellites
         session: Afternoon
