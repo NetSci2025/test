@@ -347,13 +347,12 @@ main {
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
                   {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
-                  {% assign start = event.time | split: ' to ' | slice: 0 %}
-                  {% assign end = event.time | split: ' to ' | slice: 1 %}
                   {% assign time_key = event.time %}
+                  {% assign start = event.time | split: ' - ' | first %}
+                  {% assign end = event.time | split: ' - ' | last %}
                   {% assign is_satellite = event.category contains 'Satellite' and event.category != 'Satellite Break' %}
-              
-                  {% assign display = true %}
                   
+                  {% assign display = true %}
                   {% if is_satellite %}
                     {% if shown_times contains time_key %}
                       {% assign display = false %}
@@ -363,20 +362,19 @@ main {
                   {% endif %}
               
                   {% if display %}
-                    {% assign event_title = is_satellite | default: false %}
-                    {% if event_title %}
+                    {% if is_satellite %}
                       {% assign event_title = "Satellite" %}
                     {% else %}
                       {% assign event_title = event.title %}
                     {% endif %}
-              
+                  
                     <li class="d-flex flex-column flex-lg-row">
                       {% assign classes = color | prepend: 'border-start border-3 border-' %}
                       <div class="row col-lg-2 pb-2 {{ classes }} border-lg-0">
-                        <small class="fw-light text-muted">{{ start }}{{ end }}</small>
+                        <small class="fw-light text-muted">{{ start }} - {{ end }}</small>
                       </div>
                       {% unless forloop.last %}
-                      {% assign classes = classes | append: ' mb-4' %}
+                        {% assign classes = classes | append: ' mb-4' %}
                       {% endunless %}
                       <div class="row col-lg-10 {{ classes }}">
                         <h5 class="fw-normal m-0 mb-2">{{ event_title }}</h5>
@@ -409,6 +407,7 @@ main {
                   {% endif %}
                 {% endfor %}
               </ul>
+
 
 
             
