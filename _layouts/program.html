@@ -227,10 +227,11 @@ main {
 
                         <!-- School row -->
                         {% assign main_events = day.events | where_exp: "item", "item.row == 1" %}
+                        {% assign school_room = main_events | map: "room" | uniq | first %}
                         {% assign break_events = day.events | where: "category", "Satellite Break" %}
                         {% if main_events.size > 0 %}
                         <div class="room-row">
-                          <div class="room-name">School</div>
+                          <div class="room-name">{{ school_room }}</div>
                           <div class="time-slots">
                             {% for h in (start_hour..end_hour) %}
                               <div class="time-slot"></div>
