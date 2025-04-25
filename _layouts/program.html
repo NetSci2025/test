@@ -342,32 +342,30 @@ main {
               </div>
 
               <!-- List --> 
-              {% assign categories = site.data.program.legend.categories %} 
-              {% assign shown_times = "" %}
+              {% assign categories = site.data.program.legend.categories %}
+              {% assign shown_satellite_times = "" %}
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
                   {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
-                  {% assign time_key = event.time %}
-                  {% assign start = event.time | split: ' - ' | first %}
-                  {% assign end = event.time | split: ' - ' | last %}
-                  {% assign is_satellite = event.category contains 'Satellite' and event.category != 'Satellite Break' %}
+                  {% assign start_end = event.time | split: ' - ' %}
+                  {% assign start = start_end[0] %}
+                  {% assign end = start_end[1] %}
                   
+                  {% comment %} Check if this is a Satellite event (excluding Satellite Break) {% endcomment %}
+                  {% assign is_satellite = event.category and event.category contains 'Satellite' and event.category != 'Satellite Break' %}
+                  
+                  {% comment %} Determine if we should display this event {% endcomment %}
                   {% assign display = true %}
                   {% if is_satellite %}
-                    {% if shown_times contains time_key %}
+                    {% assign time_key = event.time %}
+                    {% if shown_satellite_times contains time_key %}
                       {% assign display = false %}
                     {% else %}
-                      {% assign shown_times = shown_times | append: time_key | append: "," %}
+                      {% assign shown_satellite_times = shown_satellite_times | append: time_key | append: "," %}
                     {% endif %}
                   {% endif %}
               
                   {% if display %}
-                    {% if is_satellite %}
-                      {% assign event_title = "Satellite" %}
-                    {% else %}
-                      {% assign event_title = event.title %}
-                    {% endif %}
-                  
                     <li class="d-flex flex-column flex-lg-row">
                       {% assign classes = color | prepend: 'border-start border-3 border-' %}
                       <div class="row col-lg-2 pb-2 {{ classes }} border-lg-0">
@@ -377,7 +375,8 @@ main {
                         {% assign classes = classes | append: ' mb-4' %}
                       {% endunless %}
                       <div class="row col-lg-10 {{ classes }}">
-                        <h5 class="fw-normal m-0 mb-2">{{ event_title }}</h5>
+                        {% comment %} Display simplified title for Satellite events {% endcomment %}
+                        <h5 class="fw-normal m-0 mb-2">{% if is_satellite %}Satellite{% else %}{{ event.title }}{% endif %}</h5>
                         <p class="fw-light m-0">{{ event.subtitle }}</p>
                         <p class="fw-light m-0">
                           {% if event.paper.first %}
@@ -407,8 +406,6 @@ main {
                   {% endif %}
                 {% endfor %}
               </ul>
-
-
 
             
               <!-- LEGEND -->
