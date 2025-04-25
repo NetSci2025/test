@@ -341,188 +341,226 @@ days:
         title: "School Speaker: Joseph Lizier"   
         category: Invited Speaker
         row: 1  
+        room: FPN Heerlen Zaal
       - time: 11:00 - 12:30
         title: "School Speaker: Joseph Lizier"   
         category: Invited Speaker
         row: 1  
+        room: FPN Heerlen Zaal
       - time: 14:30 - 16:00
         title: "School Speaker: Dillon Eastoe"   
         category: Invited Speaker
         row: 1
+        room: FPN Heerlen Zaal
       - time: 16:30 - 17:30
         title: "School Speaker: Dillon Eastoe"   
         category: Invited Speaker
         row: 1
+        room: FPN Heerlen Zaal
       - time: 08:30 - 10:30
         title: (Satellite) Network Geometry--Theory and Applications
         category: Full day Satellites
         session: Full day
         row: 2
+        room: FPN Groente zaal 
       - time: 11:00 - 12:30
         title: (Satellite) Network Geometry--Theory and Applications
         category: Full day Satellites
         session: Full day
         row: 2
+        room: FPN Groente zaal 
       - time: 14:30 - 16:00
         title: (Satellite) Network Geometry--Theory and Applications
         category: Full day Satellites
         session: Full day
         row: 2
+        room: FPN Groente zaal 
       - time: 16:30 - 18:30
         title: (Satellite) Network Geometry--Theory and Applications
         category: Full day Satellites
         session: Full day
         row: 2
+        room: FPN Groente zaal 
       - time: 08:30 - 10:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
         category: Full day Satellites
         session: Full day
         row: 3
+        room: FPN Tongeren zaal  
       - time: 11:00 - 12:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
         category: Full day Satellites
         session: Full day
         row: 3
+        room: FPN Tongeren zaal 
       - time: 14:30 - 16:00
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
         category: Full day Satellites
         session: Full day
         row: 3
+        room: FPN Tongeren zaal 
       - time: 16:30 - 18:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
         category: Full day Satellites
         session: Full day
         row: 3
+        room: FPN Tongeren zaal 
       - time: 08:30 - 10:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
         category: Full day Satellites
         session: Full day
         row: 4
+        room: FSE Conference hall EPD150
       - time: 11:00 - 12:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
         category: Full day Satellites
         session: Full day
         row: 4
+        room: FSE Conference hall EPD150
       - time: 14:30 - 16:00
         title: (Satellite) Statistical Inference for Network Models (SINM)
         category: Full day Satellites
         session: Full day
         row: 4
+        room: FSE Conference hall EPD150
       - time: 16:30 - 18:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
         category: Full day Satellites
         session: Full day
         row: 4
+        room: FSE Conference hall EPD150
       - time: 08:30 - 10:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
         category: Full day Satellites
         session: Full day
         row: 5
+        room: FPN Paarse zaal
       - time: 11:00 - 12:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
         category: Full day Satellites
         session: Full day
         row: 5
+        room: FPN Paarse zaal
       - time: 14:30 - 16:00
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
         category: Full day Satellites
         session: Full day
         row: 5
+        room: FPN Paarse zaal
       - time: 16:30 - 18:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
         category: Full day Satellites
         session: Full day
         row: 5
+        room: FPN Paarse zaal
       - time: 08:30 - 10:30
         title: (Satellite) Networked Criminal Complexity
         category: Morning Satellites
         session: Morning
         row: 6
+        room: FSE C1.015 at PHS1
       - time: 11:00 - 12:30
         title: (Satellite) Networked Criminal Complexity
         category: Morning Satellites
         session: Morning
         row: 6
+        room: FSE C1.015 at PHS1
       - time: 14:30 - 16:00
-        title: (Satellite) Historical Networks (HISTONET)
+        title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
         category: Afternoon Satellites
         session: Afternoon
         row: 6
+        room: FSE C1.015 at PHS1
       - time: 16:30 - 18:30
-        title: (Satellite) Historical Networks (HISTONET)
+        title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
         category: Afternoon Satellites
         session: Afternoon
         row: 6
+        room: FSE C1.015 at PHS1
       - time: 08:30 - 10:30
         title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
         category: Morning Satellites
         session: Morning
         row: 7
+        room: FASoS GG76 
       - time: 11:00 - 12:30
         title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
         category: Morning Satellites
         session: Morning
         row: 7
+        room: FASoS GG76
       - time: 14:30 - 16:00
-        title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
-        category: Afternoon Satellites
-        session: Afternoon
-        row: 7     
-      - time: 16:30 - 18:30
-        title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
+        title: (Satellite) Historical Networks (HISTONET)
         category: Afternoon Satellites
         session: Afternoon
         row: 7
+        room: FASoS GG76
+      - time: 16:30 - 18:30
+        title: (Satellite) Historical Networks (HISTONET)
+        category: Afternoon Satellites
+        session: Afternoon
+        row: 7
+        room: FASoS GG76
       - time: 08:30 - 10:30
         title: (Satellite) Algorithmic Fairness in Network Science
         category: Morning Satellites
         session: Morning
         row: 8 
+        room: FASoS GG76S 
       - time: 11:00 - 12:30
         title: (Satellite) Algorithmic Fairness in Network Science
         category: Morning Satellites
         session: Morning
         row: 8
+        room: FASoS GG76S
       - time: 14:30 - 16:00
-        title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
+        title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
         category: Afternoon Satellites
         session: Afternoon
         row: 8
+        room: FASoS GG76S
       - time: 16:30 - 18:30
-        title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
+        title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
         category: Afternoon Satellites
         session: Afternoon
         row: 8
-      - time: 08:30 - 10:30
-        title: (Satellite) Understudied Networks in Computational Social Science
-        category: Morning Satellites
-        session: Morning
-        row: 9
-      - time: 11:00 - 12:30
-        title: (Satellite) Understudied Networks in Computational Social Science
-        category: Morning Satellites
-        session: Morning
-        row: 9
+        room: FASoS GG76S
       - time: 08:30 - 10:30
         title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
         category: Morning Satellites
         session: Morning
-        row: 10
+        row: 9
+        room: FSE C1.005 at PHS1
       - time: 11:00 - 12:30
         title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
         category: Morning Satellites
         session: Morning
-        row: 10
+        row: 9
+        room: FSE C1.005 at PHS1
       - time: 14:30 - 16:00
         title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
         category: Afternoon Satellites
         session: Afternoon
         row: 9
+        room: FSE C1.005 at PHS1
       - time: 16:30 - 18:30
         title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
         category: Afternoon Satellites
         session: Afternoon
         row: 9
+        room: FSE C1.005 at PHS1
+      - time: 08:30 - 10:30
+        title: (Satellite) Understudied Networks in Computational Social Science
+        category: Morning Satellites
+        session: Morning
+        row: 10
+        room: FASoS GG90-92 A0 Turnzaal
+      - time: 11:00 - 12:30
+        title: (Satellite) Understudied Networks in Computational Social Science
+        category: Morning Satellites
+        session: Morning
+        row: 10
+        room: FASoS GG90-92 A0 Turnzaal 
       - time: 12:30 - 14:30
         title: Lunch break
         category: Satellite Break
