@@ -347,21 +347,25 @@ main {
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
                   {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
-                  {% assign start_end = event.time | split: ' - ' %}
-                  {% assign start = start_end[0] %}
-                  {% assign end = start_end[1] %}
+                  {% assign time_parts = event.time | split: ' - ' %}
+                  {% assign start = time_parts[0] %}
+                  {% assign end = time_parts[1] %}
                   
-                  {% comment %} Check if this is a Satellite event (excluding Satellite Break) {% endcomment %}
-                  {% assign is_satellite = event.category and event.category contains 'Satellites' and event.category != 'Satellite Break' %}
-                  
-                  {% comment %} Determine if we should display this event {% endcomment %}
+                  {% assign is_satellite = false %}
+                  {% if event.category and event.category != 'Satellite Break' %}
+                    {% assign lowercase_category = event.category | downcase %}
+                    {% if lowercase_category contains 'satellites' or lowercase_category contains 'satellite' %}
+                      {% assign is_satellite = true %}
+                    {% endif %}
+                  {% endif %}  
+              
                   {% assign display = true %}
                   {% if is_satellite %}
-                    {% assign time_key = event.time %}
+                    {% assign time_key = event.time | strip %}
                     {% if shown_satellite_times contains time_key %}
                       {% assign display = false %}
                     {% else %}
-                      {% assign shown_satellite_times = shown_satellite_times | append: time_key | append: "," %}
+                      {% assign shown_satellite_times = shown_satellite_times | append: time_key | append: "|" %}
                     {% endif %}
                   {% endif %}
               
@@ -375,8 +379,9 @@ main {
                         {% assign classes = classes | append: ' mb-4' %}
                       {% endunless %}
                       <div class="row col-lg-10 {{ classes }}">
-                        {% comment %} Display simplified title for Satellite events {% endcomment %}
-                        <h5 class="fw-normal m-0 mb-2">{% if is_satellite %}Satellite{% else %}{{ event.title }}{% endif %}</h5>
+                        <h5 class="fw-normal m-0 mb-2">
+                          {% if is_satellite %}Satellite{% else %}{{ event.title }}{% endif %}
+                        </h5>
                         <p class="fw-light m-0">{{ event.subtitle }}</p>
                         <p class="fw-light m-0">
                           {% if event.paper.first %}
