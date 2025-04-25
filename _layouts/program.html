@@ -347,20 +347,17 @@ main {
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
                 {% for event in day.events %}
                   {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
-                  {% assign start = event.time | split: ' to ' | slice: 0 %}
-                  {% assign end = event.time | split: ' to ' | slice: 1 %}
                   {% assign classes = color | prepend: 'border-start border-3 border-' %}
                   {% assign event_time = event.time %}
-                  
-                  {% assign is_satellite = event.category contains 'Satellite' %}
+                  {% assign is_satellite = event.category contains 'Satellites' %}
                   {% assign already_seen = seen_times contains event_time %}
               
-                  {% if is_satellite and already_seen %}
-                    {% continue %}
-                  {% endif %}
-              
                   {% if is_satellite %}
-                    {% assign seen_times = seen_times | append: event_time | append: "," %}
+                    {% if already_seen %}
+                      {% continue %}
+                    {% else %}
+                      {% assign seen_times = seen_times | append: event_time | append: "," %}
+                    {% endif %}
                   {% endif %}
               
                   <li class="d-flex flex-column flex-lg-row">
