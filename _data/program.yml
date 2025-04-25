@@ -306,7 +306,6 @@ days:
         session: Afternoon
         row: 13
         room: "?"
-        room: FSE C1.005 at PHS1
       - time: 14:30 - 16:00
         title: (Satellite) Physical Networks, III Edition
         category: Afternoon Satellites
