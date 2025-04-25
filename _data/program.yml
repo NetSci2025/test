@@ -165,9 +165,9 @@ days:
       - time: 08:30 - 10:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
-        session: FSE Conference hall EPD150
+        session: Full day    
         row: 7
-        room: FPN Groente zaal
+        room: FSE Conference hall EPD150
       - time: 11:00 - 12:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Full day Satellites
