@@ -351,60 +351,64 @@ main {
                   {% assign end = event.time | split: ' to ' | slice: 1 %}
                   {% assign time_key = event.time %}
                   {% assign is_satellite = event.category contains 'Satellite' and event.category != 'Satellite Break' %}
-                  
-                  {% assign display = true %}
-                  {% assign display_title = event.title %}
               
+                  {% assign display = true %}
+                  
                   {% if is_satellite %}
                     {% if shown_times contains time_key %}
                       {% assign display = false %}
                     {% else %}
                       {% assign shown_times = shown_times | append: time_key | append: "," %}
-                      {% assign display_title = "Satellite" %}
                     {% endif %}
                   {% endif %}
               
                   {% if display %}
-                  <li class="d-flex flex-column flex-lg-row">
-                    {% assign classes = color | prepend: 'border-start border-3 border-' %}
-                    <div class="row col-lg-2 pb-2 {{ classes }} border-lg-0">
-                      <small class="fw-light text-muted">{{ start }}{{ end }}</small>
-                    </div>
-                    {% unless forloop.last %}
-                    {% assign classes = classes | append: ' mb-4' %}
-                    {% endunless %}
-                    <div class="row col-lg-10 {{ classes }}">
-                      <h5 class="fw-normal m-0 mb-2">{{ display_title }}</h5>
-                      <p class="fw-light m-0">{{ event.subtitle }}</p>
-                      <p class="fw-light m-0">
-                        {% if event.paper.first %}
-                          {% for paper in event.paper %}
-                            <a href="{{ paper | relative_url }}">[Paper {{ forloop.index }}]</a>
-                          {% endfor %}
-                        {% elsif event.paper %}
-                          <a href="{{ event.paper | relative_url }}">[Paper]</a>
-                        {% endif %}
-                        {% if event.poster.first %}
-                          {% for poster in event.poster %}
-                            <a href="{{ poster | relative_url }}">[Poster {{ forloop.index }}]</a>
-                          {% endfor %}
-                        {% elsif event.poster %}
-                          <a href="{{ event.poster | relative_url }}">[Poster]</a>
-                        {% endif %}
-                        {% if event.slides.first %}
-                          {% for slides in event.slides %}
-                            <a href="{{ slides | relative_url }}">[Slides {{ forloop.index }}]</a>
-                          {% endfor %}
-                        {% elsif event.slides %}
-                          <a href="{{ event.slides | relative_url }}">[Slides]</a>
-                        {% endif %}
-                      </p>
-                    </div>
-                  </li>
+                    <li class="d-flex flex-column flex-lg-row">
+                      {% assign classes = color | prepend: 'border-start border-3 border-' %}
+                      <div class="row col-lg-2 pb-2 {{ classes }} border-lg-0">
+                        <small class="fw-light text-muted">{{ start }}{{ end }}</small>
+                      </div>
+                      {% unless forloop.last %}
+                      {% assign classes = classes | append: ' mb-4' %}
+                      {% endunless %}
+                      <div class="row col-lg-10 {{ classes }}">
+                        <h5 class="fw-normal m-0 mb-2">
+                          {% if is_satellite %}
+                            Satellite
+                          {% else %}
+                            {{ event.title }}
+                          {% endif %}
+                        </h5>
+                        <p class="fw-light m-0">{{ event.subtitle }}</p>
+                        <p class="fw-light m-0">
+                          {% if event.paper.first %}
+                            {% for paper in event.paper %}
+                              <a href="{{ paper | relative_url }}">[Paper {{ forloop.index }}]</a>
+                            {% endfor %}
+                          {% elsif event.paper %}
+                            <a href="{{ event.paper | relative_url }}">[Paper]</a>
+                          {% endif %}
+                          {% if event.poster.first %}
+                            {% for poster in event.poster %}
+                              <a href="{{ poster | relative_url }}">[Poster {{ forloop.index }}]</a>
+                            {% endfor %}
+                          {% elsif event.poster %}
+                            <a href="{{ event.poster | relative_url }}">[Poster]</a>
+                          {% endif %}
+                          {% if event.slides.first %}
+                            {% for slides in event.slides %}
+                              <a href="{{ slides | relative_url }}">[Slides {{ forloop.index }}]</a>
+                            {% endfor %}
+                          {% elsif event.slides %}
+                            <a href="{{ event.slides | relative_url }}">[Slides]</a>
+                          {% endif %}
+                        </p>
+                      </div>
+                    </li>
                   {% endif %}
                 {% endfor %}
               </ul>
-              
+
             
               <!-- LEGEND -->
               {% assign legend = day.events | map: 'category' | compact | uniq %}
