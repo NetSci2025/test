@@ -24,24 +24,28 @@ days:
         category: Faculty FPN
         row: 1  
         room: FPN Heerlen Zaal 
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 11:00 - 12:30
         title: "School Speaker: Manlio De Domenico"   
         category: Faculty FPN
         type: speaker
         row: 1  
         room: FPN Heerlen Zaal 
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 14:30 - 16:00
         title: "School Speaker: Huijuan Wang"   
         category: Faculty FPN
         type: speaker
         row: 1
         room: FPN Heerlen Zaal 
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 16:30 - 17:30
         title: "School Speaker: Huijuan Wang"   
         category: Faculty FPN
         type: speaker
         row: 1
         room: FPN Heerlen Zaal 
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 08:30 - 10:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network
         category: Faculty FPN
@@ -49,6 +53,7 @@ days:
         url: https://mobilityhealthnetworks.github.io
         row: 2
         room: FPN Tongeren zaal 
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 11:00 - 12:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network
         category: Faculty FPN
@@ -56,6 +61,7 @@ days:
         url: https://mobilityhealthnetworks.github.io
         row: 2
         room: FPN Tongeren zaal 
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 14:30 - 16:00
         title: (Satellite) Physical Networks, III Edition
         category: Faculty FPN
@@ -63,6 +69,7 @@ days:
         url: https://sites.google.com/view/physnet25/physnet25
         row: 2
         room: FPN Tongeren zaal 
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 16:30 - 18:30
         title: (Satellite) Physical Networks, III Edition
         category: Faculty FPN
@@ -70,6 +77,7 @@ days:
         url: https://sites.google.com/view/physnet25/physnet25
         row: 2
         room: FPN Tongeren zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 08:30 - 10:30
         title: (Satellite) Networks in Science of Science
         category: Faculty FPN
@@ -77,6 +85,7 @@ days:
         url: https://netscisci.github.io
         row: 3
         room: FPN Aken zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 11:00 - 12:30
         title: (Satellite) Networks in Science of Science
         category: Faculty FPN
@@ -84,6 +93,7 @@ days:
         url: https://netscisci.github.io
         row: 3
         room: FPN Aken zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 14:30 - 16:00
         title: (Satellite) Networks in Science of Science
         category: Faculty FPN
@@ -91,6 +101,7 @@ days:
         url: https://netscisci.github.io
         row: 3
         room: FPN Aken zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 16:30 - 18:30
         title: (Satellite) Networks in Science of Science
         category: Faculty FPN
@@ -98,6 +109,7 @@ days:
         url: https://netscisci.github.io
         row: 3
         room: FPN Aken zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 08:30 - 10:30
         title: (Satellite) Software and Data for Supporting Network Science
         category: Faculty FPN
@@ -105,6 +117,7 @@ days:
         url: https://netsci.nascol.net
         row: 4
         room: FPN Groente zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 11:00 - 12:30
         title: (Satellite) Software and Data for Supporting Network Science
         category: Faculty FPN
@@ -112,6 +125,7 @@ days:
         url: https://netsci.nascol.net
         row: 4
         room: FPN Groente zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 14:30 - 16:00
         title: (Satellite) Software and Data for Supporting Network Science
         category: Faculty FPN
@@ -119,6 +133,7 @@ days:
         url: https://netsci.nascol.net
         row: 4
         room: FPN Groente zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 16:30 - 18:30
         title: (Satellite) Software and Data for Supporting Network Science
         category: Faculty FPN
@@ -126,6 +141,7 @@ days:
         url: https://netsci.nascol.net
         row: 4
         room: FPN Groente zaal
+        room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 08:30 - 10:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Faculty FSE
@@ -133,6 +149,7 @@ days:
         url: https://sites.google.com/view/tenet-netsci/home  
         row: 5
         room: FSE Conference hall EPD150
+        room url: https://maps.app.goo.gl/rqy3Vewj6tbC8QjL7
       - time: 11:00 - 12:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Faculty FSE
@@ -140,6 +157,7 @@ days:
         url: https://sites.google.com/view/tenet-netsci/home
         row: 5
         room: FSE Conference hall EPD150
+        room url: https://maps.app.goo.gl/rqy3Vewj6tbC8QjL7
       - time: 14:30 - 16:00
         title: (Satellite) TEmporal NETworks (TENET)
         category: Faculty FSE
@@ -147,6 +165,7 @@ days:
         url: https://sites.google.com/view/tenet-netsci/home
         row: 5
         room: FSE Conference hall EPD150
+        room url: https://maps.app.goo.gl/rqy3Vewj6tbC8QjL7
       - time: 16:30 - 18:30
         title: (Satellite) TEmporal NETworks (TENET)
         category: Faculty FSE
@@ -154,6 +173,7 @@ days:
         url: https://sites.google.com/view/tenet-netsci/home
         row: 5
         room: FSE Conference hall EPD150
+        room url: https://maps.app.goo.gl/rqy3Vewj6tbC8QjL7
       - time: 08:30 - 10:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
         category: Faculty FSE
@@ -161,6 +181,7 @@ days:
         url: https://www.gesis.org/cpin
         row: 6
         room: FSE C1.005 at PHS1
+        room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 11:00 - 12:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
         category: Faculty FSE
@@ -168,6 +189,7 @@ days:
         url: https://www.gesis.org/cpin
         row: 6
         room: FSE C1.005 at PHS1
+        room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 14:30 - 16:00
         title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Faculty FSE
@@ -175,6 +197,7 @@ days:
         url: https://tinyurl.com/tpajjdz9
         row: 6
         room: FSE C1.005 at PHS1
+        room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 16:30 - 18:30
         title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Faculty FSE
@@ -182,6 +205,7 @@ days:
         url: https://tinyurl.com/tpajjdz9
         row: 6
         room: FSE C1.005 at PHS1
+        room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 08:30 - 10:30
         title: (Satellite) Network Renormalization (NetRG)
         category: Faculty FSE
@@ -189,6 +213,7 @@ days:
         url: https://www.d-iep.org/workshoprenormalization
         row: 7
         room: FSE C1.015 at PHS1
+        room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 11:00 - 12:30
         title: (Satellite) Network Renormalization (NetRG)
         category: Faculty FSE
@@ -196,6 +221,7 @@ days:
         url: https://www.d-iep.org/workshoprenormalization
         row: 7
         room: FSE C1.015 at PHS1
+        room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 14:30 - 16:00
         title: (Satellite) Network Science for the Sustainable Development Goals
         category: Faculty FSE
@@ -203,20 +229,23 @@ days:
         url: https://sites.google.com/view/netsci4sdgs25/home
         row: 7
         room: FSE C1.005 at PHS1
+        room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 16:30 - 18:30
         title: (Satellite) Network Science for the Sustainable Development Goals
         category: Faculty FSE
         type: satellite
         url: https://sites.google.com/view/netsci4sdgs25/home
         row: 7
-        room: FSE C1.005 at PHS1        
+        room: FSE C1.005 at PHS1
+        room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 08:30 - 10:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Faculty FASOS
         type: satellite
         url: https://netbiomed2025.github.io
         row: 8
-        room: FASoS GG76 
+        room: FASoS GG76
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 11:00 - 12:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Faculty FASOS
@@ -224,6 +253,7 @@ days:
         url: https://netbiomed2025.github.io
         row: 8
         room: FASoS GG76 
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 14:30 - 16:00
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Faculty FASOS
@@ -231,6 +261,7 @@ days:
         url: https://netbiomed2025.github.io
         row: 8
         room: FASoS GG76 
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 16:30 - 18:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
         category: Faculty FASOS
@@ -238,6 +269,7 @@ days:
         url: https://netbiomed2025.github.io
         row: 8
         room: FASoS GG76 
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 08:30 - 10:30
         title: (Satellite) Network Neuroscience
         category: Faculty FASOS
@@ -245,6 +277,7 @@ days:
         url: https://networkneuroscience.github.io
         row: 9
         room: FASoS GG76S 
+        room url: https://maps.app.goo.gl/NVxXJbJyiwX8PfDGA
       - time: 11:00 - 12:30
         title: (Satellite) Network Neuroscience
         category: Faculty FASOS
@@ -252,6 +285,7 @@ days:
         url: https://networkneuroscience.github.io
         row: 9
         room: FASoS GG76S 
+        room url: https://maps.app.goo.gl/NVxXJbJyiwX8PfDGA
       - time: 14:30 - 16:00
         title: (Satellite) Network Neuroscience
         category: Faculty FASOS
@@ -259,6 +293,7 @@ days:
         url: https://networkneuroscience.github.io
         row: 9
         room: FASoS GG76S 
+        room url: https://maps.app.goo.gl/NVxXJbJyiwX8PfDGA
       - time: 16:30 - 18:30
         title: (Satellite) Network Neuroscience
         category: Faculty FASOS
@@ -266,6 +301,7 @@ days:
         url: https://networkneuroscience.github.io
         row: 9
         room: FASoS GG76S 
+        room url: https://maps.app.goo.gl/NVxXJbJyiwX8PfDGA
       - time: 08:30 - 10:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Faculty FASOS
@@ -273,6 +309,7 @@ days:
         url: https://hons-web.github.io/online/index.html
         row: 10
         room: FASoS GG90-92 A0 Turnzaal 
+        room url: https://maps.app.goo.gl/MxemXftStCLKWnZG9
       - time: 11:00 - 12:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Faculty FASOS
@@ -280,6 +317,7 @@ days:
         url: https://hons-web.github.io/online/index.html
         row: 10
         room: FASoS GG90-92 A0 Turnzaal
+        room url: https://maps.app.goo.gl/MxemXftStCLKWnZG9
       - time: 14:30 - 16:00
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Faculty FASOS
@@ -287,6 +325,7 @@ days:
         url: https://hons-web.github.io/online/index.html
         row: 10
         room: FASoS GG90-92 A0 Turnzaal
+        room url: https://maps.app.goo.gl/MxemXftStCLKWnZG9
       - time: 16:30 - 18:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
         category: Faculty FASOS
@@ -294,6 +333,7 @@ days:
         url: https://hons-web.github.io/online/index.html
         row: 10
         room: FASoS GG90-92 A0 Turnzaal
+        room url: https://maps.app.goo.gl/MxemXftStCLKWnZG9
       - time: 08:30 - 10:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
         category: Faculty FASOS
@@ -301,6 +341,7 @@ days:
         url: https://www.dagshop.xyz/
         row: 11
         room: FASoS GG76 0.07 
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 11:00 - 12:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
         category: Faculty FASOS
@@ -308,6 +349,7 @@ days:
         url: https://www.dagshop.xyz/
         row: 11
         room: FASoS GG76 0.07
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 14:30 - 16:00
         title: (Satellite) Net4Health
         category: Faculty FASOS
@@ -315,6 +357,7 @@ days:
         url: https://sites.google.com/view/netsci-health-2025
         row: 11
         room: FASoS GG76 0.07
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 16:30 - 18:30
         title: (Satellite) Net4Health
         category: Faculty FASOS
@@ -322,6 +365,7 @@ days:
         url: https://sites.google.com/view/netsci-health-2025
         row: 11
         room: FASoS GG76 0.07 
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 14:30 - 16:00
         title: (Satellite) Networking and Clustering Network Scientists
         category: Faculty FASOS
@@ -329,6 +373,7 @@ days:
         url: https://belnets.github.io/satellite_netsci2025.html
         row: 12
         room: FASoS GG76 0.16
+        room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 12:30 - 14:30
         title: Coffee break
         category: Break
