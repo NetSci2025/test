@@ -282,7 +282,7 @@ main {
 
                         <!-- Satellite rows -->
                         {% assign satellite_events = day.events | where_exp: "item", "item.row > 1" %}
-                        {% assign satellite_break_events = day.events | where: "category", "Satellite Break" %}
+                        {% assign satellite_break_events = day.events | where: "category", "Break" %}
                         {% assign rows = satellite_events | map: "row" | uniq | sort %}
                         {% for row in rows %}
                         {% assign row_events = satellite_events | where: "row", row %}
