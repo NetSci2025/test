@@ -247,13 +247,13 @@ days:
         row: 10
         room: FPN Tongeren zaal 
       - time: 14:30 - 16:00
-        title: (Satellite) Women in Network Science
+        title: (Satellite) Physical Networks, III Edition
         category: Afternoon Satellites
         session: Afternoon
         row: 10
         room: FPN Tongeren zaal 
       - time: 16:30 - 18:30
-        title: (Satellite) Women in Network Science
+        title: (Satellite) Physical Networks, III Edition
         category: Afternoon Satellites
         session: Afternoon
         row: 10
@@ -271,59 +271,23 @@ days:
         row: 11
         room: FSE C1.005 at PHS1
       - time: 14:30 - 16:00
-        title: (Satellite) Women in Network Science
+        title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Afternoon Satellites
         session: Afternoon
         row: 11
         room: FSE C1.005 at PHS1
       - time: 16:30 - 18:30
-        title: (Satellite) Women in Network Science
+        title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Afternoon Satellites
         session: Afternoon
         row: 11
         room: FSE C1.005 at PHS1
-      - time: 14:30 - 16:00
-        title: (Satellite) The future of Network Science--WiNS @ NetSci
-        category: Afternoon Satellites
-        url: https://tinyurl.com/tpajjdz9
-        row: 12
-        room: "?"
-      - time: 16:30 - 18:30
-        title: (Satellite) The future of Network Science--WiNS @ NetSci
-        category: Afternoon Satellites
-        url: https://tinyurl.com/tpajjdz9
-        row: 12
-        room: "?"
-      - time: 14:30 - 16:00
-        title: (Satellite) Net4Health
-        category: Afternoon Satellites
-        session: Afternoon
-        row: 13
-        room: "?"
-      - time: 16:30 - 18:30
-        title: (Satellite) Net4Health
-        category: Afternoon Satellites
-        session: Afternoon
-        row: 13
-        room: "?"
-      - time: 14:30 - 16:00
-        title: (Satellite) Physical Networks, III Edition
-        category: Afternoon Satellites
-        url: https://sites.google.com/view/physnet25/physnet25
-        row: 14
-        room: "?"
-      - time: 16:30 - 18:30
-        title: (Satellite) Physical Networks, III Edition
-        category: Afternoon Satellites
-        url: https://sites.google.com/view/physnet25/physnet25
-        row: 14
-        room: "?"
       - time: 14:30 - 16:00
         title: (Satellite) Networking and Clustering Network Scientists
         category: Afternoon Satellites
         url: https://belnets.github.io/satellite_netsci2025.html
         row: 15
-        room: "?"
+        room: FASoS GG76 0.16
       - time: 12:30 - 14:30
         title: Lunch break
         category: Satellite Break
