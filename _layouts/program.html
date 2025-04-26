@@ -365,6 +365,7 @@ main {
             
                 {% assign is_satellite = event.type == 'satellite' %}
                 {% assign is_row2 = event.row == 2 %}
+                {% assign is_speaker = event.type == 'speaker' %}
                 {% assign display = false %}
                 {% assign display_text = event.title %}
             
@@ -424,6 +425,7 @@ main {
                 {% endif %}
               {% endfor %}
             </ul>
+
 
 
 
