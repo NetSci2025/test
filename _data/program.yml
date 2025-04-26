@@ -1,7 +1,5 @@
 legend:
   categories:
-    - name: Invited Speaker
-      color: red-6
     - name: Lightning
       color: lime-4
     - name: Parallel
@@ -10,11 +8,11 @@ legend:
       color: grey-6
     - name: Other Activities
       color: green-6
-    - name: Full day Satellites
-      color: orange-5
-    - name: Morning Satellites
+    - name: Faculty FPN
+      color: red-6
+    - name: Faculty FSE
       color: yellow-6
-    - name: Afternoon Satellites
+    - name: Faculty FASOS
       color: pink-4
     - name: Satellite Break
       color: grey-6
@@ -24,267 +22,267 @@ days:
     events:
       - time: 09:30 - 10:30
         title: "School Speaker: Manlio De Domenico"   
-        category: Invited Speaker
+        category: Faculty FPN
         row: 1  
         room: FPN Heerlen Zaal 
       - time: 11:00 - 12:30
         title: "School Speaker: Manlio De Domenico"   
-        category: Invited Speaker
+        category: Faculty FPN
         row: 1  
         room: FPN Heerlen Zaal 
       - time: 14:30 - 16:00
         title: "School Speaker: Huijuan Wang"   
-        category: Invited Speaker
+        category: Faculty FPN
         row: 1
         room: FPN Heerlen Zaal 
       - time: 16:30 - 17:30
         title: "School Speaker: Huijuan Wang"   
-        category: Invited Speaker
+        category: Faculty FPN
         row: 1
         room: FPN Heerlen Zaal 
       - time: 08:30 - 10:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network
-        category: Morning Satellites
+        category: Faculty FPN
         url: https://mobilityhealthnetworks.github.io
         row: 2
         room: FPN Tongeren zaal 
       - time: 11:00 - 12:30
         title: (Satellite) The Science of Connections--Urban Mobility and Health Network
-        category: Morning Satellites
+        category: Faculty FPN
         url: https://mobilityhealthnetworks.github.io
         row: 2
         room: FPN Tongeren zaal 
       - time: 14:30 - 16:00
         title: (Satellite) Physical Networks, III Edition
-        category: Afternoon Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/physnet25/physnet25
         row: 2
         room: FPN Tongeren zaal 
       - time: 16:30 - 18:30
         title: (Satellite) Physical Networks, III Edition
-        category: Afternoon Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/physnet25/physnet25
         row: 2
         room: FPN Tongeren zaal
       - time: 08:30 - 10:30
         title: (Satellite) Networks in Science of Science
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://netscisci.github.io
         row: 3
         room: FPN Aken zaal
       - time: 11:00 - 12:30
         title: (Satellite) Networks in Science of Science
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://netscisci.github.io
         row: 3
         room: FPN Aken zaal
       - time: 14:30 - 16:00
         title: (Satellite) Networks in Science of Science
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://netscisci.github.io
         row: 3
         room: FPN Aken zaal
       - time: 16:30 - 18:30
         title: (Satellite) Networks in Science of Science
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://netscisci.github.io
         row: 3
         room: FPN Aken zaal
       - time: 08:30 - 10:30
         title: (Satellite) Software and Data for Supporting Network Science
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://netsci.nascol.net
         row: 4
         room: FPN Groente zaal
       - time: 11:00 - 12:30
         title: (Satellite) Software and Data for Supporting Network Science
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://netsci.nascol.net
         row: 4
         room: FPN Groente zaal
       - time: 14:30 - 16:00
         title: (Satellite) Software and Data for Supporting Network Science
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://netsci.nascol.net
         row: 4
         room: FPN Groente zaal
       - time: 16:30 - 18:30
         title: (Satellite) Software and Data for Supporting Network Science
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://netsci.nascol.net
         row: 4
         room: FPN Groente zaal
       - time: 08:30 - 10:30
         title: (Satellite) TEmporal NETworks (TENET)
-        category: Full day Satellites
+        category: Faculty FSE
         url: https://sites.google.com/view/tenet-netsci/home  
         row: 5
         room: FSE Conference hall EPD150
       - time: 11:00 - 12:30
         title: (Satellite) TEmporal NETworks (TENET)
-        category: Full day Satellites
+        category: Faculty FSE
         url: https://sites.google.com/view/tenet-netsci/home
         row: 5
         room: FSE Conference hall EPD150
       - time: 14:30 - 16:00
         title: (Satellite) TEmporal NETworks (TENET)
-        category: Full day Satellites
+        category: Faculty FSE
         url: https://sites.google.com/view/tenet-netsci/home
         row: 5
         room: FSE Conference hall EPD150
       - time: 16:30 - 18:30
         title: (Satellite) TEmporal NETworks (TENET)
-        category: Full day Satellites
+        category: Faculty FSE
         url: https://sites.google.com/view/tenet-netsci/home
         row: 5
         room: FSE Conference hall EPD150
       - time: 08:30 - 10:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
-        category: Morning Satellites
+        category: Faculty FSE
         url: https://www.gesis.org/cpin
         row: 6
         room: FSE C1.005 at PHS1
       - time: 11:00 - 12:30
         title: (Satellite) Critical Phenomena In Networks (CPIN)
-        category: Morning Satellites
+        category: Faculty FSE
         url: https://www.gesis.org/cpin
         row: 6
         room: FSE C1.005 at PHS1
       - time: 14:30 - 16:00
         title: (Satellite) The future of Network Science--WiNS @ NetSci
-        category: Afternoon Satellites
+        category: Faculty FSE
         url: https://tinyurl.com/tpajjdz9
         row: 6
         room: FSE C1.005 at PHS1
       - time: 16:30 - 18:30
         title: (Satellite) The future of Network Science--WiNS @ NetSci
-        category: Afternoon Satellites
+        category: Faculty FSE
         url: https://tinyurl.com/tpajjdz9
         row: 6
         room: FSE C1.005 at PHS1
       - time: 08:30 - 10:30
         title: (Satellite) Network Renormalization (NetRG)
-        category: Morning Satellites
+        category: Faculty FSE
         url: https://www.d-iep.org/workshoprenormalization
         row: 7
         room: FSE C1.015 at PHS1
       - time: 11:00 - 12:30
         title: (Satellite) Network Renormalization (NetRG)
-        category: Morning Satellites
+        category: Faculty FSE
         url: https://www.d-iep.org/workshoprenormalization
         row: 7
         room: FSE C1.015 at PHS1
       - time: 14:30 - 16:00
         title: (Satellite) Network Science for the Sustainable Development Goals
-        category: Afternoon Satellites
+        category: Faculty FSE
         url: https://sites.google.com/view/netsci4sdgs25/home
         row: 7
         room: FSE C1.005 at PHS1
       - time: 16:30 - 18:30
         title: (Satellite) Network Science for the Sustainable Development Goals
-        category: Afternoon Satellites
+        category: Faculty FSE
         url: https://sites.google.com/view/netsci4sdgs25/home
         row: 7
         room: FSE C1.005 at PHS1        
       - time: 08:30 - 10:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://netbiomed2025.github.io
         row: 8
         room: FASoS GG76 
       - time: 11:00 - 12:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://netbiomed2025.github.io
         row: 8
         room: FASoS GG76 
       - time: 14:30 - 16:00
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://netbiomed2025.github.io
         row: 8
         room: FASoS GG76 
       - time: 16:30 - 18:30
         title: (Satellite) Networks in Biology and Medicine (NetBioMed)
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://netbiomed2025.github.io
         row: 8
         room: FASoS GG76 
       - time: 08:30 - 10:30
         title: (Satellite) Network Neuroscience
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://networkneuroscience.github.io
         row: 9
         room: FASoS GG76S 
       - time: 11:00 - 12:30
         title: (Satellite) Network Neuroscience
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://networkneuroscience.github.io
         row: 9
         room: FASoS GG76S 
       - time: 14:30 - 16:00
         title: (Satellite) Network Neuroscience
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://networkneuroscience.github.io
         row: 9
         room: FASoS GG76S 
       - time: 16:30 - 18:30
         title: (Satellite) Network Neuroscience
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://networkneuroscience.github.io
         row: 9
         room: FASoS GG76S 
       - time: 08:30 - 10:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://hons-web.github.io/online/index.html
         row: 10
         room: FASoS GG90-92 A0 Turnzaal 
       - time: 11:00 - 12:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://hons-web.github.io/online/index.html
         row: 10
         room: FASoS GG90-92 A0 Turnzaal
       - time: 14:30 - 16:00
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://hons-web.github.io/online/index.html
         row: 10
         room: FASoS GG90-92 A0 Turnzaal
       - time: 16:30 - 18:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
-        category: Full day Satellites
+        category: Faculty FASOS
         url: https://hons-web.github.io/online/index.html
         row: 10
         room: FASoS GG90-92 A0 Turnzaal
       - time: 08:30 - 10:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
-        category: Morning Satellites
+        category: Faculty FASOS
         url: https://www.dagshop.xyz/
         row: 11
         room: FASoS GG76 0.07 
       - time: 11:00 - 12:30
         title: (Satellite) A Workshop on Directed Acyclic Graphs (DAGshop)
-        category: Morning Satellites
+        category: Faculty FASOS
         url: https://www.dagshop.xyz/
         row: 11
         room: FASoS GG76 0.07
       - time: 14:30 - 16:00
         title: (Satellite) Net4Health
-        category: Afternoon Satellites
+        category: Faculty FASOS
         url: https://sites.google.com/view/netsci-health-2025
         row: 11
         room: FASoS GG76 0.07
       - time: 16:30 - 18:30
         title: (Satellite) Net4Health
-        category: Afternoon Satellites
+        category: Faculty FASOS
         url: https://sites.google.com/view/netsci-health-2025
         row: 11
         room: FASoS GG76 0.07 
       - time: 14:30 - 16:00
         title: (Satellite) Networking and Clustering Network Scientists
-        category: Afternoon Satellites
+        category: Faculty FASOS
         url: https://belnets.github.io/satellite_netsci2025.html
         row: 12
         room: FASoS GG76 0.16
@@ -302,225 +300,225 @@ days:
     events:
       - time: 09:30 - 10:30
         title: "School Speaker: Joseph Lizier"   
-        category: Invited Speaker
+        category: Faculty FPN
         row: 1  
         room: FPN Heerlen Zaal
       - time: 11:00 - 12:30
         title: "School Speaker: Joseph Lizier"   
-        category: Invited Speaker
+        category: Faculty FPN
         row: 1  
         room: FPN Heerlen Zaal
       - time: 14:30 - 16:00
         title: "School Speaker: Dillon Eastoe"   
-        category: Invited Speaker
+        category: Faculty FPN
         row: 1
         room: FPN Heerlen Zaal
       - time: 16:30 - 17:30
         title: "School Speaker: Dillon Eastoe"   
-        category: Invited Speaker
+        category: Faculty FPN
         row: 1
         room: FPN Heerlen Zaal
       - time: 08:30 - 10:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/flscn2025
         row: 2
         room: FPN Tongeren zaal  
       - time: 11:00 - 12:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/flscn2025
         row: 2
         room: FPN Tongeren zaal 
       - time: 14:30 - 16:00
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/flscn2025
         row: 2
         room: FPN Tongeren zaal 
       - time: 16:30 - 18:30
         title: (Satellite) 2nd NetSci Satellite on Firm-Level Supply Chain Networks (FLSCN)
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/flscn2025
         row: 2
         room: FPN Tongeren zaal 
       - time: 08:30 - 10:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/toponets2025/home-page 
         row: 3
         room: FPN Paarse zaal
       - time: 11:00 - 12:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/toponets2025/home-page 
         row: 3
         room: FPN Paarse zaal
       - time: 14:30 - 16:00
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/toponets2025/home-page 
         row: 3
         room: FPN Paarse zaal
       - time: 16:30 - 18:30
         title: (Satellite) Between higher-order mechanisms and phenomena (TopoNets25)
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://sites.google.com/view/toponets2025/home-page 
         row: 3
         room: FPN Paarse zaal
       - time: 08:30 - 10:30
         title: (Satellite) Network Geometry--Theory and Applications
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://mappingcomplexity.net/mainpage/netsci-2025/
         row: 4
         room: FPN Groente zaal 
       - time: 11:00 - 12:30
         title: (Satellite) Network Geometry--Theory and Applications
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://mappingcomplexity.net/mainpage/netsci-2025/
         row: 4
         room: FPN Groente zaal 
       - time: 14:30 - 16:00
         title: (Satellite) Network Geometry--Theory and Applications
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://mappingcomplexity.net/mainpage/netsci-2025/
         row: 4
         room: FPN Groente zaal 
       - time: 16:30 - 18:30
         title: (Satellite) Network Geometry--Theory and Applications
-        category: Full day Satellites
+        category: Faculty FPN
         url: https://mappingcomplexity.net/mainpage/netsci-2025/
         row: 4
         room: FPN Groente zaal 
       - time: 08:30 - 10:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
-        category: Full day Satellites
+        category: Faculty FSE
         url: https://sinm.network
         row: 5
         room: FSE Conference hall EPD150
       - time: 11:00 - 12:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
-        category: Full day Satellites
+        category: Faculty FSE
         url: https://sinm.network
         row: 5
         room: FSE Conference hall EPD150
       - time: 14:30 - 16:00
         title: (Satellite) Statistical Inference for Network Models (SINM)
-        category: Full day Satellites
+        category: Faculty FSE
         url: https://sinm.network
         row: 5
         room: FSE Conference hall EPD150
       - time: 16:30 - 18:30
         title: (Satellite) Statistical Inference for Network Models (SINM)
-        category: Full day Satellites
+        category: Faculty FSE
         url: https://sinm.network
         row: 5
         room: FSE Conference hall EPD150
       - time: 08:30 - 10:30
         title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
-        category: Morning Satellites
+        category: Faculty FSE
         url: https://manliodedomenico.com/MIXNEXT2025/
         row: 6
         room: FSE C1.005 at PHS1
       - time: 11:00 - 12:30
         title: (Satellite) Multiscale & Integrative compleX Networks--EXperiments & Theories (MIX-NEXT)
-        category: Morning Satellites
+        category: Faculty FSE
         url: https://manliodedomenico.com/MIXNEXT2025/
         row: 6
         room: FSE C1.005 at PHS1
       - time: 14:30 - 16:00
         title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
-        category: Afternoon Satellites
+        category: Faculty FSE
         url: https://signet-friends.github.io
         row: 6
         room: FSE C1.005 at PHS1
       - time: 16:30 - 18:30
         title: (Satellite) Frameworks, Research and applIcations in complEx Networks (FRIENDS) with signeD edgeS
-        category: Afternoon Satellites
+        category: Faculty FSE
         url: https://signet-friends.github.io
         row: 6
         room: FSE C1.005 at PHS1
       - time: 08:30 - 10:30
         title: (Satellite) Networked Criminal Complexity
-        category: Morning Satellites
+        category: Faculty FSE
         url: https://criminalcomplexity.weebly.com
         row: 7
         room: FSE C1.015 at PHS1
       - time: 11:00 - 12:30
         title: (Satellite) Networked Criminal Complexity
-        category: Morning Satellites
+        category: Faculty FSE
         url: https://criminalcomplexity.weebly.com
         row: 7
         room: FSE C1.015 at PHS1
       - time: 14:30 - 16:00
         title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
-        category: Afternoon Satellites
+        category: Faculty FSE
         url: https://sites.google.com/view/fineconets-netsci2025
         row: 7
         room: FSE C1.015 at PHS1
       - time: 16:30 - 18:30
         title: (Satellite) XII Workshop Economic & Financial Networks (FinEcoNets)
-        category: Afternoon Satellites
+        category: Faculty FSE
         url: https://sites.google.com/view/fineconets-netsci2025
         row: 7
         room: FSE C1.015 at PHS1
       - time: 08:30 - 10:30
         title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
-        category: Morning Satellites
+        category: Faculty FASOS
         url: https://epimob.weebly.com
         row: 8
         room: FASoS GG76 
       - time: 11:00 - 12:30
         title: (Satellite) Epidemic control--From mobility data to public health (EpiMob)
-        category: Morning Satellites
+        category: Faculty FASOS
         url: https://epimob.weebly.com
         row: 8
         room: FASoS GG76
       - time: 14:30 - 16:00
         title: (Satellite) Historical Networks (HISTONET)
-        category: Afternoon Satellites
+        category: Faculty FASOS
         url: https://historicalnetworkresearch.github.io/netsci-maastricht
         row: 8
         room: FASoS GG76
       - time: 16:30 - 18:30
         title: (Satellite) Historical Networks (HISTONET)
-        category: Afternoon Satellites
+        category: Faculty FASOS
         url: https://historicalnetworkresearch.github.io/netsci-maastricht
         row: 8
         room: FASoS GG76
       - time: 08:30 - 10:30
         title: (Satellite) Algorithmic Fairness in Network Science
-        category: Morning Satellites
+        category: Faculty FASOS
         url: https://fairnetsci.github.io/
         row: 9
         room: FASoS GG76S 
       - time: 11:00 - 12:30
         title: (Satellite) Algorithmic Fairness in Network Science
-        category: Morning Satellites
+        category: Faculty FASOS
         url: https://fairnetsci.github.io/
         row: 9
         room: FASoS GG76S
       - time: 14:30 - 16:00
         title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
-        category: Afternoon Satellites
+        category: Faculty FASOS
         url: https://sites.google.com/view/netscied-2025 
         row: 9
         room: FASoS GG76S
       - time: 16:30 - 18:30
         title: (Satellite) Satellite Symposium on Network Science and Education (NetSciEd 2025)
-        category: Afternoon Satellites
+        category: Faculty FASOS
         url: https://sites.google.com/view/netscied-2025 
         row: 9
         room: FASoS GG76S
       - time: 08:30 - 10:30
         title: (Satellite) Understudied Networks in Computational Social Science
-        category: Morning Satellites
+        category: Faculty FASOS
         url: https://galeale.github.io/UNCSS/
         row: 10
         room: FASoS GG90-92 A0 Turnzaal
       - time: 11:00 - 12:30
         title: (Satellite) Understudied Networks in Computational Social Science
-        category: Morning Satellites
+        category: Faculty FASOS
         url: https://galeale.github.io/UNCSS/
         row: 10
         room: FASoS GG90-92 A0 Turnzaal 
