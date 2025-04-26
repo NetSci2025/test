@@ -231,7 +231,14 @@ main {
                         {% assign break_events = day.events | where: "category", "Break" %}
                         {% if main_events.size > 0 %}
                         <div class="room-row">
-                          <div class="room-name">{{ school_room }}</div>
+                          <div class="room-name">
+                          {% assign school_room_url = main_events | map: "room url" | uniq | first %}
+                          {% if school_room_url %}
+                            <a href="{{ school_room_url }}" target="_blank" class="text-decoration-none">{{ school_room }}</a>
+                          {% else %}
+                            {{ school_room }}
+                          {% endif %}
+                        </div>
                           <div class="time-slots">
                             {% for h in (start_hour..end_hour) %}
                               <div class="time-slot"></div>
@@ -288,7 +295,14 @@ main {
                         {% assign row_events = satellite_events | where: "row", row %}
                         {% assign room_name = row_events | map: "room" | uniq | first %}
                         <div class="room-row">
-                          <div class="room-name">{{ room_name }}</div>
+                          <div class="room-name">
+                          {% assign room_url = row_events | map: "room url" | uniq | first %}
+                          {% if room_url %}
+                            <a href="{{ room_url }}" target="_blank" class="text-decoration-none">{{ room_name }}</a>
+                          {% else %}
+                            {{ room_name }}
+                          {% endif %}
+                        </div>
                           <div class="time-slots">
                             {% for h in (start_hour..end_hour) %}
                               <div class="time-slot"></div>
