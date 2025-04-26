@@ -361,17 +361,23 @@ main {
                 {% assign time_parts = event.time | split: ' - ' %}
                 {% assign start = time_parts[0] %}
                 {% assign end = time_parts[1] %}
+                {% assign time_key = event.time | strip %}
             
                 {% assign is_satellite = event.type == 'satellite' %}
-                {% assign display = true %}
+                {% assign is_row2 = event.row == 2 %}
+                {% assign display = false %}
+                {% assign display_text = event.title %}
             
                 {% if is_satellite %}
-                  {% assign time_key = event.time | strip %}
-                  {% if shown_satellite_times contains time_key %}
-                    {% assign display = false %}
-                  {% else %}
-                    {% assign shown_satellite_times = shown_satellite_times | append: time_key | append: "|" %}
+                  {% if is_row2 %}
+                    {% unless shown_satellite_times contains time_key %}
+                      {% assign display = true %}
+                      {% assign display_text = "Satellites" %}
+                      {% assign shown_satellite_times = shown_satellite_times | append: time_key | append: "|" %}
+                    {% endunless %}
                   {% endif %}
+                {% else %}
+                  {% assign display = true %}
                 {% endif %}
             
                 {% if display %}
@@ -384,13 +390,7 @@ main {
                       {% assign classes = classes | append: ' mb-4' %}
                     {% endunless %}
                     <div class="row col-lg-10 {{ classes }}">
-                      <h5 class="fw-normal m-0 mb-2">
-                        {% if is_satellite %}
-                          Satellites
-                        {% else %}
-                          {{ event.title }}
-                        {% endif %}
-                      </h5>
+                      <h5 class="fw-normal m-0 mb-2">{{ display_text }}</h5>
             
                       {% if event.subtitle and not is_satellite %}
                         <p class="fw-light m-0">{{ event.subtitle }}</p>
@@ -424,6 +424,7 @@ main {
                 {% endif %}
               {% endfor %}
             </ul>
+
 
 
 
