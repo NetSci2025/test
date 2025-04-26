@@ -356,13 +356,16 @@ main {
               {% assign categories = site.data.program.legend.categories %}
               {% assign shown_satellite_times = "" %}
             
-              {% for event in day.events %}
+              {% comment %} Sort time {% endcomment %}
+              {% assign sorted_events = day.events | sort: "time" %}
+            
+              {% for event in sorted_events %}
                 {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
                 {% assign time_parts = event.time | split: ' - ' %}
                 {% assign start = time_parts[0] %}
                 {% assign end = time_parts[1] %}
-            
                 {% assign time_key = event.time | strip %}
+            
                 {% assign display = false %}
                 {% assign display_text = event.title %}
             
@@ -424,6 +427,7 @@ main {
                 {% endif %}
               {% endfor %}
             </ul>
+
 
 
 
