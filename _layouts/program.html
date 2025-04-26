@@ -361,12 +361,12 @@ main {
                 {% assign time_parts = event.time | split: ' - ' %}
                 {% assign start = time_parts[0] %}
                 {% assign end = time_parts[1] %}
-                
+            
                 {% assign is_satellite = event.type == 'satellite' %}
                 {% assign display = true %}
             
                 {% if is_satellite %}
-                  {% assign time_key = event.time | strip | append: event.row %}
+                  {% assign time_key = event.time | strip %}
                   {% if shown_satellite_times contains time_key %}
                     {% assign display = false %}
                   {% else %}
@@ -385,14 +385,14 @@ main {
                     {% endunless %}
                     <div class="row col-lg-10 {{ classes }}">
                       <h5 class="fw-normal m-0 mb-2">
-                        {% if event.type == "satellite" %}
+                        {% if is_satellite %}
                           Satellites
                         {% else %}
                           {{ event.title }}
                         {% endif %}
                       </h5>
             
-                      {% if event.subtitle and event.type != "satellite" %}
+                      {% if event.subtitle and not is_satellite %}
                         <p class="fw-light m-0">{{ event.subtitle }}</p>
                       {% endif %}
             
@@ -424,6 +424,7 @@ main {
                 {% endif %}
               {% endfor %}
             </ul>
+
 
 
 
