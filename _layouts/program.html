@@ -352,12 +352,10 @@ main {
               </div>
 
               <!-- List --> 
-              {% assign categories = site.data.program.legend.categories %}
-              {% assign shown_satellite_times = "" %}
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
               {% assign categories = site.data.program.legend.categories %}
               {% assign shown_satellite_times = "" %}
-              
+            
               {% for event in day.events %}
                 {% assign color = categories | where: 'name', event.category | map: 'color' | first | default: 'gray-4' %}
                 {% assign time_parts = event.time | split: ' - ' %}
@@ -366,7 +364,7 @@ main {
                 
                 {% assign is_satellite = event.title contains 'Satellite' %}
                 {% assign display = true %}
-                
+            
                 {% if is_satellite %}
                   {% assign time_key = event.time | strip %}
                   {% if shown_satellite_times contains time_key %}
@@ -375,7 +373,7 @@ main {
                     {% assign shown_satellite_times = shown_satellite_times | append: time_key | append: "|" %}
                   {% endif %}
                 {% endif %}
-              
+            
                 {% if display %}
                   <li class="d-flex flex-column flex-lg-row">
                     {% assign classes = color | prepend: 'border-start border-3 border-' %}
@@ -393,9 +391,11 @@ main {
                           {{ event.title }}
                         {% endif %}
                       </h5>
-                      {% unless is_satellite %}
+            
+                      {% if event.subtitle and not is_satellite %}
                         <p class="fw-light m-0">{{ event.subtitle }}</p>
-                      {% endunless %}
+                      {% endif %}
+            
                       <p class="fw-light m-0">
                         {% if event.paper.first %}
                           {% for paper in event.paper %}
