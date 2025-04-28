@@ -63,7 +63,7 @@ days:
         room: FPN Tongeren zaal 
         room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 14:30 - 16:00
-        title: (Satellite) Physical Networks, III Edition
+        title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Faculty FPN
         type: satellite
         url: https://sites.google.com/view/physnet25/physnet25
@@ -71,7 +71,7 @@ days:
         room: FPN Tongeren zaal 
         room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 16:30 - 18:30
-        title: (Satellite) Physical Networks, III Edition
+        title: (Satellite) The future of Network Science--WiNS @ NetSci
         category: Faculty FPN
         type: satellite
         url: https://sites.google.com/view/physnet25/physnet25
@@ -191,7 +191,7 @@ days:
         room: FSE C1.005 at PHS1
         room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 14:30 - 16:00
-        title: (Satellite) The future of Network Science--WiNS @ NetSci
+        title: (Satellite) Physical Networks, III Edition
         category: Faculty FSE
         type: satellite
         url: https://tinyurl.com/tpajjdz9
@@ -199,7 +199,7 @@ days:
         room: FSE C1.005 at PHS1
         room url: https://maps.app.goo.gl/miyQLvWukxrTFPfK6
       - time: 16:30 - 18:30
-        title: (Satellite) The future of Network Science--WiNS @ NetSci
+        title: (Satellite) Physical Networks, III Edition
         category: Faculty FSE
         type: satellite
         url: https://tinyurl.com/tpajjdz9
