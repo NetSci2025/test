@@ -375,10 +375,10 @@ days:
         room: FASoS GG76 0.16
         room url: https://maps.app.goo.gl/keqLmM9kXgwEoeoG8
       - time: 12:30 - 14:30
-        title: Coffee break
+        title: Lunch break
         category: Break
       - time: 10:30 - 11:00
-        title: Lunch break
+        title: Coffee break
         category: Break
       - time: 16:00 - 16:30
         title: Coffee break
