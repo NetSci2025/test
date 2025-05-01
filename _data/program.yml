@@ -828,7 +828,7 @@ days:
         category: Parallel
         row: 4
         room: 0.05 Paris
-        - time: 11:00 - 13:00
+      - time: 11:00 - 13:00
         title: Parallel 1E
         category: Parallel
         row: 5
