@@ -716,11 +716,11 @@ days:
         row: 1
         room: Auditorium 1
       - time: 11:00 - 13:00
-        title: Parallel 1A 
+        title: Parallel 1A
+        url: ""
         category: Parallel
         row: 1
         room: Auditorium 1
-        url: ""
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -728,10 +728,10 @@ days:
         room: Auditorium 1
       - time: 14:30 - 16:00
         title: Parallel 2A
+        url: ""
         category: Parallel
         row: 1
         room: Auditorium 1
-        url: ""
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -739,9 +739,9 @@ days:
         room: Auditorium 1
       - time: 16:30 - 17:45
         title: Parallel 3A
+        url: ""
         category: Parallel
         row: 1
-        url: ""
         room: Auditorium 1
       - time: 17:45 - 18:30
         title: "Plenary Speaker: Jari Saramaki"   
@@ -816,6 +816,7 @@ days:
         room: 0.11 Cape Town   
       - time: 11:00 - 13:00
         title: Parallel 1D
+        url: ""
         category: Parallel
         row: 4
         room: 0.05 Paris
@@ -843,6 +844,7 @@ days:
         room: 0.05 Paris
       - time: 11:00 - 13:00
         title: Parallel 1E
+        url: ""
         category: Parallel
         row: 5
         room: 0.04 Brussels
@@ -986,6 +988,7 @@ days:
         room: 0.11 Cape Town
       - time: 16:30 - 17:45
         title: Parallel 6C
+        url: ""
         category: Parallel
         row: 3
         room: 0.11 Cape Town
@@ -1019,6 +1022,7 @@ days:
         room: 0.05 Paris
       - time: 11:00 - 13:00
         title: Parallel 4E
+        url: ""
         category: Parallel
         row: 5
         room: 0.05 Paris
