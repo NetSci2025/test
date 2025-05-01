@@ -941,7 +941,7 @@ days:
         category: Break
         row: 3
         room: 0.11 Cape Town
-       - time: 11:00 - 13:00
+      - time: 11:00 - 13:00
         title: Parallel 4C
         category: Parallel
         row: 3
