@@ -717,7 +717,7 @@ days:
         room: Auditorium 1
       - time: 11:00 - 13:00
         title: Parallel 1A
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
         room: Auditorium 1
@@ -728,7 +728,7 @@ days:
         room: Auditorium 1
       - time: 14:30 - 16:00
         title: Parallel 2A
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
         room: Auditorium 1
@@ -739,7 +739,7 @@ days:
         room: Auditorium 1
       - time: 16:30 - 17:45
         title: Parallel 3A
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
         room: Auditorium 1
@@ -760,7 +760,7 @@ days:
         room: Auditorium 1
       - time: 11:00 - 13:00
         title: Parallel 1B 
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
         room: 0.10 Sydney
@@ -771,7 +771,7 @@ days:
         room: 0.10 Sydney
       - time: 14:30 - 16:00
         title: Parallel 2B
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
         room: 0.10 Sydney
@@ -782,13 +782,13 @@ days:
         room: 0.10 Sydney
       - time: 16:30 - 17:45
         title: Parallel 3B
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
         room: 0.10 Sydney    
       - time: 11:00 - 13:00
         title: Parallel 1C
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
         room: 0.11 Cape Town
@@ -799,7 +799,7 @@ days:
         room: 0.11 Cape Town
       - time: 14:30 - 16:00
         title: Parallel 2C
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
         room: 0.11 Cape Town
@@ -810,13 +810,13 @@ days:
         room: 0.11 Cape Town
       - time: 16:30 - 17:45
         title: Parallel 3C
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
         room: 0.11 Cape Town   
       - time: 11:00 - 13:00
         title: Parallel 1D
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
         room: 0.05 Paris
@@ -827,7 +827,7 @@ days:
         room: 0.05 Paris
       - time: 14:30 - 16:00
         title: Parallel 2D
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
         room: 0.05 Paris
@@ -838,13 +838,13 @@ days:
         room: 0.05 Paris
       - time: 16:30 - 17:45
         title: Parallel 3D
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
         room: 0.05 Paris
       - time: 11:00 - 13:00
         title: Parallel 1E
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
         room: 0.04 Brussels
@@ -855,7 +855,7 @@ days:
         room: 0.04 Brussels
       - time: 14:30 - 16:00
         title: Parallel 2E
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
         room: 0.04 Brussels
@@ -866,7 +866,7 @@ days:
         room: 0.04 Brussels
       - time: 16:30 - 17:45
         title: Parallel 3E
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
         room: 0.04 Brussels 
@@ -890,7 +890,7 @@ days:
         room: Auditorium 1
       - time: 11:00 - 13:00
         title: Parallel 4A
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
         room: Auditorium 1
@@ -901,7 +901,7 @@ days:
         room: Auditorium 1
       - time: 14:30 - 16:00
         title: Parallel 5A
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
         room: Auditorium 1
@@ -912,7 +912,7 @@ days:
         room: Auditorium 1
       - time: 16:30 - 17:45
         title: Parallel 6A
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
         room: Auditorium 1
@@ -933,7 +933,7 @@ days:
         room: 0.10 Sydney
       - time: 11:00 - 13:00
         title: Parallel 4B
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
         room: 0.10 Sydney
@@ -944,7 +944,7 @@ days:
         room: 0.10 Sydney
       - time: 14:30 - 16:00
         title: Parallel 5B
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
         room: 0.10 Sydney
@@ -955,7 +955,7 @@ days:
         room: 0.10 Sydney
       - time: 16:30 - 17:45
         title: Parallel 6B
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
         room: 0.10 Sydney
@@ -966,7 +966,7 @@ days:
         room: 0.11 Cape Town
       - time: 11:00 - 13:00
         title: Parallel 4C
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
         room: 0.11 Cape Town
@@ -977,7 +977,7 @@ days:
         room: 0.11 Cape Town
       - time: 14:30 - 16:00
         title: Parallel 5C
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
         room: 0.11 Cape Town
@@ -988,13 +988,13 @@ days:
         room: 0.11 Cape Town
       - time: 16:30 - 17:45
         title: Parallel 6C
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
         room: 0.11 Cape Town
       - time: 11:00 - 13:00
         title: Parallel 4D
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
         room: 0.05 Paris
@@ -1005,7 +1005,7 @@ days:
         room: 0.05 Paris
       - time: 14:30 - 16:00
         title: Parallel 5D
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
         room: 0.05 Paris
@@ -1016,13 +1016,13 @@ days:
         room: 0.05 Paris
       - time: 16:30 - 17:45
         title: Parallel 6D
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
         room: 0.05 Paris
       - time: 11:00 - 13:00
         title: Parallel 4E
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
         room: 0.05 Paris
@@ -1033,7 +1033,7 @@ days:
         room: 0.04 Brussels
       - time: 14:30 - 16:00
         title: Parallel 5E
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
         room: 0.04 Brussels
@@ -1044,7 +1044,7 @@ days:
         room: 0.04 Brussels
       - time: 16:30 - 17:45
         title: Parallel 6E
-        url: ""
+        url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
         room: 0.04 Brussels
