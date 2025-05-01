@@ -702,42 +702,157 @@ days:
         title: "Plenary Speaker: Sonia Kefi"
         category: Invited Speaker
         row: 1
+        room: Auditorium 1
       - time: 09:45 - 10:30
         title: Lightning 1
         category: Lightning
         row: 1
+        room: Auditorium 1
       - time: 10:30 - 11:00
         title: Coffee break + posters
         category: Break
         row: 1
+        room: Auditorium 1
       - time: 11:00 - 13:00
-        title: Parallel 1 
+        title: Parallel 1A 
         category: Parallel
         row: 1
+        room: Auditorium 1
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
         row: 1
+        room: Auditorium 1
       - time: 14:30 - 16:00
-        title: Parallel 2
+        title: Parallel 2A
         category: Parallel
         row: 1
+        room: Auditorium 1
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
         row: 1
+        room: Auditorium 1
       - time: 16:30 - 17:45
-        title: Parallel 3
+        title: Parallel 3A
         category: Parallel
         row: 1
+        room: Auditorium 1
       - time: 17:45 - 18:30
         title: "Plenary Speaker: Jari Saramaki"   
         category: Invited Speaker
         row: 1
+        room: Auditorium 1
       - time: 18:30 - 19:30 
         title: Welcome reception
         category: Break
         row: 1
+        room: Auditorium 1
+      - time: 10:30 - 11:00
+        title: Coffee break + posters
+        category: Break
+        row: 1
+        room: Auditorium 1
+      - time: 11:00 - 13:00
+        title: Parallel 1B 
+        category: Parallel
+        row: 2
+        room: 0.10 Sydney
+      - time: 13:00 - 14:30
+        title: Lunch + posters
+        category: Break
+        row: 2
+        room: 0.10 Sydney
+      - time: 14:30 - 16:00
+        title: Parallel 2B
+        category: Parallel
+        row: 2
+        room: 0.10 Sydney
+      - time: 16:00 - 16:30
+        title: Coffee break + posters 
+        category: Break
+        row: 2
+        room: 0.10 Sydney
+      - time: 16:30 - 17:45
+        title: Parallel 3B
+        category: Parallel
+        row: 2
+        room: 0.10 Sydney    
+      - time: 11:00 - 13:00
+        title: Parallel 1C
+        category: Parallel
+        row: 3
+        room: 0.11 Cape Town
+      - time: 13:00 - 14:30
+        title: Lunch + posters
+        category: Break
+        row: 3
+        room: 0.11 Cape Town
+      - time: 14:30 - 16:00
+        title: Parallel 2C
+        category: Parallel
+        row: 3
+        room: 0.11 Cape Town
+      - time: 16:00 - 16:30
+        title: Coffee break + posters 
+        category: Break
+        row: 3
+        room: 0.11 Cape Town
+      - time: 16:30 - 17:45
+        title: Parallel 3C
+        category: Parallel
+        row: 3
+        room: 0.11 Cape Town   
+      - time: 11:00 - 13:00
+        title: Parallel 1D
+        category: Parallel
+        row: 4
+        room: 0.05 Paris
+      - time: 13:00 - 14:30
+        title: Lunch + posters
+        category: Break
+        row: 4
+        room: 0.05 Paris
+      - time: 14:30 - 16:00
+        title: Parallel 2D
+        category: Parallel
+        row: 4
+        room: 0.05 Paris
+      - time: 16:00 - 16:30
+        title: Coffee break + posters 
+        category: Break
+        row: 4
+        room: 0.05 Paris
+      - time: 16:30 - 17:45
+        title: Parallel 3D
+        category: Parallel
+        row: 4
+        room: 0.05 Paris
+        - time: 11:00 - 13:00
+        title: Parallel 1E
+        category: Parallel
+        row: 5
+        room: 0.04 Brussels
+      - time: 13:00 - 14:30
+        title: Lunch + posters
+        category: Break
+        row: 5
+        room: 0.04 Brussels
+      - time: 14:30 - 16:00
+        title: Parallel 2E
+        category: Parallel
+        row: 5
+        room: 0.04 Brussels
+      - time: 16:00 - 16:30
+        title: Coffee break + posters 
+        category: Break
+        row: 5
+        room: 0.04 Brussels
+      - time: 16:30 - 17:45
+        title: Parallel 3E
+        category: Parallel
+        row: 5
+        room: 0.04 Brussels 
         
   - name: Thu 5 June 2025
     events:
