@@ -4,6 +4,8 @@ legend:
       color: lime-4
     - name: Parallel
       color: blue-6
+    - name: Invited Speaker
+      color: orange-6
     - name: Break
       color: grey-6
     - name: Other Activities
@@ -745,7 +747,7 @@ days:
         room: Auditorium 1
       - time: 18:30 - 19:30 
         title: Welcome reception
-        category: Break
+        category: Other Activities
         row: 1
         room: Auditorium 1
       - time: 10:30 - 11:00
