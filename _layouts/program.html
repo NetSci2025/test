@@ -377,6 +377,7 @@ main {
               
 
               <!-- LEGEND -->
+              {% assign categories = site.data.program.legend.categories %}
               {% assign legend = day.events | map: 'category' | compact | uniq %}
               {% assign size = legend | size %}
               {% if size > 0 %}
