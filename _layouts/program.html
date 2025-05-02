@@ -364,7 +364,6 @@ main {
                                 {{ event.title }}
                               </div>
                             {% endif %}
-
                             {% endfor %}
                           </div>
                         </div>
@@ -375,6 +374,32 @@ main {
                 </div> <!-- schedule-container -->
               </div>
 
+              
+
+              <!-- LEGEND -->
+              {% assign legend = day.events | map: 'category' | compact | uniq %}
+              {% assign size = legend | size %}
+              {% if size > 0 %}
+              <div class="mt-4 mb-2">
+                {% if site.data.program.legend.title %}
+                <h5 class="fw-normal">{{ site.data.program.legend.title }}</h5>
+                {% endif %}
+                {% for item in legend %}
+                {% assign border = categories | where: 'name', item | map: 'color' | first %}
+                {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
+                {% assign classes = border | prepend: ' border-' | prepend: bg %}
+                {% unless forloop.last %}
+                {% assign classes = classes | append: ' me-lg-2' %}
+                {% endunless %}
+                {% if border %}
+                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
+                {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+
+
+  
               <!-- List --> 
               <ul class="list-unstyled ms-3 ms-lg-0 lh-sm">
               {% assign categories = site.data.program.legend.categories %}
@@ -451,31 +476,6 @@ main {
                 {% endif %}
               {% endfor %}
             </ul>
-
-
-
-
-              <!-- LEGEND -->
-              {% assign legend = day.events | map: 'category' | compact | uniq %}
-              {% assign size = legend | size %}
-              {% if size > 0 %}
-              <div class="mt-4 mb-2">
-                {% if site.data.program.legend.title %}
-                <h5 class="fw-normal">{{ site.data.program.legend.title }}</h5>
-                {% endif %}
-                {% for item in legend %}
-                {% assign border = categories | where: 'name', item | map: 'color' | first %}
-                {% assign bg = border | split: '-' | first | prepend: 'bg-' | append: '-1' %}
-                {% assign classes = border | prepend: ' border-' | prepend: bg %}
-                {% unless forloop.last %}
-                {% assign classes = classes | append: ' me-lg-2' %}
-                {% endunless %}
-                {% if border %}
-                <small class="d-block d-lg-inline-block mt-2 px-3 py-1 border-start border-3 {{ classes }}">{{ item | upcase }}</small>
-                {% endif %}
-                {% endfor %}
-              </div>
-              {% endif %}
             </div>
           </div>
         </div>
@@ -484,6 +484,8 @@ main {
     </div>
     {% endif %}
   </div>
+
+
 </main>
 
 
