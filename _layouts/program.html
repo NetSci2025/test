@@ -350,7 +350,7 @@ main {
                               {% assign width = end_min | minus: start_min | divided_by: 60.0 %}
                               {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
                               {% if event.url %}
-                              <a href="{{ event.url }}" target="_blank" class="event-block bg-{{ cat_color }} satellite"
+                              <a href="{{ site.url }}{{ event.url }}" class="event-block bg-{{ cat_color }} satellite"
                                 style="left: calc({{ left }} * var(--slot-width)); width: calc({{ width }} * var(--slot-width) - 4px);"
                                 title="{{ event.title }} | {{ event.time }}">
                                 <div class="event-time">{{ event.time }}</div>
