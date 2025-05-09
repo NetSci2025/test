@@ -32,3 +32,5 @@ plugins:
 collections:
   parallel:
     output: true
+  lightnings:
+    output: true
