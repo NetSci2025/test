@@ -417,17 +417,14 @@ main {
                 {% assign time_key = event.time | strip %}
             
                 {% assign display = false %}
-                {% assign display_text = event.title %}
-            
-                {% if event.row == 1 %}
-                  {% assign display = true %}
-                  {% assign display_text = event.title %}
-                {% elsif event.row == 2 %}
-                  {% unless shown_satellite_times contains time_key %}
-                    {% assign display = true %}
-                    {% assign display_text = "Satellites" %}
-                    {% assign shown_satellite_times = shown_satellite_times | append: time_key | append: "|" %}
-                  {% endunless %}
+{% assign display_text = event.title %}
+{% assign time_title_key = event.time | append: "|" | append: display_text %}
+
+{% unless shown_time_titles contains time_title_key %}
+  {% assign display = true %}
+  {% assign shown_time_titles = shown_time_titles | append: time_title_key | append: "," %}
+{% endunless %}
+
                 {% elsif event.category == "Break" %}
                   {% assign display = true %}
                   {% assign display_text = event.title %}
