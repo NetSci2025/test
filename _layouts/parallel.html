@@ -6,14 +6,44 @@ layout: default
 {% include header.html %}
 
 <style>
-    main {
-        padding-top: 70px;
-    }
+  main {
+    padding-top: 70px;
+  }
 
-    main h2, main h3, main h4, main h5, main h6 {
-        margin-top: 1.25em; 
-        margin-bottom: 1em; 
-    }
+  .talk-card {
+    background: #f8f9fa;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+
+  .talk-order {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+  }
+
+  .talk-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .abstract-id {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+  }
+
+  .presenter {
+    margin-bottom: 0.75rem;
+  }
+
+  .abstract-label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
 </style>
 
 <main class="my-4 {{ page.class }}">
@@ -25,35 +55,33 @@ layout: default
 
     {% if session %}
       {% for talk in session.talks %}
-        <div class="mb-5">
+        <div class="talk-card mb-5">
 
           <!-- 1. Talk Order -->
-          <div class="fs-6 text-muted mb-2">Talk {{ talk["Talk Order"] }}</div>
+          <div class="talk-order">Talk {{ talk["Talk Order"] }}</div>
 
-          <!-- 2. Abstract ID + Bold Talk Title -->
-          <div class="fs-5 fw-bold mb-2">
-            [{{ talk["Abstract ID"] }}] {{ talk["Talk title"] }}
-          </div>
+          <!-- 2. Abstract ID -->
+          <div class="abstract-id">Abstract ID: {{ talk["Abstract ID"] }}</div>
 
-          <!-- 3. Presenter -->
-          <div class="mb-2"><strong>Presenter:</strong> {{ talk["Presenter"] }}</div>
+          <!-- 3. Bold Talk Title -->
+          <div class="talk-title">{{ talk["Talk title"] }}</div>
 
-          <!-- 4. Abstract label -->
-          <div class="fw-semibold">Abstract</div>
+          <!-- 4. Presenter -->
+          <div class="presenter"><strong>Presenter:</strong> {{ talk["Presenter"] }}</div>
 
-          <!-- 5. Abstract content (with MathJax rendering support) -->
+          <!-- 5. Abstract label -->
+          <div class="abstract-label">Abstract</div>
+
+          <!-- 6. Abstract content -->
           <div>{{ talk["Abstract"] }}</div>
 
         </div>
-        <hr>
       {% endfor %}
     {% else %}
       <p class="text-danger">No session data found for slug <code>{{ page.slug }}</code>.</p>
     {% endif %}
-
   </div>
 </main>
-
 
 <script>
   window.MathJax = {
@@ -68,5 +96,5 @@ layout: default
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
-{% include footer.html %}
 
+{% include footer.html %}
