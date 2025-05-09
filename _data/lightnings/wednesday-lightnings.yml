@@ -1,6 +1,6 @@
-- session: Wednesday Lightnings
-  slug: wednesday-lightnings
-  talks:
+session: Wednesday Lightnings
+slug: wednesday-lightnings
+talks:
   - Session name: Wednesday Lightnings
     Talk Order: '1'
     Abstract ID: '41'
