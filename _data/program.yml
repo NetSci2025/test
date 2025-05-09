@@ -730,6 +730,7 @@ days:
         category: Parallel
         row: 1
         room: Auditorium 1
+        url: /test/parallel/social-networks-1/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
