@@ -716,7 +716,7 @@ days:
         row: 1
         room: Auditorium 1
       - time: 11:00 - 13:00
-        title: "Parallel 1A"
+        title: Social networks 1
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
@@ -727,7 +727,7 @@ days:
         row: 1
         room: Auditorium 1
       - time: 14:30 - 16:00
-        title: "Parallel 2A"
+        title: Statistical analysis and inference 1
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
@@ -738,7 +738,7 @@ days:
         row: 1
         room: Auditorium 1
       - time: 16:30 - 17:45
-        title: "Parallel 3A"
+        title: Dynamics 2
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
@@ -759,7 +759,7 @@ days:
         row: 1
         room: Auditorium 1
       - time: 11:00 - 13:00
-        title: Parallel 1B 
+        title: Higher order networks 1
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
@@ -770,7 +770,7 @@ days:
         row: 2
         room: 0.10 Sydney
       - time: 14:30 - 16:00
-        title: Parallel 2B
+        title: Network Epidemics 1
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
@@ -781,13 +781,13 @@ days:
         row: 2
         room: 0.10 Sydney
       - time: 16:30 - 17:45
-        title: Parallel 3B
+        title: Network models
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
         room: 0.10 Sydney    
       - time: 11:00 - 13:00
-        title: Parallel 1C
+        title: Dynamics 1
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
@@ -798,7 +798,7 @@ days:
         row: 3
         room: 0.11 Cape Town
       - time: 14:30 - 16:00
-        title: Parallel 2C
+        title: Machine Learning 1
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
@@ -809,13 +809,13 @@ days:
         row: 3
         room: 0.11 Cape Town
       - time: 16:30 - 17:45
-        title: Parallel 3C
+        title: Multilayer networks
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
         room: 0.11 Cape Town   
       - time: 11:00 - 13:00
-        title: Parallel 1D
+        title: Culture & Technology
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
@@ -826,7 +826,7 @@ days:
         row: 4
         room: 0.05 Paris
       - time: 14:30 - 16:00
-        title: Parallel 2D
+        title: Mobiity and spatial networks 1
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
@@ -837,13 +837,13 @@ days:
         row: 4
         room: 0.05 Paris
       - time: 16:30 - 17:45
-        title: Parallel 3D
+        title: Science of science
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
         room: 0.05 Paris
       - time: 11:00 - 13:00
-        title: Parallel 1E
+        title: Biological networks
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
@@ -854,7 +854,7 @@ days:
         row: 5
         room: 0.04 Brussels
       - time: 14:30 - 16:00
-        title: Parallel 2E
+        title: Finance networks and supply chains
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
@@ -865,7 +865,7 @@ days:
         row: 5
         room: 0.04 Brussels
       - time: 16:30 - 17:45
-        title: Parallel 3E
+        title: Network Geometry
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
@@ -889,7 +889,7 @@ days:
         row: 1
         room: Auditorium 1
       - time: 11:00 - 13:00
-        title: "Parallel 4A"
+        title: Social networks 2
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
@@ -900,7 +900,7 @@ days:
         row: 1
         room: Auditorium 1
       - time: 14:30 - 16:00
-        title: "Parallel 5A"
+        title: Statistical analysis and inference 2
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
@@ -911,7 +911,7 @@ days:
         row: 1
         room: Auditorium 1
       - time: 16:30 - 17:45
-        title: "Parallel 6A"
+        title: Dynamics 3
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 1
@@ -932,7 +932,7 @@ days:
         row: 2
         room: 0.10 Sydney
       - time: 11:00 - 13:00
-        title: Parallel 4B
+        title: Higher order networks 2
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
@@ -943,7 +943,7 @@ days:
         row: 2
         room: 0.10 Sydney
       - time: 14:30 - 16:00
-        title: Parallel 5B
+        title: Network epidemics 2
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
@@ -954,7 +954,7 @@ days:
         row: 2
         room: 0.10 Sydney
       - time: 16:30 - 17:45
-        title: Parallel 6B
+        title: Critical Phenomena In Networks
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 2
@@ -965,7 +965,7 @@ days:
         row: 3
         room: 0.11 Cape Town
       - time: 11:00 - 13:00
-        title: Parallel 4C
+        title: Brain networks
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
@@ -976,7 +976,7 @@ days:
         row: 3
         room: 0.11 Cape Town
       - time: 14:30 - 16:00
-        title: Parallel 5C
+        title: Algorithms, Measures and Statistics
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
@@ -987,13 +987,13 @@ days:
         row: 3
         room: 0.11 Cape Town
       - time: 16:30 - 17:45
-        title: Parallel 6C
+        title: Machine Learning 2
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 3
         room: 0.11 Cape Town
       - time: 11:00 - 13:00
-        title: Parallel 4D
+        title: Contagion and spreading processes
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
@@ -1004,7 +1004,7 @@ days:
         row: 4
         room: 0.05 Paris
       - time: 14:30 - 16:00
-        title: Parallel 5D
+        title: Mobiity and spatial networks 2
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
@@ -1015,13 +1015,13 @@ days:
         row: 4
         room: 0.05 Paris
       - time: 16:30 - 17:45
-        title: Parallel 6D
+        title: Signed networks
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 4
         room: 0.05 Paris
       - time: 11:00 - 13:00
-        title: Parallel 4E
+        title: Ecological networks
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
@@ -1032,7 +1032,7 @@ days:
         row: 5
         room: 0.04 Brussels
       - time: 14:30 - 16:00
-        title: Parallel 5E
+        title: Temporal networks
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
@@ -1043,7 +1043,7 @@ days:
         row: 5
         room: 0.04 Brussels
       - time: 16:30 - 17:45
-        title: Parallel 6E
+        title: Synchronization and Control Theory
         url: https://netsci2025.github.io/program_at_a_glance/
         category: Parallel
         row: 5
