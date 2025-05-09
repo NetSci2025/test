@@ -34,3 +34,5 @@ collections:
     output: true
   lightnings:
     output: true
+  posters:
+    output: true
