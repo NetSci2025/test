@@ -41,7 +41,7 @@ layout: default
           <!-- 4. Abstract label -->
           <div class="fw-semibold">Abstract</div>
 
-          <!-- 5. Abstract content -->
+          <!-- 5. Abstract content (with MathJax rendering support) -->
           <div>{{ talk["Abstract"] }}</div>
 
         </div>
@@ -53,6 +53,20 @@ layout: default
 
   </div>
 </main>
+
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
 {% include footer.html %}
 
