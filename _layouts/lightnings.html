@@ -7,74 +7,93 @@ layout: default
 
 <style>
   main {
-    padding-top: 70px;
+    padding: 4rem 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdfdfd;
+    color: #333;
   }
 
-  .talk-card {
-    background: #f8f9fa;
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  .container {
+    max-width: 900px;
+    margin: auto;
   }
 
-  .talk-order {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #6c757d;
-    margin-bottom: 0.5rem;
+  .talk-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .talk-meta {
+    flex: 1 1 250px;
+    font-size: 0.95rem;
+    color: #666;
   }
 
   .talk-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 0.25rem;
+    margin: 0.5rem 0;
+    color: #222;
   }
 
-  .abstract-id {
-    font-size: 0.95rem;
-    color: #6c757d;
-    margin-bottom: 1rem;
+  .talk-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    margin-bottom: 2rem;
+    line-height: 1.6;
   }
 
-  .presenter {
-    margin-bottom: 0.75rem;
-  }
-
-  .abstract-label {
+  .talk-abstract-label {
     font-weight: 600;
-    margin-bottom: 0.25rem;
+    color: #333;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  .abstract-text {
+    color: #444;
+  }
+
+  @media (max-width: 600px) {
+    .talk-header {
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 </style>
 
 <main class="my-4 {{ page.class }}">
   <div class="container">
     <h1 class="display-5">{{ page.title }}</h1>
-    <hr class="my-4">
 
     {% assign session = site.data.lightnings[page.slug] %}
-
     {% if session %}
       {% for talk in session.talks %}
-        <div class="talk-card mb-5">
+        <div class="talk-card">
+          <div class="talk-header">
+            <div class="talk-meta">
+              <div><strong>Talk {{ talk["Talk Order"] }}</strong></div>
+              <div>Abstract ID: {{ talk["Abstract ID"] }}</div>
+            </div>
+            <div>
+              <div class="talk-title">{{ talk["Talk title"] }}</div>
+              <div><strong>Presenter:</strong> {{ talk["Presenter"] }}</div>
+            </div>
+          </div>
 
-          <!-- 1. Talk Order -->
-          <div class="talk-order">Talk {{ talk["Talk Order"] }}</div>
-
-          <!-- 2. Abstract ID -->
-          <div class="abstract-id">Abstract ID: {{ talk["Abstract ID"] }}</div>
-
-          <!-- 3. Bold Talk Title -->
-          <div class="talk-title">{{ talk["Talk title"] }}</div>
-
-          <!-- 4. Presenter -->
-          <div class="presenter"><strong>Presenter:</strong> {{ talk["Presenter"] }}</div>
-
-          <!-- 5. Abstract label -->
-          <div class="abstract-label">Abstract</div>
-
-          <!-- 6. Abstract content -->
-          <div>{{ talk["Abstract"] }}</div>
-
+          <div class="talk-abstract-label">Abstract</div>
+          <div class="abstract-text">
+            {{ talk["Abstract"] }}
+          </div>
         </div>
       {% endfor %}
     {% else %}
@@ -82,6 +101,7 @@ layout: default
     {% endif %}
   </div>
 </main>
+
 
 <script>
   window.MathJax = {
