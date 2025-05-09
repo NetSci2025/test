@@ -710,6 +710,7 @@ days:
         category: Lightning
         row: 1
         room: Auditorium 1
+        url: /test/lightnings/wednesday-lightnings/
       - time: 10:30 - 11:00
         title: Coffee break + posters
         category: Break
@@ -883,6 +884,7 @@ days:
         category: Lightning
         row: 1
         room: Auditorium 1
+        url: /test/lightnings/thursday-lightnings/
       - time: 10:30 - 11:00
         title: Coffee break + posters
         category: Break
