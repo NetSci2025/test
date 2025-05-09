@@ -278,7 +278,7 @@ main {
                             {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
                           
                             {% if event.url %}
-                            <a href="{{ site.url }}/parallel/{{ event.title | slugify }}/"
+                            <a href="{{ site.baseurl }}/parallel/{{ event.title | slugify }}/"
                              class="event-block bg-{{ cat_color }}"
                              style="left: calc({{ left }} * var(--slot-width)); width: calc({{ width }} * var(--slot-width) - 4px);"
                              title="{{ event.title }} | {{ event.time }}">
