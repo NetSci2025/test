@@ -1,7 +1,7 @@
 - session: Thursday Lightnings
   slug: thursday-lightnings
   talks:
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '1'
     Abstract ID: '51'
     Presenter: Wilfried SEGNOU
@@ -29,7 +29,7 @@
       a directed random hypergraph. Our work highlights the crucial role of directionality
       in the emergence of Turing patterns and broadens the traditional frameworks
       of network theory.'
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '2'
     Abstract ID: '76'
     Presenter: Mattia Mattei
@@ -47,7 +47,7 @@
       hypothesis that biofilm formation is driven by nucleation processes but also
       introduces a versatile model capable of generating sharp phase transitions,
       with broad applicability.
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '3'
     Abstract ID: '127'
     Presenter: Celia Rubio Madrigal
@@ -66,7 +66,7 @@
       effective spectral gap optimization framework to add or delete edges and demonstrate
       its effectiveness on the long range graph benchmark and on larger heterophilous
       datasets.'
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '4'
     Abstract ID: '161'
     Presenter: Caroline Pena
@@ -90,7 +90,7 @@
       with community structure. We show how the initial seeding location affects the
       observed cascade size distribution on a heavy-tailed network and that our framework
       accurately captures this effect.'
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '5'
     Abstract ID: '242'
     Presenter: Meritxell Vila Miñana
@@ -121,7 +121,7 @@
       tasks, our method could find applications in chemistry or biology. For example,
       in molecular graphs. Density-based filtrations could capture structural variations,
       complementing existing geometric and chemical approaches.
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '6'
     Abstract ID: '300'
     Presenter: Lorenzo Dall'Amico
@@ -152,7 +152,7 @@
       complementing the results on cohabiting individuals. This suggests that microbiota
       might be transmitted in social settings, and it motivates further research on
       the interplay between the social network structure and the microbiota composition.
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '7'
     Abstract ID: '390'
     Presenter: Brian Chang
@@ -165,7 +165,7 @@
       analytic form for the probability in simple graphs and show that correcting
       Newman’s modularity formula with our exact probability can lead to different
       communities being detected.
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '8'
     Abstract ID: '395'
     Presenter: Corinna Coupette
@@ -193,7 +193,7 @@
       more researchers into this exciting field – and to help bring together those
       already active in the area. Thus, we also argue the case for including legal
       networks in future NetSci calls as a separate category.'
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '9'
     Abstract ID: '518'
     Presenter: Omar Henderson
@@ -222,7 +222,7 @@
       Our goal in this research is to explore this mapping and approximation to understand
       how we can use the event graph representation to study epidemic processes  without
       performing costly simulations.
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '10'
     Abstract ID: '598'
     Presenter: Yue Wu
@@ -244,7 +244,7 @@
       in a geometric space, hence redefining the separability problem in terms of
       the travelling salesman problem is an innovation which impacts both computer
       science and complexity theory.
-  - Session name: Thursday Lighnings
+  - Session name: Thursday Lightnings
     Talk Order: '11'
     Abstract ID: '313'
     Presenter: David Almasan
