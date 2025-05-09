@@ -720,6 +720,7 @@ days:
         category: Parallel
         row: 1
         room: Auditorium 1
+        url: /test/parallel/social-networks-1/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -730,7 +731,7 @@ days:
         category: Parallel
         row: 1
         room: Auditorium 1
-        url: /test/parallel/social-networks-1/
+        url: /test/parallel/statistical-analysis-and-inference-1/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -741,6 +742,7 @@ days:
         category: Parallel
         row: 1
         room: Auditorium 1
+        url: /test/parallel/dynamics-2/
       - time: 17:45 - 18:30
         title: "Plenary Speaker: Jari Saramaki"   
         category: Invited Speaker
@@ -761,6 +763,7 @@ days:
         category: Parallel
         row: 2
         room: 0.10 Sydney
+        url: /test/parallel/higher-order-networks-1/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -771,6 +774,7 @@ days:
         category: Parallel
         row: 2
         room: 0.10 Sydney
+        url: /test/parallel/network-epidemics-1/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -780,12 +784,14 @@ days:
         title: Network models
         category: Parallel
         row: 2
-        room: 0.10 Sydney    
+        room: 0.10 Sydney  
+        url: /test/parallel/network-models/
       - time: 11:00 - 13:00
         title: Dynamics 1
         category: Parallel
         row: 3
         room: 0.11 Cape Town
+        url: /test/parallel/dynamics-1/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -796,6 +802,7 @@ days:
         category: Parallel
         row: 3
         room: 0.11 Cape Town
+        url: /test/parallel/machine-learning-1/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -806,11 +813,13 @@ days:
         category: Parallel
         row: 3
         room: 0.11 Cape Town   
+        url: /test/parallel/multilayer-networks/
       - time: 11:00 - 13:00
         title: Culture & Technology
         category: Parallel
         row: 4
         room: 0.05 Paris
+        url: /test/parallel/culture-and-technology/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -821,6 +830,7 @@ days:
         category: Parallel
         row: 4
         room: 0.05 Paris
+        url: /test/parallel/mobiity-and-spatial-networks-1/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -831,11 +841,13 @@ days:
         category: Parallel
         row: 4
         room: 0.05 Paris
+        url: /test/parallel/science-of-science/
       - time: 11:00 - 13:00
         title: Biological networks
         category: Parallel
         row: 5
         room: 0.04 Brussels
+        url: /test/parallel/biological-networks/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -846,6 +858,7 @@ days:
         category: Parallel
         row: 5
         room: 0.04 Brussels
+        url: /test/parallel/finance-networks-and-supply-chains/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -856,6 +869,7 @@ days:
         category: Parallel
         row: 5
         room: 0.04 Brussels 
+        url: /test/parallel/network-geometry/
         
   - name: Thu 5 June 2025
     events:
@@ -879,6 +893,7 @@ days:
         category: Parallel
         row: 1
         room: Auditorium 1
+        url: /test/parallel/social-networks-2/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -889,6 +904,7 @@ days:
         category: Parallel
         row: 1
         room: Auditorium 1
+        url: /test/parallel/statistical-analysis-and-inference-2/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -899,6 +915,7 @@ days:
         category: Parallel
         row: 1
         room: Auditorium 1
+        url: /test/parallel/dynamics-3/
       - time: 17:45 - 18:30
         title: "Plenary Speaker: Linda Douw (Chair: Chris Bick)"
         category: Invited Speaker
@@ -919,6 +936,7 @@ days:
         category: Parallel
         row: 2
         room: 0.10 Sydney
+        url: /test/parallel/higher-order-networks-2/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -929,6 +947,7 @@ days:
         category: Parallel
         row: 2
         room: 0.10 Sydney
+        url: /test/parallel/network-epidemics-2/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -939,6 +958,7 @@ days:
         category: Parallel
         row: 2
         room: 0.10 Sydney
+        url: /test/parallel/critical-phenomena-in-networks/
       - time: 10:30 - 11:00
         title: Coffee break + posters
         category: Break
@@ -949,6 +969,7 @@ days:
         category: Parallel
         row: 3
         room: 0.11 Cape Town
+        url: /test/parallel/brain-networks/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -959,6 +980,7 @@ days:
         category: Parallel
         row: 3
         room: 0.11 Cape Town
+        url: /test/parallel/algorithms-measures-and-statistics/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -969,21 +991,24 @@ days:
         category: Parallel
         row: 3
         room: 0.11 Cape Town
+        url: /test/parallel/machine-learning-2/
       - time: 11:00 - 13:00
         title: Contagion and spreading processes
         category: Parallel
         row: 4
         room: 0.05 Paris
+        url: /test/parallel/contagion-and-spreading-processes/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
         row: 4
         room: 0.05 Paris
       - time: 14:30 - 16:00
-        title: Mobiity and spatial networks 2
+        title: Mobility and spatial networks 2
         category: Parallel
         row: 4
         room: 0.05 Paris
+        url: /test/parallel/mobility-and-spatial-networks-2/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -994,11 +1019,13 @@ days:
         category: Parallel
         row: 4
         room: 0.05 Paris
+        url: /test/parallel/signed-networks/
       - time: 11:00 - 13:00
         title: Ecological networks
         category: Parallel
         row: 5
         room: 0.05 Paris
+        url: /test/parallel/ecological-networks/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
@@ -1009,6 +1036,7 @@ days:
         category: Parallel
         row: 5
         room: 0.04 Brussels
+        url: /test/parallel/temporal-networks/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
@@ -1019,6 +1047,7 @@ days:
         category: Parallel
         row: 5
         room: 0.04 Brussels
+        url: /test/parallel/synchronization-and-control-theory/
     
         
   - name: Fri 6 June 2025
