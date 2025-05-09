@@ -278,21 +278,20 @@ main {
                             {% assign cat_color = site.data.program.legend.categories | where: "name", event.category | map: "color" | first | default: "grey-6" %}
                           
                             {% if event.url %}
-                            <a href="{{ site.baseurl }}/parallel/{{ event.title | slugify }}/"
-                             class="event-block bg-{{ cat_color }}"
-                             style="left: calc({{ left }} * var(--slot-width)); width: calc({{ width }} * var(--slot-width) - 4px);"
-                             title="{{ event.title }} | {{ event.time }}">
-                            <div class="event-time">{{ event.time }}</div>
-                            <span class="text-primary text-decoration-underline">{{ event.title }}</span>
-                          </a>
-                          {% else %}
-                            <div class="event-block bg-{{ cat_color }}"
-                                 style="left: calc({{ left }} * var(--slot-width)); width: calc({{ width }} * var(--slot-width) - 4px);"
-                                 title="{{ event.title }} | {{ event.time }}">
-                              <div class="event-time">{{ event.time }}</div>
-                              {{ event.title }}
-                            </div>
-                          {% endif %}
+                              <a href="{{ event.url }}" target="_blank" class="event-block bg-{{ cat_color }}"
+                                style="left: calc({{ left }} * var(--slot-width)); width: calc({{ width }} * var(--slot-width) - 4px);"
+                                title="{{ event.title }} | {{ event.time }}">
+                                <div class="event-time">{{ event.time }}</div>
+                                {{ event.title }}
+                              </a>
+                            {% else %}
+                              <div class="event-block bg-{{ cat_color }}"
+                                style="left: calc({{ left }} * var(--slot-width)); width: calc({{ width }} * var(--slot-width) - 4px);"
+                                title="{{ event.title }} | {{ event.time }}">
+                                <div class="event-time">{{ event.time }}</div>
+                                {{ event.title }}
+                              </div>
+                            {% endif %}
                           {% endfor %}
                           </div>
                         </div>
@@ -498,5 +497,6 @@ main {
 
 
 {% include footer.html %}
+
 
 
