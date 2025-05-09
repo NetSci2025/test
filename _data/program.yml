@@ -278,7 +278,7 @@ days:
         type: satellite
         url: https://networkneuroscience.github.io
         row: 9
-        room: FASoS GG76S 1.02
+        room: FASoS GG76S 1.018
         room url: https://maps.app.goo.gl/NVxXJbJyiwX8PfDGA
       - time: 11:00 - 12:30
         title: (Satellite) Network Neuroscience
@@ -286,7 +286,7 @@ days:
         type: satellite
         url: https://networkneuroscience.github.io
         row: 9
-        room: FASoS GG76S 1.02
+        room: FASoS GG76S 1.018
         room url: https://maps.app.goo.gl/NVxXJbJyiwX8PfDGA
       - time: 14:30 - 16:00
         title: (Satellite) Network Neuroscience
@@ -294,7 +294,7 @@ days:
         type: satellite
         url: https://networkneuroscience.github.io
         row: 9
-        room: FASoS GG76S 1.02
+        room: FASoS GG76S 1.018
         room url: https://maps.app.goo.gl/NVxXJbJyiwX8PfDGA
       - time: 16:30 - 18:30
         title: (Satellite) Network Neuroscience
@@ -302,7 +302,7 @@ days:
         type: satellite
         url: https://networkneuroscience.github.io
         row: 9
-        room: FASoS GG76S 1.02
+        room: FASoS GG76S 1.018
         room url: https://maps.app.goo.gl/NVxXJbJyiwX8PfDGA
       - time: 08:30 - 10:30
         title: (Satellite) Higher-Order Network Science meets AI (HONAI)
