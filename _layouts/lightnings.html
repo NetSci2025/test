@@ -14,12 +14,12 @@ layout: default
     background: #f8f9fa;
     border-radius: 0.75rem;
     padding: 1.5rem;
-    border-left: 3px solid #dc3545; /* Bootstrap 红色 */
+    border-left: 3px solid #dc3545; 
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   }
 
   .talk-meta-header {
-    background-color: #f8d7da; /* 淡红 */
+    background-color: #fdf2f2; 
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
@@ -56,7 +56,8 @@ layout: default
 <main class="my-4 {{ page.class }}">
   <div class="container">
     <h1 class="display-5">{{ page.title }}</h1>
-
+    <hr class="my-4">
+    
     {% assign session = site.data.lightnings[page.slug] %}
     {% if session %}
       {% for talk in session.talks %}
