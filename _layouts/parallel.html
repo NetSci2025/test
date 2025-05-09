@@ -6,7 +6,6 @@ layout: default
 {% include header.html %}
 
 <style>
-
     main {
         padding-top: 70px;
     }
@@ -17,14 +16,43 @@ layout: default
     }
 </style>
 
-
 <main class="my-4 {{ page.class }}">
-    <div class="container">
-        <h1 class="display-5">{{ title }}</h1>
-        <hr class="my-4">
-        {{ content }}
-    </div>
+  <div class="container">
+    <h1 class="display-5">{{ page.title }}</h1>
+    <hr class="my-4">
+
+    {% assign session = site.data.parallel[page.slug] %}
+
+    {% if session %}
+      {% for talk in session.talks %}
+        <div class="mb-5">
+
+          <!-- 1. Talk Order -->
+          <div class="fs-6 text-muted mb-2">Talk {{ talk["Talk Order"] }}</div>
+
+          <!-- 2. Abstract ID + Bold Talk Title -->
+          <div class="fs-5 fw-bold mb-2">
+            [{{ talk["Abstract ID"] }}] {{ talk["Talk title"] }}
+          </div>
+
+          <!-- 3. Presenter -->
+          <div class="mb-2"><strong>Presenter:</strong> {{ talk["Presenter"] }}</div>
+
+          <!-- 4. Abstract label -->
+          <div class="fw-semibold">Abstract</div>
+
+          <!-- 5. Abstract content -->
+          <div>{{ talk["Abstract"] }}</div>
+
+        </div>
+        <hr>
+      {% endfor %}
+    {% else %}
+      <p class="text-danger">No session data found for slug <code>{{ page.slug }}</code>.</p>
+    {% endif %}
+
+  </div>
 </main>
 
+{% include footer.html %}
 
-{% include footer.html %} 
