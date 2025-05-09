@@ -282,14 +282,15 @@ main {
                                 style="left: calc({{ left }} * var(--slot-width)); width: calc({{ width }} * var(--slot-width) - 4px);"
                                 title="{{ event.title }} | {{ event.time }}">
                                 <div class="event-time">{{ event.time }}</div>
-                                {{ event.title }}
+                                <a href="/parallel/{{ event.title | slugify }}/" class="text-decoration-none text-dark">{{ event.title }}</a>
+
                               </a>
                             {% else %}
                               <div class="event-block bg-{{ cat_color }}"
                                 style="left: calc({{ left }} * var(--slot-width)); width: calc({{ width }} * var(--slot-width) - 4px);"
                                 title="{{ event.title }} | {{ event.time }}">
                                 <div class="event-time">{{ event.time }}</div>
-                                {{ event.title }}
+                                <a href="/parallel/{{ event.title | slugify }}/" class="text-decoration-none text-dark">{{ event.title }}</a>
                               </div>
                             {% endif %}
                           {% endfor %}
