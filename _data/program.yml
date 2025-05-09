@@ -727,6 +727,7 @@ days:
         category: Break
         row: 1
         room: Auditorium 1
+        url: /test/poster/wednesday-posters/
       - time: 14:30 - 16:00
         title: Statistical analysis and inference 1
         category: Parallel
@@ -770,6 +771,7 @@ days:
         category: Break
         row: 2
         room: 0.10 Sydney
+        url: /test/poster/wednesday-posters/
       - time: 14:30 - 16:00
         title: Network Epidemics 1
         category: Parallel
@@ -798,6 +800,7 @@ days:
         category: Break
         row: 3
         room: 0.11 Cape Town
+        url: /test/poster/wednesday-posters/
       - time: 14:30 - 16:00
         title: Machine Learning 1
         category: Parallel
@@ -826,6 +829,7 @@ days:
         category: Break
         row: 4
         room: 0.05 Paris
+        url: /test/poster/wednesday-posters/
       - time: 14:30 - 16:00
         title: Mobiity and spatial networks 1
         category: Parallel
@@ -854,6 +858,7 @@ days:
         category: Break
         row: 5
         room: 0.04 Brussels
+        url: /test/poster/wednesday-posters/
       - time: 14:30 - 16:00
         title: Finance networks and supply chains
         category: Parallel
@@ -901,6 +906,7 @@ days:
         category: Break
         row: 1
         room: Auditorium 1
+        url: /test/poster/thursday-posters/
       - time: 14:30 - 16:00
         title: Statistical analysis and inference 2
         category: Parallel
@@ -944,6 +950,7 @@ days:
         category: Break
         row: 2
         room: 0.10 Sydney
+        url: /test/poster/thursday-posters/
       - time: 14:30 - 16:00
         title: Network epidemics 2
         category: Parallel
@@ -977,6 +984,7 @@ days:
         category: Break
         row: 3
         room: 0.11 Cape Town
+        url: /test/poster/thursday-posters/
       - time: 14:30 - 16:00
         title: Algorithms, Measures and Statistics
         category: Parallel
@@ -1005,6 +1013,7 @@ days:
         category: Break
         row: 4
         room: 0.05 Paris
+        url: /test/poster/thursday-posters/
       - time: 14:30 - 16:00
         title: Mobility and spatial networks 2
         category: Parallel
@@ -1033,6 +1042,7 @@ days:
         category: Break
         row: 5
         room: 0.04 Brussels
+        url: /test/poster/thursday-posters/
       - time: 14:30 - 16:00
         title: Temporal networks
         category: Parallel
@@ -1070,6 +1080,7 @@ days:
         title: Lunch + posters
         category: Break
         row: 1
+        url: /test/poster/wednesday-posters/
       - time: 14:00 - 16:00
         title: Focus sessions
         category: Invited Speaker 
