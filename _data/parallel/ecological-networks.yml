@@ -101,21 +101,6 @@ talks:
     seen among algorithms for co-occurrence inference), and this is intuitively explainable
     in spatial terms.'
 - Session name: Ecological networks
-  Talk Order: '5'
-  Abstract ID: '102'
-  Presenter: Johannes Nauta
-  Talk title: Species abundance distributions predict maintenance of mobile genetic
-    elements in microbial systems
-  Abstract: Mobile genetic elements appear in nearly all microbial systems and affect
-    ecological processes and, subsequently, macroscopic quantities such as system
-    stability and composition. However, little is known about how the spread of these
-    elements through horizontal gene transfer is affected by ecological processes,
-    or how this spread affects population dynamics. We discuss a model that allows
-    one to leverage techniques from epidemiology to predict whether mobile genetic
-    elements are maintained. Our results show that maintenance depends on the species
-    abundance distribution, thus advancing our understanding of the connection between
-    ecological and epidemiological processes.
-- Session name: Ecological networks
   Talk Order: '6'
   Abstract ID: '233'
   Talk title: How did the energy transfer network of green plants help them evolve?
@@ -136,24 +121,6 @@ talks:
     Through this study, we propose a novel method to investigate the photosystem with
     which one can better understand how green plants harvest light energy and adapt
     to changing environmental conditions.
-- Session name: Ecological networks
-  Talk Order: '7'
-  Abstract ID: '48'
-  Talk title: A taxonomy of multiple stable states in complex ecological communities
-  Abstract: 'Natural systems are built from multiple interconnected units, making
-    their dynamics, functioning and fragility notoriously hard to predict. One fragility
-    scenario of particular relevance are so-called regime shifts: abrupt transitions
-    from healthy to degraded ecosystem states. An explanation for these shifts is
-    that they arise as transitions between alternative stable states, a process that
-    is well-understood in few-species models. However, how multistability upscales
-    with system complexity remains a debated question. Here, we identify that four
-    different multistability regimes generically emerge in models of species-rich
-    communities and other archetypical complex biological systems assuming random
-    interactions. Across the studied models, each regime consistently emerges under
-    a specific interaction scheme and leaves a distinct set of fingerprints in terms
-    of the number of observed states, their species richness and their response to
-    perturbations. Our results help clarify the conditions and types of multistability
-    that can be expected to occur in complex ecological communities.'
 - Session name: Ecological networks
   Talk Order: '8'
   Abstract ID: '582'
