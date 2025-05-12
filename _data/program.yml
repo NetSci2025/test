@@ -1080,7 +1080,7 @@ days:
         title: Lunch + posters
         category: Break
         row: 1
-        url: /test/posters/wednesday-posters/
+        url: /test/posters/friday-posters/
       - time: 14:00 - 16:00
         title: Focus sessions
         category: Invited Speaker 
