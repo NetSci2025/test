@@ -63,11 +63,6 @@ layout: default
     {% if session %}
       {% for talk in session.talks %}
         <div class="talk-card mb-5">
-          <div class="talk-meta-header">
-            <div class="talk-order">Talk {{ talk["Talk Order"] }}</div>
-            <div class="abstract-id">Abstract ID: {{ talk["Abstract ID"] }}</div>
-          </div>
-
           <div class="talk-title">{{ talk["Talk title"] }}</div>
           <div class="presenter"><strong>Presenter:</strong> {{ talk["Presenter"] }}</div>
 
