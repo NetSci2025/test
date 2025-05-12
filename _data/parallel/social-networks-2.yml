@@ -2,27 +2,6 @@ session: Social networks 2
 slug: social-networks-2
 talks:
 - Session name: Social networks 2
-  Talk Order: '1'
-  Abstract ID: '432'
-  Presenter: Juniper Lovato
-  Talk title: Governance as a complex, networked, democratic, satisfiability problem
-  Abstract: Democratic governments comprise a subset of a population whose goal is
-    to produce coherent decisions that solve societal challenges while respecting
-    the will of the people they represent. New governance frameworks represent this
-    problem as a social network rather than as a hierarchical pyramid with centralized
-    authority. But how should this network be structured? To investigate this question,
-    we model the set of decisions a population must make as a satisfiability problem
-    and the structure of information flow involved in decision-making as a social
-    hypergraph. This allows us to consider the benefits of different governance structures,
-    from dictatorships to direct democracy. In between these extremes, we find a regime
-    of effective governance where decision groups are formed as needed by key stakeholders
-    to discuss and make specific decisions. This regime of effective governance allows
-    even incoherent or polarized populations to make coherent decisions at low coordination
-    costs. More broadly, we present not just simulation results, but a modeling framework
-    that can be used to explore the costs and benefits of a wide range of governance
-    strategies using bottom-up approaches and their ability to tackle decision problems
-    that challenge standard governments.
-- Session name: Social networks 2
   Talk Order: '2'
   Abstract ID: '216'
   Talk title: Social transmission along multiple pathways promotes information fidelity
