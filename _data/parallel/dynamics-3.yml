@@ -95,16 +95,4 @@ talks:
     of negative opinions, agents tend to be more biased toward the negative side without
     reaching a positive stance. Moreover, Llama agents were mostly persuaded by fallacious
     statements (79% of cases), particularly in a polarized context.
-- Session name: Dynamics 3
-  Talk Order: '5'
-  Abstract ID: '47'
-  Talk title: Explicit exact solutions of the SI and Bass models on sparse random
-    networks
-  Abstract: In this work we present a new methodology for obtaining explicit expressions
-    for the expected adoption or infection level in the Bass model for the diffusion
-    of innovations and in the SI model for epidemics, respectively, on sparse networks
-    with numerous cycles. Specifically, we obtain explicit expressions for sparse
-    Erdos-Renyi networks and d-regular networks. These explicit expressions are solutions
-    of first-order ordinary differential equations. As such, their properties are
-    fairly easy to analyze. We stress that these expressions are exact, and not based
-    on a mean-field or some other approximation.
+
