@@ -57,7 +57,7 @@ layout: default
                 </tr>
             </thead>
             <tbody>
-                {% assign poster_data = site.data.posters[page.poster_day] %}
+                {% assign poster_data = site.data.posters[page.slug] %}
                 {% for talk in poster_data.talks %}
                 <tr>
                     <td>{{ talk['Paper ID'] }}</td>
