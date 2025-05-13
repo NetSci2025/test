@@ -1,7 +1,7 @@
-session: Dynamics 2
-slug: dynamics-2
+session: Dynamics 1
+slug: dynamics-1
 talks:
-- Session name: Dynamics 2
+- Session name: Dynamics 1
   Talk Order: '1'
   Abstract ID: '542'
   Presenter: Ana Barioni
@@ -24,7 +24,7 @@ talks:
     in cohesion and collision avoidance for flocks of heterogeneous agents. Finally,
     we conclude the talk by establishing system disorder as a mechanism to promote
     collective behavior across a wide variety of systems beyond flocking dynamics.
-- Session name: Dynamics 2
+- Session name: Dynamics 1
   Talk Order: '2'
   Abstract ID: '35'
   Presenter: Hanlin Sun
@@ -51,7 +51,7 @@ talks:
     a time-varying topology. Hence, this work provides a theoretical framework that
     can be applied to model realistic scenarios in which the giant component is time
     dependent as in neuroscience.
-- Session name: Dynamics 2
+- Session name: Dynamics 1
   Talk Order: '3'
   Abstract ID: '191'
   Presenter: Jun Yamamoto
@@ -75,7 +75,7 @@ talks:
     of Fiedler and leading eigenvectors in heterogeneous networks. While our motivation
     arose from physical networks, our results can also apply to network-of-networks
     and multilayer networks in which layer sizes are heterogeneous.
-- Session name: Dynamics 2
+- Session name: Dynamics 1
   Talk Order: '4'
   Abstract ID: '22'
   Presenter: Ramon Nartallo-Kaluarachchi
@@ -106,7 +106,7 @@ talks:
     vs arrhythmic heartbeats. Our work represents a powerful new tool for the analysis
     of real-world time-series using topological signal processing, from the perspective
     of nonequilibrium physics.
-- Session name: Dynamics 2
+- Session name: Dynamics 1
   Talk Order: '5'
   Abstract ID: '49'
   Presenter: Naoki Masuda
