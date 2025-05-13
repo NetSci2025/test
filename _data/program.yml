@@ -21,7 +21,7 @@ days:
   - name: Mon 2 June 2025
     events:
       - time: 09:30 - 10:30
-        title: "School Speaker: Manlio De Domenico" 
+        title: "Manlio De Domenico (School Speaker)" 
         type: speaker
         category: Faculty FPN
         row: 1  
@@ -35,7 +35,7 @@ days:
         room: FPN Heerlen Zaal 
         room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 14:30 - 16:00
-        title: "School Speaker: Huijuan Wang"   
+        title: "Huijuan Wang (School Speaker)"   
         category: Faculty FPN
         type: speaker
         row: 1
@@ -880,7 +880,7 @@ days:
   - name: Thu 5 June 2025
     events:
       - time: 09:00 - 09:45
-        title: "Plenary Speaker: Iza Romanowska"
+        title: "Iza Romanowska (Plenary Speaker)"
         category: Invited Speaker
         row: 1
         room: Auditorium 1
@@ -925,7 +925,7 @@ days:
         room: Auditorium 1
         url: /test/parallel/dynamics-3/
       - time: 17:45 - 18:30
-        title: "Plenary Speaker: Linda Douw (Chair: Chris Bick)"
+        title: "Linda Douw (Chair: Chris Bick) (Plenary Speaker)"
         category: Invited Speaker
         row: 1
         room: Auditorium 1
@@ -1065,7 +1065,7 @@ days:
   - name: Fri 6 June 2025
     events:
       - time: 09:00 - 10:00
-        title: "Plenary Speaker: Michael Macy"
+        title: "Michael Macy (Plenary Speaker)"
         category: Invited Speaker
         row: 1
       - time: 10:00 - 10:30
