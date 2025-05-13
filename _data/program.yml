@@ -28,7 +28,7 @@ days:
         room: FPN Heerlen Zaal 
         room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 11:00 - 12:30
-        title: "School Speaker: Manlio De Domenico"   
+        title: "Manlio De Domenico (School Speaker)"   
         category: Faculty FPN
         type: speaker
         row: 1  
@@ -42,7 +42,7 @@ days:
         room: FPN Heerlen Zaal 
         room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 16:30 - 17:30
-        title: "School Speaker: Huijuan Wang"   
+        title: "Huijuan Wang (School Speaker)"   
         category: Faculty FPN
         type: speaker
         row: 1
@@ -389,28 +389,28 @@ days:
   - name: Tue 3 June 2025
     events:
       - time: 09:30 - 10:30
-        title: "School Speaker: Joseph Lizier"   
+        title: "Joseph Lizier (School Speaker)"   
         category: Faculty FPN
         type: speaker
         row: 1  
         room: FPN Heerlen Zaal
         room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 11:00 - 12:30
-        title: "School Speaker: Joseph Lizier"   
+        title: "Joseph Lizier (School Speaker)"   
         category: Faculty FPN
         type: speaker
         row: 1  
         room: FPN Heerlen Zaal
         room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 14:30 - 16:00
-        title: "School Speaker: Dillon Eastoe"   
+        title: "illon Eastoe (School Speaker)"   
         category: Faculty FPN
         type: speaker
         row: 1
         room: FPN Heerlen Zaal
         room url: https://maps.app.goo.gl/BJ6aLFSEL2VH51Lk9
       - time: 16:30 - 17:30
-        title: "School Speaker: Dillon Eastoe"   
+        title: "Dillon Eastoe (School Speaker)"   
         category: Faculty FPN
         type: speaker
         row: 1
