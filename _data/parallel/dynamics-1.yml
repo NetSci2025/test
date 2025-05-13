@@ -1,7 +1,7 @@
-session: Dynamics 1
-slug: dynamics-1
+session: Dynamics 2
+slug: dynamics-2
 talks:
-- Session name: Dynamics 1
+- Session name: Dynamics 2
   Talk Order: '1'
   Abstract ID: '21'
   Presenter: Fragkiskos Papadopoulos
@@ -29,7 +29,7 @@ talks:
     also briefly discuss ongoing work of how to predict link kinetics in real networks,
     once the historical evolution of node connectivity and popularity-similarity trajectories
     are known.
-- Session name: Dynamics 1
+- Session name: Dynamics 2
   Talk Order: '2'
   Abstract ID: '400'
   Presenter: Alexandra Tits
@@ -59,7 +59,7 @@ talks:
     pattern. Our analysis should clarify the resilience of the LCN - in clinical terms,
     how much micropetrosis contributes to a reduced mechanosensation of osteonal bone
     as we age.
-- Session name: Dynamics 1
+- Session name: Dynamics 2
   Talk Order: '3'
   Abstract ID: '333'
   Presenter: Maja Lindström
@@ -77,14 +77,14 @@ talks:
     of our proposed approach, we conducted extensive experiments and conclude that
     this method captures overlapping flow-based communities in both synthetic and
     real-world networks.
-- Session name: Dynamics 1
+- Session name: Dynamics 2
   Talk Order: '4'
   Abstract ID: '34'
   Presenter: Shilong Yu
   Talk title: Using sample cross covariance to potentially improve early warning signals
     for network dynamics
   Abstract: Please see the pdf abstract.
-- Session name: Dynamics 1
+- Session name: Dynamics 2
   Talk Order: '5'
   Abstract ID: '318'
   Presenter: James Gleeson
@@ -96,7 +96,7 @@ talks:
     and subcritical dynamic regimes and so generalises the nonbacktracking centrality
     that was previously shown to successfully identify the most influential single
     spreaders in a model of critical epidemics on networks.
-- Session name: Dynamics 1
+- Session name: Dynamics 2
   Talk Order: '6'
   Abstract ID: '74'
   Presenter: Marvin Lücke
@@ -111,7 +111,7 @@ talks:
     spreading processes on networks of arbitrary topology. Our results deliver evidence
     for the existence of low-dimensional CVs even in cases that are not yet understood
     theoretically.
-- Session name: Dynamics 1
+- Session name: Dynamics 2
   Talk Order: '7'
   Abstract ID: '126'
   Presenter: Otti D'Huys
@@ -140,7 +140,7 @@ talks:
     experimental data. We explain the interplay of the network dynamics, noise in
     the nodes and noise in the adaptive coupling in framework of slow-fast dynamics,
     and the existence of a sepatrix in phase space.'
-- Session name: Dynamics 1
+- Session name: Dynamics 2
   Talk Order: '8'
   Abstract ID: '42'
   Presenter: Lluís Torres-Hugas
