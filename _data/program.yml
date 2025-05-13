@@ -740,11 +740,11 @@ days:
         row: 1
         room: Auditorium 1
       - time: 16:30 - 17:45
-        title: Dynamics 2
+        title: Dynamics 1
         category: Parallel
         row: 1
         room: Auditorium 1
-        url: /test/parallel/dynamics-2/
+        url: /test/parallel/dynamics-1/
       - time: 17:45 - 18:30
         title: "Jari Saramaki (Plenary Speaker)"   
         category: Invited Speaker
@@ -764,59 +764,59 @@ days:
         title: Higher order networks 1
         category: Parallel
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
         url: /test/parallel/higher-order-networks-1/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
         url: /test/posters/wednesday-posters/
       - time: 14:30 - 16:00
         title: Network Epidemics 1
         category: Parallel
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
         url: /test/parallel/network-epidemics-1/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
       - time: 16:30 - 17:45
         title: Network models
         category: Parallel
         row: 2
-        room: 0.10 Sydney  
+        room: 0.11 Cape Town
         url: /test/parallel/network-models/
       - time: 11:00 - 13:00
-        title: Dynamics 1
+        title: Brain networks
         category: Parallel
         row: 3
-        room: 0.11 Cape Town
-        url: /test/parallel/dynamics-1/
+        room: 0.10 Sydney
+        url: /test/parallel/brain-networks/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
         row: 3
-        room: 0.11 Cape Town
+        room: 0.10 Sydney
         url: /test/posters/wednesday-posters/
       - time: 14:30 - 16:00
         title: Machine Learning 1
         category: Parallel
         row: 3
-        room: 0.11 Cape Town
+        room: 0.10 Sydney
         url: /test/parallel/machine-learning-1/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
         row: 3
-        room: 0.11 Cape Town
+        room: 0.10 Sydney
       - time: 16:30 - 17:45
         title: Multilayer networks
         category: Parallel
         row: 3
-        room: 0.11 Cape Town   
+        room: 0.10 Sydney  
         url: /test/parallel/multilayer-networks/
       - time: 11:00 - 13:00
         title: Culture & Technology
@@ -938,69 +938,69 @@ days:
         title: Coffee break + posters
         category: Break
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
       - time: 11:00 - 13:00
         title: Higher order networks 2
         category: Parallel
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
         url: /test/parallel/higher-order-networks-2/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
         url: /test/posters/thursday-posters/
       - time: 14:30 - 16:00
         title: Network epidemics 2
         category: Parallel
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
         url: /test/parallel/network-epidemics-2/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
       - time: 16:30 - 17:45
         title: Critical Phenomena In Networks
         category: Parallel
         row: 2
-        room: 0.10 Sydney
+        room: 0.11 Cape Town
         url: /test/parallel/critical-phenomena-in-networks/
       - time: 10:30 - 11:00
         title: Coffee break + posters
         category: Break
         row: 3
-        room: 0.11 Cape Town
+        room: 0.10 Sydney
       - time: 11:00 - 13:00
-        title: Brain networks
+        title: Dynamics 2
         category: Parallel
         row: 3
-        room: 0.11 Cape Town
-        url: /test/parallel/brain-networks/
+        room: 0.10 Sydney
+        url: /test/parallel/dynamics-2/
       - time: 13:00 - 14:30
         title: Lunch + posters
         category: Break
         row: 3
-        room: 0.11 Cape Town
+        room: 0.10 Sydney
         url: /test/posters/thursday-posters/
       - time: 14:30 - 16:00
         title: Algorithms, Measures and Statistics
         category: Parallel
         row: 3
-        room: 0.11 Cape Town
+        room: 0.10 Sydney
         url: /test/parallel/algorithms-measures-and-statistics/
       - time: 16:00 - 16:30
         title: Coffee break + posters 
         category: Break
         row: 3
-        room: 0.11 Cape Town
+        room: 0.10 Sydney
       - time: 16:30 - 17:45
         title: Machine Learning 2
         category: Parallel
         row: 3
-        room: 0.11 Cape Town
+        room: 0.10 Sydney
         url: /test/parallel/machine-learning-2/
       - time: 11:00 - 13:00
         title: Contagion and spreading processes
