@@ -701,7 +701,7 @@ days:
   - name: Wed 4 June 2025
     events:
       - time: 09:00 - 09:45
-        title: "Plenary Speaker: Sonia Kefi"
+        title: "Sonia Kefi (Plenary Speaker)"
         category: Invited Speaker
         row: 1
         room: Auditorium 1
@@ -746,7 +746,7 @@ days:
         room: Auditorium 1
         url: /test/parallel/dynamics-2/
       - time: 17:45 - 18:30
-        title: "Plenary Speaker: Jari Saramaki"   
+        title: "Jari Saramaki (Plenary Speaker)"   
         category: Invited Speaker
         row: 1
         room: Auditorium 1
